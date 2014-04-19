@@ -7,21 +7,17 @@ import java.util.List;
 import java.util.Random;
 
 import com.badlogic.gdx.Gdx;
-//import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
-//import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.math.MathUtils;
-//import com.badlogic.gdx.graphics.Texture;
-//import com.badlogic.gdx.math.Vector3;
 import com.haniel.Shooter.entities.Entity;
 import com.haniel.Shooter.entities.Player;
 import com.haniel.Shooter.graphics.BackgroundImage;
 import com.haniel.Shooter.graphics.MyGraphics;
 import com.haniel.Shooter.graphics.Star;
 import com.haniel.Shooter.level.Level;
+import com.haniel.Shooter.particles.Particle;
 import com.haniel.Shooter.projectiles.Projectile;
 
 public class GameScreen implements Screen {
@@ -32,8 +28,9 @@ public class GameScreen implements Screen {
     private List<Entity> entities = new ArrayList<Entity>();
     private List<MyGraphics> graphics = new ArrayList<MyGraphics>();
     private List<Projectile> playerProjectiles = new ArrayList<Projectile>();
+    private List<Particle> particles = new ArrayList<Particle>();
     long lastDropTime;
-    int shipsDestroyed;
+    int damageReceived;
     Random rand = new Random();
     public double gameTime = 0;
     Level level = new Level();
@@ -58,20 +55,27 @@ public class GameScreen implements Screen {
         graphics.add(new BackgroundImage("textures/black_planet.png", 0, 0, .4f));
         
         //Player
-        entities.add(new Player());
+        add(new Player());
         
     }
     
     
     public void add(Entity e) {
     	entities.add(e);
+    	e.init(this);
     }
     
     public void add(MyGraphics g) {
     	graphics.add(g);
+    	g.init(this);
     }
     public void add(Projectile p) {
     	playerProjectiles.add(p);
+    	p.init(this);
+    }
+    public void add(Particle p) {
+    	particles.add(p);
+    	p.init(this);
     }
 
     @Override
@@ -91,14 +95,18 @@ public class GameScreen implements Screen {
         for (MyGraphics graphic : graphics) {
         	game.batch.draw(graphic.getTexture(), graphic.getX(), graphic.getY());
         }
-        game.font.draw(game.batch, "Ships Destroyed: " + shipsDestroyed, 0, screenHeight);
+        game.font.draw(game.batch, "Damage Received: " + damageReceived, 0, screenHeight);
+        game.font.draw(game.batch, "Time: " + level.levelTime, 0, screenHeight - 20);
         for (Entity entity : entities) {
         	game.batch.draw(entity.getTexture(), entity.getX(), entity.getY());
         }
         for (Projectile projectile : playerProjectiles) {
         	game.batch.draw(projectile.getTexture(), projectile.getX(), projectile.getY());
         }
-        
+        for (Particle particle : particles) {
+        	game.batch.draw(particle.getTexture(), (float) particle.getX(), (float) particle.getY());
+        }
+	
         game.batch.end();
         // move the raindrops, remove any that are beneath the bottom edge of
         // the screen or that hit the bucket. In the later case we increase the 
@@ -113,22 +121,34 @@ public class GameScreen implements Screen {
             if (raindrop.overlaps(bucket)) {
                 dropsGathered++;
                // dropSound.play();
+        System.out.println(particles.size());
                 iter.remove();
             }
 */
         for (int i = 0; i < entities.size(); i++) {
         	Entity e = entities.get(i);
-        	e.update(this);
-        	for (int p = 0; p <playerProjectiles.size(); p++) {
-        		if (!(e instanceof Player)){
-	        		if (e.getRectangle().overlaps(playerProjectiles.get(p).getRectangle())) {
-	        			e.remove();
+        	e.update();
+        	if (!(e instanceof Player)){
+        		for (int p = 0; p <playerProjectiles.size(); p++) {
+              		if (e.getRectangle().overlaps(playerProjectiles.get(p).getRectangle())) {
+	        			e.damage(playerProjectiles.get(p).getDamage());
 	        			playerProjectiles.get(p).remove();
 	        		}
         		}
-        	}
-        	if (e.isRemoved()) {
-        		entities.remove(e);
+        		if (e.isRemoved()) {
+            		entities.remove(e);
+            	}
+        	} else {
+        		for (int j = 0; j < entities.size(); j++){
+        			if (!(entities.get(j) instanceof Player)) {
+        				if (e.getRectangle().overlaps(entities.get(j).getRectangle())) {
+        					damageReceived++;
+        				}
+        				
+        			}
+        		}
+        		
+        		
         	}
         }
         
@@ -145,7 +165,12 @@ public class GameScreen implements Screen {
         		playerProjectiles.remove(playerProjectiles.get(i));
         	}
         }
-        
+        for (int i = 0; i < particles.size(); i++) {
+        	particles.get(i).update();
+        	if (particles.get(i).isRemoved()) {
+        		particles.remove(particles.get(i));
+        	}
+        }        
         gameTime += Gdx.graphics.getDeltaTime();
         if (gameTime > 1) {
         	level.update(this);

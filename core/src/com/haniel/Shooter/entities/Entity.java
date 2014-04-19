@@ -13,10 +13,11 @@ public abstract class Entity{
 	protected int width, height;
 	protected Texture texture;
 	protected boolean removed = false;
-	//protected Level level;
+	protected GameScreen gameScreen;
 	protected final Random rand = new Random();
 	protected Rectangle rectangle;
 	protected double time;
+	protected int health;
 	
 	//all entity textures so they are only loaded once:
 	
@@ -71,7 +72,7 @@ public abstract class Entity{
 		else return 1;
 	}
 	
-	public void update(GameScreen gameScreen) {
+	public void update() {
 		
 	}
 	
@@ -80,7 +81,7 @@ public abstract class Entity{
 	}
 	
 	public float getX() {
-		return x;
+		return x;	
 	}
 	
 	public float getY() {
@@ -104,13 +105,17 @@ public abstract class Entity{
 		return rectangle;
 	}
 	
+	public void damage(double damage) {
+		health -= damage;
+		if (health < 0) remove();
+	}
+	
 	public boolean isRemoved() {
 		return removed;
 	}
 	
-	/*
-	public void init(Level level) {
-		this.level = level;
-	}*/
+	public void init(GameScreen gameScreen) {
+		this.gameScreen = gameScreen;
+	}
 
 }

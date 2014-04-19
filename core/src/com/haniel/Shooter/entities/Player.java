@@ -16,15 +16,15 @@ public class Player extends Entity{
 	public Player() {
 		this.x = GameScreen.screenWidth / 2 - 24 / 2;
 		this.y = 20;
-		this.width = 20;
-		this.height = 24;
+		this.width = 29;
+		this.height = 29;
 		this.texture = new Texture(Gdx.files.internal("entities/player.png"));
-		this.rectangle = new Rectangle(x, y, width, height);
-		this.speed = 100;
+		this.rectangle = new Rectangle(x+2, y+2, width-4, height-4);
+		this.speed = 150;
 		this.time = 0;
 		this.lastShot= 0;
 	}
-	public void update(GameScreen g) {
+	public void update() {
 	time += Gdx.graphics.getDeltaTime();
 	/*	
 	if (Gdx.input.isTouched()) {
@@ -56,19 +56,19 @@ public class Player extends Entity{
     if (x > GameScreen.screenWidth - 30) x = 800 - 30;
     if (y < 0) y = 0;
     if (y > GameScreen.screenHeight - 30) y = 480 - 30;
-    //rectangle.setPosition(x, y);
+    rectangle.setPosition(x+2, y+2);
     
     if(Gdx.input.isKeyPressed(Keys.ENTER)) {
-    	shoot(g);
+    	shoot();
     }
 		
 	}
 
-	public void shoot(GameScreen g) {
+	public void shoot() {
 		if (time - lastShot > Projectile.basicGunFiringRate) {
 			lastShot = time;
-			g.add(new BasicGun(this.x, this.y, 0));
-			g.add(new BasicGun(this.x + 27, this.y, 0));
+			this.gameScreen.add(new BasicGun(this.x, this.y, 0));
+			this.gameScreen.add(new BasicGun(this.x + 27, this.y, 0));
 		}
 	}
 }

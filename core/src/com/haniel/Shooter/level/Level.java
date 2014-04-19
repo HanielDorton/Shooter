@@ -1,18 +1,21 @@
 package com.haniel.Shooter.level;
 
+import java.util.Random;
+
 import com.haniel.Shooter.GameScreen;
 import com.haniel.Shooter.entities.Enemy1;
 import com.haniel.Shooter.graphics.Star;
 
 public class Level {
+	Random random = new Random();
 	
-	private int levelTime;
+	public int levelTime;
 	//private Random rand = new Random();
 	
 	
 	public Level() {
 		
-		//load graphics to be used:
+		//load graphics to be used?:
 		
 		
 		
@@ -20,9 +23,9 @@ public class Level {
 	
 	public void update(GameScreen g) {
 		levelTime++;
+		g.add(new Enemy1((random.nextInt(720) + 1 ), 480));
 		if (levelTime > 15) 	addStars(g, 1);
 		//g.add(new Enemy_1(MathUtils.random(0, 800), 480));
-		System.out.println(levelTime);
 		switch (levelTime) {
 		
 			case 18: {

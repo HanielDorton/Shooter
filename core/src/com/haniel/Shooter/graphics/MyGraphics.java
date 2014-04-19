@@ -3,6 +3,7 @@ package com.haniel.Shooter.graphics;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
+import com.haniel.Shooter.GameScreen;
 
 public abstract class MyGraphics {
 	protected float x, y;
@@ -10,6 +11,7 @@ public abstract class MyGraphics {
 	protected Texture texture;
 	protected boolean removed = false;
 	protected Rectangle rectangle;
+	protected GameScreen gameScreen;
 	
 	//load all images here so they are only loaded once:
 	
@@ -60,6 +62,9 @@ public abstract class MyGraphics {
 	
 	public boolean isSolid() {
 		return false;
+	}
+	public void init(GameScreen gameScreen) {
+		this.gameScreen = gameScreen;
 	}
 
 }

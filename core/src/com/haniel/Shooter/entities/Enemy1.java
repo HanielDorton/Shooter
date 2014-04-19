@@ -3,6 +3,7 @@ package com.haniel.Shooter.entities;
 import com.badlogic.gdx.Gdx; 
 import com.badlogic.gdx.math.Rectangle;
 import com.haniel.Shooter.GameScreen;
+import com.haniel.Shooter.particles.BlueParticle;
 
 public class Enemy1 extends Entity{
 
@@ -16,9 +17,10 @@ public class Enemy1 extends Entity{
 		this.width = 64;
 		this.height = 64;
 		this.texture = enemy1Texture;
-		this.rectangle = new Rectangle(x + 4, y + 20, width * 0.75f, height / 2);
+		this.rectangle = new Rectangle(x + 4, y + 20, width * 0.8f, height / 2);
+		this.health =10;
 	}
-	public void update(GameScreen g) {
+	public void update() {
 		//time++;
 		//if (time % 100== 0) {
 		//}
@@ -26,6 +28,18 @@ public class Enemy1 extends Entity{
         
         if (y < 0 - this.height) remove(); 
         rectangle.setPosition(x + 4, y + 20);
+	}
+	
+	public void damage(double damage) {
+		health -= damage;
+		if (health < 0) {
+			remove();
+			for (int i = 0; i <20; i ++)
+				gameScreen.add(new BlueParticle((int) x + width / 2,(int) y + height / 2, 20, speed));
+		}
+		for (int i = 0; i <5; i ++)
+			gameScreen.add(new BlueParticle((int) x + width / 2,(int) y + height / 2, 40, speed));
+		
 	}
 
 }
