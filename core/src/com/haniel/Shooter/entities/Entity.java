@@ -2,8 +2,10 @@ package com.haniel.Shooter.entities;
 
 import java.util.Random;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
+import com.haniel.Shooter.GameScreen;
 
 public abstract class Entity{
 	
@@ -12,8 +14,13 @@ public abstract class Entity{
 	protected Texture texture;
 	protected boolean removed = false;
 	//protected Level level;
-	protected final Random random = new Random();
+	protected final Random rand = new Random();
 	protected Rectangle rectangle;
+	protected double time;
+	
+	//all entity textures so they are only loaded once:
+	
+	protected final Texture enemy1Texture = new Texture(Gdx.files.internal("entities/enemy_1.png"));
 	
 	protected enum Direction {
 		UP, DOWN, LEFT, RIGHT
@@ -64,7 +71,7 @@ public abstract class Entity{
 		else return 1;
 	}
 	
-	public void update() {
+	public void update(GameScreen gameScreen) {
 		
 	}
 	

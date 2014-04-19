@@ -1,18 +1,23 @@
 package com.haniel.Shooter.graphics;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
 
-public abstract class Graphic {
+public abstract class MyGraphics {
 	protected float x, y;
 	protected int width, height;
 	protected Texture texture;
 	protected boolean removed = false;
 	protected Rectangle rectangle;
 	
+	//load all images here so they are only loaded once:
+	
+	protected final Texture starTexture = new Texture(Gdx.files.internal("textures/star.png"));
 	
 	
-	public Graphic() {
+	
+	public MyGraphics() {
 		
 	}
 	

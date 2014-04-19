@@ -1,18 +1,20 @@
 package com.haniel.Shooter.level;
 
-import java.util.Random;
-
 import com.haniel.Shooter.GameScreen;
-import com.haniel.Shooter.entities.Enemy_1;
+import com.haniel.Shooter.entities.Enemy1;
 import com.haniel.Shooter.graphics.Star;
 
 public class Level {
 	
 	private int levelTime;
-	private Random rand = new Random();
+	//private Random rand = new Random();
 	
 	
 	public Level() {
+		
+		//load graphics to be used:
+		
+		
 		
 	}
 	
@@ -23,14 +25,30 @@ public class Level {
 		System.out.println(levelTime);
 		switch (levelTime) {
 		
-			case 12: {
-				addStars(g, 200);
+			case 18: {
+				addStars(g, 20);
+				break;
+				} 
+			case 19: {
+				addStars(g, 20);
+				break;
+				} 
+			case 20: {
+				addStars(g, 20);
+				break;
+				} 
+			case 21: {
+				addStars(g, 20);
+				break;
+				} 
+			case 22: {
+				addStars(g, 20);
 				break;
 				} 
 			
-			case 20: {
+			case 5: {
 				for (int i = 1; i <11; i++) {
-					g.add(new Enemy_1((i*80) - 80, 480));				
+					g.add(new Enemy1((i*80) - 80, 480));				
 				} break;
 			}
 		}

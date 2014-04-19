@@ -19,9 +19,10 @@ import com.badlogic.gdx.math.MathUtils;
 import com.haniel.Shooter.entities.Entity;
 import com.haniel.Shooter.entities.Player;
 import com.haniel.Shooter.graphics.BackgroundImage;
-import com.haniel.Shooter.graphics.Graphic;
+import com.haniel.Shooter.graphics.MyGraphics;
 import com.haniel.Shooter.graphics.Star;
 import com.haniel.Shooter.level.Level;
+import com.haniel.Shooter.projectiles.Projectile;
 
 public class GameScreen implements Screen {
     final MyGdxGame game;
@@ -29,12 +30,15 @@ public class GameScreen implements Screen {
     Music rainMusic;
     OrthographicCamera camera;
     private List<Entity> entities = new ArrayList<Entity>();
-    private List<Graphic> graphics = new ArrayList<Graphic>();
+    private List<MyGraphics> graphics = new ArrayList<MyGraphics>();
+    private List<Projectile> playerProjectiles = new ArrayList<Projectile>();
     long lastDropTime;
     int shipsDestroyed;
     Random rand = new Random();
     public double gameTime = 0;
     Level level = new Level();
+    public static int screenWidth = 800;
+    public static int screenHeight = 480;
 
     public GameScreen(final MyGdxGame gam) {
         this.game = gam;
@@ -45,7 +49,7 @@ public class GameScreen implements Screen {
 
         // create the camera and the SpriteBatch
         camera = new OrthographicCamera();
-        camera.setToOrtho(false, 800, 480);
+        camera.setToOrtho(false, screenWidth, screenHeight);
         
         //Background
         graphics.add(new BackgroundImage("levels/space_background2.png", 0, 0, .02f));
@@ -63,8 +67,11 @@ public class GameScreen implements Screen {
     	entities.add(e);
     }
     
-    public void add(Graphic g) {
+    public void add(MyGraphics g) {
     	graphics.add(g);
+    }
+    public void add(Projectile p) {
+    	playerProjectiles.add(p);
     }
 
     @Override
@@ -80,17 +87,19 @@ public class GameScreen implements Screen {
         game.batch.setProjectionMatrix(camera.combined);
 
         game.batch.begin();
-        for (Graphic graphic : graphics) {
+        
+        for (MyGraphics graphic : graphics) {
         	game.batch.draw(graphic.getTexture(), graphic.getX(), graphic.getY());
         }
-        game.font.draw(game.batch, "Ships Destroyed: " + shipsDestroyed, 0, 480);
+        game.font.draw(game.batch, "Ships Destroyed: " + shipsDestroyed, 0, screenHeight);
         for (Entity entity : entities) {
         	game.batch.draw(entity.getTexture(), entity.getX(), entity.getY());
         }
-        game.batch.end();
-
+        for (Projectile projectile : playerProjectiles) {
+        	game.batch.draw(projectile.getTexture(), projectile.getX(), projectile.getY());
+        }
         
-     
+        game.batch.end();
         // move the raindrops, remove any that are beneath the bottom edge of
         // the screen or that hit the bucket. In the later case we increase the 
         // value our drops counter and add a sound effect.
@@ -108,16 +117,32 @@ public class GameScreen implements Screen {
             }
 */
         for (int i = 0; i < entities.size(); i++) {
-        	entities.get(i).update();
-        	if (entities.get(i).isRemoved()) {
-        		entities.remove(entities.get(i));
+        	Entity e = entities.get(i);
+        	e.update(this);
+        	for (int p = 0; p <playerProjectiles.size(); p++) {
+        		if (!(e instanceof Player)){
+	        		if (e.getRectangle().overlaps(playerProjectiles.get(p).getRectangle())) {
+	        			e.remove();
+	        			playerProjectiles.get(p).remove();
+	        		}
+        		}
+        	}
+        	if (e.isRemoved()) {
+        		entities.remove(e);
         	}
         }
+        
         for (int i = 0; i < graphics.size(); i++) {
         	graphics.get(i).update();
         	if (graphics.get(i).isRemoved()) {
         		if (graphics.get(i) instanceof Star) graphics.add(new Star(480));
         		graphics.remove(graphics.get(i));
+        	}
+        }
+        for (int i = 0; i < playerProjectiles.size(); i++) {
+        	playerProjectiles.get(i).update();
+        	if (playerProjectiles.get(i).isRemoved()) {
+        		playerProjectiles.remove(playerProjectiles.get(i));
         	}
         }
         
