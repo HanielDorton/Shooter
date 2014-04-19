@@ -4,41 +4,44 @@ package com.haniel.Shooter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input.Keys;
+//import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
 //import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
+//import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.math.Vector3;
+//import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.haniel.Shooter.entities.Enemy_1;
 import com.haniel.Shooter.entities.Entity;
+import com.haniel.Shooter.entities.Player;
+import com.haniel.Shooter.graphics.BackgroundImage;
+import com.haniel.Shooter.graphics.Graphic;
+import com.haniel.Shooter.graphics.Star;
+import com.haniel.Shooter.level.Level;
 
 public class GameScreen implements Screen {
     final MyGdxGame game;
-
-    Texture bucketImage;
    // Sound dropSound;
     Music rainMusic;
     OrthographicCamera camera;
-    Rectangle bucket;
-    Array<Rectangle> raindrops;
     private List<Entity> entities = new ArrayList<Entity>();
+    private List<Graphic> graphics = new ArrayList<Graphic>();
     long lastDropTime;
-    int dropsGathered;
+    int shipsDestroyed;
+    Random rand = new Random();
+    public double gameTime = 0;
+    Level level = new Level();
 
     public GameScreen(final MyGdxGame gam) {
         this.game = gam;
-
-        // load the images for the droplet and the bucket, 64x64 pixels each
-        bucketImage = new Texture(Gdx.files.internal("entities/player.png"));
 
         // load the drop sound effect and the rain background "music"
         //dropSound = Gdx.audio.newSound(Gdx.files.internal("drop.wav"));
@@ -48,17 +51,19 @@ public class GameScreen implements Screen {
         // create the camera and the SpriteBatch
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 800, 480);
-
-        // create a Rectangle to logically represent the bucket
-        bucket = new Rectangle();
-        bucket.x = 800 / 2 - 64 / 2; // center the bucket horizontally
-        bucket.y = 20; // bottom left corner of the bucket is 20 pixels above
-                        // the bottom screen edge
-        bucket.width = 20;
-        bucket.height = 24;
-
-        // create the array and spawn the first raindrop
-        raindrops = new Array<Rectangle>();
+        
+        //Background
+        graphics.add(new BackgroundImage("levels/space_background2.png", 0, 0, .5f));
+        graphics.add(new BackgroundImage("levels/space_background2.png", 0, 960, .5f));
+        
+        for (int i = 0; i < 500; i++) {Level
+        	graphics.add(new Star(rand.nextInt(480) + 1));
+        }
+        
+        //Player
+        entities.add(new Player());
+        
+        //first enemy
         spawnEnemy_1();
 
     }
@@ -74,8 +79,7 @@ public class GameScreen implements Screen {
         // clear the screen with a dark blue color. The
         // arguments to glClearColor are the red, green
         // blue and alpha component in the range [0,1]
-        // of the color to be used to clear the screen.
-        //Gdx.gl.glClearColor(0, 0, 0.2f, 1);
+        // of the color to be usGdx.graphics.getDeltaTime()ed to clear the screen.
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
@@ -89,40 +93,21 @@ public class GameScreen implements Screen {
         // begin a new batch and draw the bucket and
         // all drops
         game.batch.begin();
-        game.font.draw(game.batch, "Drops Collected: " + dropsGathered, 0, 480);
-        game.batch.draw(bucketImage, bucket.x, bucket.y);
+        for (Graphic graphic : graphics) {
+        	game.batch.draw(graphic.getTexture(), graphic.getX(), graphic.getY());
+        }
+        game.font.draw(game.batch, "Ships Destroyed: " + shipsDestroyed, 0, 480);
         for (Entity entity : entities) {
         	game.batch.draw(entity.getTexture(), entity.getX(), entity.getY());
         }
         game.batch.end();
 
-        // process user input
-        if (Gdx.input.isTouched()) {
-            Vector3 touchPos = new Vector3();
-            touchPos.set(Gdx.input.getX(), Gdx.input.getY(), 0);
-            camera.unproject(touchPos);
-            bucket.x = touchPos.x - 64 / 2;
-        }
-        if (Gdx.input.isKeyPressed(Keys.LEFT) || Gdx.input.isKeyPressed(Keys.A))
-            bucket.x -= 200 * Gdx.graphics.getDeltaTime();
-        if (Gdx.input.isKeyPressed(Keys.RIGHT) || Gdx.input.isKeyPressed(Keys.D))
-            bucket.x += 200 * Gdx.graphics.getDeltaTime();
-        if (Gdx.input.isKeyPressed(Keys.UP) || Gdx.input.isKeyPressed(Keys.W))
-            bucket.y += 200 * Gdx.graphics.getDeltaTime();
-        if (Gdx.input.isKeyPressed(Keys.DOWN) || Gdx.input.isKeyPressed(Keys.S))
-            bucket.y -= 200 * Gdx.graphics.getDeltaTime();
-
-        // make sure the player stays within the screen bounds
-        if (bucket.x < 0) bucket.x = 0;
-        if (bucket.x > 800 - 64) bucket.x = 800 - 64;
-        if (bucket.y < 0) bucket.y = 0;
-        if (bucket.y > 480) bucket.y = 480;
-
+        
         // check if we need to create a new raindrop
         if (TimeUtils.nanoTime() - lastDropTime > 1000000000)
             //spawnRaindrop();
         	spawnEnemy_1();
-
+        
         // move the raindrops, remove any that are beneath the bottom edge of
         // the screen or that hit the bucket. In the later case we increase the 
         // value our drops counter and add a sound effect.
@@ -145,6 +130,24 @@ public class GameScreen implements Screen {
         		entities.remove(entities.get(i));
         	}
         }
+        for (int i = 0; i < graphics.size(); i++) {
+        	graphics.get(i).update();
+        	if (graphics.get(i).isRemoved()) {
+        		if (graphics.get(i) instanceof Star) graphics.add(new Star(480));
+        		graphics.remove(graphics.get(i));
+        	}
+        }
+        
+        
+        //System.out.println(Gdx.graphics.getDeltaTime());
+        gameTime += Gdx.graphics.getDeltaTime();
+        if (gameTime > 1) {
+        	//System.out.println(gameTime);
+        	level.update();
+        	gameTime--;
+        }
+        
+
     }
 
     @Override
@@ -172,7 +175,6 @@ public class GameScreen implements Screen {
 
     @Override
     public void dispose() {
-        bucketImage.dispose();
         //dropSound.dispose();
         rainMusic.dispose();
     }

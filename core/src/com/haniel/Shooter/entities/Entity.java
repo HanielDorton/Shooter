@@ -68,10 +68,6 @@ public abstract class Entity{
 		
 	}
 	
-	public void render() {
-		
-	}
-	
 	public void remove() {
 		removed = true;
 	}

@@ -7,8 +7,8 @@ import com.badlogic.gdx.math.Rectangle;
 public class Enemy_1 extends Entity{
 	
 	private int time = 0;
-	int xa = 0;
-	int ya = 0;
+	//int xa = 0;
+	//int ya = 0;
 	
 	public Enemy_1(int x, int y) {
 		this.x = x;
