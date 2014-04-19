@@ -7,7 +7,7 @@ import com.badlogic.gdx.math.Rectangle;
 
 public abstract class Entity{
 	
-	protected float x, y;
+	protected float x, y, speed;
 	protected int width, height;
 	protected Texture texture;
 	protected boolean removed = false;

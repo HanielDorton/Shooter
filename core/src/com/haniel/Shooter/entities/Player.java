@@ -8,8 +8,6 @@ import com.badlogic.gdx.math.Vector3;
 
 public class Player extends Entity{
 	
-	Vector3 touchPos= new Vector3(x, y, 0);
-	
 	public Player() {
 		this.x = 800 / 2 - 24 / 2;
 		this.y = 20;
@@ -17,6 +15,7 @@ public class Player extends Entity{
 		this.height = 24;
 		this.texture = new Texture(Gdx.files.internal("entities/player.png"));
 		this.rectangle = new Rectangle();
+		this.speed = 100;
 	}
 	public void update() {
 
@@ -38,13 +37,13 @@ public class Player extends Entity{
 		
 		// Keyboard Movement not used:
 	if (Gdx.input.isKeyPressed(Keys.LEFT) || Gdx.input.isKeyPressed(Keys.A))
-        x -= 200 * Gdx.graphics.getDeltaTime();
+        x -= speed * Gdx.graphics.getDeltaTime();
     if (Gdx.input.isKeyPressed(Keys.RIGHT) || Gdx.input.isKeyPressed(Keys.D))
-        x += 200 * Gdx.graphics.getDeltaTime();
+        x += speed * Gdx.graphics.getDeltaTime();
     if (Gdx.input.isKeyPressed(Keys.UP) || Gdx.input.isKeyPressed(Keys.W))
-        y += 200 * Gdx.graphics.getDeltaTime();
+        y += speed * Gdx.graphics.getDeltaTime();
     if (Gdx.input.isKeyPressed(Keys.DOWN) || Gdx.input.isKeyPressed(Keys.S))
-        y -= 200 * Gdx.graphics.getDeltaTime();
+        y -= speed * Gdx.graphics.getDeltaTime();
 
     //- 64 / 2;
     if (x < 0) x = 0;

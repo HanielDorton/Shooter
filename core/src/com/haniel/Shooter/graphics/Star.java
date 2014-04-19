@@ -12,7 +12,7 @@ public class Star extends Graphic{
 	public Star(int y) {
 		this.y = y;
 		this.x = rand.nextInt(800) + 1;
-		this.speed = (rand.nextFloat() * 3) + .01f;
+		this.speed = (rand.nextFloat() * 3) + .03f;
 		this.texture = new Texture(Gdx.files.internal("textures/star.png"));
 	}
 	public void update() {
