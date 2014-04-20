@@ -45,7 +45,7 @@ public abstract class Particle {
 	private void move(double x, double y) {
 		this.x += xa;
 		this.y += ya;
-		this.y -= (speed * .02);
+		this.y -= (speed * Gdx.graphics.getDeltaTime()); //0.2
 	}
 	public void remove() {
 		//Remove from level

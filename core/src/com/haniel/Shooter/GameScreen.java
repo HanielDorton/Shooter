@@ -30,7 +30,8 @@ public class GameScreen implements Screen {
     private List<Projectile> playerProjectiles = new ArrayList<Projectile>();
     private List<Particle> particles = new ArrayList<Particle>();
     long lastDropTime;
-    int damageReceived;
+    public int damageReceived;
+    public int enemiesDestroyed;
     Random rand = new Random();
     public double gameTime = 0;
     Level level = new Level();
@@ -95,8 +96,9 @@ public class GameScreen implements Screen {
         for (MyGraphics graphic : graphics) {
         	game.batch.draw(graphic.getTexture(), graphic.getX(), graphic.getY());
         }
-        game.font.draw(game.batch, "Damage Received: " + damageReceived, 0, screenHeight);
-        game.font.draw(game.batch, "Time: " + level.levelTime, 0, screenHeight - 20);
+        game.font.draw(game.batch, "Time: " + level.levelTime, 0, screenHeight);
+        game.font.draw(game.batch, "Damage Received: " + damageReceived, 0, screenHeight - 20);
+        game.font.draw(game.batch, "EnemiesDestroyed: " + enemiesDestroyed, 0, screenHeight - 40);
         for (Entity entity : entities) {
         	game.batch.draw(entity.getTexture(), entity.getX(), entity.getY());
         }
@@ -108,23 +110,7 @@ public class GameScreen implements Screen {
         }
 	
         game.batch.end();
-        // move the raindrops, remove any that are beneath the bottom edge of
-        // the screen or that hit the bucket. In the later case we increase the 
-        // value our drops counter and add a sound effect.
-        /*
-        Iterator<Rectangle> iter = raindrops.iterator();
-        while (iter.hasNext()) {
-            Rectangle raindrop = iter.next();
-            raindrop.y -= 200 * Gdx.graphics.getDeltaTime();
-            if (raindrop.y + 64 < 0)
-                iter.remove();
-            if (raindrop.overlaps(bucket)) {
-                dropsGathered++;
-               // dropSound.play();
-        System.out.println(particles.size());
-                iter.remove();
-            }
-*/
+
         for (int i = 0; i < entities.size(); i++) {
         	Entity e = entities.get(i);
         	e.update();

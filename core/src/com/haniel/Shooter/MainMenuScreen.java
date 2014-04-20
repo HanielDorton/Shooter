@@ -20,15 +20,16 @@ public class MainMenuScreen implements Screen {
     }
     
     public void render(float delta) {
-        Gdx.gl.glClearColor(0, 0, 0.2f, 1);
+        Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         camera.update();
         game.batch.setProjectionMatrix(camera.combined);
 
         game.batch.begin();
-        game.font.draw(game.batch, "Welcome to Shooter!!! ", 100, 150);
-        game.font.draw(game.batch, "Tap anywhere to begin!", 100, 100);
+        game.font.draw(game.batch, "Welcome to Escape from Destiny ", 100, 200);
+        game.font.draw(game.batch, "A Haniel Dorton Game", 100, 150);
+        game.font.draw(game.batch, "Click  to begin", 100, 100);
         game.batch.end();
 
         if (Gdx.input.isTouched()) {

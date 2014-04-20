@@ -2,6 +2,7 @@ package com.haniel.Shooter.entities;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
 import com.haniel.Shooter.GameScreen;
@@ -12,6 +13,7 @@ import com.haniel.Shooter.projectiles.Projectile;
 public class Player extends Entity{
 	
 	private double lastShot;
+	Sound gunSound = Gdx.audio.newSound(Gdx.files.internal("sounds/gunshot01.wav"));
 	
 	public Player() {
 		this.x = GameScreen.screenWidth / 2 - 24 / 2;
@@ -20,7 +22,7 @@ public class Player extends Entity{
 		this.height = 29;
 		this.texture = new Texture(Gdx.files.internal("entities/player.png"));
 		this.rectangle = new Rectangle(x+2, y+2, width-4, height-4);
-		this.speed = 150;
+		this.speed = 175;
 		this.time = 0;
 		this.lastShot= 0;
 	}
@@ -66,6 +68,7 @@ public class Player extends Entity{
 
 	public void shoot() {
 		if (time - lastShot > Projectile.basicGunFiringRate) {
+			gunSound.play();
 			lastShot = time;
 			this.gameScreen.add(new BasicGun(this.x, this.y, 0));
 			this.gameScreen.add(new BasicGun(this.x + 27, this.y, 0));

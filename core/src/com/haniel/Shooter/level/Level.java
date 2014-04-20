@@ -23,8 +23,11 @@ public class Level {
 	
 	public void update(GameScreen g) {
 		levelTime++;
-		g.add(new Enemy1((random.nextInt(720) + 1 ), 480));
-		if (levelTime > 15) 	addStars(g, 1);
+		if (levelTime > 25)	g.add(new Enemy1((random.nextInt(720) + 1 ), 480));
+		if (levelTime > 48)	{
+			g.add(new Enemy1((random.nextInt(720) + 1 ), 480));
+			g.add(new Enemy1((random.nextInt(720) + 1 ), 480));
+		}
 		//g.add(new Enemy_1(MathUtils.random(0, 800), 480));
 		switch (levelTime) {
 		
@@ -49,9 +52,9 @@ public class Level {
 				break;
 				} 
 			
-			case 5: {
-				for (int i = 1; i <11; i++) {
-					g.add(new Enemy1((i*80) - 80, 480));				
+			case 23: {
+				for (int i = 1; i <6; i++) {
+					g.add(new Enemy1((i*160) - 80, 480));				
 				} break;
 			}
 		}

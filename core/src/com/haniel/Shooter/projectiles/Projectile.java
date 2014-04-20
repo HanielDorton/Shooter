@@ -29,7 +29,7 @@ public abstract class Projectile {
 	protected final Texture basicGun = new Texture(Gdx.files.internal("projectiles/basicgun.png"));
 	
 	//set firing rates so they can be accessed before projectiles are created:
-	public final static double basicGunFiringRate = 0.05;
+	public final static double basicGunFiringRate = 0.2;
 	
 	public Projectile(float x, float y, double dir) {
 		xOrigin = x;
