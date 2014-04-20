@@ -2,6 +2,7 @@ package com.haniel.Shooter;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 
@@ -32,7 +33,7 @@ public class MainMenuScreen implements Screen {
         game.font.draw(game.batch, "Click  to begin", 100, 100);
         game.batch.end();
 
-        if (Gdx.input.isTouched()) {
+        if (Gdx.input.isTouched() || Gdx.input.isKeyPressed(Keys.ENTER)) {
             game.setScreen(new GameScreen(game));
             dispose();
         }
