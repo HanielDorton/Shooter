@@ -16,15 +16,18 @@ public class Player extends Entity{
 	Sound gunSound = Gdx.audio.newSound(Gdx.files.internal("sounds/gunshot01.wav"));
 	
 	public Player() {
-		this.x = GameScreen.screenWidth / 2 - 24 / 2;
+		this.x = 800 / 2 - 24 / 2;
 		this.y = 20;
-		this.width = 29;
-		this.height = 29;
+		this.width = 15;
+		this.height = 15;
+		this.xOffset = 6;
+		this.yOffset = 6;
 		this.texture = new Texture(Gdx.files.internal("entities/player.png"));
-		this.rectangle = new Rectangle(x+2, y+2, width-4, height-4);
+		this.rectangle = new Rectangle(x + xOffset, y + yOffset, width, height);
 		this.speed = 175;
 		this.time = 0;
 		this.lastShot= 0;
+		this.health = 1;
 	}
 	public void update() {
 	time += Gdx.graphics.getDeltaTime();
@@ -55,10 +58,10 @@ public class Player extends Entity{
         y -= speed * Gdx.graphics.getDeltaTime();
 
     if (x < 0) x = 0;
-    if (x > GameScreen.screenWidth - 30) x = 800 - 30;
+    if (x > gameScreen.getWidth() - 30) x = 800 - 30;
     if (y < 0) y = 0;
-    if (y > GameScreen.screenHeight - 30) y = 480 - 30;
-    rectangle.setPosition(x+2, y+2);
+    if (y > gameScreen.getHeight() - 30) y = 480 - 30;
+    rectangle.setPosition(x + xOffset, y + yOffset);
     
     if(Gdx.input.isKeyPressed(Keys.ENTER)) {
     	shoot();
@@ -73,5 +76,8 @@ public class Player extends Entity{
 			this.gameScreen.add(new BasicGun(this.x, this.y, 0));
 			this.gameScreen.add(new BasicGun(this.x + 27, this.y, 0));
 		}
+	}
+	public int getHealth() {
+		return health;
 	}
 }

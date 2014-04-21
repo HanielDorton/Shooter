@@ -4,6 +4,9 @@ import java.util.Random;
 
 import com.haniel.Shooter.GameScreen;
 import com.haniel.Shooter.entities.Enemy1;
+import com.haniel.Shooter.entities.asteroids.Asteroid128;
+import com.haniel.Shooter.entities.asteroids.Asteroid32;
+import com.haniel.Shooter.entities.asteroids.Asteroid8;
 import com.haniel.Shooter.graphics.Star;
 
 public class Level {
@@ -23,7 +26,11 @@ public class Level {
 	
 	public void update(GameScreen g) {
 		levelTime++;
-		g.add(new Enemy1((random.nextInt(720) + 1 ), 480));
+
+		//g.add(new Asteroid8((random.nextInt(720) + 1 ), 480, 0, -30));
+		//g.add(new Asteroid32((random.nextInt(720) + 1 ), 480, 0, -30));
+		//if (levelTime % 5 == 0) g.add(new Asteroid128((random.nextInt(720) + 1 ), 480, 0, -30));;
+		//g.add(new Enemy1((random.nextInt(720) + 1 ), 480));
 		//g.add(new Enemy1(0, 480));
 		/*
 		if (levelTime > 25)	g.add(new Enemy1((random.nextInt(720) + 1 ), 480));
@@ -36,8 +43,9 @@ public class Level {
 		switch (levelTime) {
 		
 			case 2: {
-				//g.add(new Enemy1((random.nextInt(720) + 1 ), 480));
-				g.add(new Enemy1(0,480));
+				 for (int i = 0; i< 5; i++) {
+					 g.add(new Asteroid128(150 * i, 480, 0, -20));
+				 }
 				break;
 			}		
 			case 18: {

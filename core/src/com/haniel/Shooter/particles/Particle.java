@@ -11,7 +11,6 @@ public abstract class Particle {
 	
 	private int life;
 	private int time = 0;
-	private float speed;
 	private boolean removed = false;	
 	protected double x, y;
 	protected double xa, ya;
@@ -21,17 +20,17 @@ public abstract class Particle {
 	protected Rectangle rectangle;
 	
 	//Textures here so they are loaded only once:
-	protected static final Texture blueParticleTexture = new Texture(Gdx.files.internal("textures/blueparticle.png"));
-	protected static final Texture blueParticleTexture2x2 = new Texture(Gdx.files.internal("textures/blueparticle2x2.png"));
+	protected static final Texture blueParticleTexture = new Texture(Gdx.files.internal("textures/particles/blueparticle.png"));
+	protected static final Texture brownParticleTexture = new Texture(Gdx.files.internal("textures/particles/brownparticle.png"));
 	
-	public Particle(int x, int y, int life, float speed) {
+	public Particle(int x, int y, int life) {
 		this.rectangle = new Rectangle();
 		this.x = x;
 		this.y = y;
-		this.life = life + (random.nextInt(100) - 20);
-		this.xa = random.nextGaussian();
-		this.ya = random.nextGaussian();
-		this.speed = speed;
+		this.life = life + (random.nextInt(30));
+		this.xa = random.nextGaussian() * 40;
+		this.ya = random.nextGaussian() * 40;
+
 	}
 
 	public void update() {
@@ -43,9 +42,10 @@ public abstract class Particle {
 	
 	
 	private void move(double x, double y) {
-		this.x += xa;
-		this.y += ya;
-		this.y -= (speed * Gdx.graphics.getDeltaTime()); //0.2
+		float g = Gdx.graphics.getDeltaTime();
+		this.x += xa * g;
+		this.y += ya * g;
+
 	}
 	public void remove() {
 		//Remove from level

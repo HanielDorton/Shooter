@@ -8,17 +8,17 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
 import com.haniel.Shooter.GameScreen;
-import com.haniel.Shooter.particles.BlueParticle;
 import com.haniel.Shooter.util.Coord;
 public abstract class Entity{
 	
 	protected float x, y, speed;
+	protected int xOffset, yOffset;
 	protected int position;
 	protected int width, height;
 	protected Texture texture;
 	protected boolean removed = false;
 	protected GameScreen gameScreen;
-	protected final Random rand = new Random();
+	protected final Random random = new Random();
 	protected Rectangle rectangle;
 	protected double time;
 	protected int health;
@@ -40,10 +40,13 @@ public abstract class Entity{
 		
 	public void move(double xa, double ya) {
 		if (xa != 0 && ya != 0) {
-			move(xa * Gdx.graphics.getDeltaTime(), 0);
-			move(0, ya * Gdx.graphics.getDeltaTime());
+			move(xa, 0);
+			move(0, ya);
 			return;
 		}
+		
+		xa *= Gdx.graphics.getDeltaTime();
+		ya *= Gdx.graphics.getDeltaTime();
 		if (xa > 0) dir = Direction.RIGHT;
 		if (xa < 0) dir = Direction.LEFT;
 		if (ya > 0) dir = Direction.DOWN;
@@ -57,8 +60,7 @@ public abstract class Entity{
 			else {
 				this.x += xa;
 				xa = 0;
-				//circle around top
-				
+
 			}
 			
 		}	
@@ -82,20 +84,12 @@ public abstract class Entity{
 	
 	public void damage(double damage) {
 		health -= damage;
-		if (health < 0) {
-			remove();
-			for (int i = 0; i <500; i++)
-				gameScreen.add(new BlueParticle((int) x + width / 2,(int) y + height / 2, 100, speed));
-				gameScreen.add(new BlueParticle((int) x,(int) y + height / 2, 60, speed));
-				gameScreen.add(new BlueParticle((int) x + width / 2,(int) y, 60, speed));
-				gameScreen.add(new BlueParticle((int) x + width,(int) y + height, 60, speed));
-			gameScreen.enemiesDestroyed++;
-			matches2.play();
-		}
-		for (int i = 0; i < 20; i++)
-			gameScreen.add(new BlueParticle((int) x + width / 2,(int) y + height / 2, 30, speed));
+		particles();
 	}
-
+				
+	public void particles() {
+		System.out.println("No particles set up");
+	}
 	
 	public void update() {
 		
@@ -120,7 +114,7 @@ public abstract class Entity{
 	public int getHeight() {
 		return height;
 	}	
-	
+    // tell the camera to update its matrices.
 	public Texture getTexture() {
 		return texture;
 	}

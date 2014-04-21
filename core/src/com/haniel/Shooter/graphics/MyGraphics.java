@@ -15,7 +15,7 @@ public abstract class MyGraphics {
 	
 	//load all images here so they are only loaded once:
 	
-	protected static final Texture starTexture = new Texture(Gdx.files.internal("textures/star.png"));
+	protected static final Texture starTexture = new Texture(Gdx.files.internal("textures/particles/yellowparticle.png"));
 	
 	
 	

@@ -13,6 +13,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.haniel.Shooter.entities.Entity;
 import com.haniel.Shooter.entities.Player;
+import com.haniel.Shooter.entities.asteroids.Asteroid;
 import com.haniel.Shooter.graphics.BackgroundImage;
 import com.haniel.Shooter.graphics.MyGraphics;
 import com.haniel.Shooter.graphics.Star;
@@ -27,6 +28,7 @@ public class GameScreen implements Screen {
     OrthographicCamera camera;
     private List<Entity> entities = new ArrayList<Entity>();
     private List<MyGraphics> graphics = new ArrayList<MyGraphics>();
+    private List<Asteroid> asteroids = new ArrayList<Asteroid>();
     private List<Projectile> playerProjectiles = new ArrayList<Projectile>();
     private List<Particle> particles = new ArrayList<Particle>();
     long lastDropTime;
@@ -35,8 +37,9 @@ public class GameScreen implements Screen {
     Random rand = new Random();
     public double gameTime = 0;
     Level level = new Level();
-    public static int screenWidth = 800;
-    public static int screenHeight = 480;
+    private static int screenWidth = 800;
+    private static int screenHeight = 480;
+    public Player player = new Player();
 
     public GameScreen(final MyGdxGame gam) {
         this.game = gam;
@@ -56,7 +59,8 @@ public class GameScreen implements Screen {
         graphics.add(new BackgroundImage("textures/black_planet.png", 0, 0, .4f));
         
         //Player
-        add(new Player());
+         entities.add(player);
+         player.init(this);
         
     }
     
@@ -78,43 +82,47 @@ public class GameScreen implements Screen {
     	particles.add(p);
     	p.init(this);
     }
+    public void add(Asteroid a) {
+    	asteroids.add(a);
+    	a.init(this);
+    }
 
     @Override
     public void render(float delta) {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        // tell the camera to update its matrices.
+
         camera.update();
-
-        // tell the SpriteBatch to render in the
-        // coordinate system specified by the camera.
         game.batch.setProjectionMatrix(camera.combined);
-
         game.batch.begin();
         
         for (MyGraphics graphic : graphics) {
         	game.batch.draw(graphic.getTexture(), graphic.getX(), graphic.getY());
         }
         game.font.draw(game.batch, "Time: " + level.levelTime, 0, screenHeight);
-        game.font.draw(game.batch, "Damage Received: " + damageReceived, 0, screenHeight - 20);
+        game.font.draw(game.batch, "Damage Received: " + (1-(player.getHealth())), 0, screenHeight - 20);
         game.font.draw(game.batch, "EnemiesDestroyed: " + enemiesDestroyed, 0, screenHeight - 40);
-        for (Entity entity : entities) {
-        	game.batch.draw(entity.getTexture(), entity.getX(), entity.getY());
+        for (Particle particle : particles) {
+        	game.batch.draw(particle.getTexture(), (float) particle.getX(), (float) particle.getY());
         }
         for (Projectile projectile : playerProjectiles) {
         	game.batch.draw(projectile.getTexture(), projectile.getX(), projectile.getY());
         }
-        for (Particle particle : particles) {
-        	game.batch.draw(particle.getTexture(), (float) particle.getX(), (float) particle.getY());
+        for (Entity entity : entities) {
+        	game.batch.draw(entity.getTexture(), entity.getX(), entity.getY());
         }
-	
+        for (Asteroid asteroid : asteroids) {
+        	game.batch.draw(asteroid.getTexture(), asteroid.getX(), asteroid.getY());
+        }
+
         game.batch.end();
 
         for (int i = 0; i < entities.size(); i++) {
         	Entity e = entities.get(i);
         	e.update();
         	if (!(e instanceof Player)){
+        		//check if enemies got damaged by player
         		for (int p = 0; p <playerProjectiles.size(); p++) {
               		if (e.getRectangle().overlaps(playerProjectiles.get(p).getRectangle())) {
 	        			e.damage(playerProjectiles.get(p).getDamage());
@@ -125,9 +133,12 @@ public class GameScreen implements Screen {
             		entities.remove(e);
             	}
         	} else {
+        		
+        		//check if player overlaps or got damaged by an enemy
         		for (int j = 0; j < entities.size(); j++){
         			if (!(entities.get(j) instanceof Player)) {
         				if (e.getRectangle().overlaps(entities.get(j).getRectangle())) {
+        					e.damage(1);
         					damageReceived++;
         				}
         				
@@ -135,6 +146,14 @@ public class GameScreen implements Screen {
         		}
         		
         		
+        	}
+        	//check if either player or enemies hit asteroid
+        	for (int a = 0; a < asteroids.size(); a++) {
+        		if (e.getRectangle().overlaps(asteroids.get(a).getRectangle())) {
+        			e.damage(1);
+        			asteroids.get(a).damage(1);
+        			
+        		}
         	}
         }
         
@@ -156,7 +175,38 @@ public class GameScreen implements Screen {
         	if (particles.get(i).isRemoved()) {
         		particles.remove(particles.get(i));
         	}
-        }        
+        }
+        
+        //Cycle through asteroids, updating, removing, and checking if they overlap any playe projectiles
+        for (int i = 0; i < asteroids.size(); i++) {
+        	Asteroid a = asteroids.get(i);       
+        	a.update();
+        	if (a.isRemoved()) {
+        		asteroids.remove(a);
+        		break;
+        	}
+    		for (int p = 0; p <playerProjectiles.size(); p++) {
+          		if (a.getRectangle().overlaps(playerProjectiles.get(p).getRectangle())) {
+        			a.damage(playerProjectiles.get(p).getDamage());
+        			playerProjectiles.get(p).remove();
+          		} 
+    		}
+    		for (int w = 0; w < asteroids.size(); w++) {
+    			if (!(a.equals(asteroids.get(w)))) {
+	    			if (a.getRectangle().overlaps(asteroids.get(w).getRectangle())) {
+	    				float tempX = a.getMoveX();
+	    				float tempY = a.getMoveY();
+	    				a.bump(asteroids.get(w).getMoveX(), asteroids.get(w).getMoveY());
+	    				asteroids.get(w).bump(tempX, tempY);
+	    				asteroids.get(w).move(a.getMoveX() * 3, a.getMoveY() * 3);
+	    				//break;
+	    			}
+	    		}
+    		}
+        }
+        
+        
+        
         gameTime += Gdx.graphics.getDeltaTime();
         if (gameTime > 1) {
         	level.update(this);
@@ -164,6 +214,14 @@ public class GameScreen implements Screen {
         }
         
 
+    }
+    
+    public int getWidth() {
+    	return screenWidth;
+    }
+    
+    public int getHeight() {
+    	return screenHeight;
     }
 
     @Override
