@@ -23,7 +23,7 @@ public class Level {
 	
 	public void update(GameScreen g) {
 		levelTime++;
-		//g.add(new Enemy1((random.nextInt(720) + 1 ), 480));
+		g.add(new Enemy1((random.nextInt(720) + 1 ), 480));
 		//g.add(new Enemy1(0, 480));
 		/*
 		if (levelTime > 25)	g.add(new Enemy1((random.nextInt(720) + 1 ), 480));

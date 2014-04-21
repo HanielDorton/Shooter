@@ -1,6 +1,5 @@
 package com.haniel.Shooter.entities;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -10,7 +9,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
 import com.haniel.Shooter.GameScreen;
 import com.haniel.Shooter.particles.BlueParticle;
-
+import com.haniel.Shooter.util.Coord;
 public abstract class Entity{
 	
 	protected float x, y, speed;
@@ -26,8 +25,8 @@ public abstract class Entity{
 	
 	//all entity textures so they are only loaded once:
 	
-	protected final Texture enemy1Texture = new Texture(Gdx.files.internal("entities/enemy_1.png"));
-	Sound matches2 = Gdx.audio.newSound(Gdx.files.internal("sounds/paper-rip-4.wav"));
+	protected static final Texture enemy1Texture = new Texture(Gdx.files.internal("entities/enemy_1.png"));
+	protected static final Sound matches2 = Gdx.audio.newSound(Gdx.files.internal("sounds/paper-rip-4.wav"));
 	
 	protected enum Direction {
 		UP, DOWN, LEFT, RIGHT
@@ -85,12 +84,15 @@ public abstract class Entity{
 		health -= damage;
 		if (health < 0) {
 			remove();
-			for (int i = 0; i <20; i++)
-				gameScreen.add(new BlueParticle((int) x + width / 2,(int) y + height / 2, 15, speed));
+			for (int i = 0; i <500; i++)
+				gameScreen.add(new BlueParticle((int) x + width / 2,(int) y + height / 2, 100, speed));
+				gameScreen.add(new BlueParticle((int) x,(int) y + height / 2, 60, speed));
+				gameScreen.add(new BlueParticle((int) x + width / 2,(int) y, 60, speed));
+				gameScreen.add(new BlueParticle((int) x + width,(int) y + height, 60, speed));
 			gameScreen.enemiesDestroyed++;
 			matches2.play();
 		}
-		for (int i = 0; i <2; i++)
+		for (int i = 0; i < 20; i++)
 			gameScreen.add(new BlueParticle((int) x + width / 2,(int) y + height / 2, 30, speed));
 	}
 
@@ -135,24 +137,20 @@ public abstract class Entity{
 		this.gameScreen = gameScreen;
 	}
 
-	//Attack Patterns here (I guess):
-	
-	public void backAndForthAtTop(int tempX, int tempY) {
-		List <Integer> xPositions = Arrays.asList(700, 750, 700, 50, 0, 60);
-		List <Integer> yPositions = Arrays.asList(400, 350, 300, 300, 350, 400);		
-		pattern(tempX, tempY, xPositions, yPositions);
-	}
-	
-	public void pattern(int tempX, int tempY, List <Integer> xPositions, List <Integer> yPositions) {
-		if (tempX < xPositions.get(position)) move(speed, 0);
-		else if (tempX > xPositions.get(position)) move(-speed, 0);
-		if (tempY < yPositions.get(position)) move(0, speed);
-		else if (tempY > yPositions.get(position)) move(0, -speed);	
+	public void pattern(int tempX, int tempY, List <Coord> positions) {
+		int pX = positions.get(position).getX();
+		int pY = positions.get(position).getY();
 		
-		if ((Math.abs(tempY - yPositions.get(position)) < 10) &&
-			(Math.abs(tempX - xPositions.get(position)) < 10)) {
+		
+		if (tempX < pX) move(speed, 0);
+		else if (tempX > pX) move(-speed, 0);
+		if (tempY < pY) move(0, speed);
+		else if (tempY > pY) move(0, -speed);	
+		
+		if ((Math.abs(tempX - pX) < 10) &&
+			(Math.abs(tempY - pY) < 10)) {
 			position++;
-			if (position > xPositions.size() - 1) this.position = 0;
+			if (position > positions.size() - 1) this.position = 0;
 
 			
 		}
@@ -161,31 +159,3 @@ public abstract class Entity{
 		
 	}	
 }
-
-		
-		
-		
-		
-		
-		
-		
-		
-		//circle around top
-		/*
-		switch (position){
-			
-			case 0: {
-				if (y > 300) move(0, -speed*1.25);
-				if (tempX < 700) move(speed, 0);
-				else position = 1;
-				break;
-			}
-						
-			case 1: {
-				if (tempY < 400) move(0, speed*1.25);
-				if  (tempX > 100) move(-speed, 0);
-				else position = 0;
-				break;
-			}
-	
-		}*/

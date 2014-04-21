@@ -21,14 +21,14 @@ public abstract class Particle {
 	protected Rectangle rectangle;
 	
 	//Textures here so they are loaded only once:
-	protected final Texture blueParticleTexture = new Texture(Gdx.files.internal("textures/blueparticle.png"));
-	protected final Texture blueParticleTexture2x2 = new Texture(Gdx.files.internal("textures/blueparticle2x2.png"));
+	protected static final Texture blueParticleTexture = new Texture(Gdx.files.internal("textures/blueparticle.png"));
+	protected static final Texture blueParticleTexture2x2 = new Texture(Gdx.files.internal("textures/blueparticle2x2.png"));
 	
 	public Particle(int x, int y, int life, float speed) {
 		this.rectangle = new Rectangle();
 		this.x = x;
 		this.y = y;
-		this.life = life + (random.nextInt(40) - 20);
+		this.life = life + (random.nextInt(100) - 20);
 		this.xa = random.nextGaussian();
 		this.ya = random.nextGaussian();
 		this.speed = speed;

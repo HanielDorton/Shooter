@@ -1,6 +1,7 @@
 package com.haniel.Shooter.entities;
 
 import com.badlogic.gdx.math.Rectangle;
+import com.haniel.Shooter.util.Coord;
 
 public class Enemy1 extends Entity{
 
@@ -19,7 +20,7 @@ public class Enemy1 extends Entity{
 		this.health =3;
 	}
 	public void update() {
-		backAndForthAtTop((int) x, (int) y);
+		pattern((int) x, (int) y, Coord.circleTop);
         if (y < 0 - this.height) remove(); 
         rectangle.setPosition(x + 4, y + 20);
 	}
