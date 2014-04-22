@@ -179,30 +179,50 @@ public class GameScreen implements Screen {
         
         //Cycle through asteroids, updating, removing, and checking if they overlap any playe projectiles
         for (int i = 0; i < asteroids.size(); i++) {
-        	Asteroid a = asteroids.get(i);       
-        	a.update();
-        	if (a.isRemoved()) {
-        		asteroids.remove(a);
-        		break;
-        	}
+        	Asteroid a = asteroids.get(i);
     		for (int p = 0; p <playerProjectiles.size(); p++) {
           		if (a.getRectangle().overlaps(playerProjectiles.get(p).getRectangle())) {
         			a.damage(playerProjectiles.get(p).getDamage());
         			playerProjectiles.get(p).remove();
           		} 
     		}
+    		
+    		// this moves the asteroid then check if any overlapping;
+    		//if there is overlapping it changes the direction and resets the asteroid back to its original position
+    		//if there wasn't then the original move made stays
+    		float originalX = a.getX();
+    		float originalY = a.getY();
+    		boolean gotBumped = false;
+    		a.update();
+        	if (a.isRemoved()) {
+        		asteroids.remove(a);
+        		break;
+        	}
     		for (int w = 0; w < asteroids.size(); w++) {
     			if (!(a.equals(asteroids.get(w)))) {
 	    			if (a.getRectangle().overlaps(asteroids.get(w).getRectangle())) {
 	    				float tempX = a.getMoveX();
 	    				float tempY = a.getMoveY();
-	    				a.bump(asteroids.get(w).getMoveX(), asteroids.get(w).getMoveY());
-	    				asteroids.get(w).bump(tempX, tempY);
-	    				asteroids.get(w).move(a.getMoveX() * 3, a.getMoveY() * 3);
-	    				//break;
+	    				if (a.getWidth() <= asteroids.get(w).getWidth()) {
+	    					a.bump(-a.getMoveX() * .8f, -a.getMoveY() * .8f);
+	    					asteroids.get(w).bump(asteroids.get(w).getMoveX() + tempX*.1f, asteroids.get(w).getMoveY() + tempY *.1f);
+	    					a.damage(1);
+	    					asteroids.get(w).damage(.3);
+	    				gotBumped = true;
+	    				break;
+	    					
+	    				} 
+
 	    			}
 	    		}
+    		} if (gotBumped) {
+    			a.setX(originalX);
+    			a.setY(originalY);;
+    			a.getRectangle().setPosition(originalX, originalY);
+    			
     		}
+    		
+   		
         }
         
         

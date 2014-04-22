@@ -22,15 +22,24 @@ public abstract class Particle {
 	//Textures here so they are loaded only once:
 	protected static final Texture blueParticleTexture = new Texture(Gdx.files.internal("textures/particles/blueparticle.png"));
 	protected static final Texture brownParticleTexture = new Texture(Gdx.files.internal("textures/particles/brownparticle.png"));
+	protected static final Texture purpleParticleTexture = new Texture(Gdx.files.internal("textures/particles/purpleparticle.png"));
+	protected static final Texture orangeParticleTexture = new Texture(Gdx.files.internal("textures/particles/orangeparticle.png"));
+	protected static final Texture whiteParticleTexture = new Texture(Gdx.files.internal("textures/particles/whiteparticle.png"));
 	
-	public Particle(int x, int y, int life) {
+	public Particle(float x, float y, int life) {
 		this.rectangle = new Rectangle();
 		this.x = x;
 		this.y = y;
-		this.life = life + (random.nextInt(30));
+		this.life = life + (random.nextInt(life*5));
 		this.xa = random.nextGaussian() * 40;
 		this.ya = random.nextGaussian() * 40;
 
+	}
+	public Particle(float x, float y, int life, double xa, double ya){
+		this(x, y, life);
+		if (xa != 0) this.xa = xa;
+		if (ya != 0) this.ya = ya;
+		
 	}
 
 	public void update() {

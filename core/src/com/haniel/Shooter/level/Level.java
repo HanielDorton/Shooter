@@ -26,10 +26,16 @@ public class Level {
 	
 	public void update(GameScreen g) {
 		levelTime++;
-
-		//g.add(new Asteroid8((random.nextInt(720) + 1 ), 480, 0, -30));
-		//g.add(new Asteroid32((random.nextInt(720) + 1 ), 480, 0, -30));
-		//if (levelTime % 5 == 0) g.add(new Asteroid128((random.nextInt(720) + 1 ), 480, 0, -30));;
+		g.add(new Asteroid32((random.nextInt(720) + 1 ), 480, 0, -30));
+		g.add(new Asteroid32((random.nextInt(720) + 1 ), 480, 0, -30));
+		g.add(new Asteroid32((random.nextInt(720) + 1 ), 480, 0, -30));
+		g.add(new Asteroid128((random.nextInt(720) + 1 ), 480, 0, -30));;
+		
+		if (levelTime % 10 == 0) {
+			for (int i = 0; i< 10; i++) {
+				 g.add(new Asteroid32(150 * i, 480, 0, -20));
+			 }
+		}
 		//g.add(new Enemy1((random.nextInt(720) + 1 ), 480));
 		//g.add(new Enemy1(0, 480));
 		/*
@@ -43,11 +49,14 @@ public class Level {
 		switch (levelTime) {
 		
 			case 2: {
-				 for (int i = 0; i< 5; i++) {
-					 g.add(new Asteroid128(150 * i, 480, 0, -20));
-				 }
 				break;
 			}		
+			case 12: {
+
+				break;
+			}
+			
+			
 			case 18: {
 				addStars(g, 20);
 				break;
