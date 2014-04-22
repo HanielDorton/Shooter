@@ -1,95 +1,191 @@
 package com.haniel.Shooter.level;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
-
 import com.haniel.Shooter.GameScreen;
-import com.haniel.Shooter.entities.Enemy1;
-import com.haniel.Shooter.entities.asteroids.Asteroid128;
-import com.haniel.Shooter.entities.asteroids.Asteroid32;
-import com.haniel.Shooter.entities.asteroids.Asteroid8;
+import com.haniel.Shooter.entities.Entity;
+import com.haniel.Shooter.entities.Player;
+import com.haniel.Shooter.entities.asteroids.Asteroid;
+import com.haniel.Shooter.graphics.MyGraphics;
 import com.haniel.Shooter.graphics.Star;
+import com.haniel.Shooter.particles.Particle;
+import com.haniel.Shooter.projectiles.Projectile;
+
 
 public class Level {
 	protected Random random = new Random();	
 	protected int levelTime;
+	protected GameScreen gameScreen;
+    public List<MyGraphics> graphics = new ArrayList<MyGraphics>();
+    public List<Entity> entities = new ArrayList<Entity>();
+    public List<Asteroid> asteroids = new ArrayList<Asteroid>();
+    public List<Projectile> playerProjectiles = new ArrayList<Projectile>();
+    public List<Particle> particles = new ArrayList<Particle>();
+
 	
-	
-	public Level() {
-		
-		
-		
+	public Level(GameScreen gameScreen) {
+		this.gameScreen = gameScreen;
 	}
 	
-	public void update(GameScreen g) {
-		levelTime++;
-		g.add(new Asteroid32((random.nextInt(720) + 1 ), 480, 0, -30));
-		g.add(new Asteroid32((random.nextInt(720) + 1 ), 480, 0, -30));
-		g.add(new Asteroid32((random.nextInt(720) + 1 ), 480, 0, -30));
-		g.add(new Asteroid128((random.nextInt(720) + 1 ), 480, 0, -30));;
-		
-		if (levelTime % 10 == 0) {
-			for (int i = 0; i< 10; i++) {
-				 g.add(new Asteroid32(150 * i, 480, 0, -20));
-			 }
-		}
-		//g.add(new Enemy1((random.nextInt(720) + 1 ), 480));
-		//g.add(new Enemy1(0, 480));
-		/*
-		if (levelTime > 25)	g.add(new Enemy1((random.nextInt(720) + 1 ), 480));
-		if (levelTime > 48)	{
-			g.add(new Enemy1((random.nextInt(720) + 1 ), 480));
-			g.add(new Enemy1((random.nextInt(720) + 1 ), 480));
-		}
-		*/
-		//g.add(new Enemy_1(MathUtils.random(0, 800), 480));
-		switch (levelTime) {
-		
-			case 2: {
-				break;
-			}		
-			case 12: {
-
-				break;
-			}
-			
-			
-			case 18: {
-				addStars(g, 20);
-				break;
-			} 
-			case 19: {
-				addStars(g, 20);
-				break;
-			} 
-			case 20: {
-				addStars(g, 20);
-				break;
-			} 
-			case 21: {
-				addStars(g, 20);
-				break;
-			} 
-			case 22: {
-				addStars(g, 20);
-				break;
-			} 
-			
-			case 23: {
-				//for (int i = 1; i <6; i++) {
-					//g.add(new Enemy1((i*160) - 80, 480));				
-			} //break;
-		}
+	public void runLevel(GameScreen g) {
 	}
-
-		
 	
-	public void addStars(GameScreen g, int number){
+	protected void addStars(int number){
         for (int i = 0; i < number; i++) {
-        	g.add(new Star(480));
+        	add(new Star(480));
         	} 
 	}
 	
+	public void update() {        
+        
+		//update all graphics, if starts go past bottom of screen, spawn a new one;
+        for (int i = 0; i < graphics.size(); i++) {
+        	graphics.get(i).update();
+        	if (graphics.get(i).isRemoved()) {
+        		if (graphics.get(i) instanceof Star) graphics.add(new Star(480));
+        		graphics.remove(graphics.get(i));
+        	}
+        }
+        for (int i = 0; i < entities.size(); i++) {
+        	Entity e = entities.get(i);
+        	e.update();
+        	if (!(e instanceof Player)){
+        		//check if enemies got damaged by player
+        		for (int p = 0; p <playerProjectiles.size(); p++) {
+              		if (e.getRectangle().overlaps(playerProjectiles.get(p).getRectangle())) {
+	        			e.damage(playerProjectiles.get(p).getDamage());
+	        			playerProjectiles.get(p).remove();
+	        		}
+        		}
+        		if (e.isRemoved()) {
+            		entities.remove(e);
+            	}
+        	} else {
+        		
+        		//check if player overlaps or got damaged by an enemy
+        		for (int j = 0; j < entities.size(); j++){
+        			if (!(entities.get(j) instanceof Player)) {
+        				if (e.getRectangle().overlaps(entities.get(j).getRectangle())) {
+        					e.damage(1);
+        				}
+        				
+        			}
+        		}
+        		
+        		
+        	}
+        	//check if either player or enemies hit asteroid
+        	for (int a = 0; a < asteroids.size(); a++) {
+        		if (e.getRectangle().overlaps(asteroids.get(a).getRectangle())) {
+        			e.damage(1);
+        			asteroids.get(a).damage(1);
+        			
+        		}
+        	}
+        }
+        
+
+        for (int i = 0; i < playerProjectiles.size(); i++) {
+        	playerProjectiles.get(i).update();
+        	if (playerProjectiles.get(i).isRemoved()) {
+        		playerProjectiles.remove(playerProjectiles.get(i));
+        	}
+        }
+        for (int i = 0; i < particles.size(); i++) {
+        	particles.get(i).update();
+        	if (particles.get(i).isRemoved()) {
+        		particles.remove(particles.get(i));
+        	}
+        }
+        
+        //Cycle through asteroids, updating, removing, and checking if they overlap any playe projectiles
+        for (int i = 0; i < asteroids.size(); i++) {
+        	Asteroid a = asteroids.get(i);
+    		for (int p = 0; p <playerProjectiles.size(); p++) {
+          		if (a.getRectangle().overlaps(playerProjectiles.get(p).getRectangle())) {
+        			a.damage(playerProjectiles.get(p).getDamage());
+        			playerProjectiles.get(p).remove();
+          		} 
+    		}
+    		
+    		// this moves the asteroid then check if any overlapping;
+    		//if there is overlapping it changes the direction and resets the asteroid back to its original position
+    		//if there wasn't then the original move made stays
+    		float originalX = a.getX();
+    		float originalY = a.getY();
+    		//Gdx.input.setInputProcessor(inputProcessor);
+    		boolean gotBumped = false;
+    		a.update();
+        	if (a.isRemoved()) {
+        		asteroids.remove(a);
+        		break;
+        	}
+    		for (int w = 0; w < asteroids.size(); w++) {
+    			if (!(a.equals(asteroids.get(w)))) {
+	    			if (a.getRectangle().overlaps(asteroids.get(w).getRectangle())) {
+	    				float tempX = a.getMoveX();
+	    				float tempY = a.getMoveY();
+	    				if (a.getWidth() <= asteroids.get(w).getWidth()) {
+	    					a.bump(-a.getMoveX() * .8f, -a.getMoveY() * .8f);
+	    					asteroids.get(w).bump(asteroids.get(w).getMoveX() + tempX*.1f, asteroids.get(w).getMoveY() + tempY *.1f);
+	    					a.damage(1);
+	    					asteroids.get(w).damage(.3);
+	    				gotBumped = true;
+	    				break;
+	    					
+	    				} 
+
+	    			}
+	    		}
+    		} if (gotBumped) {
+    			a.setX((int) originalX);
+    			a.setY((int) originalY);;
+    			a.getRectangle().setPosition(originalX, originalY);
+    			
+    		}
+    		
+   		
+        }
+	}
+	
+	
+	
+
+
+    public void add(MyGraphics g) {
+    	graphics.add(g);
+    	g.init(this);
+    }
+    
+    public void add(Entity e) {
+    	entities.add(e);
+    	e.init(this);
+    }    
+    
+    public void add(Projectile p) {
+    	playerProjectiles.add(p);
+    	p.init(this);
+    }
+    
+    public void add(Particle p) {
+    	particles.add(p);
+    	p.init(this);
+    }
+    
+    public void add(Asteroid a) {
+    	asteroids.add(a);
+    	a.init(this);
+    }
 	public int getLevelTime() {
 		return levelTime;
 	}
+	
+	public int getHeight() {
+		return gameScreen.getHeight();
+	}
+	public int getWidth(){
+		return gameScreen.getWidth();
+	}
+
 }

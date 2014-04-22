@@ -5,6 +5,7 @@ import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
+import com.haniel.Shooter.GameScreen;
 import com.haniel.Shooter.particles.OrangeParticle;
 import com.haniel.Shooter.particles.WhiteParticle;
 import com.haniel.Shooter.projectiles.BasicGun;
@@ -21,6 +22,7 @@ public class Player extends Entity{
     private boolean shooting = false;;
     private int maxSpeed;
     private int keyboardSpeed;
+    private GameScreen gameScreen;
 	
 	public Player() {
 		this.x = 400;
@@ -94,8 +96,8 @@ public class Player extends Entity{
 	    
 
 	    for (int i =0; i < 4; i++) {
-			gameScreen.add(new OrangeParticle(x + 9 + i, y, 2, -1, -30));
-			gameScreen.add(new OrangeParticle(x + 16 + i, y, 2, 1 , -30));
+			level.add(new OrangeParticle(x + 9 + i, y, 2, -1, -30));
+			level.add(new OrangeParticle(x + 16 + i, y, 2, 1 , -30));
 	    }
 	}
 	
@@ -116,16 +118,20 @@ public class Player extends Entity{
 		if (time - lastShot > Projectile.basicGunFiringRate) {
 			gunSound.play();
 			lastShot = time;
-			gameScreen.add(new BasicGun(x - 1, y, 0));
-			gameScreen.add(new BasicGun(x + width + xOffset, y, 0));
+			level.add(new BasicGun(x - 1, y, 0));
+			level.add(new BasicGun(x + width + xOffset, y, 0));
 			for (int i =0; i < 5; i++) {
-				gameScreen.add(new WhiteParticle(x - 1, y + 12, 1, 0, 10));
-				gameScreen.add(new WhiteParticle(x + width + xOffset, y + 12, 1, 0 , 10));
+				level.add(new WhiteParticle(x - 1, y + 12, 1, 0, 10));
+				level.add(new WhiteParticle(x + width + xOffset, y + 12, 1, 0 , 10));
 				
 			}
 		}
 	}
 	public float getHealth() {
 		return health;
+	}
+	
+	public void init(GameScreen gameScreen) {
+		this.gameScreen = gameScreen;
 	}
 }

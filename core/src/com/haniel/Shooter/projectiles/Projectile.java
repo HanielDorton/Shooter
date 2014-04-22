@@ -5,8 +5,8 @@ import java.util.Random;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
-import com.haniel.Shooter.GameScreen;
 import com.haniel.Shooter.entities.Entity;
+import com.haniel.Shooter.level.Level;
 
 public abstract class Projectile {
 	
@@ -22,8 +22,7 @@ public abstract class Projectile {
 	protected int width, height;
 	protected final Random random = new Random();
 	protected Entity origin;
-
-	protected GameScreen gameScreen;
+	protected Level level;
 	
 	//these are all the final images for projectiles so they are only loaded once:
 	protected final Texture basicGun = new Texture(Gdx.files.internal("projectiles/basicgun.png"));
@@ -74,8 +73,8 @@ public abstract class Projectile {
 		return removed;
 	}
 	
-	public void init(GameScreen gameScreen) {
-		this.gameScreen = gameScreen;
+	public void init(Level level) {
+		this.level = level;
 	}
 
 }

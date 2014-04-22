@@ -18,10 +18,10 @@ public class Asteroid32 extends Asteroid{
 	
 	public void remove() {
 		if (y > 0) {
-        	gameScreen.add(new Asteroid8(x + xOffset, y + yOffset, -20, -30));
-        	gameScreen.add(new Asteroid8(x + xOffset, y + height, -20, 20));
-        	gameScreen.add(new Asteroid8(x + width, y + yOffset, +20, -30));
-        	gameScreen.add(new Asteroid8(x + width, y + height, +20, 20));
+        	level.add(new Asteroid8(x + xOffset, y + yOffset, -20, -30));
+        	level.add(new Asteroid8(x + xOffset, y + height, -20, 20));
+        	level.add(new Asteroid8(x + width, y + yOffset, +20, -30));
+        	level.add(new Asteroid8(x + width, y + height, +20, 20));
 		}
 		removed = true;
 		

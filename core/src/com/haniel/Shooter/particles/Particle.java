@@ -5,7 +5,7 @@ import java.util.Random;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
-import com.haniel.Shooter.GameScreen;
+import com.haniel.Shooter.level.Level;
 
 public abstract class Particle {
 	
@@ -16,7 +16,7 @@ public abstract class Particle {
 	protected double xa, ya;
 	protected Texture texture;
 	protected Random random = new Random();
-	protected GameScreen gameScreen;
+	protected Level level;
 	protected Rectangle rectangle;
 	
 	//Textures here so they are loaded only once:
@@ -75,8 +75,8 @@ public abstract class Particle {
 		return texture;
 	}
 	
-	public void init(GameScreen gameScreen) {
-		this.gameScreen = gameScreen;
+	public void init(Level level) {
+		this.level = level;
 	}
 	
 }

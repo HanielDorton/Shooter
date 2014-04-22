@@ -7,7 +7,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
-import com.haniel.Shooter.GameScreen;
+import com.haniel.Shooter.level.Level;
 import com.haniel.Shooter.util.Coord;
 public abstract class Entity{
 	
@@ -17,7 +17,7 @@ public abstract class Entity{
 	protected int width, height;
 	protected Texture texture;
 	protected boolean removed = false;
-	protected GameScreen gameScreen;
+	protected Level level;
 	protected final Random random = new Random();
 	protected Rectangle rectangle;
 	protected double time;
@@ -127,8 +127,8 @@ public abstract class Entity{
 		return removed;
 	}
 	
-	public void init(GameScreen gameScreen) {
-		this.gameScreen = gameScreen;
+	public void init(Level level) {
+		this.level = level;
 	}
 
 	public void pattern(int tempX, int tempY, List <Coord> positions) {

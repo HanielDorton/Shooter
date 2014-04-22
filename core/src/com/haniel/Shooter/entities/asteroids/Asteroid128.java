@@ -17,12 +17,12 @@ public class Asteroid128 extends Asteroid{
 	}
 	
 	public void remove() {
-		if (!(y < 0 - this.height || y > gameScreen.getHeight() + this.height ||
-	        x < 0 - this.width || x > gameScreen.getWidth() + this.width)) {
-        	gameScreen.add(new Asteroid32(x + 30, y + 30, -20, -30));
-        	gameScreen.add(new Asteroid32(x + 100, y + 100, 20, 20));
-        	gameScreen.add(new Asteroid32(x + 30, y + 100, -20, 30));
-        	gameScreen.add(new Asteroid32(x + 100, y + 30, 20, -20));
+		if (!(y < 0 - this.height || y > level.getHeight() + this.height ||
+	        x < 0 - this.width || x > level.getWidth() + this.width)) {
+        	level.add(new Asteroid32(x + 30, y + 30, -20, -30));
+        	level.add(new Asteroid32(x + 100, y + 100, 20, 20));
+        	level.add(new Asteroid32(x + 30, y + 100, -20, 30));
+        	level.add(new Asteroid32(x + 100, y + 30, 20, -20));
 		}
 		removed = true;
 		
