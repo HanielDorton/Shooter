@@ -6,7 +6,7 @@ public class Asteroid8 extends Asteroid{
 	
 
 	
-	public Asteroid8(float x, float y, float moveX, float moveY) {
+	public Asteroid8(int x, int y, float moveX, float moveY) {
 		super(x, y, moveX, moveY);
 		this.xOffset = 1;
 		this.yOffset = 1;

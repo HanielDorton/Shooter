@@ -11,6 +11,8 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Pixmap;
+import com.badlogic.gdx.graphics.Texture;
 import com.haniel.Shooter.entities.Entity;
 import com.haniel.Shooter.entities.Player;
 import com.haniel.Shooter.entities.asteroids.Asteroid;
@@ -20,6 +22,7 @@ import com.haniel.Shooter.graphics.Star;
 import com.haniel.Shooter.level.Level;
 import com.haniel.Shooter.particles.Particle;
 import com.haniel.Shooter.projectiles.Projectile;
+import com.haniel.Shooter.util.MyInputProcessor;
 
 public class GameScreen implements Screen {
     final MyGdxGame game;
@@ -40,9 +43,14 @@ public class GameScreen implements Screen {
     private static int screenWidth = 800;
     private static int screenHeight = 480;
     public Player player = new Player();
+    public MyInputProcessor inputProcessor = new MyInputProcessor(player); 
+    
+
 
     public GameScreen(final MyGdxGame gam) {
-        this.game = gam;
+        this.game = gam;        
+               
+        Gdx.input.setInputProcessor(inputProcessor);
 
         //dropSound = Gdx.audio.newSound(Gdx.files.internal("drop.wav"));
         rainMusic = Gdx.audio.newMusic(Gdx.files.internal("music/black_vortex.mp3"));
@@ -51,6 +59,9 @@ public class GameScreen implements Screen {
         // create the camera and the SpriteBatch
         camera = new OrthographicCamera();
         camera.setToOrtho(false, screenWidth, screenHeight);
+        
+        Pixmap mouse = new Pixmap(Gdx.files.internal("textures/mouseX.png"));
+        Gdx.input.setCursorImage(mouse, 0, 0);
         
         //Background
         graphics.add(new BackgroundImage("levels/space_background2.png", 0, 0, .02f));
@@ -117,7 +128,7 @@ public class GameScreen implements Screen {
         }
 
         game.batch.end();
-
+        
         for (int i = 0; i < entities.size(); i++) {
         	Entity e = entities.get(i);
         	e.update();
@@ -192,6 +203,7 @@ public class GameScreen implements Screen {
     		//if there wasn't then the original move made stays
     		float originalX = a.getX();
     		float originalY = a.getY();
+    		Gdx.input.setInputProcessor(inputProcessor);
     		boolean gotBumped = false;
     		a.update();
         	if (a.isRemoved()) {
@@ -216,8 +228,8 @@ public class GameScreen implements Screen {
 	    			}
 	    		}
     		} if (gotBumped) {
-    			a.setX(originalX);
-    			a.setY(originalY);;
+    			a.setX((int) originalX);
+    			a.setY((int) originalY);;
     			a.getRectangle().setPosition(originalX, originalY);
     			
     		}

@@ -11,7 +11,7 @@ import com.haniel.Shooter.GameScreen;
 import com.haniel.Shooter.util.Coord;
 public abstract class Entity{
 	
-	protected float x, y, speed;
+	protected int x, y, speed;
 	protected int xOffset, yOffset;
 	protected int position;
 	protected int width, height;
@@ -21,7 +21,7 @@ public abstract class Entity{
 	protected final Random random = new Random();
 	protected Rectangle rectangle;
 	protected double time;
-	protected int health;
+	protected float health;
 	
 	//all entity textures so they are only loaded once:
 	
@@ -99,11 +99,11 @@ public abstract class Entity{
 		removed = true;
 	}
 	
-	public float getX() {
+	public int getX() {
 		return x;	
 	}
 	
-	public float getY() {
+	public int getY() {
 		return y;
 	}
 	

@@ -4,7 +4,7 @@ import com.badlogic.gdx.math.Rectangle;
 
 public class Asteroid32 extends Asteroid{
 	
-	public Asteroid32(float x, float y, float moveX, float moveY) {
+	public Asteroid32(int x, int y, float moveX, float moveY) {
 		super(x, y, moveX, moveY);
 		this.xOffset = 4;
 		this.yOffset = 4;
