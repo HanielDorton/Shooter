@@ -15,7 +15,7 @@ public class Asteroid extends Entity{
 	
 	protected float moveX, moveY;
 	
-	public Asteroid(int x, int y, float moveX, float moveY) {
+	public Asteroid(float x, float y, float moveX, float moveY) {
 		this.x = x;
 		this.y = y;
 		this.moveX = moveX * (random.nextFloat() + .4f);
@@ -38,11 +38,11 @@ public class Asteroid extends Entity{
 		return moveY;
 	}
 	
-	public void setX(int x) {
+	public void setX(float x) {
 		this.x = x;
 	}
 	
-	public void setY(int y) {
+	public void setY(float y) {
 		this.y = y;
 	}
 	

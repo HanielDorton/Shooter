@@ -11,7 +11,7 @@ import com.haniel.Shooter.GameScreen;
 import com.haniel.Shooter.util.Coord;
 public abstract class Entity{
 	
-	protected int x, y, speed;
+	protected float x, y, speed;
 	protected int xOffset, yOffset;
 	protected int position;
 	protected int width, height;
@@ -77,7 +77,7 @@ public abstract class Entity{
 		
 	}
 	
-	private int myAbs(double value) {
+	protected int myAbs(double value) {
 		if (value < 0) return -1;
 		else return 1;
 	}
@@ -99,11 +99,11 @@ public abstract class Entity{
 		removed = true;
 	}
 	
-	public int getX() {
+	public float getX() {
 		return x;	
 	}
 	
-	public int getY() {
+	public float getY() {
 		return y;
 	}
 	

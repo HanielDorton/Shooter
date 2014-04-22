@@ -1,6 +1,7 @@
 package com.haniel.Shooter.entities;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
@@ -18,6 +19,8 @@ public class Player extends Entity{
 	Texture player_left = new Texture(Gdx.files.internal("entities/player_left.png"));
 	Texture player_right = new Texture(Gdx.files.internal("entities/player_right.png"));
     private boolean shooting = false;;
+    private int maxSpeed;
+    private int keyboardSpeed;
 	
 	public Player() {
 		this.x = 400;
@@ -28,7 +31,9 @@ public class Player extends Entity{
 		this.yOffset = 7;
 		this.texture = player_forward;
 		this.rectangle = new Rectangle(x + xOffset, y + yOffset, width, height);
-		this.speed = 60;
+		this.speed = 30;
+		this.keyboardSpeed = 8;
+		this.maxSpeed = 40;
 		this.time = 0;
 		this.lastShot= 0;
 		this.health = 1;
@@ -49,38 +54,42 @@ public class Player extends Entity{
 	        y += 200 * Gdx.graphics.getDeltaTime();
 	    if (touchPos.y > y)
 	        y -= 200 * Gdx.graphics.getDeltaTime();
-	     
-			
-			// Keyboard Movement not used:
+	     */
+
 		if (Gdx.input.isKeyPressed(Keys.LEFT) || Gdx.input.isKeyPressed(Keys.A)) {
-	        x -= speed * Gdx.graphics.getDeltaTime();
-			this.texture = player_left;
+			movePlayer(-keyboardSpeed , 0);
+			
 	        
 		}
 	    if (Gdx.input.isKeyPressed(Keys.RIGHT) || Gdx.input.isKeyPressed(Keys.D)) {
-	    	x += speed * Gdx.graphics.getDeltaTime();
-	    	this.texture = player_right;
+	    	movePlayer(keyboardSpeed , 0);
+	    	
 	    }
 	    if (Gdx.input.isKeyPressed(Keys.UP) || Gdx.input.isKeyPressed(Keys.W)) {
-	    	y += speed * Gdx.graphics.getDeltaTime();
-			this.texture = player_forward;
+	    	movePlayer(0, keyboardSpeed );
+			
 	    }
 	    if (Gdx.input.isKeyPressed(Keys.DOWN) || Gdx.input.isKeyPressed(Keys.S)) {
-	        y -= speed * Gdx.graphics.getDeltaTime();
-			this.texture = player_forward;
+	    	movePlayer(0, -keyboardSpeed );
+			
 	    }
-	    */
-		
+	    
+		/*
+		 * this.texture = player_left;
+		 * this.texture = player_right;
+		 * this.texture = player_forward;
+		 * this.texture = player_forward;
+		 */
 
 		
-	    if (shooting) shoot();
+	    if (shooting ||  Gdx.input.isKeyPressed(Keys.ENTER)) shoot();
 
 		
 	
 	    if (x < 0) x = 0;
-	    if (x > gameScreen.getWidth() - 30) x = 800 - 30;
+	    if (x > gameScreen.getWidth() - (width + xOffset * 2)) x = gameScreen.getWidth() - (width + xOffset * 2);
 	    if (y < 0) y = 0;
-	    if (y > gameScreen.getHeight() - 30) y = 480 - 30;
+	    if (y > gameScreen.getHeight() - (height + yOffset * 2)) y = gameScreen.getHeight() - (height + yOffset *2);
 	    rectangle.setPosition(x + xOffset, y + yOffset);
 	    
 
@@ -90,23 +99,10 @@ public class Player extends Entity{
 	    }
 	}
 	
-	public void movePlayer(int mouseX, int mouseY) {
-		move(speed * mouseX, speed * mouseY);
-		//Gdx.input.setCursorPosition(x, 480 - y);
-		
-		/*
-			if (x  < mouseX) {
-				move(speed, 0);
-			}
-			if (x  > mouseX) {
-				move(-speed, 0);
-			}
-			if (y  < mouseY) {
-				move(0, speed);
-			}
-			if (y  > mouseY) {
-				move(0, -speed);
-			}*/
+	public void movePlayer(int moveX, int moveY) {
+		if (Math.abs(moveX) > maxSpeed) moveX = (maxSpeed * myAbs(moveX));
+		if (Math.abs(moveY) > maxSpeed) moveY = (maxSpeed * myAbs(moveY));
+		move(speed * moveX, speed * moveY);	
 	}
 	
 	public void startShooting() {
@@ -121,10 +117,10 @@ public class Player extends Entity{
 			gunSound.play();
 			lastShot = time;
 			gameScreen.add(new BasicGun(x - 1, y, 0));
-			gameScreen.add(new BasicGun(x + 26, y, 0));
+			gameScreen.add(new BasicGun(x + width + xOffset, y, 0));
 			for (int i =0; i < 5; i++) {
 				gameScreen.add(new WhiteParticle(x - 1, y + 12, 1, 0, 10));
-				gameScreen.add(new WhiteParticle(x + 26, y + 12, 1, 0 , 10));
+				gameScreen.add(new WhiteParticle(x + width + xOffset, y + 12, 1, 0 , 10));
 				
 			}
 		}

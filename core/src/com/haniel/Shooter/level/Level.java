@@ -10,15 +10,11 @@ import com.haniel.Shooter.entities.asteroids.Asteroid8;
 import com.haniel.Shooter.graphics.Star;
 
 public class Level {
-	Random random = new Random();
-	
-	public int levelTime;
-	//private Random rand = new Random();
+	protected Random random = new Random();	
+	protected int levelTime;
 	
 	
 	public Level() {
-		
-		//load graphics to be used?:
 		
 		
 		
@@ -91,5 +87,9 @@ public class Level {
         for (int i = 0; i < number; i++) {
         	g.add(new Star(480));
         	} 
+	}
+	
+	public int getLevelTime() {
+		return levelTime;
 	}
 }

@@ -8,7 +8,6 @@ import com.haniel.Shooter.entities.Player;
 public class MyInputProcessor implements InputProcessor {
 	
 		private Player player;
-		private int lastMouseX,lastMouseY;
 	
 		public MyInputProcessor(Player player){
 			this.player = player;
