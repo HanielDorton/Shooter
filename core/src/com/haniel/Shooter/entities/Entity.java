@@ -1,6 +1,5 @@
 package com.haniel.Shooter.entities;
 
-import java.util.List;
 import java.util.Random;
 
 import com.badlogic.gdx.Gdx;
@@ -8,11 +7,11 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
 import com.haniel.Shooter.level.Level;
-import com.haniel.Shooter.util.Coord;
 import com.haniel.Shooter.weapons.Weapon;
 public abstract class Entity{
 	
-	protected float x, y, speed;
+	protected double x, y, speed, destX, destY;
+	protected double angle;
 	protected int xOffset, yOffset;
 	protected int position;
 	protected int width, height;
@@ -39,22 +38,26 @@ public abstract class Entity{
 	public Entity() {
 		
 	}
-		
+	
 	public void move(double xa, double ya) {
 		if (xa != 0 && ya != 0) {
 			move(xa, 0);
 			move(0, ya);
 			return;
 		}
+		ya *= Gdx.graphics.getDeltaTime();//  * speed);
+		xa *= Gdx.graphics.getDeltaTime();//  * speed);
 		
-		xa *= Gdx.graphics.getDeltaTime();
-		ya *= Gdx.graphics.getDeltaTime();
+
 		if (xa > 0) dir = Direction.RIGHT;
 		if (xa < 0) dir = Direction.LEFT;
 		if (ya > 0) dir = Direction.DOWN;
 		if (ya < 0) dir = Direction.UP;
 		
-		while (xa != 0) {
+		
+		this.x += xa;
+		this.y += ya;
+		/*while (xa != 0) {
 			if(Math.abs(xa) > 1) {
 				this.x += myAbs(xa);
 				xa -= myAbs(xa);		
@@ -62,9 +65,7 @@ public abstract class Entity{
 			else {
 				this.x += xa;
 				xa = 0;
-
-			}
-			
+			}			
 		}	
 		
 		while (ya != 0) {
@@ -75,7 +76,7 @@ public abstract class Entity{
 				this.y += ya;
 				ya = 0;
 			}
-		}
+		}*/
 		
 	}
 	
@@ -94,19 +95,34 @@ public abstract class Entity{
 	}
 	
 	public void update() {
+        if (y < 0 - this.height - 500) remove();
+        if (y > level.getHeight() + this.height + 500) remove();
+        if (x > level.getWidth() + this.width + 500) remove();
+        if (x < 0 - this.width - 500) remove();
+        if (health < 0) remove();
 		
 	}
+
 	
 	public void remove() {
 		removed = true;
 	}
 	
-	public float getX() {
+	public double getX() {
 		return x;	
 	}
 	
-	public float getY() {
+	public double getY() {
 		return y;
+	}
+	
+	public double getMidX() {
+		return x + xOffset + (width / 2);
+		
+	}
+	public double getMidY() {
+		return y + yOffset + (width / 2);
+		
 	}
 	
 	public int getWidth(){
@@ -132,24 +148,10 @@ public abstract class Entity{
 	public void init(Level level) {
 		this.level = level;
 	}
+	public double getAngleTo(double x, double y, double destX, double destY) {
+		return (Math.atan2(destY - y, destX - x));	
 
-	public void pattern(int tempX, int tempY, List <Coord> positions) {
-		int pX = positions.get(position).getX();
-		int pY = positions.get(position).getY();
-		
-		
-		if (tempX < pX) move(speed, 0);
-		else if (tempX > pX) move(-speed, 0);
-		if (tempY < pY) move(0, speed);
-		else if (tempY > pY) move(0, -speed);	
-		
-		if ((Math.abs(tempX - pX) < 10) &&
-			(Math.abs(tempY - pY) < 10)) {
-			position++;
-			if (position > positions.size() - 1) this.position = 0;
 
-			
-		}
 				
 		
 		

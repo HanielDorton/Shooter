@@ -12,19 +12,28 @@ public abstract class MyGraphics {
 	protected boolean removed = false;
 	protected Rectangle rectangle;
 	protected Level level;
+	protected float speed;
 	
 	//load all images here so they are only loaded once:
 	
 	protected static final Texture starTexture = new Texture(Gdx.files.internal("textures/particles/yellowparticle.png"));
 	
 	
+	public MyGraphics(String imageFile, int x, int y, float speed) {
+		this.texture = new Texture(Gdx.files.internal(imageFile));
+		this.rectangle = new Rectangle();
+		this.x = x;
+		this.y = y;
+		this.speed = speed;		
+	}
 	
-	public MyGraphics() {
-		
+	public MyGraphics(int y) {
+		this.y = y;
 	}
 	
 	public void update() {
-		
+		this.y -= speed;
+		if (y < 0) remove();
 	}
 	
 	public void remove() {

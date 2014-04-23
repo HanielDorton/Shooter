@@ -1,21 +1,9 @@
 package com.haniel.Shooter.graphics;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.math.Rectangle;
-
-
-public class BackgroundImage extends MyGraphics{
-	
-	private float speed;
+public class BackgroundImage extends MyGraphics{	
 		
 	public BackgroundImage(String imageFile, int x, int y, float speed) {
-		this.texture = new Texture(Gdx.files.internal(imageFile));
-		this.rectangle = new Rectangle();
-		this.x = x;
-		this.y = y;
-		this.speed = speed;
-		
+		super(imageFile, x, y, speed);
 	}
 	
 	public void update() {

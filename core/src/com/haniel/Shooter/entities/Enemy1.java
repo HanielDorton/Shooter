@@ -11,9 +11,11 @@ public class Enemy1 extends Entity{
 	//int xa = 0;
 	//int ya = 0;
 	
-	public Enemy1(int x, int y) {
+	public Enemy1(double x, double y) {
 		this.x = x;
 		this.y = y;
+		this.destX = x;
+		this.destY = y;
 		this.xOffset = 4;
 		this.yOffset = 20;
 		this.position = 0;
@@ -21,17 +23,25 @@ public class Enemy1 extends Entity{
 		this.width = 64;
 		this.height = 64;
 		this.texture = enemy1Texture;
-		this.rectangle = new Rectangle(x + xOffset, y + yOffset, width * 0.8f, height / 2);
+		this.rectangle = new Rectangle((float)x + xOffset, (float)y + yOffset, width * 0.8f, height / 2);
 		this.health =3;
 		this.lastShot = 0;
 	}
 	public void update() {
-		pattern((int) x, (int) y, Coord.circleTop);
-        if (y < 0 - this.height) remove(); 
-        if (health < 0) remove();
-        rectangle.setPosition(x + xOffset, y + yOffset);
+		super.update();
+		if (Math.abs(x - destX) <= 5 && Math.abs(y - destY) <= 5) {
+			destX = Coord.circleTop.get(position).getX();
+			destY = Coord.circleTop.get(position).getY();
+			angle = getAngleTo(x, y, destX, destY);
+			position++;
+			if (position == Coord.circleTop.size()) position = 0;
+		}
+		move(Math.cos(angle) * speed, Math.sin(angle) * speed);
+
+        rectangle.setPosition((float)x + xOffset, (float)y + yOffset);
 	    if ((level.getTime() - lastShot) > weapon.getFiringRate()) {
-	    	weapon.shoot(x + width / 2, y, 0);
+	    	double angle = level.getAngletoPlayersMiddle(x + width / 2, y);
+	    	weapon.shoot(x + width / 2, y, angle);
 	    	//weapon.shoot(x + width + xOffset, y, 0);
 	    	lastShot = level.getTime();
 	    }
@@ -55,8 +65,7 @@ public class Enemy1 extends Entity{
 	
 	public void init(Level level) {
 		this.level = level;
-		this.weapon = new BlueSphereGun(level);
-		
+		this.weapon = new BlueSphereGun(level, false);		
 	}
 }
 

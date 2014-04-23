@@ -26,7 +26,7 @@ public abstract class Particle {
 	protected static final Texture orangeParticleTexture = new Texture(Gdx.files.internal("textures/particles/orangeparticle.png"));
 	protected static final Texture whiteParticleTexture = new Texture(Gdx.files.internal("textures/particles/whiteparticle.png"));
 	
-	public Particle(float x, float y, int life) {
+	public Particle(double x, double y, int life) {
 		this.rectangle = new Rectangle();
 		this.x = x;
 		this.y = y;
@@ -35,7 +35,7 @@ public abstract class Particle {
 		this.ya = random.nextGaussian() * 40;
 
 	}
-	public Particle(float x, float y, int life, double xa, double ya){
+	public Particle(double x, double y, int life, double xa, double ya){
 		this(x, y, life);
 		if (xa != 0) this.xa = xa;
 		if (ya != 0) this.ya = ya;

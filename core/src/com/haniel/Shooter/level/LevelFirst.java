@@ -5,6 +5,7 @@ import com.badlogic.gdx.audio.Music;
 import com.haniel.Shooter.GameScreen;
 import com.haniel.Shooter.entities.Enemy1;
 import com.haniel.Shooter.graphics.BackgroundImage;
+import com.haniel.Shooter.graphics.BackgroundPlanet;
 
 public class LevelFirst extends Level{
 	
@@ -25,14 +26,14 @@ public class LevelFirst extends Level{
 			//}
 		
 	
-		add(new Enemy1((random.nextInt(720) + 1 ), 480));
+		//add(new Enemy1((random.nextInt(720) + 1 ), 480));
 
 		switch (levelTime) {
 		
 			case 1: {				
 				add(new BackgroundImage("levels/space_background2.png", 0, 0, .02f));
 		        add(new BackgroundImage("levels/space_background2.png", 0, 960, .02f));
-		        add(new BackgroundImage("textures/black_planet.png", 0, 0, .4f));
+		        add(new BackgroundPlanet("textures/black_planet.png", 0, 0, .4f, 400));
 
 		        Music backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/black_vortex.mp3"));
 		        backgroundMusic.setLooping(true);
@@ -41,6 +42,7 @@ public class LevelFirst extends Level{
 			}
 		
 			case 2: {
+				add(new Enemy1(400, 300));
 				break;
 			}		
 			case 12: {

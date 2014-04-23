@@ -72,14 +72,14 @@ public class GameScreen implements Screen {
         for (Particle particle : level.particles) {
         	game.batch.draw(particle.getTexture(), (float) particle.getX(), (float) particle.getY());
         }
-        for (Projectile projectile : level.playerProjectiles) {
-        	game.batch.draw(projectile.getTexture(), projectile.getX(), projectile.getY());
+        for (Projectile projectile : level.projectiles) {
+        	game.batch.draw(projectile.getTexture(), (float) projectile.getX(), (float) projectile.getY());
         }
         for (Entity entity : level.entities) {
-        	game.batch.draw(entity.getTexture(), entity.getX(), entity.getY());
+        	game.batch.draw(entity.getTexture(), (float) entity.getX(), (float) entity.getY());
         }
         for (Asteroid asteroid : level.asteroids) {
-        	game.batch.draw(asteroid.getTexture(), asteroid.getX(), asteroid.getY());
+        	game.batch.draw(asteroid.getTexture(), (float) asteroid.getX(), (float) asteroid.getY());
         }
         game.font.draw(game.batch, "Time: " + level.getLevelTime(), 0, screenHeight);
         game.font.draw(game.batch, "Damage Received: " + (1-(player.getHealth())), 0, screenHeight - 20);

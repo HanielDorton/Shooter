@@ -7,29 +7,32 @@ import com.haniel.Shooter.projectiles.BasicBullet;
 public abstract class Weapon {
 
 	protected double firingRate;
-	protected float x, y;
+	//protected float x, y;
 	protected Level level;
 	protected Sound sound;
+	protected boolean fromPlayer;
 	
 	//set firing rates so they can be accessed before projectiles are created:
 	protected final static double basicGunFiringRate = 0.2;
 	protected final static double blueSphereGunFiringRate = 0.5;
 	
 	
-	public Weapon(Level level) {
+	public Weapon(Level level, boolean fromPlayer) {
 		this.level = level;
+		this.fromPlayer = fromPlayer;
 	}
 	
 	public double getFiringRate(){
 		return firingRate;
 	}
 
-	public void shoot(float x, float y, double dir) {
-		level.add(new BasicBullet(x, y, 0));
+	public void shoot(double x, double y, double angle) {
+		level.add(new BasicBullet(x, y, angle, fromPlayer));
 	}
 	
 	public void playSound() {
 		sound.play();
 		
 	}
+
 }

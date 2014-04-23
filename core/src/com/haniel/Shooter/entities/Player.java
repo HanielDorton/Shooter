@@ -31,13 +31,13 @@ public class Player extends Entity{
 		this.xOffset = 4;
 		this.yOffset = 7;
 		this.texture = player_forward;
-		this.rectangle = new Rectangle(x + xOffset, y + yOffset, width, height);
+		this.rectangle = new Rectangle((float) x + xOffset, (float) y + yOffset, width, height);
 		this.speed = 30;
 		this.keyboardSpeed = 8;
 		this.maxSpeed = 40;
 		this.lastShot= 0;
 		this.health = 1;
-		this.weapon = new BasicGun(level);
+		this.weapon = new BasicGun(level, true);
 	}
 	public void update() {
 		/*	
@@ -84,8 +84,10 @@ public class Player extends Entity{
 		
 	    if (shooting ||  Gdx.input.isKeyPressed(Keys.ENTER)) {
 	    	if ((level.getTime() - lastShot) > weapon.getFiringRate()) {
-	    		weapon.shoot(x - 1, y, 0);
-	    		weapon.shoot(x + width + xOffset, y, 0);
+	    		double angle = getAngleTo(x - 1, y, x - 1, y+10);
+	    		weapon.shoot(x - 1, y, angle);
+	    		angle = getAngleTo(x + width + xOffset, y, x + width + xOffset, y+10);
+	    		weapon.shoot(x + width + xOffset, y, angle);
 	    		lastShot = level.getTime();
 	    		weapon.playSound();
 	    	}
@@ -95,7 +97,7 @@ public class Player extends Entity{
 	    if (x > gameScreen.getWidth() - (width + xOffset * 2)) x = gameScreen.getWidth() - (width + xOffset * 2);
 	    if (y < 0) y = 0;
 	    if (y > gameScreen.getHeight() - (height + yOffset * 2)) y = gameScreen.getHeight() - (height + yOffset *2);
-	    rectangle.setPosition(x + xOffset, y + yOffset);
+	    rectangle.setPosition((float)x + xOffset, (float)y + yOffset);
 	    
 	    //these are the engine particles
 	    for (int i =0; i < 4; i++) {
