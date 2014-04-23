@@ -93,6 +93,8 @@ public class GameScreen implements Screen {
         	gameTime--;
         }
         
+        //every once in a while check things are getting removed correctly:
+        //System.out.println(level.projectiles.size());
 
     }
     

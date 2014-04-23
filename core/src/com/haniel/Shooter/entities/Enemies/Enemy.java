@@ -1,40 +1,35 @@
-package com.haniel.Shooter.entities;
+package com.haniel.Shooter.entities.Enemies;
+
+import java.util.List;
 
 import com.badlogic.gdx.math.Rectangle;
+import com.haniel.Shooter.entities.Entity;
 import com.haniel.Shooter.level.Level;
 import com.haniel.Shooter.particles.BlueParticle;
 import com.haniel.Shooter.util.Coord;
 import com.haniel.Shooter.weapons.BlueSphereGun;
 
-public class Enemy1 extends Entity{
+public abstract class Enemy extends Entity{
 
-	//int xa = 0;
-	//int ya = 0;
+	private List <Coord> pattern;
 	
-	public Enemy1(double x, double y) {
+	public Enemy(double x, double y, List <Coord> pattern) {
 		this.x = x;
 		this.y = y;
 		this.destX = x;
 		this.destY = y;
-		this.xOffset = 4;
-		this.yOffset = 20;
 		this.position = 0;
-		this.speed = 80;
-		this.width = 64;
-		this.height = 64;
-		this.texture = enemy1Texture;
-		this.rectangle = new Rectangle((float)x + xOffset, (float)y + yOffset, width * 0.8f, height / 2);
-		this.health =3;
 		this.lastShot = 0;
+		this.pattern = pattern;
 	}
 	public void update() {
 		super.update();
 		if (Math.abs(x - destX) <= 5 && Math.abs(y - destY) <= 5) {
-			destX = Coord.circleTop.get(position).getX();
-			destY = Coord.circleTop.get(position).getY();
+			destX = pattern.get(position).getX();
+			destY = pattern.get(position).getY();
 			angle = getAngleTo(x, y, destX, destY);
 			position++;
-			if (position == Coord.circleTop.size()) position = 0;
+			if (position == pattern.size()) position = 0;
 		}
 		move(Math.cos(angle) * speed, Math.sin(angle) * speed);
 
@@ -66,6 +61,16 @@ public class Enemy1 extends Entity{
 	public void init(Level level) {
 		this.level = level;
 		this.weapon = new BlueSphereGun(level, false);		
+	}
+	
+	public void leave() {
+		
+		
+		
+		destX = pattern.get(position).getX();
+		destY = pattern.get(position).getY();
+		angle = getAngleTo(x, y, destX, destY);
+		
 	}
 }
 

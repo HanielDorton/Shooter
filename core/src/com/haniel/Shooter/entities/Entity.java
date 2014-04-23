@@ -47,17 +47,13 @@ public abstract class Entity{
 		}
 		ya *= Gdx.graphics.getDeltaTime();//  * speed);
 		xa *= Gdx.graphics.getDeltaTime();//  * speed);
-		
 
 		if (xa > 0) dir = Direction.RIGHT;
 		if (xa < 0) dir = Direction.LEFT;
 		if (ya > 0) dir = Direction.DOWN;
 		if (ya < 0) dir = Direction.UP;
 		
-		
-		this.x += xa;
-		this.y += ya;
-		/*while (xa != 0) {
+		while (xa != 0) {
 			if(Math.abs(xa) > 1) {
 				this.x += myAbs(xa);
 				xa -= myAbs(xa);		
@@ -76,7 +72,7 @@ public abstract class Entity{
 				this.y += ya;
 				ya = 0;
 			}
-		}*/
+		}
 		
 	}
 	
@@ -95,10 +91,10 @@ public abstract class Entity{
 	}
 	
 	public void update() {
-        if (y < 0 - this.height - 500) remove();
-        if (y > level.getHeight() + this.height + 500) remove();
-        if (x > level.getWidth() + this.width + 500) remove();
-        if (x < 0 - this.width - 500) remove();
+        if (y < 0 - this.height - 300) remove();
+        if (y > level.getHeight() + this.height + 300) remove();
+        if (x > level.getWidth() + this.width + 300) remove();
+        if (x < 0 - this.width - 300) remove();
         if (health < 0) remove();
 		
 	}
@@ -132,7 +128,7 @@ public abstract class Entity{
 	public int getHeight() {
 		return height;
 	}	
-    // tell the camera to update its matrices.
+	
 	public Texture getTexture() {
 		return texture;
 	}
@@ -150,10 +146,5 @@ public abstract class Entity{
 	}
 	public double getAngleTo(double x, double y, double destX, double destY) {
 		return (Math.atan2(destY - y, destX - x));	
-
-
-				
-		
-		
 	}	
 }

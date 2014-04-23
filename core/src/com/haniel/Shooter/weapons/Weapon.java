@@ -14,7 +14,7 @@ public abstract class Weapon {
 	
 	//set firing rates so they can be accessed before projectiles are created:
 	protected final static double basicGunFiringRate = 0.2;
-	protected final static double blueSphereGunFiringRate = 0.5;
+	protected final static double blueSphereGunFiringRate = 1;
 	
 	
 	public Weapon(Level level, boolean fromPlayer) {

@@ -8,6 +8,6 @@ public class BlueParticle extends Particle{
 	}
 	public BlueParticle(double x, double y, int life, double xa, double ya) {
 		super(x, y, life, xa, ya);
-		this.texture = whiteParticleTexture;
+		this.texture = blueParticleTexture;
 	}
 }
