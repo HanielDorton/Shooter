@@ -3,6 +3,8 @@ package com.haniel.Shooter.level;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
+import com.badlogic.gdx.Gdx;
 import com.haniel.Shooter.GameScreen;
 import com.haniel.Shooter.entities.Entity;
 import com.haniel.Shooter.entities.Player;
@@ -15,6 +17,7 @@ import com.haniel.Shooter.projectiles.Projectile;
 
 public class Level {
 	protected Random random = new Random();	
+	private double time;
 	protected int levelTime;
 	protected GameScreen gameScreen;
     public List<MyGraphics> graphics = new ArrayList<MyGraphics>();
@@ -37,7 +40,8 @@ public class Level {
         	} 
 	}
 	
-	public void update() {        
+	public void update() {
+		time += Gdx.graphics.getDeltaTime();
         
 		//update all graphics, if starts go past bottom of screen, spawn a new one;
         for (int i = 0; i < graphics.size(); i++) {
@@ -186,6 +190,10 @@ public class Level {
 	}
 	public int getWidth(){
 		return gameScreen.getWidth();
+	}
+	
+	public double getTime() {
+		return time;
 	}
 
 }

@@ -1,34 +1,26 @@
 package com.haniel.Shooter.projectiles;
 
-import java.util.Random;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
-import com.haniel.Shooter.entities.Entity;
 import com.haniel.Shooter.level.Level;
+import com.haniel.Shooter.particles.WhiteParticle;
 
 public abstract class Projectile {
 	
-	protected final double xOrigin, yOrigin;
-	protected double angle;
+	protected final double xOrigin, yOrigin, angle;
 	protected float x, y;
-	protected double nx, ny;
-	protected double distance;
-	protected double speed, range, damage, firingRate;
+	protected double speed, range, damage;
 	protected boolean removed = false;
 	protected Rectangle rectangle;
 	protected Texture texture;
 	protected int width, height;
-	protected final Random random = new Random();
-	protected Entity origin;
 	protected Level level;
 	
 	//these are all the final images for projectiles so they are only loaded once:
-	protected final Texture basicGun = new Texture(Gdx.files.internal("projectiles/basicgun.png"));
-	
-	//set firing rates so they can be accessed before projectiles are created:
-	public final static double basicGunFiringRate = 0.2;
+	protected final static Texture basicBulletTexture = new Texture(Gdx.files.internal("projectiles/basicgun.png"));
+	protected final static Texture blueSphereGunTexture = new Texture(Gdx.files.internal("projectiles/bluesphere.png"));
+
 	
 	public Projectile(float x, float y, double dir) {
 		xOrigin = x;
@@ -40,11 +32,18 @@ public abstract class Projectile {
 	}
 	
 	public void update() {
-		
+		this.y += speed * Gdx.graphics.getDeltaTime();
+		if (y > 480) removed = true;
+		rectangle.setPosition(x, y);
+		generateParticles(x, y);
 	}
-	public double getFiringRate(){
-		return firingRate;
+	
+	public void generateParticles(float x, float y) {
+		for (int i = 0; i <3; i ++) {
+			level.add(new WhiteParticle(x + i, y, 1, 0, 5));
+		}
 	}
+	
 	public void remove() {
 		removed = true;
 	}

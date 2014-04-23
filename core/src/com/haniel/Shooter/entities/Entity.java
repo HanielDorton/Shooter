@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
 import com.haniel.Shooter.level.Level;
 import com.haniel.Shooter.util.Coord;
+import com.haniel.Shooter.weapons.Weapon;
 public abstract class Entity{
 	
 	protected float x, y, speed;
@@ -20,8 +21,9 @@ public abstract class Entity{
 	protected Level level;
 	protected final Random random = new Random();
 	protected Rectangle rectangle;
-	protected double time;
 	protected float health;
+	protected Weapon weapon;
+	protected double lastShot;
 	
 	//all entity textures so they are only loaded once:
 	

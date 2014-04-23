@@ -26,7 +26,7 @@ public class GameScreen implements Screen {
     Level level = new LevelFirst(this);
     private static int screenWidth = 800;
     private static int screenHeight = 480;
-    public Player player = new Player();
+    public Player player = new Player(level);
     public MyInputProcessor inputProcessor = new MyInputProcessor(player); 
     
 
