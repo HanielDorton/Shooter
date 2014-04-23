@@ -129,7 +129,7 @@ public class GameScreen implements Screen {
     @Override
     public void dispose() {
         //dropSound.dispose();
-        rainMusic.dispose();
+        //rainMusic.dispose();
     }
 
 }

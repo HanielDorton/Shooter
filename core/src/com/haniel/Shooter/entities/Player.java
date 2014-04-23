@@ -118,8 +118,8 @@ public class Player extends Entity{
 		if (time - lastShot > Projectile.basicGunFiringRate) {
 			gunSound.play();
 			lastShot = time;
-			level.add(new BasicGun(x - 1, y, 0));
-			level.add(new BasicGun(x + width + xOffset, y, 0));
+			level.add(new BasicGun(x - 1, y + 12, 0));
+			level.add(new BasicGun(x + width + xOffset, y + 12, 0));
 			for (int i =0; i < 5; i++) {
 				level.add(new WhiteParticle(x - 1, y + 12, 1, 0, 10));
 				level.add(new WhiteParticle(x + width + xOffset, y + 12, 1, 0 , 10));
@@ -127,6 +127,10 @@ public class Player extends Entity{
 			}
 		}
 	}
+	
+	public void particles() {
+	}
+	
 	public float getHealth() {
 		return health;
 	}

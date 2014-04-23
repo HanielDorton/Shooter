@@ -32,14 +32,14 @@ public class Enemy1 extends Entity{
 	public void particles() {
 		if( health < 0) {
 			for (int i = 0; i <500; i++)
-				level.add(new BlueParticle((int) x + width / 2,(int) y + height / 2, 30));
-				level.add(new BlueParticle((int) x,(int) y + height / 2, 30));
-				level.add(new BlueParticle((int) x + width / 2,(int) y, 30));
-				level.add(new BlueParticle((int) x + width,(int) y + height, 30));
+				level.add(new BlueParticle((int) x + width / 2,(int) y + height / 2, 15));
+				level.add(new BlueParticle((int) x,(int) y + height / 2, 15));
+				level.add(new BlueParticle((int) x + width / 2,(int) y, 15));
+				level.add(new BlueParticle((int) x + width,(int) y + height, 15));
 			matches2.play();
 		} else {
 			for (int i = 0; i < 40; i++)
-				level.add(new BlueParticle((int) x + width / 2,(int) y + height / 2, 20));
+				level.add(new BlueParticle((int) x + width / 2,(int) y + height / 2, 15));
 		}
 		
 	}

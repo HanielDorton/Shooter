@@ -4,8 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.haniel.Shooter.GameScreen;
 import com.haniel.Shooter.entities.Enemy1;
-import com.haniel.Shooter.entities.asteroids.Asteroid128;
-import com.haniel.Shooter.entities.asteroids.Asteroid32;
 import com.haniel.Shooter.graphics.BackgroundImage;
 
 public class LevelFirst extends Level{

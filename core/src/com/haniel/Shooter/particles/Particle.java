@@ -30,7 +30,7 @@ public abstract class Particle {
 		this.rectangle = new Rectangle();
 		this.x = x;
 		this.y = y;
-		this.life = life + (random.nextInt(life*5));
+		this.life = life + (random.nextInt(life*2));
 		this.xa = random.nextGaussian() * 40;
 		this.ya = random.nextGaussian() * 40;
 
@@ -47,6 +47,8 @@ public abstract class Particle {
 		if (time > 7400) time = 0;
 		if (time > life) remove();
 		move((x + xa), (y + ya));
+		xa *= .97;
+		ya *=.97;
 	}
 	
 	

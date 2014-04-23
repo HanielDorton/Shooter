@@ -2,7 +2,6 @@ package com.haniel.Shooter.entities.asteroids;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
-import com.haniel.Shooter.GameScreen;
 import com.haniel.Shooter.entities.Entity;
 import com.haniel.Shooter.particles.PurpleParticle;
 
