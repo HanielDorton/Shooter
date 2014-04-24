@@ -165,8 +165,8 @@ public class Level {
     }
     
     public void add(Entity e) {
-    	entities.add(e);
     	e.init(this);
+    	entities.add(e);
     }    
     
     public void add(Projectile p) {

@@ -4,6 +4,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.haniel.Shooter.GameScreen;
 import com.haniel.Shooter.entities.Enemies.BasicBlueEnemy;
+import com.haniel.Shooter.entities.Enemies.BlueSaucer;
+import com.haniel.Shooter.entities.Enemies.ImprovedBlueEnemy;
 import com.haniel.Shooter.graphics.BackgroundImage;
 import com.haniel.Shooter.graphics.BackgroundPlanet;
 import com.haniel.Shooter.util.Coord;
@@ -19,100 +21,178 @@ public class LevelFirst extends Level{
         backgroundMusic.play();
         
         //change levelTime to warp:
-        levelTime = 15;
+        //first enemies
+        //levelTime = 1600;
+        //saucer
+        levelTime = 4400;
         
         // 50 is when music starts
         
 	}
 	
 	public void runLevel(GameScreen g) {
-		levelTime++;
+		levelTime += 10;
 
 		switch (levelTime) {
 		
-			case 1: {
+			case 10: {
 				add(new BackgroundPlanet("textures/black_planet.png", 0, 0, .4f, 400));
 				break;
 			}
 		
-			case 2: { //test code here
+			case 200: { //test code here
 				break;
 			}		
-			case 12: {
+			case 1200: {
 
 				break;
-			}
+			}		
 			
-			
-			case 18: {
+			case 1800: {
+				//FIRST CHECK POINT!!
 				addStars(20);
-				add(new BasicBlueEnemy(800, 480, Coord.topRightMiddleLeaveTop));
-				add(new BasicBlueEnemy(800, 560, Coord.topRightMiddleLeaveTop));
-				add(new BasicBlueEnemy(-60, 480, Coord.topLeftMiddleLeaveTop));
-				add(new BasicBlueEnemy(-60, 560, Coord.topLeftMiddleLeaveTop));
-				break;
-			} 
-			case 19: {
-				addStars(20);
-				break;
-			} 
-			case 20: {
-				addStars(20);
-				add(new BasicBlueEnemy(800, 480, Coord.topRightMiddleLeaveTop));
-				add(new BasicBlueEnemy(800, 560, Coord.topRightMiddleLeaveTop));
-				add(new BasicBlueEnemy(-60, 480, Coord.topLeftMiddleLeaveTop));
-				add(new BasicBlueEnemy(-60, 560, Coord.topLeftMiddleLeaveTop));
-				break;
-			} 
-			case 21: {
-				addStars(20);
-				break;
-			} 
-			case 22: {
-				addStars(20);
-				add(new BasicBlueEnemy(800, 480, Coord.topRightMiddleLeaveTop));
-				add(new BasicBlueEnemy(800, 560, Coord.topRightMiddleLeaveTop));
-				add(new BasicBlueEnemy(-60, 480, Coord.topLeftMiddleLeaveTop));
-				add(new BasicBlueEnemy(-60, 560, Coord.topLeftMiddleLeaveTop));
+				add(new BasicBlueEnemy(800, 480, Coord.topRightMiddleLeaveTop, this));
+				add(new BasicBlueEnemy(-60, 480, Coord.topLeftMiddleLeaveTop, this));
 				break;
 			} 
 			
-			case 28: {
-				add(new BasicBlueEnemy(700, 480, Coord.circleTop));
-				add(new BasicBlueEnemy(700, 540, Coord.circleTop));
-				add(new BasicBlueEnemy(700, 600, Coord.circleTop));
-				add(new BasicBlueEnemy(-60, 400, Coord.circleTop));
-				add(new BasicBlueEnemy(-120, 400, Coord.circleTop));
-				add(new BasicBlueEnemy(-180, 400, Coord.circleTop));
+			case 1870: {
+				add(new BasicBlueEnemy(800, 480, Coord.topRightMiddleLeaveTop, this));
+				add(new BasicBlueEnemy(-60, 480, Coord.topLeftMiddleLeaveTop, this));
+				addStars(20);
 				break;
 			}
-				
-			case 31: {
-				add(new BasicBlueEnemy(700, 480, Coord.circleTop));
-				add(new BasicBlueEnemy(700, 540, Coord.circleTop));
-				add(new BasicBlueEnemy(700, 600, Coord.circleTop));
-				add(new BasicBlueEnemy(-60, 400, Coord.circleTop));
-				add(new BasicBlueEnemy(-120, 400, Coord.circleTop));
-				add(new BasicBlueEnemy(-180, 400, Coord.circleTop));
-				break;	
+			case 1940: {
+				add(new BasicBlueEnemy(800, 480, Coord.topRightMiddleLeaveTop, this));
+				add(new BasicBlueEnemy(-60, 480, Coord.topLeftMiddleLeaveTop, this));			
+				break;
+			} 
+			case 2010: {
+				addStars(20);
+				add(new BasicBlueEnemy(800, 480, Coord.topRightMiddleLeaveTop, this));
+				add(new BasicBlueEnemy(-60, 480, Coord.topLeftMiddleLeaveTop, this));
+				break;
+			} 
+			case 2080: {
+				add(new BasicBlueEnemy(800, 480, Coord.topRightMiddleLeaveTop, this));
+				add(new BasicBlueEnemy(-60, 480, Coord.topLeftMiddleLeaveTop, this));
+				addStars(20);
+				break;
+			} 
+			case 2160: {
+				addStars(20);
+				add(new BasicBlueEnemy(800, 480, Coord.topRightMiddleLeaveTop, this));
+				add(new BasicBlueEnemy(-60, 480, Coord.topLeftMiddleLeaveTop, this));
+				break;
+			} 
+			case 2230: {
+				add(new BasicBlueEnemy(800, 480, Coord.topRightMiddleLeaveTop, this));
+				add(new BasicBlueEnemy(-60, 480, Coord.topLeftMiddleLeaveTop, this));
+				break;
+			} 
+			case 2300: {
+				add(new BasicBlueEnemy(800, 480, Coord.topRightMiddleLeaveTop, this));
+				add(new BasicBlueEnemy(-60, 480, Coord.topLeftMiddleLeaveTop, this));
+				break;
+			} 
+			case 2370: {
+				add(new BasicBlueEnemy(800, 480, Coord.topRightMiddleLeaveTop, this));
+				add(new BasicBlueEnemy(-60, 480, Coord.topLeftMiddleLeaveTop, this));
+				break;
+			} 
+			case 2440: {
+				add(new BasicBlueEnemy(800, 480, Coord.topRightMiddleLeaveTop, this));
+				add(new BasicBlueEnemy(-60, 480, Coord.topLeftMiddleLeaveTop, this));
+				break;
+			} 
+			case 2510: {
+				add(new BasicBlueEnemy(800, 480, Coord.topRightMiddleLeaveTop, this));
+				add(new BasicBlueEnemy(-60, 480, Coord.topLeftMiddleLeaveTop, this));
+				break;
+			} 
+			case 2580: {
+				add(new BasicBlueEnemy(800, 480, Coord.topRightMiddleLeaveTop, this));
+				add(new BasicBlueEnemy(-60, 480, Coord.topLeftMiddleLeaveTop, this));
+				break;
+			} 			
+			case 2950: {
+				add(new ImprovedBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
+				add(new ImprovedBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
+				break;
 			}
-			case 34: {
-				add(new BasicBlueEnemy(700, 480, Coord.circleTop));
-				add(new BasicBlueEnemy(700, 540, Coord.circleTop));
-				add(new BasicBlueEnemy(700, 600, Coord.circleTop));
-				add(new BasicBlueEnemy(-60, 400, Coord.circleTop));
-				add(new BasicBlueEnemy(-120, 400, Coord.circleTop));
-				add(new BasicBlueEnemy(-180, 400, Coord.circleTop));
-				break;	
-				
+			case 3020: {
+				add(new BasicBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
+				add(new BasicBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
+				break;
 			}
-			case 45: {
-				//make remaining enemies leave
+			case 3090: {
+				add(new ImprovedBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
+				add(new ImprovedBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
+				break;
+			}
+			case 3160: {
+				add(new BasicBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
+				add(new BasicBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
+				break;
+			}
+			case 3240: {
+				add(new ImprovedBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
+				add(new ImprovedBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
+				break;
+			}
+			case 3310: {
+				add(new BasicBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
+				add(new BasicBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
+				break;
+			}
+			case 3380: {
+				add(new ImprovedBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
+				add(new ImprovedBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
+				break;
+			}
+			case 3450: {
+				add(new BasicBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
+				add(new BasicBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
+				break;
+			}
+			case 3520: {
+				add(new ImprovedBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
+				add(new ImprovedBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
+				break;
+			}
+			case 3590: {
+				add(new BasicBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
+				add(new BasicBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
+				break;
+			}
+			case 3660: {
+				add(new ImprovedBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
+				add(new ImprovedBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
+				break;
+			}
+			case 3730: {
+				add(new BasicBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
+				add(new BasicBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
+				break;
+			}			
+			case 3800: {
+				add(new ImprovedBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
+				add(new ImprovedBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
+				break;
+			}
+			case 3870: {
+				add(new ImprovedBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
+				add(new ImprovedBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
+				break;
+			}
+	
+			case 4600: {
+				//they come up but delay shooting by like 4 seconds
+				add(new BlueSaucer(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
+				add(new BlueSaucer(-150, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
 			}
 			
-			case 49: {
-				//two large enemies from bottom sides come to top and go back and forth while shooting heavily
-			}
+			
 		}
 	}
 

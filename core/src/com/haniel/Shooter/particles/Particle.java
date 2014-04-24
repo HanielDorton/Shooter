@@ -21,6 +21,7 @@ public abstract class Particle {
 	
 	//Textures here so they are loaded only once:
 	protected static final Texture blueParticleTexture = new Texture(Gdx.files.internal("textures/particles/blueparticle.png"));
+	protected static final Texture lightblueParticleTexture = new Texture(Gdx.files.internal("textures/particles/lightblueparticle.png"));
 	protected static final Texture brownParticleTexture = new Texture(Gdx.files.internal("textures/particles/brownparticle.png"));
 	protected static final Texture purpleParticleTexture = new Texture(Gdx.files.internal("textures/particles/purpleparticle.png"));
 	protected static final Texture orangeParticleTexture = new Texture(Gdx.files.internal("textures/particles/orangeparticle.png"));

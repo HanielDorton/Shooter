@@ -86,7 +86,7 @@ public class Player extends Entity{
 	    	if ((level.getTime() - lastShot) > weapon.getFiringRate()) {
 	    		double angle = getAngleTo(x - 1, y, x - 1, y+10);
 	    		weapon.shoot(x - 1, y, angle);
-	    		angle = getAngleTo(x + width + xOffset, y, x + width + xOffset, y+10);
+	    		angle = getAngleTo(x, y, x, y+10);
 	    		weapon.shoot(x + width + xOffset, y, angle);
 	    		lastShot = level.getTime();
 	    		weapon.playSound();

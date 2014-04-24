@@ -10,7 +10,7 @@ public class BlueSphere extends Projectile{
 		this.texture = blueSphereGunTexture;
 		this.width = 8;
 		this.height = 8;
-		this.speed = 100;
+		this.speed = 180;
 		this.rectangle = new Rectangle((float)x, (float)y, width, height);
 		this.damage = 5;
 	}

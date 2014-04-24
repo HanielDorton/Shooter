@@ -19,10 +19,28 @@ public class Coord {
 	public static final Coord leave_by_topmiddleleft = new Coord(340, 1000);
 	public static final Coord middleright = new Coord(400, 225);
 	public static final Coord middleleft = new Coord(340, 225);
+	public static final Coord leavingscreentopright = new Coord(1500, 360);
+	public static final Coord leavingscreentopleft = new Coord(-1500, 420);
 	
 	public static final List <Coord> circleTop = Arrays.asList(middletop_right, middletop_farright, abovemiddle_right, abovemiddle_farleft, middletop_farleft, middletop_farleft2);
 	public static final List <Coord> topRightMiddleLeaveTop = Arrays.asList(top_right, middleright,leave_by_topmiddleright);
 	public static final List <Coord> topLeftMiddleLeaveTop = Arrays.asList(top_left, middleleft, leave_by_topmiddleleft);
+	public static final List <Coord> straightrightaroundtop = Arrays.asList(leavingscreentopright);
+	public static final List <Coord> straightleftaroundtop = Arrays.asList(leavingscreentopleft);
+	
+	public static final Coord rightcircleleft = new Coord(400, 375);
+	public static final Coord rightcircletop = new Coord(550, 415);
+	public static final Coord rightcircleright = new Coord(650, 375);
+	public static final Coord rightcirclebot = new Coord(550, 340);
+	
+	public static final List <Coord> circlenearrighttopslowlyforawhilethenleave = Arrays.asList(rightcircleleft, rightcircletop, rightcircleright, rightcirclebot, rightcircleleft, rightcircletop, leavingscreentopright);
+	
+	public static final Coord leftcircleright = new Coord(250, 375);
+	public static final Coord leftcircletop = new Coord(100, 415);
+	public static final Coord leftcircleleft = new Coord(0, 375);
+	public static final Coord leftcirclebot = new Coord(100, 340);
+	
+	public static final List <Coord> circlenearlefttopslowlyforawhilethenleave = Arrays.asList(leftcircleright, leftcircletop, leftcircleleft, leftcirclebot, leftcircleright, leftcircletop, leavingscreentopleft);
 	
 	public Coord(int x, int y) {
 		this.x = x;

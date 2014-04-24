@@ -22,13 +22,13 @@ public abstract class Entity{
 	protected Rectangle rectangle;
 	protected float health;
 	protected Weapon weapon;
-	protected double lastShot;
+	protected double lastShot, lastShot2, lastShot3;
 	
 	//all entity textures so they are only loaded once:
 	
 	protected static final Texture enemy1Texture = new Texture(Gdx.files.internal("entities/enemy_1.png"));
 	protected static final Sound matches2 = Gdx.audio.newSound(Gdx.files.internal("sounds/paper-rip-4.wav"));
-	
+	protected static final Texture blueSaucerTexture = new Texture(Gdx.files.internal("entities/blue_saucer_enemy2.png"));
 	protected enum Direction {
 		UP, DOWN, LEFT, RIGHT
 	}

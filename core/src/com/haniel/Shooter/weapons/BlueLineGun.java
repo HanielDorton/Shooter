@@ -1,18 +1,17 @@
 package com.haniel.Shooter.weapons;
 
 import com.haniel.Shooter.level.Level;
-import com.haniel.Shooter.projectiles.BlueSphere;
+import com.haniel.Shooter.projectiles.BlueLine;
 
-public class BlueSphereGun extends Weapon{
+public class BlueLineGun extends Weapon{
 
-	public BlueSphereGun(Level level, boolean fromPlayer) {
+	public BlueLineGun(Level level, boolean fromPlayer) {
 		super(level, fromPlayer);
 		//this.sound = Gdx.audio.newSound(Gdx.files.internal("sounds/gunshot01.wav"))
 	}
 	
 	public void shoot(double x, double y, double angle) {
-		level.add(new BlueSphere(x, y, angle, fromPlayer));
-	}
-
+		level.add(new BlueLine(x, y, angle, fromPlayer));
 		
+	}
 }

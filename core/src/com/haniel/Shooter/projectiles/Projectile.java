@@ -21,7 +21,7 @@ public abstract class Projectile {
 	//these are all the final images for projectiles so they are only loaded once:
 	protected final static Texture basicBulletTexture = new Texture(Gdx.files.internal("projectiles/basicgun.png"));
 	protected final static Texture blueSphereGunTexture = new Texture(Gdx.files.internal("projectiles/bluesphere.png"));
-
+	protected final static Texture blueline = new Texture(Gdx.files.internal("projectiles/blueline.png"));
 	
 	public Projectile (double x, double y, double angle, boolean fromPlayer) {
 		xOrigin = x;
@@ -80,7 +80,7 @@ public abstract class Projectile {
 	}
 	
 	public void generateParticles(double x, double y) {
-		for (int i = 0; i <3; i ++) {
+		for (int i = 0; i <2; i ++) {
 			level.add(new WhiteParticle(x + i, y, 3, 0, 5));
 		}
 	}

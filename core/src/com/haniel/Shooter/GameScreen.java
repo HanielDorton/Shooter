@@ -88,9 +88,9 @@ public class GameScreen implements Screen {
         level.update();
         
         gameTime += Gdx.graphics.getDeltaTime();
-        if (gameTime > 1) {
+        if (gameTime > .1) {
         	level.runLevel(this);
-        	gameTime--;
+        	gameTime -= .1;
         }
         
         //every once in a while check things are getting removed correctly:
