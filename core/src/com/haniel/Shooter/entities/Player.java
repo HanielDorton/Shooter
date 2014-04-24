@@ -127,7 +127,11 @@ public class Player extends Entity{
 		return health;
 	}
 	
-	public void changeLevel(Level level) {
+	public void setHealth() {
+		health = 1;
+	}
+	
+	public void setLevel(Level level) {
 		this.level = level;
 		//need to change level for weapon here too!!
 	}

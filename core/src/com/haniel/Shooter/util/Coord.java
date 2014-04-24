@@ -31,15 +31,13 @@ public class Coord {
 	public static final Coord rightcircleleft = new Coord(400, 375);
 	public static final Coord rightcircletop = new Coord(550, 415);
 	public static final Coord rightcircleright = new Coord(650, 375);
-	public static final Coord rightcirclebot = new Coord(550, 340);
-	
+	public static final Coord rightcirclebot = new Coord(550, 340);	
 	public static final List <Coord> circlenearrighttopslowlyforawhilethenleave = Arrays.asList(rightcircleleft, rightcircletop, rightcircleright, rightcirclebot, rightcircleleft, rightcircletop, leavingscreentopright);
 	
 	public static final Coord leftcircleright = new Coord(250, 375);
 	public static final Coord leftcircletop = new Coord(100, 415);
 	public static final Coord leftcircleleft = new Coord(0, 375);
-	public static final Coord leftcirclebot = new Coord(100, 340);
-	
+	public static final Coord leftcirclebot = new Coord(100, 340);	
 	public static final List <Coord> circlenearlefttopslowlyforawhilethenleave = Arrays.asList(leftcircleright, leftcircletop, leftcircleleft, leftcirclebot, leftcircleright, leftcircletop, leavingscreentopleft);
 	
 	public Coord(int x, int y) {

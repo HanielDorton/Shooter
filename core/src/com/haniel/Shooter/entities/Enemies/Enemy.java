@@ -22,14 +22,14 @@ public abstract class Enemy extends Entity{
 		this.destX = x;
 		this.destY = y;
 		this.position = 0;
-		this.lastShot = 0;
 		this.pattern = pattern;
 		this.level = level;
 		this.lastShot = level.getTime() - random.nextInt(3);
 	}
+	
 	public void update() {
 		super.update();
-		if (Math.abs(x - destX) <= 5 && Math.abs(y - destY) <= 5) {
+		if (Math.abs(x - destX) <= 15 && Math.abs(y - destY) <= 15) {
 			destX = pattern.get(position).getX();
 			destY = pattern.get(position).getY();
 			angle = getAngleTo(x, y, destX, destY);

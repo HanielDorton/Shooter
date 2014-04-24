@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.haniel.Shooter.GameScreen;
 import com.haniel.Shooter.entities.Entity;
 import com.haniel.Shooter.entities.Player;
@@ -18,6 +19,7 @@ import com.haniel.Shooter.projectiles.Projectile;
 public class Level {
 	protected Random random = new Random();	
 	private double time;
+	protected Music backgroundMusic;
 	protected int levelTime;
 	protected GameScreen gameScreen;
     public List<MyGraphics> graphics = new ArrayList<MyGraphics>();
@@ -186,6 +188,9 @@ public class Level {
 	public int getLevelTime() {
 		return levelTime;
 	}
+	public void setLevelTime(int newLevelTime) {
+		levelTime = newLevelTime;
+	}
 	
 	public int getHeight() {
 		return gameScreen.getHeight();
@@ -196,6 +201,10 @@ public class Level {
 	
 	public double getTime() {
 		return time;
+	}
+	
+	public void stopMusic() {
+		backgroundMusic.stop();
 	}
 	
 	public double getAngletoPlayersMiddle(double x,double y) {

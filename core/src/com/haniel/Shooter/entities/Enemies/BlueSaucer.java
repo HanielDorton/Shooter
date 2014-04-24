@@ -10,32 +10,31 @@ import com.haniel.Shooter.weapons.BlueSphereGun;
 
 public class BlueSaucer extends Enemy{
 	
-	protected final static double firingRate = .5;
+	protected final static double firingRate = 1;
+	private double firingAngle = 3;
 
 	public BlueSaucer(double x, double y, List<Coord> pattern, Level level) {
 		super(x, y, pattern, level);
-		this.speed = 30;
+		this.speed = 40;
 		this.width = 120;
 		this.height = 62;
 		this.texture = blueSaucerTexture;		
-		this.health = 50;
+		this.health = 100;
 		this.xOffset = 15;
 		this.yOffset = 1;
 		this.rectangle = new Rectangle((float)x + xOffset, (float)y + yOffset, width, height / 2);
 		this.weapon = new BlueSphereGun(level, false);
+		this.lastShot = level.getTime() + 5;
 	}
 	
 	public void shoot() {
         if ((level.getTime() - lastShot) > firingRate) {
 	    	lastShot = level.getTime();
-	       	double angle = level.getAngletoPlayersMiddle(x + width / 2, y + height / 2 - 5);
-	       	weapon.shoot(x + width / 2, y + height / 2 - 5, angle);
+	    	for (int i = 1; i < 9; i ++) {
+	    		weapon.shoot(x + (16 * i), y + yOffset + 5, firingAngle - (i * -.375));
+	    	}
         }
-    	
-	}
-	
-	
-	
+    }
 	
 	public void update(){
 		super.update();
