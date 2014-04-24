@@ -120,7 +120,13 @@ public class Player extends Entity{
 	}
 
 	public void particles() {
-		//for when you get hit / die?
+		for (int i = 0; i <500; i++) {
+			level.add(new OrangeParticle((int) x + width / 2,(int) y + height / 2, 30));
+			level.add(new OrangeParticle((int) x,(int) y + height / 2, 30));
+			level.add(new OrangeParticle((int) x + width / 2,(int) y, 30));
+			level.add(new OrangeParticle((int) x + width,(int) y + height, 30));
+		matches2.play();
+		} 		
 	}
 	
 	public float getHealth() {
@@ -131,11 +137,22 @@ public class Player extends Entity{
 		health = 1;
 	}
 	
+	public void setX(double x) {
+		this.x = x;
+	}
+	
+	public void setY(double y){
+		this.y = y;
+	}
+	
 	public void setLevel(Level level) {
 		this.level = level;
 		//need to change level for weapon here too!!
 	}
 	public void init(GameScreen gameScreen) {
 		this.gameScreen = gameScreen;
+	}
+	public void damage(double damage) {
+		health -= damage;
 	}
 }

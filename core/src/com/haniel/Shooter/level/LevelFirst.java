@@ -7,6 +7,7 @@ import com.haniel.Shooter.entities.Enemies.BlueSaucer;
 import com.haniel.Shooter.entities.Enemies.ImprovedBlueEnemy;
 import com.haniel.Shooter.graphics.BackgroundImage;
 import com.haniel.Shooter.graphics.BackgroundPlanet;
+import com.haniel.Shooter.graphics.CheckpointReached;
 import com.haniel.Shooter.util.Coord;
 
 public class LevelFirst extends Level{
@@ -202,8 +203,11 @@ public class LevelFirst extends Level{
 				if (gameScreen.getCheckPoint() + 10 == levelTime) {
 					add(new BackgroundImage("levels/space_background2.png", 0, 0, .02f));
 					add(new BackgroundImage("levels/space_background2.png", 0, 960, .02f));
+					backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/black_vortex_firstContinue.mp3"));
 					backgroundMusic.play();
-				}					
+				} else {
+					add(new CheckpointReached(200, 350, 1));
+				}
 				gameScreen.setCheckPoint(levelTime - 10);
 				add(new BlueSaucer(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
 				add(new BlueSaucer(-150, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));

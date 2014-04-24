@@ -15,7 +15,7 @@ public class Asteroid extends Entity{
 	
 	protected float moveX, moveY;
 	
-	public Asteroid(float x, float y, float moveX, float moveY) {
+	public Asteroid(double x, double y, float moveX, float moveY) {
 		this.x = x;
 		this.y = y;
 		this.moveX = moveX * (random.nextFloat() + .4f);
@@ -48,7 +48,7 @@ public class Asteroid extends Entity{
 	
 	public void update() {
 		move(moveX, moveY);
-        rectangle.setPosition(x + xOffset, y + yOffset);
+        rectangle.setPosition((float)x + xOffset,(float) y + yOffset);
         if (y < 0 - this.height || y > level.getHeight() + this.height ||
         	x < 0 - this.width || x > level.getWidth() + this.width) remove();
         else if (health < 0) remove();

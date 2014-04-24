@@ -81,7 +81,7 @@ public class Level {
 		        			projectiles.get(p).remove();
     					}
 	        		}
-    				if (e.isRemoved()) {
+    				if (!(e instanceof Player) &&  e.isRemoved()) {
     					entities.remove(e);
     				}
     			}

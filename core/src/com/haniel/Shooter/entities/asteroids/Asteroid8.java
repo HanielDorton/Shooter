@@ -6,7 +6,7 @@ public class Asteroid8 extends Asteroid{
 	
 
 	
-	public Asteroid8(float x, float y, float moveX, float moveY) {
+	public Asteroid8(double x, double y, float moveX, float moveY) {
 		super(x, y, moveX, moveY);
 		this.xOffset = 1;
 		this.yOffset = 1;
@@ -14,7 +14,7 @@ public class Asteroid8 extends Asteroid{
 		this.height = 7;
 		this.health = width / 8;
 		this.texture = asteroid8_1;
-		this.rectangle = new Rectangle(x + 1, y + 1, width, height);
+		this.rectangle = new Rectangle((float)x + 1, (float)y + 1, width, height);
 		
 	}
 	

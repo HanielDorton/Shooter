@@ -29,9 +29,9 @@ public class GameScreen implements Screen {
     private static int screenHeight = 480;
     public Player player = new Player(level);
     public MyInputProcessor inputProcessor = new MyInputProcessor(player);
-    private int checkPoint = 0;
+    private int checkPoint = 4200;
+    private int deathTimer;
     private boolean paused = false;
-    private boolean dead = false;
 
     public GameScreen(final MyGdxGame gam) {
     	if (checkPoint > 0) level.setLevelTime(checkPoint);
@@ -70,24 +70,24 @@ public class GameScreen implements Screen {
         
         if (paused) {
         	
-        }
-        else if (dead) {
+        }        
+        else if (deathTimer == level.getLevelTime()) {
        	
         	
             game.font.draw(game.batch, "Death", screenWidth / 2 + 10, screenHeight / 2);
             game.font.draw(game.batch, "'Space' to Continue", screenWidth / 2, screenHeight / 2 - 20);
             if (Gdx.input.isKeyPressed(Keys.SPACE)) {
-            	dead = false;
             	//System.out.println(checkPoint);
+            	deathTimer = 0;
+            	player.setX(400);
+            	player.setY(20);
             	level.setLevelTime(checkPoint);
-            	player.setHealth();
    	        	level.graphics.clear();
    	        	level.particles.clear();
    	        	level.projectiles.clear();
    	        	level.entities.clear();
    	        	level.asteroids.clear();
    	        	level.add(player);
-	            Gdx.input.setInputProcessor(inputProcessor);
             }
         } else {
 
@@ -119,8 +119,12 @@ public class GameScreen implements Screen {
 	        
 	        
 	        if (player.getHealth() < 1) {
-	        	dead = true;
+	        	deathTimer = level.getLevelTime() + 200;
+            	player.setHealth();
+	        	player.particles();
+	        	level.entities.remove(player);
 	        	level.stopMusic();
+	        	Gdx.input.setInputProcessor(inputProcessor);
 	        }
 	        
 	        //every once in a while check things are getting removed correctly:
@@ -168,7 +172,6 @@ public class GameScreen implements Screen {
     	return checkPoint;
     }
     public void setCheckPoint(int newCheckPoint) {
-    	System.out.println(newCheckPoint);
     	this.checkPoint = newCheckPoint;
     }
 
