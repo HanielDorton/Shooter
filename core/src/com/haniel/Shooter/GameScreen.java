@@ -29,7 +29,7 @@ public class GameScreen implements Screen {
     private static int screenHeight = 480;
     public Player player = new Player(level);
     public MyInputProcessor inputProcessor = new MyInputProcessor(player);
-    private int checkPoint = 0; //4290 for ufo's //7200 for after ufos
+    private int checkPoint = 0; //4290 for ufo's // 9190 for secondcheckpoint//13490 for boss
     private int deathTimer;
     private boolean paused = false;
 

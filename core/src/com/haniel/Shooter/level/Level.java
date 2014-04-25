@@ -36,6 +36,12 @@ public class Level {
 	public void runLevel(GameScreen g) {
 	}
 	
+	protected void addStarsCheckpoint(int number){
+        for (int i = 0; i < number; i++) {
+        	add(new Star(random.nextInt(480)));
+        	} 
+	}
+	
 	protected void addStars(int number){
         for (int i = 0; i < number; i++) {
         	add(new Star(480));

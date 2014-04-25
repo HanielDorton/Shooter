@@ -2,36 +2,31 @@ package com.haniel.Shooter.level;
 
 import com.badlogic.gdx.Gdx;
 import com.haniel.Shooter.GameScreen;
-import com.haniel.Shooter.entities.Enemies.BasicBlueEnemy;
-import com.haniel.Shooter.entities.Enemies.BlueSaucer;
-import com.haniel.Shooter.entities.Enemies.ImprovedBlueEnemy;
-import com.haniel.Shooter.entities.Enemies.QuickBlue;
+import com.haniel.Shooter.entities.enemies.BasicBlueEnemy;
+import com.haniel.Shooter.entities.enemies.BlueSaucer;
+import com.haniel.Shooter.entities.enemies.ImprovedBlueEnemy;
+import com.haniel.Shooter.entities.enemies.ImprovedBlueSaucer;
+import com.haniel.Shooter.entities.enemies.QuickBlue;
 import com.haniel.Shooter.graphics.BackgroundImage;
 import com.haniel.Shooter.graphics.BackgroundPlanet;
 import com.haniel.Shooter.graphics.CheckpointReached;
 import com.haniel.Shooter.util.Coord;
 
 public class LevelFirst extends Level{
-	
-	
+	//checkpoints:
+	//4290 for ufo's 
+	// 9190 for quickenemywaves 
+	//13490 for boss
 	
 		
 	public LevelFirst(GameScreen gameScreen) {
 		super(gameScreen);
 		backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/black_vortex.mp3"));
-        backgroundMusic.setLooping(true);
-        
-        //change levelTime to warp:
-        //first enemies
-        //levelTime = 1600;
-        //saucer
-        //continue = 
-        
-        // 50 is when music starts
-        
 	}
 	
 	public void runLevel(GameScreen g) {
+		
+		
 		levelTime += 10;
 		switch (levelTime) {
 		
@@ -43,7 +38,7 @@ public class LevelFirst extends Level{
 				break;
 			}
 		
-			case 200: { //test code here
+			case 200: { 
 				break;
 			}		
 			case 800: {
@@ -206,7 +201,7 @@ public class LevelFirst extends Level{
 					add(new BackgroundImage("levels/space_background2.png", 0, 960, .02f));
 					backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/black_vortex_firstContinue.mp3"));
 					backgroundMusic.play();
-					addStars(20);
+					addStarsCheckpoint(100);
 				} else {
 					add(new CheckpointReached(300, 350, 2));
 					gameScreen.setCheckPoint(levelTime - 10);
@@ -240,9 +235,9 @@ public class LevelFirst extends Level{
 				if (gameScreen.getCheckPoint() + 10 == levelTime) {
 					add(new BackgroundImage("levels/space_background2.png", 0, 0, .02f));
 					add(new BackgroundImage("levels/space_background2.png", 0, 960, .02f));
-					backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/black_vortex_firstContinue.mp3"));
+					backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/black_vortex_secondContinue.mp3"));
 					backgroundMusic.play();
-					addStars(20);
+					addStarsCheckpoint(100);
 				} else {
 					add(new CheckpointReached(300, 350, 2));
 					gameScreen.setCheckPoint(levelTime - 10);
@@ -313,21 +308,28 @@ public class LevelFirst extends Level{
 				add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
 				break;
 			}
-			case 11500: {
-				//few more easy targets before next check point
-				//boss after next checkpoint?
+			case 10700: {
+				add(new ImprovedBlueSaucer(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
+				add(new ImprovedBlueSaucer(-150, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
+				break;
 			}
-			case 15000: {
-				//checkpoint
+			
+			case 13800: {
 				if (gameScreen.getCheckPoint() + 10 == levelTime) {
 					add(new BackgroundImage("levels/space_background2.png", 0, 0, .02f));
 					add(new BackgroundImage("levels/space_background2.png", 0, 960, .02f));
-					backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/black_vortex_firstContinue.mp3"));
-					backgroundMusic.play();
 				} else {
 					add(new CheckpointReached(300, 350, 2));
+					addStarsCheckpoint(100);
 				}
 				gameScreen.setCheckPoint(levelTime - 10);
+				break;
+				
+			}
+			case 15500: {
+				//backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/black_vortex_boss_intro.mp3"));
+				//backgroundMusic.play();
+				break;
 			}
 			
 

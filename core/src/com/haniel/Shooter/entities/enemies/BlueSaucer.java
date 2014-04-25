@@ -1,4 +1,4 @@
-package com.haniel.Shooter.entities.Enemies;
+package com.haniel.Shooter.entities.enemies;
 
 import java.util.List;
 
@@ -10,8 +10,8 @@ import com.haniel.Shooter.weapons.BlueSphereGun;
 
 public class BlueSaucer extends Enemy{
 	
-	protected final static double firingRate = 1;
-	private double firingAngle = 3;
+	protected double firingRate = 1;
+	protected double firingAngle = 3;
 
 	public BlueSaucer(double x, double y, List<Coord> pattern, Level level) {
 		super(x, y, pattern, level);
@@ -53,18 +53,7 @@ public class BlueSaucer extends Enemy{
 				}
 					
 			}
-			
-			/*
-			for (int i = 0; i <500; i++)
-				level.add(new BlueParticle((int) x + width / 2,(int) y + height / 2, 50));
-				level.add(new BlueParticle((int) x,(int) y + height / 2, 50));
-				level.add(new BlueParticle((int) x + width / 2,(int) y, 50));
-				level.add(new BlueParticle((int) x + width,(int) y + height, 50));
-				level.add(new BlueParticle((int) x,(int) y + yOffset, 50));
-				level.add(new BlueParticle((int) x + xOffset,(int) y, 50));
-				level.add(new BlueParticle((int) x,(int) y + yOffset + width, 50));
-				level.add(new BlueParticle((int) x + xOffset,(int) y + yOffset + width, 50));
-*/
+
 			matches2.play();
 		} else {
 			for (int i = 0; i < 40; i++)
