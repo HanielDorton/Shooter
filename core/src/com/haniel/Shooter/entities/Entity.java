@@ -29,6 +29,8 @@ public abstract class Entity{
 	protected static final Texture enemy1Texture = new Texture(Gdx.files.internal("entities/enemy_1.png"));
 	protected static final Sound matches2 = Gdx.audio.newSound(Gdx.files.internal("sounds/paper-rip-4.wav"));
 	protected static final Texture blueSaucerTexture = new Texture(Gdx.files.internal("entities/blue_saucer_enemy2.png"));
+	protected static final Texture quickBlueTexture = new Texture(Gdx.files.internal("entities/quickbluefighter.png"));
+	
 	protected enum Direction {
 		UP, DOWN, LEFT, RIGHT
 	}

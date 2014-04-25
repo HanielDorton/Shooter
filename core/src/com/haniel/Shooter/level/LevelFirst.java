@@ -5,6 +5,7 @@ import com.haniel.Shooter.GameScreen;
 import com.haniel.Shooter.entities.Enemies.BasicBlueEnemy;
 import com.haniel.Shooter.entities.Enemies.BlueSaucer;
 import com.haniel.Shooter.entities.Enemies.ImprovedBlueEnemy;
+import com.haniel.Shooter.entities.Enemies.QuickBlue;
 import com.haniel.Shooter.graphics.BackgroundImage;
 import com.haniel.Shooter.graphics.BackgroundPlanet;
 import com.haniel.Shooter.graphics.CheckpointReached;
@@ -205,22 +206,132 @@ public class LevelFirst extends Level{
 					add(new BackgroundImage("levels/space_background2.png", 0, 960, .02f));
 					backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/black_vortex_firstContinue.mp3"));
 					backgroundMusic.play();
+					addStars(20);
 				} else {
-					add(new CheckpointReached(200, 350, 1));
+					add(new CheckpointReached(300, 350, 2));
+					gameScreen.setCheckPoint(levelTime - 10);
 				}
-				gameScreen.setCheckPoint(levelTime - 10);
 				add(new BlueSaucer(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
 				add(new BlueSaucer(-150, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
 				break;
 			}
-			
-			case 8200: {
-				gameScreen.setCheckPoint(levelTime);
+			case 7400: {
+				add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
+				addStars(20);
 				break;
-				
+			}
+			case 7800: {
+				add(new QuickBlue(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
+				addStars(20);
+				break;
+			}
+			case 8200: {
+				add(new QuickBlue(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
+				add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
+				break;
+			}
+			case 8600: {
+				add(new QuickBlue(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
+				add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
+				break;
+			}
+			case 9200: {
+				//checkpoint
+				if (gameScreen.getCheckPoint() + 10 == levelTime) {
+					add(new BackgroundImage("levels/space_background2.png", 0, 0, .02f));
+					add(new BackgroundImage("levels/space_background2.png", 0, 960, .02f));
+					backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/black_vortex_firstContinue.mp3"));
+					backgroundMusic.play();
+					addStars(20);
+				} else {
+					add(new CheckpointReached(300, 350, 2));
+					gameScreen.setCheckPoint(levelTime - 10);
+				}
+				break;
+			}			
+			case 9600: {
+				add(new QuickBlue(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
+				add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
+				addStars(20);
+				break;
+			}
+			case 9640: {
+				add(new QuickBlue(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
+				add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
+				addStars(20);
+				break;
+			}
+			case 9680: {
+				add(new QuickBlue(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
+				add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
+				break;
+			}
+			case 9720: {
+				add(new QuickBlue(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
+				add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
+				break;
+			}
+			case 9760: {
+				add(new QuickBlue(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
+				add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
+				break;
+			}
+			case 9800: {
+				add(new QuickBlue(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
+				add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
+				break;
+			}
+			case 10500: {
+				add(new QuickBlue(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
+				add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
+				addStars(20);
+				break;
+			}
+			case 10540: {
+				add(new QuickBlue(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
+				add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
+				addStars(20);
+				break;
+			}
+			case 10580: {
+				add(new QuickBlue(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
+				add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
+				break;
+			}
+			case 10620: {
+				add(new QuickBlue(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
+				add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
+				break;
+			}
+			case 10640: {
+				add(new QuickBlue(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
+				add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
+				break;
+			}
+			case 10680: {
+				add(new QuickBlue(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
+				add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
+				break;
+			}
+			case 11500: {
+				//few more easy targets before next check point
+				//boss after next checkpoint?
+			}
+			case 15000: {
+				//checkpoint
+				if (gameScreen.getCheckPoint() + 10 == levelTime) {
+					add(new BackgroundImage("levels/space_background2.png", 0, 0, .02f));
+					add(new BackgroundImage("levels/space_background2.png", 0, 960, .02f));
+					backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/black_vortex_firstContinue.mp3"));
+					backgroundMusic.play();
+				} else {
+					add(new CheckpointReached(300, 350, 2));
+				}
+				gameScreen.setCheckPoint(levelTime - 10);
 			}
 			
-			
+
+
 		}
 	}
 

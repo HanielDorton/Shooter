@@ -22,7 +22,7 @@ public class BlueSaucer extends Enemy{
 		this.health = 100;
 		this.xOffset = 15;
 		this.yOffset = 1;
-		this.rectangle = new Rectangle((float)x + xOffset, (float)y + yOffset, width, height / 2);
+		this.rectangle = new Rectangle((float)x + xOffset, (float)y + yOffset, width, height);
 		this.weapon = new BlueSphereGun(level, false);
 		this.lastShot = level.getTime() + 5;
 	}

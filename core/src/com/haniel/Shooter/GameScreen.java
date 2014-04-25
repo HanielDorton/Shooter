@@ -29,7 +29,7 @@ public class GameScreen implements Screen {
     private static int screenHeight = 480;
     public Player player = new Player(level);
     public MyInputProcessor inputProcessor = new MyInputProcessor(player);
-    private int checkPoint = 4200;
+    private int checkPoint = 0; //4290 for ufo's //7200 for after ufos
     private int deathTimer;
     private boolean paused = false;
 
@@ -72,13 +72,13 @@ public class GameScreen implements Screen {
         	
         }        
         else if (deathTimer == level.getLevelTime()) {
-       	
-        	
+        	//inputProcessor = new MyInputProcessor(player);
+        	//Gdx.input.setInputProcessor(inputProcessor);
             game.font.draw(game.batch, "Death", screenWidth / 2 + 10, screenHeight / 2);
             game.font.draw(game.batch, "'Space' to Continue", screenWidth / 2, screenHeight / 2 - 20);
             if (Gdx.input.isKeyPressed(Keys.SPACE)) {
             	//System.out.println(checkPoint);
-            	deathTimer = 0;
+            	deathTimer = -10;
             	player.setX(400);
             	player.setY(20);
             	level.setLevelTime(checkPoint);
@@ -124,7 +124,6 @@ public class GameScreen implements Screen {
 	        	player.particles();
 	        	level.entities.remove(player);
 	        	level.stopMusic();
-	        	Gdx.input.setInputProcessor(inputProcessor);
 	        }
 	        
 	        //every once in a while check things are getting removed correctly:
