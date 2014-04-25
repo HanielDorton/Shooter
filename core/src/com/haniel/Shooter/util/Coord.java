@@ -40,6 +40,17 @@ public class Coord {
 	public static final Coord leftcirclebot = new Coord(100, 340);	
 	public static final List <Coord> circlenearlefttopslowlyforawhilethenleave = Arrays.asList(leftcircleright, leftcircletop, leftcircleleft, leftcirclebot, leftcircleright, leftcircletop, leavingscreentopleft);
 	
+	
+	public static final Coord bossmiddletop = new Coord(125, 240);
+	public static final Coord bossrighttop = new Coord(200, 280);
+	public static final Coord bosslefttop = new Coord(25, 280);
+	
+	
+	
+	public static final List <Coord> bosscircles = Arrays.asList(bossmiddletop, bossrighttop,bosslefttop, bossmiddletop);
+	
+	
+	
 	public Coord(int x, int y) {
 		this.x = x;
 		this.y = y;

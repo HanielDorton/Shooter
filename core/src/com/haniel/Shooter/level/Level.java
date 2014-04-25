@@ -213,6 +213,10 @@ public class Level {
 		backgroundMusic.stop();
 	}
 	
+	public void setLevelComplete() {
+		gameScreen.setLevelComplete();
+	}
+	
 	public double getAngletoPlayersMiddle(double x,double y) {
 		double playerX = gameScreen.player.getMidX();// - 20;
 		double playerY = gameScreen.player.getMidY();

@@ -7,7 +7,7 @@ import com.haniel.Shooter.util.Coord;
 
 public class ImprovedBlueSaucer extends BlueSaucer{
 	
-	protected final static double secondFiringRate = 2;
+	protected final static double secondFiringRate = 1;
 	private double lastShotSecondGun;
 	
 	public ImprovedBlueSaucer(double x, double y, List<Coord> pattern, Level level) {

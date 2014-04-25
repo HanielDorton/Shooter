@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.haniel.Shooter.GameScreen;
 import com.haniel.Shooter.entities.enemies.BasicBlueEnemy;
 import com.haniel.Shooter.entities.enemies.BlueSaucer;
+import com.haniel.Shooter.entities.enemies.FirstBoss;
 import com.haniel.Shooter.entities.enemies.ImprovedBlueEnemy;
 import com.haniel.Shooter.entities.enemies.ImprovedBlueSaucer;
 import com.haniel.Shooter.entities.enemies.QuickBlue;
@@ -276,59 +277,62 @@ public class LevelFirst extends Level{
 				add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
 				break;
 			}
-			case 10500: {
+			case 10300: {
 				add(new QuickBlue(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
 				add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
 				addStars(20);
 				break;
 			}
-			case 10540: {
+			case 10340: {
 				add(new QuickBlue(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
 				add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
 				addStars(20);
 				break;
 			}
-			case 10580: {
+			case 10380: {
 				add(new QuickBlue(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
 				add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
 				break;
 			}
-			case 10620: {
+			case 10420: {
 				add(new QuickBlue(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
 				add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
 				break;
 			}
-			case 10640: {
+			case 10440: {
 				add(new QuickBlue(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
 				add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
 				break;
 			}
-			case 10680: {
+			case 10480: {
 				add(new QuickBlue(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
 				add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
 				break;
 			}
-			case 10700: {
+			case 10450: {
 				add(new ImprovedBlueSaucer(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
 				add(new ImprovedBlueSaucer(-150, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
 				break;
 			}
 			
-			case 13800: {
+			case 14000: {
 				if (gameScreen.getCheckPoint() + 10 == levelTime) {
 					add(new BackgroundImage("levels/space_background2.png", 0, 0, .02f));
 					add(new BackgroundImage("levels/space_background2.png", 0, 960, .02f));
+					addStarsCheckpoint(100);
 				} else {
 					add(new CheckpointReached(300, 350, 2));
-					addStarsCheckpoint(100);
+					
 				}
 				gameScreen.setCheckPoint(levelTime - 10);
+				backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/All_This.mp3"));
+				backgroundMusic.play();
+				add(new FirstBoss(125,-300, Coord.bosscircles, this));
 				break;
 				
 			}
 			case 15500: {
-				//backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/black_vortex_boss_intro.mp3"));
-				//backgroundMusic.play();
+
 				break;
 			}
 			

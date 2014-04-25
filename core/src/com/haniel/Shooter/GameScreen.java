@@ -29,9 +29,11 @@ public class GameScreen implements Screen {
     private static int screenHeight = 480;
     public Player player = new Player(level);
     public MyInputProcessor inputProcessor = new MyInputProcessor(player);
-    private int checkPoint = 0; //4290 for ufo's // 9190 for secondcheckpoint//13490 for boss
+    private int checkPoint = 0; //4290 for ufo's // 9190 for secondcheckpoint//13990 for boss
     private int deathTimer;
     private boolean paused = false;
+    private double levelComplete = 10000000;
+    private int numContinues = 0;
 
     public GameScreen(final MyGdxGame gam) {
     	if (checkPoint > 0) level.setLevelTime(checkPoint);
@@ -78,6 +80,8 @@ public class GameScreen implements Screen {
             game.font.draw(game.batch, "'Space' to Continue", screenWidth / 2, screenHeight / 2 - 20);
             if (Gdx.input.isKeyPressed(Keys.SPACE)) {
             	//System.out.println(checkPoint);
+            	numContinues++;
+            	levelComplete = 10000000;
             	deathTimer = -10;
             	player.setX(400);
             	player.setY(20);
@@ -88,6 +92,7 @@ public class GameScreen implements Screen {
    	        	level.entities.clear();
    	        	level.asteroids.clear();
    	        	level.add(player);
+   	        	level.stopMusic();
             }
         } else {
 
@@ -107,7 +112,18 @@ public class GameScreen implements Screen {
 	        	game.batch.draw(asteroid.getTexture(), (float) asteroid.getX(), (float) asteroid.getY());
 	        }
 	        game.font.draw(game.batch, "Time: " + level.getLevelTime(), 0, screenHeight);
-	        game.font.draw(game.batch, "Damage Received: " + (1-(player.getHealth())), 0, screenHeight - 20);
+	        //game.font.draw(game.batch, "Damage Received: " + (1-(player.getHealth())), 0, screenHeight - 20);
+	        
+	        if (levelComplete < level.getLevelTime()){
+	        	
+	        	game.font.draw(game.batch, "Level Complete", 350, 300);
+	        	game.font.draw(game.batch, "Continues: " + numContinues, 350, 250);
+	        	game.font.draw(game.batch, "Your score: " + getScore(numContinues), 350, 200);
+	        	
+	        }
+	        
+	        
+	        
 	        
 	        level.update();
 	        
@@ -123,7 +139,7 @@ public class GameScreen implements Screen {
             	player.setHealth();
 	        	player.particles();
 	        	level.entities.remove(player);
-	        	level.stopMusic();
+	        	
 	        }
 	        
 	        //every once in a while check things are getting removed correctly:
@@ -132,7 +148,21 @@ public class GameScreen implements Screen {
         game.batch.end();
     }
     
-    public int getWidth() {
+    private String getScore(int numContinues) {
+    	String score = "";
+    	if (numContinues == 0) score = "A++";
+    	else if (numContinues < 3) score = "A";
+    	else if (numContinues < 6) score = "A";
+    	else if (numContinues < 9) score = "A";
+    	else if (numContinues < 312) score = "A";
+    	else score = "F";
+    	return score;
+	}
+
+
+
+
+	public int getWidth() {
     	return screenWidth;
     }
     
@@ -172,6 +202,10 @@ public class GameScreen implements Screen {
     }
     public void setCheckPoint(int newCheckPoint) {
     	this.checkPoint = newCheckPoint;
+    }
+    
+    public void setLevelComplete() {
+    	this.levelComplete = level.getLevelTime() + 500;
     }
 
 }
