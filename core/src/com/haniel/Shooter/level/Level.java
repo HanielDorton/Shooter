@@ -1,11 +1,16 @@
 package com.haniel.Shooter.level;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.graphics.g2d.ParticleEffect;
+import com.badlogic.gdx.graphics.g2d.ParticleEffectPool;
+import com.badlogic.gdx.graphics.g2d.ParticleEffectPool.PooledEffect;
+import com.badlogic.gdx.utils.Array;
 import com.haniel.Shooter.GameScreen;
 import com.haniel.Shooter.entities.Entity;
 import com.haniel.Shooter.entities.Player;
@@ -22,15 +27,24 @@ public class Level {
 	protected Music backgroundMusic;
 	protected int levelTime;
 	protected GameScreen gameScreen;
-    public List<MyGraphics> graphics = new ArrayList<MyGraphics>();
+    public List<MyGraphics> graphics = new LinkedList<MyGraphics>();
     public List<Entity> entities = new ArrayList<Entity>();
     public List<Asteroid> asteroids = new ArrayList<Asteroid>();
     public List<Projectile> projectiles = new ArrayList<Projectile>();
     public List<Particle> particles = new ArrayList<Particle>();
+    
+    public Array<PooledEffect> effects = new Array();
+    ParticleEffect smallExplosionEffect = new ParticleEffect();
+	public ParticleEffectPool smallExplosionEffectPool;
+    ParticleEffect playerEngineEffect = new ParticleEffect();
+	public ParticleEffectPool playerEngineEffectPool;
+	
 
 	
 	public Level(GameScreen gameScreen) {
 		this.gameScreen = gameScreen;
+		playerEngineEffect.load(Gdx.files.internal("particles/PlayerEngine.p"), Gdx.files.internal("particles/"));
+		playerEngineEffectPool = new ParticleEffectPool(playerEngineEffect, 1, 2);
 	}
 	
 	public void runLevel(GameScreen g) {
@@ -51,11 +65,11 @@ public class Level {
 	public void update() {
 		time += Gdx.graphics.getDeltaTime();
         
-		//update all graphics, if stars go past bottom of screen, spawn a new one;
+		//update all graphics
         for (int i = 0; i < graphics.size(); i++) {
         	graphics.get(i).update();
         	if (graphics.get(i).isRemoved()) {
-        		if (graphics.get(i) instanceof Star) graphics.add(new Star(480));
+        		//if (graphics.get(i) instanceof Star) graphics.add(new Star(480));
         		graphics.remove(graphics.get(i));
         	}
         }
@@ -92,6 +106,7 @@ public class Level {
     				}
     			}
         	}  
+    		
         	//check if either player or enemies hit asteroid
         	for (int a = 0; a < asteroids.size(); a++) {
         		if (e.getRectangle().overlaps(asteroids.get(a).getRectangle())) {

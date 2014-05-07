@@ -3,6 +3,7 @@ package com.haniel.Shooter.entities;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.ParticleEffectPool.PooledEffect;
 import com.badlogic.gdx.math.Rectangle;
 import com.haniel.Shooter.GameScreen;
 import com.haniel.Shooter.level.Level;
@@ -19,7 +20,9 @@ public class Player extends Entity{
     private int maxSpeed;
     private int keyboardSpeed;
     private GameScreen gameScreen;
-    
+	private PooledEffect engine1Effect;
+	private PooledEffect engine2Effect;
+
 
 	
 	public Player(Level level) {
@@ -38,6 +41,12 @@ public class Player extends Entity{
 		this.lastShot= 0;
 		this.health = 1;
 		this.weapon = new BasicGun(level, true);
+		this.engine1Effect = level.playerEngineEffectPool.obtain();
+		this.engine1Effect.setPosition((int)x + 11,(int) y + 1);
+		level.effects.add(engine1Effect);
+		this.engine2Effect = level.playerEngineEffectPool.obtain();
+		this.engine2Effect.setPosition((int)x + 19,(int) y + 1);
+		level.effects.add(engine2Effect);
 	}
 	public void update() {
 		/*	
@@ -99,11 +108,10 @@ public class Player extends Entity{
 	    if (y > gameScreen.getHeight() - (height + yOffset * 2)) y = gameScreen.getHeight() - (height + yOffset *2);
 	    rectangle.setPosition((float)x + xOffset, (float)y + yOffset);
 	    
-	    //these are the engine particles
-	    for (int i =0; i < 4; i++) {
-			level.add(new OrangeParticle(x + 9 + i, y, 2, -1, -30));
-			level.add(new OrangeParticle(x + 16 + i, y, 2, 1 , -30));
-	    }
+	    
+	    engine1Effect.setPosition((int)x + 11,(int) y + 2);
+	    engine2Effect.setPosition((int)x + 19,(int) y + 2);
+
 	}
 	
 	public void movePlayer(int moveX, int moveY) {
@@ -120,6 +128,10 @@ public class Player extends Entity{
 	}
 
 	public void particles() {
+		//on death:
+		engine1Effect.allowCompletion();
+		engine2Effect.allowCompletion();
+		
 		for (int i = 0; i <500; i++) {
 			level.add(new OrangeParticle((int) x + width / 2,(int) y + height / 2, 30));
 			level.add(new OrangeParticle((int) x,(int) y + height / 2, 30));

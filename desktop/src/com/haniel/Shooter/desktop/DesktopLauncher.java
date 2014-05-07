@@ -8,7 +8,6 @@ import com.haniel.Shooter.MyGdxGame;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-		// i added these three from drop tutorial:
 	    config.title = "Drop";
 	    config.width = 800;
 	    config.height = 480;

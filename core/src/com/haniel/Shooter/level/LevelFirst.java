@@ -1,6 +1,7 @@
 package com.haniel.Shooter.level;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.ParticleEffectPool;
 import com.haniel.Shooter.GameScreen;
 import com.haniel.Shooter.entities.enemies.BasicBlueEnemy;
 import com.haniel.Shooter.entities.enemies.BlueSaucer;
@@ -18,11 +19,19 @@ public class LevelFirst extends Level{
 	//4290 for ufo's 
 	// 9190 for quickenemywaves 
 	//13490 for boss
+	//load all particle effects for this level
+	
+
+
 	
 		
 	public LevelFirst(GameScreen gameScreen) {
 		super(gameScreen);
 		backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/black_vortex.mp3"));
+		
+		//load all particle effects for pooling:
+		smallExplosionEffect.load(Gdx.files.internal("particles/BlueExplosion.p"), Gdx.files.internal("particles/"));
+		smallExplosionEffectPool = new ParticleEffectPool(smallExplosionEffect, 1, 2);
 	}
 	
 	public void runLevel(GameScreen g) {
@@ -32,9 +41,9 @@ public class LevelFirst extends Level{
 		switch (levelTime) {
 		
 			case 10: {
-				add(new BackgroundImage("levels/space_background2.png", 0, 0, .02f));
-		        add(new BackgroundImage("levels/space_background2.png", 0, 960, .02f));
-				add(new BackgroundPlanet("textures/black_planet.png", 0, -200, .4f, 400));
+				add(new BackgroundImage("levels/space_background2.png", 0, 0, 3));
+		        add(new BackgroundImage("levels/space_background2.png", 0, 960, 3));
+				add(new BackgroundPlanet("textures/black_planet.png", 0, -200, 20, 400));
 		        backgroundMusic.play();
 				break;
 			}
@@ -198,8 +207,8 @@ public class LevelFirst extends Level{
 	
 			case 4300: {
 				if (gameScreen.getCheckPoint() + 10 == levelTime) {
-					add(new BackgroundImage("levels/space_background2.png", 0, 0, .02f));
-					add(new BackgroundImage("levels/space_background2.png", 0, 960, .02f));
+					add(new BackgroundImage("levels/space_background2.png", 0, 0, 3));
+					add(new BackgroundImage("levels/space_background2.png", 0, 960, 3));
 					backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/black_vortex_firstContinue.mp3"));
 					backgroundMusic.play();
 					addStarsCheckpoint(100);
@@ -234,8 +243,8 @@ public class LevelFirst extends Level{
 			case 9200: {
 				//checkpoint
 				if (gameScreen.getCheckPoint() + 10 == levelTime) {
-					add(new BackgroundImage("levels/space_background2.png", 0, 0, .02f));
-					add(new BackgroundImage("levels/space_background2.png", 0, 960, .02f));
+					add(new BackgroundImage("levels/space_background2.png", 0, 0, 3));
+					add(new BackgroundImage("levels/space_background2.png", 0, 960, 3));
 					backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/black_vortex_secondContinue.mp3"));
 					backgroundMusic.play();
 					addStarsCheckpoint(100);
@@ -317,8 +326,8 @@ public class LevelFirst extends Level{
 			
 			case 14000: {
 				if (gameScreen.getCheckPoint() + 10 == levelTime) {
-					add(new BackgroundImage("levels/space_background2.png", 0, 0, .02f));
-					add(new BackgroundImage("levels/space_background2.png", 0, 960, .02f));
+					add(new BackgroundImage("levels/space_background2.png", 0, 0, 3));
+					add(new BackgroundImage("levels/space_background2.png", 0, 960, 3));
 					addStarsCheckpoint(100);
 				} else {
 					add(new CheckpointReached(300, 350, 2));
@@ -331,14 +340,6 @@ public class LevelFirst extends Level{
 				break;
 				
 			}
-			case 15500: {
-
-				break;
-			}
-			
-
-
 		}
 	}
-
 }

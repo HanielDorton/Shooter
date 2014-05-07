@@ -35,7 +35,7 @@ public class FirstBoss extends Enemy{
 	    	
 	    	}
         }
-	    if (health < 200) {
+	    if (health < 250) {
 	    	if ((level.getTime() - secondLastShot) > firingRate) {
 	        	double angle = level.getAngletoPlayersMiddle(x + 51, y);
 		       	weapon.shoot(x + 51, y , angle);

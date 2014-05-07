@@ -8,6 +8,7 @@ import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Pixmap;
+import com.badlogic.gdx.graphics.g2d.ParticleEffectPool.PooledEffect;
 import com.haniel.Shooter.entities.Entity;
 import com.haniel.Shooter.entities.Player;
 import com.haniel.Shooter.entities.asteroids.Asteroid;
@@ -41,13 +42,11 @@ public class GameScreen implements Screen {
         level.runLevel(this);
         Gdx.input.setInputProcessor(inputProcessor);
 
-        //dropSound = Gdx.audio.newSound(Gdx.files.internal("drop.wav"));
-
-
         // create the camera and the SpriteBatch
         camera = new OrthographicCamera();
         camera.setToOrtho(false, screenWidth, screenHeight);
         
+        //set cursor to blank image since it is fixed to the middle of the screen.
         Pixmap mouse = new Pixmap(Gdx.files.internal("textures/mouseX.png"));
         Gdx.input.setCursorImage(mouse, 0, 0);
         
@@ -76,8 +75,8 @@ public class GameScreen implements Screen {
         else if (deathTimer == level.getLevelTime()) {
         	//inputProcessor = new MyInputProcessor(player);
         	//Gdx.input.setInputProcessor(inputProcessor);
-            game.font.draw(game.batch, "Death", screenWidth / 2 + 10, screenHeight / 2);
-            game.font.draw(game.batch, "'Space' to Continue", screenWidth / 2, screenHeight / 2 - 20);
+        	game.font.draw(game.batch, "Death.", screenWidth / 2 + 10, screenHeight / 2);
+        	game.font.draw(game.batch, "Hit 'Space' to continue.", screenWidth / 2, screenHeight / 2 - 20);
             if (Gdx.input.isKeyPressed(Keys.SPACE)) {
             	//System.out.println(checkPoint);
             	numContinues++;
@@ -111,8 +110,17 @@ public class GameScreen implements Screen {
 	        for (Asteroid asteroid : level.asteroids) {
 	        	game.batch.draw(asteroid.getTexture(), (float) asteroid.getX(), (float) asteroid.getY());
 	        }
+	        for (int i = level.effects.size - 1; i >= 0; i--) {
+	            PooledEffect effect = level.effects.get(i);
+	            effect.draw(game.batch, delta);
+	            if (effect.isComplete()) {
+	                effect.free();
+	                level.effects.removeIndex(i);
+	            }
+	        }
 	        game.font.draw(game.batch, "Time: " + level.getLevelTime(), 0, screenHeight);
-	        //game.font.draw(game.batch, "Damage Received: " + (1-(player.getHealth())), 0, screenHeight - 20);
+	        //game.font.draw(game.batch, "JaveHeap: " + Gdx.app.getJavaHeap() % 1000, 0, screenHeight -20);
+	        //game.font.draw(game.batch, "NativeHeap: " +  Gdx.app.getNativeHeap() % 1000, 0, screenHeight - 40);
 	        
 	        if (levelComplete < level.getLevelTime()){
 	        	
@@ -121,10 +129,6 @@ public class GameScreen implements Screen {
 	        	game.font.draw(game.batch, "Your score: " + getScore(numContinues), 350, 200);
 	        	
 	        }
-	        
-	        
-	        
-	        
 	        level.update();
 	        
 	        gameTime += Gdx.graphics.getDeltaTime();
@@ -143,7 +147,7 @@ public class GameScreen implements Screen {
 	        }
 	        
 	        //every once in a while check things are getting removed correctly:
-	        //System.out.println(level.projectiles.size());
+	        //System.out.println(level.effects.size);
         }
         game.batch.end();
     }
@@ -152,9 +156,9 @@ public class GameScreen implements Screen {
     	String score = "";
     	if (numContinues == 0) score = "A++";
     	else if (numContinues < 3) score = "A";
-    	else if (numContinues < 6) score = "A";
-    	else if (numContinues < 9) score = "A";
-    	else if (numContinues < 312) score = "A";
+    	else if (numContinues < 6) score = "B";
+    	else if (numContinues < 9) score = "C";
+    	else if (numContinues < 12) score = "D";
     	else score = "F";
     	return score;
 	}

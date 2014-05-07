@@ -2,9 +2,9 @@ package com.haniel.Shooter.entities.enemies;
 
 import java.util.List;
 
+import com.badlogic.gdx.graphics.g2d.ParticleEffectPool.PooledEffect;
 import com.haniel.Shooter.entities.Entity;
 import com.haniel.Shooter.level.Level;
-import com.haniel.Shooter.particles.BlueParticle;
 import com.haniel.Shooter.util.Coord;
 
 public abstract class Enemy extends Entity{
@@ -44,16 +44,11 @@ public abstract class Enemy extends Entity{
 	
 	public void particles() {
 		if( health < 0) {
-			for (int i = 0; i <500; i++)
-				level.add(new BlueParticle((int) x + width / 2,(int) y + height / 2, 15));
-				level.add(new BlueParticle((int) x,(int) y + height / 2, 15));
-				level.add(new BlueParticle((int) x + width / 2,(int) y, 15));
-				level.add(new BlueParticle((int) x + width,(int) y + height, 15));
+			PooledEffect effect = level.smallExplosionEffectPool.obtain();
+			effect.setPosition((int) x + width / 2,(int) y + height / 2);
+			level.effects.add(effect);
 			matches2.play();
-		} else {
-			for (int i = 0; i < 40; i++)
-				level.add(new BlueParticle((int) x + width / 2,(int) y + height / 2, 15));
-		}
+		} 
 		
 	}
 	public void leave() {		

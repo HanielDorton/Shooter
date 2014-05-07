@@ -17,9 +17,15 @@ public class Star extends MyGraphics{
 		super(imageFile, x, y, speed);
 	}
 	
+	//stars automatically reappear at random spot at top instead of being removed by remove();
 	public void update() {
 		this.y -= speed;
-		if (y < 0) remove();
+		if (y < 0) {
+			this.y = 480;
+			this.x = rand.nextInt(800) + 1;
+		}
 	}
+	
+
 
 }
