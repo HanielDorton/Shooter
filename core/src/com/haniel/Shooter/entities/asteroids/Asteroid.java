@@ -3,7 +3,6 @@ package com.haniel.Shooter.entities.asteroids;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.haniel.Shooter.entities.Entity;
-import com.haniel.Shooter.particles.PurpleParticle;
 
 public class Asteroid extends Entity{
 	
@@ -57,17 +56,8 @@ public class Asteroid extends Entity{
 	
 	public void particles() {
 		if( health < 0) {
-			for (int i = 0; i < 10 * width; i++)
-				level.add(new PurpleParticle((int) x + width / 2,(int) y + height / 2, 30));
-				level.add(new PurpleParticle((int) x,(int) y + height / 2, 30));
-				level.add(new PurpleParticle((int) x + width / 2,(int) y, 30));
-				level.add(new PurpleParticle((int) x + width,(int) y + height, 30));
 			matches2.play();
-		} else {
-			//for (int i = 0; i < width; i++)
-				//gameScreen.add(new PurpleParticle((int) x + width / 2,(int) y + height / 2, 20));
-		}
-		
+		} 		
 	}
 }
 

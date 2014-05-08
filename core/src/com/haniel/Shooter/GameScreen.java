@@ -16,7 +16,6 @@ import com.haniel.Shooter.entities.asteroids.Asteroid;
 import com.haniel.Shooter.graphics.MyGraphics;
 import com.haniel.Shooter.level.Level;
 import com.haniel.Shooter.level.LevelFirst;
-import com.haniel.Shooter.particles.Particle;
 import com.haniel.Shooter.projectiles.Projectile;
 import com.haniel.Shooter.util.MyInputProcessor;
 
@@ -31,7 +30,7 @@ public class GameScreen implements Screen {
     private static int screenHeight = 480;
     public Player player = new Player(level);
     public MyInputProcessor inputProcessor = new MyInputProcessor(player);
-    private int checkPoint = 4290; //4290 for ufo's // 9190 for secondcheckpoint//13990 for boss
+    private int checkPoint = 13990; //4290 for ufo's // 9190 for secondcheckpoint//13990 for boss
     private int deathTimer;
     private boolean paused = false;
     private double levelComplete = 10000000;
@@ -84,7 +83,6 @@ public class GameScreen implements Screen {
             	player.setY(20);
             	level.setLevelTime(checkPoint);
    	        	level.graphics.clear();
-   	        	level.particles.clear();
    	        	level.projectiles.clear();
    	        	level.entities.clear();
    	        	level.asteroids.clear();
@@ -101,9 +99,6 @@ public class GameScreen implements Screen {
 	        for (MyGraphics graphic : level.graphics) {
 	        	game.batch.draw(graphic.getTexture(), graphic.getX(), graphic.getY());
 	        }      
-	        for (Particle particle : level.particles) {
-	        	game.batch.draw(particle.getTexture(), (float) particle.getX(), (float) particle.getY());
-	        }
 	        for (Projectile projectile : level.projectiles) {
 	        	game.batch.draw(projectile.getTexture(), (float) projectile.getX(), (float) projectile.getY());
 	        }

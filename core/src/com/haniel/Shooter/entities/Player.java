@@ -7,7 +7,6 @@ import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.math.Rectangle;
 import com.haniel.Shooter.GameScreen;
 import com.haniel.Shooter.level.Level;
-import com.haniel.Shooter.particles.OrangeParticle;
 import com.haniel.Shooter.weapons.BasicGun;
 
 

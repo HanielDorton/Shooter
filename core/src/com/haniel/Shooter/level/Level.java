@@ -17,7 +17,6 @@ import com.haniel.Shooter.entities.Player;
 import com.haniel.Shooter.entities.asteroids.Asteroid;
 import com.haniel.Shooter.graphics.MyGraphics;
 import com.haniel.Shooter.graphics.Star;
-import com.haniel.Shooter.particles.Particle;
 import com.haniel.Shooter.projectiles.Projectile;
 
 
@@ -31,7 +30,6 @@ public class Level {
     public List<Entity> entities = new ArrayList<Entity>();
     public List<Asteroid> asteroids = new ArrayList<Asteroid>();
     public List<Projectile> projectiles = new ArrayList<Projectile>();
-    public List<Particle> particles = new ArrayList<Particle>();
     public Array<ParticleEffect> particleEffects= new Array<ParticleEffect>();
     
     
@@ -134,12 +132,6 @@ public class Level {
         		projectiles.remove(projectiles.get(i));
         	}
         }
-        for (int i = 0; i < particles.size(); i++) {
-        	particles.get(i).update();
-        	if (particles.get(i).isRemoved()) {
-        		particles.remove(particles.get(i));
-        	}
-        }
         //Cycle through asteroids, updating, removing, and checking if they overlap any playe projectiles
         for (int i = 0; i < asteroids.size(); i++) {
         	Asteroid a = asteroids.get(i);
@@ -204,11 +196,6 @@ public class Level {
     
     public void add(Projectile p) {
     	projectiles.add(p);
-    	p.init(this);
-    }
-    
-    public void add(Particle p) {
-    	particles.add(p);
     	p.init(this);
     }
     

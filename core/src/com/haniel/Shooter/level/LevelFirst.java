@@ -43,7 +43,6 @@ public class LevelFirst extends Level{
 			case 10: {
 				add(new BackgroundImage("levels/space_background2.png", 0, 0, 3));
 		        add(new BackgroundImage("levels/space_background2.png", 0, 960, 3));
-				//add(new BackgroundPlanet("textures/black_planet.png", 0, -250, 20, 400));
 		        backgroundMusic.play();
 		        planetExplosion = new ParticleEffect();
 		        planetExplosion.load(Gdx.files.internal("particles/PlanetDestruction.p"), Gdx.files.internal("particles/"));
@@ -85,7 +84,6 @@ public class LevelFirst extends Level{
 				break;
 			}
 			case 800: {
-				planetExplosion.setPosition(400, -340);
 				addStars(20);
 				break;
 			}
