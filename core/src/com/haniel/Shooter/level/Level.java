@@ -32,21 +32,32 @@ public class Level {
     public List<Asteroid> asteroids = new ArrayList<Asteroid>();
     public List<Projectile> projectiles = new ArrayList<Projectile>();
     public List<Particle> particles = new ArrayList<Particle>();
+    public Array<ParticleEffect> particleEffects= new Array<ParticleEffect>();
     
-    public Array<PooledEffect> effects = new Array();
+    
+    // each level will have certain particle effects that can be pooled
+    // these are the ones that come up multiple times, otherwise just send particle effects to regular array
+    // remember particle effects whether pooled or not are updated automatically when drawn so you won't find
+    // an update method here unlike the other object lists
+    
+    public Array<PooledEffect> effects = new Array<PooledEffect>();
+    public ParticleEffectPool playerBulletEffectPool;
     ParticleEffect smallExplosionEffect = new ParticleEffect();
 	public ParticleEffectPool smallExplosionEffectPool;
-    ParticleEffect playerEngineEffect = new ParticleEffect();
-	public ParticleEffectPool playerEngineEffectPool;
+    ParticleEffect smallEngineEffect = new ParticleEffect();
+	public ParticleEffectPool smallEngineEffectPool;	
+	ParticleEffect enemyBulletEffect = new ParticleEffect();
+	public ParticleEffectPool enemyBulletEffectPool;
 	
 
 	
 	public Level(GameScreen gameScreen) {
-		this.gameScreen = gameScreen;
-		playerEngineEffect.load(Gdx.files.internal("particles/PlayerEngine.p"), Gdx.files.internal("particles/"));
-		playerEngineEffectPool = new ParticleEffectPool(playerEngineEffect, 1, 2);
+		this.gameScreen = gameScreen; 
+		ParticleEffect playerBulletEffect = new ParticleEffect();
+		playerBulletEffect.load(Gdx.files.internal("particles/PlayerBullet.p"), Gdx.files.internal("particles/"));
+		playerBulletEffectPool  = new ParticleEffectPool(playerBulletEffect, 10, 30);
 	}
-	
+
 	public void runLevel(GameScreen g) {
 	}
 	
@@ -69,7 +80,6 @@ public class Level {
         for (int i = 0; i < graphics.size(); i++) {
         	graphics.get(i).update();
         	if (graphics.get(i).isRemoved()) {
-        		//if (graphics.get(i) instanceof Star) graphics.add(new Star(480));
         		graphics.remove(graphics.get(i));
         	}
         }

@@ -8,6 +8,7 @@ import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Pixmap;
+import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.ParticleEffectPool.PooledEffect;
 import com.haniel.Shooter.entities.Entity;
 import com.haniel.Shooter.entities.Player;
@@ -73,12 +74,9 @@ public class GameScreen implements Screen {
         	
         }        
         else if (deathTimer == level.getLevelTime()) {
-        	//inputProcessor = new MyInputProcessor(player);
-        	//Gdx.input.setInputProcessor(inputProcessor);
         	game.font.draw(game.batch, "Death.", screenWidth / 2 + 10, screenHeight / 2);
         	game.font.draw(game.batch, "Hit 'Space' to continue.", screenWidth / 2, screenHeight / 2 - 20);
             if (Gdx.input.isKeyPressed(Keys.SPACE)) {
-            	//System.out.println(checkPoint);
             	numContinues++;
             	levelComplete = 10000000;
             	deathTimer = -10;
@@ -90,8 +88,13 @@ public class GameScreen implements Screen {
    	        	level.projectiles.clear();
    	        	level.entities.clear();
    	        	level.asteroids.clear();
+   	        	level.particleEffects.clear();
+   	        	for (int i = level.effects.size - 1; i >= 0; i--)
+   	        	    level.effects.get(i).free();
+   	        	level.effects.clear();
    	        	level.add(player);
    	        	level.stopMusic();
+   	        	player.resetEngines();
             }
         } else {
 
@@ -110,6 +113,21 @@ public class GameScreen implements Screen {
 	        for (Asteroid asteroid : level.asteroids) {
 	        	game.batch.draw(asteroid.getTexture(), (float) asteroid.getX(), (float) asteroid.getY());
 	        }
+	        for (ParticleEffect p : level.particleEffects) {
+	        	p.draw(game.batch, delta);
+	        	if (p.isComplete()) {
+	        	level.particleEffects.removeValue(p, true);
+	        		p.dispose();	        		
+	        	}
+	        }
+	        for (PooledEffect p : level.effects) {
+	        	p.draw(game.batch, delta);
+	        	if (p.isComplete()) {
+	        		p.free();
+	        		level.effects.removeValue(p, true);
+	        	}
+	        }
+	        /*
 	        for (int i = level.effects.size - 1; i >= 0; i--) {
 	            PooledEffect effect = level.effects.get(i);
 	            effect.draw(game.batch, delta);
@@ -117,10 +135,10 @@ public class GameScreen implements Screen {
 	                effect.free();
 	                level.effects.removeIndex(i);
 	            }
-	        }
-	        game.font.draw(game.batch, "Time: " + level.getLevelTime(), 0, screenHeight);
-	        //game.font.draw(game.batch, "JaveHeap: " + Gdx.app.getJavaHeap() % 1000, 0, screenHeight -20);
-	        //game.font.draw(game.batch, "NativeHeap: " +  Gdx.app.getNativeHeap() % 1000, 0, screenHeight - 40);
+	        }*/
+	        //game.font.draw(game.batch, "Time: " + level.getLevelTime(), 0, screenHeight);
+	        game.font.draw(game.batch, "JaveHeap: " + Gdx.app.getJavaHeap() % 1000, 0, screenHeight -20);
+	        game.font.draw(game.batch, "NativeHeap: " +  Gdx.app.getNativeHeap() % 1000, 0, screenHeight - 40);
 	        
 	        if (levelComplete < level.getLevelTime()){
 	        	
@@ -139,15 +157,15 @@ public class GameScreen implements Screen {
 	        
 	        
 	        if (player.getHealth() < 1) {
-	        	deathTimer = level.getLevelTime() + 200;
-            	player.setHealth();
+	        	deathTimer = level.getLevelTime() + 200;    
 	        	player.particles();
+	        	player.setHealth();	 
 	        	level.entities.remove(player);
-	        	
+       	
 	        }
 	        
 	        //every once in a while check things are getting removed correctly:
-	        //System.out.println(level.effects.size);
+	        System.out.println(level.effects.size);
         }
         game.batch.end();
     }

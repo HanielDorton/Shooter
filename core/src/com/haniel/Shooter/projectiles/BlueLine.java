@@ -1,7 +1,7 @@
 package com.haniel.Shooter.projectiles;
 
 import com.badlogic.gdx.math.Rectangle;
-import com.haniel.Shooter.particles.BlueParticle;
+import com.haniel.Shooter.level.Level;
 
 public class BlueLine extends Projectile{
 
@@ -15,8 +15,10 @@ public class BlueLine extends Projectile{
 		this.damage = 1;
 	}
 	
-	public void generateParticles(double x, double y) {
-		level.add(new BlueParticle(x + width / 2, y + height / 2, 3, 0, 0));
+	public void init(Level level) {
+		this.level = level;
+		effect = level.enemyBulletEffectPool.obtain();
+		this.generateParticles(x, y);
 	}
 
 }

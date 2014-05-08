@@ -28,7 +28,7 @@ public class MainMenuScreen implements Screen {
         game.batch.setProjectionMatrix(camera.combined);
 
         game.batch.begin();
-        game.font.draw(game.batch, "Welcome to Escape from Destiny ", 100, 200);
+        game.font.draw(game.batch, "Grief: Surviving the Impossible", 100, 200);
         game.font.draw(game.batch, "A Haniel Dorton Game", 100, 150);
         game.font.draw(game.batch, "Click  to begin", 100, 100);
         game.batch.end();

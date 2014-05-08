@@ -1,6 +1,7 @@
 package com.haniel.Shooter.level;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.ParticleEffectPool;
 import com.haniel.Shooter.GameScreen;
 import com.haniel.Shooter.entities.enemies.BasicBlueEnemy;
@@ -10,7 +11,6 @@ import com.haniel.Shooter.entities.enemies.ImprovedBlueEnemy;
 import com.haniel.Shooter.entities.enemies.ImprovedBlueSaucer;
 import com.haniel.Shooter.entities.enemies.QuickBlue;
 import com.haniel.Shooter.graphics.BackgroundImage;
-import com.haniel.Shooter.graphics.BackgroundPlanet;
 import com.haniel.Shooter.graphics.CheckpointReached;
 import com.haniel.Shooter.util.Coord;
 
@@ -20,18 +20,18 @@ public class LevelFirst extends Level{
 	// 9190 for quickenemywaves 
 	//13490 for boss
 	//load all particle effects for this level
-	
-
-
-	
-		
+	ParticleEffect planetExplosion;
+			
 	public LevelFirst(GameScreen gameScreen) {
 		super(gameScreen);
 		backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/black_vortex.mp3"));
 		
 		//load all particle effects for pooling:
+		enemyBulletEffect.load(Gdx.files.internal("particles/BlueSphere.p"), Gdx.files.internal("particles/"));
+		enemyBulletEffectPool = new ParticleEffectPool(enemyBulletEffect, 45, 80);
 		smallExplosionEffect.load(Gdx.files.internal("particles/BlueExplosion.p"), Gdx.files.internal("particles/"));
-		smallExplosionEffectPool = new ParticleEffectPool(smallExplosionEffect, 1, 2);
+		smallExplosionEffectPool = new ParticleEffectPool(smallExplosionEffect, 5, 20);
+		
 	}
 	
 	public void runLevel(GameScreen g) {
@@ -43,15 +43,45 @@ public class LevelFirst extends Level{
 			case 10: {
 				add(new BackgroundImage("levels/space_background2.png", 0, 0, 3));
 		        add(new BackgroundImage("levels/space_background2.png", 0, 960, 3));
-				add(new BackgroundPlanet("textures/black_planet.png", 0, -200, 20, 400));
+				//add(new BackgroundPlanet("textures/black_planet.png", 0, -250, 20, 400));
 		        backgroundMusic.play();
+		        planetExplosion = new ParticleEffect();
+		        planetExplosion.load(Gdx.files.internal("particles/PlanetDestruction.p"), Gdx.files.internal("particles/"));
+				planetExplosion.setPosition(400, -300);
+				particleEffects.add(planetExplosion);
+				planetExplosion.start();
 				break;
 			}
-		
-			case 200: { 
+			case 100: {
+				planetExplosion.setPosition(400, -305);
 				break;
-			}		
+			}
+			case 200: {
+				planetExplosion.setPosition(400, -310);
+				break;
+			}
+			case 300: {
+				planetExplosion.setPosition(400, -315);
+				break;
+			}
+			case 400: {
+				planetExplosion.setPosition(400, -320);
+				break;
+			}
+			case 500: {
+				planetExplosion.setPosition(400, -325);
+				break;
+			}
+			case 600: {
+				planetExplosion.setPosition(400, -330);
+				break;
+			}
+			case 700: {
+				planetExplosion.setPosition(400, -335);
+				break;
+			}
 			case 800: {
+				planetExplosion.setPosition(400, -340);
 				addStars(20);
 				break;
 			}
