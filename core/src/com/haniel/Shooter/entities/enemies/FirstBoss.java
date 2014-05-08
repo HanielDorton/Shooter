@@ -54,25 +54,23 @@ public class FirstBoss extends Enemy{
 	
 	public void update() {
 		super.update();
+		/*
 		for (int i = 42; i < 58; i++) {
 			level.add(new OrangeParticle((int) x + i,(int) y + 3, 15));
 		}	
 		for (int i = 537; i < 553; i++){
 			level.add(new OrangeParticle((int) x + i,(int) y + 3, 15));
-		}
+		}*/
 	}
 	
 	
 	public void particles() {
 		if( health < 0) {
-			for (int xx = width / 5; xx < width *.7; xx++) {
-				for (int yy = height / 5; yy < height *.7; yy++) {
-					level.add(new OrangeParticle(x + xx, y + yy, 30));
-				}
-			}
+			
 			level.setLevelComplete();
 			matches2.play();
-		} else {
+		}
+		 else {
 
 		}
 	}

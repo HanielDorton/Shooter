@@ -132,14 +132,13 @@ public class Player extends Entity{
 		engine1Effect.allowCompletion();
 		engine2Effect.allowCompletion();
 		
-		for (int i = 0; i <500; i++) {
-			level.add(new OrangeParticle((int) x + width / 2,(int) y + height / 2, 30));
-			level.add(new OrangeParticle((int) x,(int) y + height / 2, 30));
-			level.add(new OrangeParticle((int) x + width / 2,(int) y, 30));
-			level.add(new OrangeParticle((int) x + width,(int) y + height, 30));
+		ParticleEffect explosion = new ParticleEffect();
+		explosion.load(Gdx.files.internal("particles/PlayerExplosion.p"), Gdx.files.internal("particles/"));
+		explosion.setPosition((int)x + xOffset + (width / 2),(int) y + yOffset + (height / 2));
+		level.particleEffects.add(explosion);
+		explosion.start();
 		matches2.play();
-		} 		
-	}
+	} 		
 	
 	public float getHealth() {
 		return health;

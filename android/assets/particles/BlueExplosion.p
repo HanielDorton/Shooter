@@ -152,7 +152,7 @@ aligned: false
 additive: true
 behind: false
 - Image Path -
-/home/haniel/workspace/lib/particles/particle.png
+/home/haniel/workspace/Link to assets/particles/particle.png
 
 
 Untitled

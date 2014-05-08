@@ -151,7 +151,7 @@ aligned: false
 additive: true
 behind: false
 - Image Path -
-/home/haniel/workspace/Link to assets/particles/particle.png
+/home/haniel/workspace/Link to particles/particle.png
 
 
 Untitled
@@ -405,12 +405,12 @@ highMax: 1200.0
 relative: false
 scalingCount: 3
 scaling0: 1.0
-scaling1: 0.061797753
+scaling1: 0.073033705
 scaling2: 0.0
 timelineCount: 3
 timeline0: 0.0
 timeline1: 0.011890606
-timeline2: 1.0
+timeline2: 0.9976219
 - Angle - 
 active: true
 lowMin: 0.0

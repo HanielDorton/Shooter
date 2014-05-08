@@ -137,8 +137,8 @@ public class GameScreen implements Screen {
 	            }
 	        }*/
 	        //game.font.draw(game.batch, "Time: " + level.getLevelTime(), 0, screenHeight);
-	        game.font.draw(game.batch, "JaveHeap: " + Gdx.app.getJavaHeap() % 1000, 0, screenHeight -20);
-	        game.font.draw(game.batch, "NativeHeap: " +  Gdx.app.getNativeHeap() % 1000, 0, screenHeight - 40);
+	        //game.font.draw(game.batch, "JaveHeap: " + Gdx.app.getJavaHeap() % 1000, 0, screenHeight -20);
+	        //game.font.draw(game.batch, "NativeHeap: " +  Gdx.app.getNativeHeap() % 1000, 0, screenHeight - 40);
 	        
 	        if (levelComplete < level.getLevelTime()){
 	        	
@@ -157,7 +157,7 @@ public class GameScreen implements Screen {
 	        
 	        
 	        if (player.getHealth() < 1) {
-	        	deathTimer = level.getLevelTime() + 200;    
+	        	deathTimer = level.getLevelTime() + 300;    
 	        	player.particles();
 	        	player.setHealth();	 
 	        	level.entities.remove(player);
