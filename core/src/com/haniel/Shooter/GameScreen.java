@@ -30,7 +30,7 @@ public class GameScreen implements Screen {
     private static int screenHeight = 480;
     public Player player = new Player(level);
     public MyInputProcessor inputProcessor = new MyInputProcessor(player);
-    private int checkPoint = 13990; //4290 for ufo's // 9190 for secondcheckpoint//13990 for boss
+    private int checkPoint = 0; //4290 for ufo's // 9190 for secondcheckpoint//13990 for boss
     private int deathTimer;
     private boolean paused = false;
     private double levelComplete = 10000000;
@@ -98,15 +98,6 @@ public class GameScreen implements Screen {
 
 	        for (MyGraphics graphic : level.graphics) {
 	        	game.batch.draw(graphic.getTexture(), graphic.getX(), graphic.getY());
-	        }      
-	        for (Projectile projectile : level.projectiles) {
-	        	game.batch.draw(projectile.getTexture(), (float) projectile.getX(), (float) projectile.getY());
-	        }
-	        for (Entity entity : level.entities) {
-	        	game.batch.draw(entity.getTexture(), (float) entity.getX(), (float) entity.getY());
-	        }
-	        for (Asteroid asteroid : level.asteroids) {
-	        	game.batch.draw(asteroid.getTexture(), (float) asteroid.getX(), (float) asteroid.getY());
 	        }
 	        for (ParticleEffect p : level.particleEffects) {
 	        	p.draw(game.batch, delta);
@@ -122,6 +113,16 @@ public class GameScreen implements Screen {
 	        		level.effects.removeValue(p, true);
 	        	}
 	        }
+	        for (Projectile projectile : level.projectiles) {
+	        	game.batch.draw(projectile.getTexture(), (float) projectile.getX(), (float) projectile.getY());
+	        }
+	        for (Entity entity : level.entities) {
+	        	game.batch.draw(entity.getTexture(), (float) entity.getX(), (float) entity.getY());
+	        }
+	        for (Asteroid asteroid : level.asteroids) {
+	        	game.batch.draw(asteroid.getTexture(), (float) asteroid.getX(), (float) asteroid.getY());
+	        }
+
 	        /*
 	        for (int i = level.effects.size - 1; i >= 0; i--) {
 	            PooledEffect effect = level.effects.get(i);

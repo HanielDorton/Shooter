@@ -27,10 +27,10 @@ public class FirstBoss extends Enemy{
 		this.rectangle = new Rectangle((float)x, (float)y , width, height);
 		this.weapon = new BlackSphereGun(level, false);
 		this.lastShot = level.getTime() + 8;
-		this.engine1Effect.load(Gdx.files.internal("particles/BossEngines.p"), Gdx.files.internal("particles/"));
+		this.engine1Effect.load(Gdx.files.internal("particles/firstlevel/BossEngines.p"), Gdx.files.internal("particles/"));
 		this.engine1Effect.setPosition((int)x + 50,(int) y + 3);
 		level.particleEffects.add(engine1Effect);
-		this.engine2Effect.load(Gdx.files.internal("particles/BossEngines.p"), Gdx.files.internal("particles/"));
+		this.engine2Effect.load(Gdx.files.internal("particles/firstlevel/BossEngines.p"), Gdx.files.internal("particles/"));
 		this.engine2Effect.setPosition((int)x + 545,(int) y + 3);
 		level.particleEffects.add(engine2Effect);
 		engine1Effect.start();
@@ -75,7 +75,7 @@ public class FirstBoss extends Enemy{
 			engine1Effect.allowCompletion();
 			engine2Effect.allowCompletion();
 			ParticleEffect explosion = new ParticleEffect();
-			explosion.load(Gdx.files.internal("particles/BossExplosion.p"), Gdx.files.internal("particles/"));
+			explosion.load(Gdx.files.internal("particles/firstlevel/BossExplosion.p"), Gdx.files.internal("particles/"));
 			explosion.setPosition((int)x + xOffset + (width / 2),(int) y + yOffset + (height / 2));
 			level.particleEffects.add(explosion);
 			explosion.start();

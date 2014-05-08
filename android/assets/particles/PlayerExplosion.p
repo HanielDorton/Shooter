@@ -356,12 +356,12 @@ highMax: 5000.0
 relative: false
 scalingCount: 3
 scaling0: 1.0
-scaling1: 0.97959185
-scaling2: 0.83146065
+scaling1: 0.6530612
+scaling2: 0.53061223
 timelineCount: 3
 timeline0: 0.0
-timeline1: 0.38356164
-timeline2: 0.80023783
+timeline1: 0.5205479
+timeline2: 1.0
 - Life Offset - 
 active: false
 - X Offset - 
@@ -396,10 +396,14 @@ lowMax: 0.0
 highMin: 2.0
 highMax: 2.0
 relative: false
-scalingCount: 1
+scalingCount: 3
 scaling0: 1.0
-timelineCount: 1
+scaling1: 0.97959185
+scaling2: 0.020408163
+timelineCount: 3
 timeline0: 0.0
+timeline1: 0.39041096
+timeline2: 1.0
 - Velocity - 
 active: true
 lowMin: 0.0

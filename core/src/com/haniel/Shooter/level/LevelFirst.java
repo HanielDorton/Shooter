@@ -15,10 +15,7 @@ import com.haniel.Shooter.graphics.CheckpointReached;
 import com.haniel.Shooter.util.Coord;
 
 public class LevelFirst extends Level{
-	//checkpoints:
-	//4290 for ufo's 
-	// 9190 for quickenemywaves 
-	//13490 for boss
+	//Checkpoints: 4290 for ufo's // 9190 for secondcheckpoint//13990 for boss
 	//load all particle effects for this level
 	ParticleEffect planetExplosion;
 			
@@ -27,9 +24,9 @@ public class LevelFirst extends Level{
 		backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/black_vortex.mp3"));
 		
 		//load all particle effects for pooling:
-		enemyBulletEffect.load(Gdx.files.internal("particles/BlueSphere.p"), Gdx.files.internal("particles/"));
+		enemyBulletEffect.load(Gdx.files.internal("particles/firstlevel/BlueSphere.p"), Gdx.files.internal("particles/"));
 		enemyBulletEffectPool = new ParticleEffectPool(enemyBulletEffect, 45, 80);
-		smallExplosionEffect.load(Gdx.files.internal("particles/BlueExplosion.p"), Gdx.files.internal("particles/"));
+		smallExplosionEffect.load(Gdx.files.internal("particles/firstlevel/BlueExplosion.p"), Gdx.files.internal("particles/"));
 		smallExplosionEffectPool = new ParticleEffectPool(smallExplosionEffect, 5, 20);
 		
 	}
@@ -45,42 +42,42 @@ public class LevelFirst extends Level{
 		        add(new BackgroundImage("levels/space_background2.png", 0, 960, 3));
 		        backgroundMusic.play();
 		        planetExplosion = new ParticleEffect();
-		        planetExplosion.load(Gdx.files.internal("particles/PlanetDestruction.p"), Gdx.files.internal("particles/"));
+		        planetExplosion.load(Gdx.files.internal("particles/firstlevel/PlanetDestruction.p"), Gdx.files.internal("particles/"));
 				planetExplosion.setPosition(400, -300);
 				particleEffects.add(planetExplosion);
 				planetExplosion.start();
 				break;
 			}
-			case 50: {
+			case 30: {
 				planetExplosion.setPosition(400, -305);
 				break;
 			}
-			case 100: {
+			case 50: {
 				planetExplosion.setPosition(400, -310);
 				break;
 			}
-			case 150: {
+			case 70: {
 				planetExplosion.setPosition(400, -315);
 				break;
 			}
-			case 200: {
+			case 90: {
 				planetExplosion.setPosition(400, -320);
 				break;
 			}
-			case 250: {
+			case 110: {
 				planetExplosion.setPosition(400, -325);
 				break;
 			}
-			case 300: {
+			case 130: {
 				planetExplosion.setPosition(400, -330);
 				break;
 			}
-			case 350: {
+			case 150: {
 				planetExplosion.setPosition(400, -335);
 				break;
 			}
-			case 400: {
-				planetExplosion.setPosition(400, -340);
+			case 170: {
+				planetExplosion.setPosition(400, -350);
 				break;
 			}
 			case 800: {
@@ -250,6 +247,7 @@ public class LevelFirst extends Level{
 				}
 				add(new BlueSaucer(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
 				add(new BlueSaucer(-150, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
+				add(new BlueSaucer(300, -200, Coord.leavescreentopmiddle, this));
 				break;
 			}
 			case 7400: {
@@ -259,6 +257,16 @@ public class LevelFirst extends Level{
 			}
 			case 7800: {
 				add(new QuickBlue(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
+				addStars(20);
+				break;
+			}
+			case 7600: {
+				add(new QuickBlue(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
+				addStars(20);
+				break;
+			}
+			case 8000: {
+				add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
 				addStars(20);
 				break;
 			}
@@ -353,6 +361,10 @@ public class LevelFirst extends Level{
 			case 10450: {
 				add(new ImprovedBlueSaucer(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
 				add(new ImprovedBlueSaucer(-150, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
+				break;
+			}
+			case 11000: {
+				add(new ImprovedBlueSaucer(300, -200, Coord.leavescreentopmiddle, this));
 				break;
 			}
 			

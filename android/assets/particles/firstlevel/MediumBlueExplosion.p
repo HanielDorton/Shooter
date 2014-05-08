@@ -125,9 +125,9 @@ active: false
 active: false
 - Tint - 
 colorsCount: 6
-colors0: 1.0
-colors1: 0.41568628
-colors2: 0.0
+colors0: 0.0
+colors1: 0.14901961
+colors2: 1.0
 colors3: 0.0
 colors4: 0.0
 colors5: 0.0
@@ -151,7 +151,7 @@ aligned: false
 additive: true
 behind: false
 - Image Path -
-/home/haniel/workspace/Link to assets/particles/particle.png
+/home/haniel/workspace/Link to particles/particle.png
 
 
 Untitled
@@ -268,12 +268,12 @@ scalingCount: 4
 scaling0: 1.0
 scaling1: 1.0
 scaling2: 0.4775281
-scaling3: 0.4775281
+scaling3: 0.0
 timelineCount: 4
 timeline0: 0.0
 timeline1: 0.09631391
 timeline2: 0.20214032
-timeline3: 0.40071344
+timeline3: 1.0
 - Angle - 
 active: true
 lowMin: 0.0
@@ -302,8 +302,8 @@ timelineCount: 1
 timeline0: 0.0
 - Tint - 
 colorsCount: 3
-colors0: 0.96862745
-colors1: 1.0
+colors0: 1.0
+colors1: 0.45882353
 colors2: 0.047058824
 timelineCount: 1
 timeline0: 0.0
@@ -350,14 +350,20 @@ timeline0: 0.0
 timeline1: 0.29452056
 - Life - 
 lowMin: 0.0
-lowMax: 0.0
-highMin: 5000.0
+lowMax: 1000.0
+highMin: 3000.0
 highMax: 5000.0
 relative: false
-scalingCount: 1
+scalingCount: 4
 scaling0: 1.0
-timelineCount: 1
+scaling1: 0.97959185
+scaling2: 0.83146065
+scaling3: 0.48979592
+timelineCount: 4
 timeline0: 0.0
+timeline1: 0.38356164
+timeline2: 0.80023783
+timeline3: 1.0
 - Life Offset - 
 active: false
 - X Offset - 
@@ -389,13 +395,17 @@ timeline0: 0.0
 - Scale - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 4.0
-highMax: 4.0
+highMin: 2.0
+highMax: 2.0
 relative: false
-scalingCount: 1
+scalingCount: 3
 scaling0: 1.0
-timelineCount: 1
+scaling1: 0.97959185
+scaling2: 0.040816326
+timelineCount: 3
 timeline0: 0.0
+timeline1: 0.5068493
+timeline2: 0.9794521
 - Velocity - 
 active: true
 lowMin: 0.0
@@ -403,14 +413,16 @@ lowMax: 0.0
 highMin: 1200.0
 highMax: 1200.0
 relative: false
-scalingCount: 3
+scalingCount: 4
 scaling0: 1.0
-scaling1: 0.061797753
-scaling2: 0.0
-timelineCount: 3
+scaling1: 0.51123595
+scaling2: 0.039325844
+scaling3: 0.0
+timelineCount: 4
 timeline0: 0.0
-timeline1: 0.011890606
-timeline2: 1.0
+timeline1: 0.007134364
+timeline2: 0.008134364
+timeline3: 0.9976219
 - Angle - 
 active: true
 lowMin: 0.0
@@ -430,9 +442,9 @@ active: false
 active: false
 - Tint - 
 colorsCount: 3
-colors0: 1.0
-colors1: 0.9098039
-colors2: 0.14117648
+colors0: 0.14117648
+colors1: 0.3764706
+colors2: 1.0
 timelineCount: 1
 timeline0: 0.0
 - Transparency - 
