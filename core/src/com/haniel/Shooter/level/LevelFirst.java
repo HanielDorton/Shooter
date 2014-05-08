@@ -52,32 +52,36 @@ public class LevelFirst extends Level{
 				planetExplosion.start();
 				break;
 			}
-			case 100: {
+			case 50: {
 				planetExplosion.setPosition(400, -305);
 				break;
 			}
-			case 200: {
+			case 100: {
 				planetExplosion.setPosition(400, -310);
 				break;
 			}
-			case 300: {
+			case 150: {
 				planetExplosion.setPosition(400, -315);
 				break;
 			}
-			case 400: {
+			case 200: {
 				planetExplosion.setPosition(400, -320);
 				break;
 			}
-			case 500: {
+			case 250: {
 				planetExplosion.setPosition(400, -325);
 				break;
 			}
-			case 600: {
+			case 300: {
 				planetExplosion.setPosition(400, -330);
 				break;
 			}
-			case 700: {
+			case 350: {
 				planetExplosion.setPosition(400, -335);
+				break;
+			}
+			case 400: {
+				planetExplosion.setPosition(400, -340);
 				break;
 			}
 			case 800: {

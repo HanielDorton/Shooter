@@ -2,8 +2,8 @@ BlueExplosion
 - Delay -
 active: false
 - Duration - 
-lowMin: 400.0
-lowMax: 400.0
+lowMin: 200.0
+lowMax: 200.0
 - Count - 
 min: 400
 max: 1200
@@ -20,8 +20,8 @@ timeline0: 0.0
 - Life - 
 lowMin: 900.0
 lowMax: 900.0
-highMin: 1200.0
-highMax: 1200.0
+highMin: 1000.0
+highMax: 1000.0
 relative: false
 scalingCount: 1
 scaling0: 1.0
@@ -161,16 +161,16 @@ active: true
 lowMin: 200.0
 lowMax: 200.0
 - Duration - 
-lowMin: 600.0
-lowMax: 600.0
+lowMin: 100.0
+lowMax: 100.0
 - Count - 
 min: 0
 max: 2000
 - Emission - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 100.0
-highMax: 100.0
+highMin: 300.0
+highMax: 300.0
 relative: false
 scalingCount: 1
 scaling0: 1.0
@@ -235,8 +235,8 @@ timeline0: 0.0
 - Scale - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 1.0
-highMax: 1.0
+highMin: 2.0
+highMax: 2.0
 relative: false
 scalingCount: 1
 scaling0: 1.0
@@ -281,9 +281,9 @@ timelineCount: 1
 timeline0: 0.0
 - Tint - 
 colorsCount: 3
-colors0: 1.0
-colors1: 0.12156863
-colors2: 0.047058824
+colors0: 0.047058824
+colors1: 0.7764706
+colors2: 1.0
 timelineCount: 1
 timeline0: 0.0
 - Transparency - 

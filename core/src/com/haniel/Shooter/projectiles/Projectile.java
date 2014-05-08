@@ -88,8 +88,7 @@ public abstract class Projectile {
 	}
 	
 	public void remove() {		
-		level.effects.removeValue(this.effect, true);
-		this.effect.free();
+		this.effect.allowCompletion();
 		removed = true;
 	}
 	

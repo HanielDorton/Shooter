@@ -2,7 +2,6 @@ package com.haniel.Shooter.entities.enemies;
 
 import java.util.List;
 
-import com.badlogic.gdx.graphics.g2d.ParticleEffectPool.PooledEffect;
 import com.badlogic.gdx.math.Rectangle;
 import com.haniel.Shooter.level.Level;
 import com.haniel.Shooter.util.Coord;

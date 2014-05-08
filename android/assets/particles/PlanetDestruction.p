@@ -8,12 +8,12 @@ lowMin: 10000.0
 lowMax: 10000.0
 - Count - 
 min: 40
-max: 20000
+max: 5000
 - Emission - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 2000.0
-highMax: 2000.0
+highMin: 800.0
+highMax: 800.0
 relative: false
 scalingCount: 1
 scaling0: 1.0
@@ -25,14 +25,12 @@ lowMax: 4000.0
 highMin: 4000.0
 highMax: 4000.0
 relative: false
-scalingCount: 3
+scalingCount: 2
 scaling0: 1.0
 scaling1: 1.0
-scaling2: 0.020408163
-timelineCount: 3
+timelineCount: 2
 timeline0: 0.0
-timeline1: 0.66
-timeline2: 0.70547944
+timeline1: 1.0
 - Life Offset - 
 active: false
 - X Offset - 
@@ -64,8 +62,8 @@ timeline0: 0.0
 - Scale - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 15.0
-highMax: 15.0
+highMin: 20.0
+highMax: 20.0
 relative: false
 scalingCount: 3
 scaling0: 1.0
@@ -172,32 +170,40 @@ lowMax: 0.0
 highMin: 1000.0
 highMax: 1000.0
 relative: true
-scalingCount: 7
+scalingCount: 10
 scaling0: 0.0
 scaling1: 0.98876405
-scaling2: 0.061797753
-scaling3: 0.06741573
-scaling4: 0.056179777
-scaling5: 0.07865169
-scaling6: 0.04494382
-timelineCount: 7
+scaling2: 0.994382
+scaling3: 0.17977528
+scaling4: 0.08988764
+scaling5: 1.0
+scaling6: 0.98876405
+scaling7: 0.101123594
+scaling8: 0.0
+scaling9: 0.0
+timelineCount: 10
 timeline0: 0.0
-timeline1: 0.022592152
-timeline2: 0.042806182
-timeline3: 0.14387634
-timeline4: 0.24970274
-timeline5: 0.41141498
-timeline6: 1.0
+timeline1: 0.014268728
+timeline2: 0.05112961
+timeline3: 0.059453033
+timeline4: 0.13436386
+timeline5: 0.14268728
+timeline6: 0.18192628
+timeline7: 0.18787158
+timeline8: 0.5041617
+timeline9: 1.0
 - Life - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 10000.0
-highMax: 10000.0
+highMin: 5000.0
+highMax: 5000.0
 relative: false
-scalingCount: 1
+scalingCount: 2
 scaling0: 1.0
-timelineCount: 1
+scaling1: 1.0
+timelineCount: 2
 timeline0: 0.0
+timeline1: 1.0
 - Life Offset - 
 active: false
 - X Offset - 
@@ -229,8 +235,8 @@ timeline0: 0.0
 - Scale - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 5.0
-highMax: 5.0
+highMin: 10.0
+highMax: 10.0
 relative: false
 scalingCount: 1
 scaling0: 1.0
@@ -251,8 +257,8 @@ timeline0: 0.0
 active: true
 lowMin: 0.0
 lowMax: 0.0
-highMin: 45.0
-highMax: 135.0
+highMin: 35.0
+highMax: 145.0
 relative: false
 scalingCount: 1
 scaling0: 1.0

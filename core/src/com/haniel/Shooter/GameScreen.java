@@ -31,7 +31,7 @@ public class GameScreen implements Screen {
     private static int screenHeight = 480;
     public Player player = new Player(level);
     public MyInputProcessor inputProcessor = new MyInputProcessor(player);
-    private int checkPoint = 0; //4290 for ufo's // 9190 for secondcheckpoint//13990 for boss
+    private int checkPoint = 4290; //4290 for ufo's // 9190 for secondcheckpoint//13990 for boss
     private int deathTimer;
     private boolean paused = false;
     private double levelComplete = 10000000;
@@ -165,7 +165,7 @@ public class GameScreen implements Screen {
 	        }
 	        
 	        //every once in a while check things are getting removed correctly:
-	        System.out.println(level.effects.size);
+	        //System.out.println(level.effects.size);
         }
         game.batch.end();
     }
