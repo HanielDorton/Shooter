@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -69,6 +70,11 @@ public class CreditsScreen implements Screen{
         		time = -20;        		
         	}	
         }
+        if (Gdx.input.isTouched() || Gdx.input.isKeyPressed(Keys.ENTER) || (Gdx.input.isKeyPressed(Keys.SPACE))) {
+            game.setScreen(new MainMenuScreen(game));
+            dispose();
+        }
+
         
         game.batch.end();
 		
@@ -114,7 +120,7 @@ public class CreditsScreen implements Screen{
 
 	@Override
 	public void dispose() {
-		// TODO Auto-generated method stub
+		backgroundMusic.dispose();
 		
 	}
 	private class credit {

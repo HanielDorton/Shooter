@@ -238,10 +238,14 @@ lowMax: 0.0
 highMin: 10.0
 highMax: 10.0
 relative: false
-scalingCount: 1
+scalingCount: 3
 scaling0: 1.0
-timelineCount: 1
+scaling1: 0.26530612
+scaling2: 0.020408163
+timelineCount: 3
 timeline0: 0.0
+timeline1: 0.39726028
+timeline2: 0.98630136
 - Velocity - 
 active: true
 lowMin: 0.0
@@ -295,4 +299,3 @@ additive: true
 behind: false
 - Image Path -
 particle.png
-
