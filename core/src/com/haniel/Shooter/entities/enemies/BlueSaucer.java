@@ -49,6 +49,7 @@ public class BlueSaucer extends Enemy{
 			explosion.setPosition((int)x + xOffset + (width / 2),(int) y + yOffset + (height / 2));
 			level.particleEffects.add(explosion);
 			explosion.start();
+			matches2.play();
 		}
 	}
 }

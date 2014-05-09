@@ -8,16 +8,15 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 
 public class MainMenuScreen implements Screen {
 
-    final MyGdxGame game;
-
+    final MyGdxGame game;    
     OrthographicCamera camera;
+
 
     public MainMenuScreen(final MyGdxGame gam) {
         game = gam;
-
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 800, 480);
-
+        
     }
     
     public void render(float delta) {
@@ -28,16 +27,22 @@ public class MainMenuScreen implements Screen {
         game.batch.setProjectionMatrix(camera.combined);
 
         game.batch.begin();
-        game.font.draw(game.batch, "Grief: Surviving the Impossible", 100, 200);
-        game.font.draw(game.batch, "A Haniel Dorton Game", 100, 150);
-        game.font.draw(game.batch, "Click  to begin", 100, 100);
+        game.font.draw(game.batch, "Grief: Surviving the Impossible", 400, 300);
+        game.font.draw(game.batch, "A Haniel Dorton Game", 400, 250);
+        game.font.draw(game.batch, "Click to begin", 400, 200);
+        game.font.draw(game.batch, "Space for Credits", 400, 150);
         game.batch.end();
 
         if (Gdx.input.isTouched() || Gdx.input.isKeyPressed(Keys.ENTER)) {
             game.setScreen(new GameScreen(game));
             dispose();
         }
+        if (Gdx.input.isKeyPressed(Keys.SPACE)) {
+            game.setScreen(new CreditsScreen(game));
+            dispose();
+        }
     }
+
 
 	@Override
 	public void resize(int width, int height) {
@@ -72,6 +77,7 @@ public class MainMenuScreen implements Screen {
 	@Override
 	public void dispose() {
 		// TODO Auto-generated method stub
+		//batch.dispose();
 		
 	}
 }

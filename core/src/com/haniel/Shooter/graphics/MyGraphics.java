@@ -39,7 +39,7 @@ public abstract class MyGraphics {
 	}
 	
 	public void update() {
-		this.y -= speed;
+		this.y -= speed * Gdx.graphics.getDeltaTime();
 		if (y < 0) remove();
 	}
 	
