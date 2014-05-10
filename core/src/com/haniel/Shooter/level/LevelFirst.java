@@ -40,8 +40,7 @@ public class LevelFirst extends Level{
 		
 			case 10: {
 				add(new BackgroundImage("levels/space_background2.png", 0, 0, 3));
-		        add(new BackgroundImage("levels/space_background2.png", 0, 960, 3));
-		        backgroundMusic.play();
+		        add(new BackgroundImage("levels/space_background2.png", 0, 960, 3));        
 		        planetExplosion = new ParticleEffect();
 		        planetExplosion.load(Gdx.files.internal("particles/firstlevel/PlanetDestruction.p"), Gdx.files.internal("particles/"));
 				planetExplosion.setPosition(400, -300);
@@ -49,35 +48,39 @@ public class LevelFirst extends Level{
 				planetExplosion.start();
 				break;
 			}
-			case 30: {
+			case 200:{
+				backgroundMusic.play();
+				break;
+			}
+			case 300: {
 				planetExplosion.setPosition(400, -305);
 				break;
 			}
-			case 50: {
+			case 320: {
 				planetExplosion.setPosition(400, -310);
 				break;
 			}
-			case 70: {
+			case 340: {
 				planetExplosion.setPosition(400, -315);
 				break;
 			}
-			case 90: {
+			case 360: {
 				planetExplosion.setPosition(400, -320);
 				break;
 			}
-			case 110: {
+			case 380: {
 				planetExplosion.setPosition(400, -325);
 				break;
 			}
-			case 130: {
+			case 400: {
 				planetExplosion.setPosition(400, -330);
 				break;
 			}
-			case 150: {
+			case 420: {
 				planetExplosion.setPosition(400, -335);
 				break;
 			}
-			case 170: {
+			case 440: {
 				planetExplosion.setPosition(400, -350);
 				break;
 			}

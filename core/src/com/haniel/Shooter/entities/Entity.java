@@ -25,7 +25,7 @@ public abstract class Entity{
 	protected double lastShot, lastShot2, lastShot3;
 	
 	//all entity textures so they are only loaded once:
-	
+	//every time you add a new one add it to dispose() at the bottom.
 	protected static final Texture enemy1Texture = new Texture(Gdx.files.internal("entities/enemy_1.png"));
 	protected static final Sound matches2 = Gdx.audio.newSound(Gdx.files.internal("sounds/paper-rip-4.wav"));
 	protected static final Texture blueSaucerTexture = new Texture(Gdx.files.internal("entities/blue_saucer_enemy2.png"));
@@ -150,4 +150,12 @@ public abstract class Entity{
 	public double getAngleTo(double x, double y, double destX, double destY) {
 		return (Math.atan2(destY - y, destX - x));	
 	}	
+	
+	public static void dispose() {
+		enemy1Texture.dispose();
+		matches2.dispose();
+		blueSaucerTexture.dispose();
+		quickBlueTexture.dispose();
+		firstBossTexture.dispose();
+	}
 }

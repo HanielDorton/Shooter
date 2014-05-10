@@ -1,5 +1,6 @@
 package com.haniel.Shooter.weapons;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 import com.haniel.Shooter.level.Level;
 import com.haniel.Shooter.projectiles.BasicBullet;
@@ -14,6 +15,11 @@ public abstract class Weapon {
 	
 	//set firing rates so they can be accessed before projectiles are created:
 	protected final static double basicGunFiringRate = 0.2;
+	
+	
+	//load all sounds once:
+	//every time you add a new one add it to dispose() at the bottom.
+	protected final static Sound basicGunSound = Gdx.audio.newSound(Gdx.files.internal("sounds/gunshot01.wav"));
 
 	
 	public Weapon(Level level, boolean fromPlayer) {
@@ -32,6 +38,9 @@ public abstract class Weapon {
 	public void playSound() {
 		sound.play();
 		
+	}
+	public static void dispose() {
+		basicGunSound.dispose();
 	}
 
 }

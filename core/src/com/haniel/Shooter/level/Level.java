@@ -234,5 +234,9 @@ public class Level {
 		double playerY = gameScreen.player.getMidY();
 		return (Math.atan2(playerY - y, playerX - x));
 	}
+	
+	public void dispose() {
+		
+	}
 
 }

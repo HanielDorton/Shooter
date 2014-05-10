@@ -11,7 +11,7 @@ public class Star extends MyGraphics{
 	public Star(int y) {
 		super(y);
 		this.x = rand.nextInt(800) + 1;
-		this.speed = (rand.nextFloat() * 200) + .03f;
+		this.speed = (rand.nextFloat() * 100) + 10f;
 		this.texture = starTexture;
 	}
 	

@@ -34,13 +34,4 @@ public class QuickBlue extends Enemy{
 	       	weapon.shoot(x + xOffset, y + yOffset, angle - .2);
 	    }
     }
-	
-	public void update(){
-		super.update();
-		///add engine particle effects here
-		//for (int i = 0; i < 5; i++) {
-			//level.add(new OrangeParticle((int) x + xOffset,(int) y, 1));
-			//level.add(new OrangeParticle((int) x + xOffset + width,(int) y, 1));
-		
-	}
 }

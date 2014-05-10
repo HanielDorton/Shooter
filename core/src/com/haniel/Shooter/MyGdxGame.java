@@ -12,7 +12,7 @@ public class MyGdxGame extends Game {
     public void create() {
         batch = new SpriteBatch();
         font = new BitmapFont();
-        this.setScreen(new MainMenuScreen(this));
+        this.setScreen(new MenuScreen(this));
     }
 
     public void render() {

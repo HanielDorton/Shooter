@@ -7,7 +7,6 @@ public class BlueSphereGun extends Weapon{
 
 	public BlueSphereGun(Level level, boolean fromPlayer) {
 		super(level, fromPlayer);
-		//this.sound = Gdx.audio.newSound(Gdx.files.internal("sounds/gunshot01.wav"))
 	}
 	
 	public void shoot(double x, double y, double angle) {

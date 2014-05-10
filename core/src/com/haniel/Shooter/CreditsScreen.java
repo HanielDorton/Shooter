@@ -18,8 +18,8 @@ public class CreditsScreen implements Screen{
     List<MyGraphics> graphics;
     List<credit> currentCredits;
     LinkedList<String> credits;
-    double time;
-    int creditsCount;
+    double time = 3;
+    int creditsCount ;
     private Music backgroundMusic;
     
     public CreditsScreen(final MyGdxGame gam) {
@@ -36,10 +36,13 @@ public class CreditsScreen implements Screen{
         credits.add("Created in Java with LIBGDX");
         credits.add("All programming and art by Daniel Horton");
         credits.add("Music:");
-        credits.add("Level 1 Background Music 'Black Vortex' by Kevin MacLeod (incompetech.com)");
-        credits.add("Boss Battle Background Music 'All This' by Kevin MacLeod (incompetech.com)");
-		backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/All_This.mp3"));
+        credits.add("Main Menu Music 'Sad Exploring' by Eric Taylor (erictaylormusic.com)");
+        credits.add("Level 1 Music 'Black Vortex' by Kevin MacLeod (incompetech.com)");
+        credits.add("Boss Battle Music 'All This' by Kevin MacLeod (incompetech.com)");
+        credits.add("Credits Music 'Determination Under Fire' by Eric Taylor (erictaylormusic.com)");
+		backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/Determination_underfirev1.mp3"));
 		backgroundMusic.play();
+		backgroundMusic.setLooping(true);
     }
 
 	@Override
@@ -63,7 +66,7 @@ public class CreditsScreen implements Screen{
         
         if (time > 3) {
         	time = 0;
-        	currentCredits.add(new credit(credits.get(creditsCount), 400 - (credits.get(creditsCount).length() * 2.95), -10));
+        	currentCredits.add(new credit(credits.get(creditsCount), 380 - (credits.get(creditsCount).length() * 2.6), -10));
         	creditsCount++;
         	if (creditsCount >= credits.size()) {
         		creditsCount = 0;
@@ -71,7 +74,7 @@ public class CreditsScreen implements Screen{
         	}	
         }
         if (Gdx.input.isTouched() || Gdx.input.isKeyPressed(Keys.ENTER) || (Gdx.input.isKeyPressed(Keys.SPACE))) {
-            game.setScreen(new MainMenuScreen(game));
+        	game.setScreen(new MenuScreen(game));
             dispose();
         }
 
@@ -90,7 +93,6 @@ public class CreditsScreen implements Screen{
 
 	@Override
 	public void resize(int width, int height) {
-		// TODO Auto-generated method stub
 		
 	}
 

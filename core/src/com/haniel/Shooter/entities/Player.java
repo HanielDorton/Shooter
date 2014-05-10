@@ -130,6 +130,9 @@ public class Player extends Entity{
 		//on death:
 		engine1Effect.allowCompletion();
 		engine2Effect.allowCompletion();
+		engine1Effect.dispose();
+		engine2Effect.dispose();
+		
 		
 		ParticleEffect explosion = new ParticleEffect();
 		explosion.load(Gdx.files.internal("particles/PlayerExplosion.p"), Gdx.files.internal("particles/"));
