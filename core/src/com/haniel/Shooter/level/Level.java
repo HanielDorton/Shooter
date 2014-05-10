@@ -1,6 +1,7 @@
 package com.haniel.Shooter.level;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
@@ -59,30 +60,29 @@ public class Level {
 	public void runLevel(GameScreen g) {
 	}
 	
-	protected void addStarsCheckpoint(int number){
-        for (int i = 0; i < number; i++) {
-        	add(new Star(random.nextInt(480)));
-        	} 
-	}
-	
-	protected void addStars(int number){
-        for (int i = 0; i < number; i++) {
-        	add(new Star(480));
-        	} 
-	}
-	
 	public void update() {
 		time += Gdx.graphics.getDeltaTime();
-        
-		//update all graphics
-        for (int i = 0; i < graphics.size(); i++) {
-        	graphics.get(i).update();
-        	if (graphics.get(i).isRemoved()) {
-        		graphics.remove(graphics.get(i));
+        updateGraphics();
+        updateEntities();     
+        updateProjectiles();  
+	}
+	
+    private void updateGraphics() {
+    	Iterator<MyGraphics> iter = graphics.iterator();
+        while(iter.hasNext()) {
+        	MyGraphics g = iter.next();
+        	g.update();
+        	if (g.isRemoved()) {
+        		iter.remove();
         	}
         }
-        for (int i = 0; i < entities.size(); i++) {
-        	Entity e = entities.get(i);
+		
+	}
+
+	private void updateEntities() {
+    	Iterator<Entity> entityIterator = entities.iterator();
+    	while (entityIterator.hasNext()) {
+    		Entity e = entityIterator.next();
         	e.update();
         	if (e instanceof Player){
         		for (int j = 0; j < entities.size(); j++){
@@ -94,45 +94,47 @@ public class Level {
         			}
         		}
         	}
-    		for (int p = 0; p <projectiles.size(); p++) {
+            Iterator<Projectile> projectileIter = projectiles.iterator();
+            while (projectileIter.hasNext()) {
+            	Projectile p = projectileIter.next();
     			if(e instanceof Player) {
-    				if (!(projectiles.get(p).fromPlayer())) {
-    					if (e.getRectangle().overlaps(projectiles.get(p).getRectangle())) {
-    						e.damage(projectiles.get(p).getDamage());
-    						projectiles.get(p).remove();
+    				if (!(p.fromPlayer())) {
+    					if (e.getRectangle().overlaps(p.getRectangle())) {
+    						e.damage(p.getDamage());
+    						p.remove();
     					}
     				}
     			} else {
-    				if (projectiles.get(p).fromPlayer()) {
-    					if (e.getRectangle().overlaps(projectiles.get(p).getRectangle())) {              			
-		        			e.damage(projectiles.get(p).getDamage());
-		        			projectiles.get(p).remove();
+    				if (p.fromPlayer()) {
+    					if (e.getRectangle().overlaps(p.getRectangle())) {              			
+		        			e.damage(p.getDamage());
+		        			p.remove();
     					}
 	        		}
     				if (!(e instanceof Player) &&  e.isRemoved()) {
-    					entities.remove(e);
+    					entityIterator.remove();
+    					break;
     				}
     			}
         	}  
-    		
-        	//check if either player or enemies hit asteroid
-        	for (int a = 0; a < asteroids.size(); a++) {
-        		if (e.getRectangle().overlaps(asteroids.get(a).getRectangle())) {
-        			e.damage(1);
-        			asteroids.get(a).damage(1);
-        			
-        		}
-        	}
         }
-        
+		
+	}
 
-        for (int i = 0; i < projectiles.size(); i++) {
-        	projectiles.get(i).update();
-        	if (projectiles.get(i).isRemoved()) {
-        		projectiles.remove(projectiles.get(i));
-        	}
-        }
-        //Cycle through asteroids, updating, removing, and checking if they overlap any playe projectiles
+	private void updateProjectiles() {
+        Iterator<Projectile> iter = projectiles.iterator();
+        while (iter.hasNext()) {
+        	Projectile p = iter.next();
+        	p.update();
+            if (p.isRemoved()) {
+                iter.remove();
+            }
+        }		
+	}
+    /*
+    private void updateAsteroids() {
+    	//not currently used and need to update to use proper iterators
+    	//Cycle through asteroids, updating, removing, and checking if they overlap any playe projectiles
         for (int i = 0; i < asteroids.size(); i++) {
         	Asteroid a = asteroids.get(i);
     		for (int p = 0; p <projectiles.size(); p++) {
@@ -178,13 +180,10 @@ public class Level {
     			
     		}
         }
-	}
-	
-	
-	
+    	
+    }*/
 
-
-    public void add(MyGraphics g) {
+	public void add(MyGraphics g) {
     	graphics.add(g);
     	g.init(this);
     }
@@ -203,6 +202,19 @@ public class Level {
     	asteroids.add(a);
     	a.init(this);
     }
+    
+	protected void addStarsCheckpoint(int number){
+        for (int i = 0; i < number; i++) {
+        	add(new Star(random.nextInt(480)));
+        	} 
+	}
+	
+	protected void addStars(int number){
+        for (int i = 0; i < number; i++) {
+        	add(new Star(480));
+        	} 
+	}
+	
 	public int getLevelTime() {
 		return levelTime;
 	}

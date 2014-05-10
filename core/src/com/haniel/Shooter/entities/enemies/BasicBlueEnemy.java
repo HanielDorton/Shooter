@@ -16,13 +16,13 @@ public class BasicBlueEnemy extends Enemy{
 	public BasicBlueEnemy(double x, double y, List<Coord> pattern, Level level) {
 		super(x, y, pattern, level);		
 		this.speed = 100;
-		this.width = 64;
-		this.height = 64;
+		this.width = 50;
+		this.height = 44;
 		this.texture = enemy1Texture;		
 		this.health = 2;
-		this.xOffset = 4;
-		this.yOffset = 20;
-		this.rectangle = new Rectangle((float)x + xOffset, (float)y + yOffset, width * 0.8f, height / 2);
+		this.xOffset = 7;
+		this.yOffset = 15;
+		this.rectangle = new Rectangle((float)x + xOffset, (float)y + yOffset, width, height);
 		this.weapon = new BlueSphereGun(level, false);
 		//this.engine1Effect = level.playerEngineEffectPool.obtain();
 		//this.engine1Effect.setPosition((int)x + 11,(int) y + 1);
@@ -34,8 +34,8 @@ public class BasicBlueEnemy extends Enemy{
 	public void shoot() {
         if ((level.getTime() - lastShot) > firingRate) {
 	    	lastShot = level.getTime();
-	       	double angle = level.getAngletoPlayersMiddle(x + width / 2, y + height / 2 - 5);
-	       	weapon.shoot(x + width / 2, y + height / 2 - 5, angle);
+	       	double angle = level.getAngletoPlayersMiddle(x + xOffset + width / 2, y + yOffset + height / 2 - 5);
+	       	weapon.shoot(x + xOffset + width / 2, y + yOffset + height / 2 - 5, angle);
         }
     	
 	}

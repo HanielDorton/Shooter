@@ -13,8 +13,6 @@ import com.haniel.Shooter.weapons.BasicGun;
 public class Player extends Entity{
 	
 	Texture player_forward = new Texture(Gdx.files.internal("entities/player.png"));
-	Texture player_left = new Texture(Gdx.files.internal("entities/player_left.png"));
-	Texture player_right = new Texture(Gdx.files.internal("entities/player_right.png"));
     private boolean shooting = false;;
     private int maxSpeed;
     private int keyboardSpeed;

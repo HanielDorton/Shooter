@@ -2,17 +2,16 @@
 package com.haniel.Shooter;
  
 
+import java.util.Iterator;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.Input.Keys;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.ParticleEffectPool.PooledEffect;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.haniel.Shooter.entities.Entity;
 import com.haniel.Shooter.entities.Player;
 import com.haniel.Shooter.entities.asteroids.Asteroid;
@@ -26,7 +25,6 @@ public class GameScreen implements Screen {
     final MyGdxGame game;
     OrthographicCamera camera;
 
-    long lastDropTime;
     public double gameTime = 0;
     Level level = new LevelFirst(this);
     private static int screenWidth = 800;
@@ -39,7 +37,6 @@ public class GameScreen implements Screen {
     private double levelComplete = -10;
     private int numContinues = 0;
     Pixmap mouse;
-    private ShapeRenderer shapeRenderer = new ShapeRenderer();
 
     public GameScreen(final MyGdxGame gam) {
     	if (checkPoint > 0) level.setLevelTime(checkPoint);
@@ -97,18 +94,22 @@ public class GameScreen implements Screen {
 	        for (MyGraphics graphic : level.graphics) {
 	        	game.batch.draw(graphic.getTexture(), graphic.getX(), graphic.getY());
 	        }
-	        for (ParticleEffect p : level.particleEffects) {
+	        Iterator<ParticleEffect> iter = level.particleEffects.iterator();
+	        while (iter.hasNext()){
+	        	ParticleEffect p = iter.next();
 	        	p.draw(game.batch, delta);
 	        	if (p.isComplete()) {
-	        	level.particleEffects.removeValue(p, true);
+	        		iter.remove();
 	        		p.dispose();	        		
 	        	}
 	        }
-	        for (PooledEffect p : level.effects) {
-	        	p.draw(game.batch, delta);
-	        	if (p.isComplete()) {
-	        		p.free();
-	        		level.effects.removeValue(p, true);
+	        Iterator<PooledEffect> pooledIter = level.effects.iterator();
+	        while (pooledIter.hasNext()){
+	        	PooledEffect pe = pooledIter.next();
+	        	pe.draw(game.batch, delta);
+	        	if (pe.isComplete()) {
+	        		pe.free();
+	        		pooledIter.remove();
 	        	}
 	        }
 	        for (Projectile projectile : level.projectiles) {
@@ -169,10 +170,7 @@ public class GameScreen implements Screen {
     	else score = "F";
     	return score;
 	}
-
-
-
-
+    
 	public int getWidth() {
     	return screenWidth;
     }

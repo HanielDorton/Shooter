@@ -156,8 +156,8 @@ particle.png
 Extra Layers
 - Delay -
 active: true
-lowMin: 0.0
-lowMax: 0.0
+lowMin: 200.0
+lowMax: 200.0
 - Duration - 
 lowMin: 10000.0
 lowMax: 10000.0

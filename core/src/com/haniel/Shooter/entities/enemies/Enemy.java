@@ -45,7 +45,7 @@ public abstract class Enemy extends Entity{
 	public void particles() {
 		if( health < 0) {
 			PooledEffect effect = level.smallExplosionEffectPool.obtain();
-			effect.setPosition((int) x + width / 2,(int) y + height / 2);
+			effect.setPosition((int) x + xOffset + width / 2,(int) y + yOffset + height / 2);
 			level.effects.add(effect);
 			matches2.play();
 		} 
