@@ -63,8 +63,7 @@ public class Player extends Entity{
 	     */
 
 		if (Gdx.input.isKeyPressed(Keys.LEFT) || Gdx.input.isKeyPressed(Keys.A)) {
-			movePlayer(-keyboardSpeed , 0);
-			
+			movePlayer(-keyboardSpeed , 0);		
 	        
 		}
 	    if (Gdx.input.isKeyPressed(Keys.RIGHT) || Gdx.input.isKeyPressed(Keys.D)) {
@@ -79,14 +78,6 @@ public class Player extends Entity{
 	    	movePlayer(0, -keyboardSpeed );
 			
 	    }
-	    
-		/*
-		 * this.texture = player_left;
-		 * this.texture = player_right;
-		 * this.texture = player_forward;
-		 * this.texture = player_forward;
-		 */
-
 		
 	    if (shooting ||  Gdx.input.isKeyPressed(Keys.ENTER)) {
 	    	if ((level.getTime() - lastShot) > weapon.getFiringRate()) {

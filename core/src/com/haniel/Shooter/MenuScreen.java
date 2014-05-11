@@ -15,6 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.haniel.Shooter.entities.Entity;
 import com.haniel.Shooter.graphics.MyGraphics;
 import com.haniel.Shooter.projectiles.Projectile;
+import com.haniel.Shooter.util.GameState;
 import com.haniel.Shooter.weapons.Weapon;
 
 public class MenuScreen implements Screen{
@@ -32,7 +33,6 @@ public class MenuScreen implements Screen{
     	this.game = gam;  
     }
 
-	@Override
 	public void render(float delta) {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -40,13 +40,11 @@ public class MenuScreen implements Screen{
     	stage.draw();		
 	}
 
-	@Override
 	public void resize(int width, int height) {
 		stage.getViewport().update(width, height, true);
 		table.setBounds(0, 0, stage.getWidth(), stage.getHeight());	
 	}
 
-	@Override
 	public void show() {
 		backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/sad_Exploring.mp3"));
 		backgroundMusic.play();
@@ -64,7 +62,8 @@ public class MenuScreen implements Screen{
 		buttonPlay = new TextButton("Start Game", skin);
 		buttonPlay.addListener(new ChangeListener() {
 			public void changed(ChangeEvent event, Actor actor) {
-	            game.setScreen(new GameScreen(game, 0, 0, 0));
+				GameState gameState = new GameState(1, 0, 0, 0);
+	            game.setScreen(new LevelIntroScreen(game, gameState));
 	            dispose();				
 			}
 		});
@@ -99,25 +98,15 @@ public class MenuScreen implements Screen{
 		
 	}
 
-	@Override
 	public void hide() {
-		// TODO Auto-generated method stub
-		
 	}
 
-	@Override
 	public void pause() {
-		// TODO Auto-generated method stub
-		
 	}
 
-	@Override
 	public void resume() {
-		// TODO Auto-generated method stub
-		
 	}
 
-	@Override
 	public void dispose() {
 		stage.dispose();
 		backgroundMusic.dispose();		

@@ -14,12 +14,12 @@ public class QuickBlue extends Enemy{
 	public QuickBlue(double x, double y, List<Coord> pattern, Level level) {
 		super(x, y, pattern, level);
 		this.speed = 300;
-		this.width = 20;
-		this.height = 30;
+		this.width = 24;
+		this.height = 8;
 		this.texture = quickBlueTexture;		
 		this.health = 0;
-		this.xOffset = 5;
-		this.yOffset = 5;
+		this.xOffset = 3;
+		this.yOffset = 4;
 		this.rectangle = new Rectangle((float)x + xOffset, (float)y + yOffset, width, height);
 		this.weapon = new BlueSphereGun(level, false);
 		this.lastShot = level.getTime() + random.nextInt(2);

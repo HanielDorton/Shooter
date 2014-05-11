@@ -17,7 +17,9 @@ import com.haniel.Shooter.entities.asteroids.Asteroid;
 import com.haniel.Shooter.graphics.MyGraphics;
 import com.haniel.Shooter.level.Level;
 import com.haniel.Shooter.level.LevelFirst;
+import com.haniel.Shooter.level.LevelSecond;
 import com.haniel.Shooter.projectiles.Projectile;
+import com.haniel.Shooter.util.GameState;
 import com.haniel.Shooter.util.MyInputProcessor;
 
 public class GameScreen implements Screen {
@@ -25,24 +27,24 @@ public class GameScreen implements Screen {
     OrthographicCamera camera;
 
     public double gameTime = 0;
-    Level level = new LevelFirst(this);
+    Level level;
     private static int screenWidth = 800;
     private static int screenHeight = 480;
-    public Player player = new Player(level);
-    public MyInputProcessor inputProcessor = new MyInputProcessor(player);
-    private int checkPoint; //4290 for ufo's // 9190 for secondcheckpoint//13990 for boss
+    public Player player; 
+    public MyInputProcessor inputProcessor;
     private int deathTimer;
     private boolean paused = false;
     private double levelComplete = -10;
-    private int numContinues,numLevel;
+    private GameState gameState;
     Pixmap mouse;
 
-    public GameScreen(final MyGdxGame gam, int numContinues, int checkPoint, int numLevel) {
-    	if (checkPoint > 0) level.setLevelTime(checkPoint);
+    public GameScreen(final MyGdxGame gam, GameState gameState) {    	
         this.game = gam;
-    	this.numContinues = numContinues;
-    	this.checkPoint = checkPoint;
-    	this.numLevel = numLevel;
+    	this.gameState = gameState;
+    	level = getLevel();
+    	if (gameState.checkPoint > 0) level.setLevelTime(gameState.checkPoint);
+    	player = new Player(level);
+    	inputProcessor = new MyInputProcessor(player);
         level.runLevel(this);
         Gdx.input.setInputProcessor(inputProcessor);
         camera = new OrthographicCamera();
@@ -55,11 +57,7 @@ public class GameScreen implements Screen {
         level.add(player);
         player.init(this);        
     }
-    
-    
 
-
-    @Override
     public void render(float delta) {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -72,28 +70,23 @@ public class GameScreen implements Screen {
         }
         else if (deathTimer == level.getLevelTime()) {
         	Gdx.input.setCursorImage(null, 0, 0);
-        	numContinues++;
-        	game.setScreen(new DeathScreen(game, numContinues, checkPoint, 0));
+        	gameState.numContinues++;
+        	game.setScreen(new DeathScreen(game, gameState, level));
             dispose();	
-            //this was all the stuff I had to do when i wasn't simply recreating everything on each death:
-            //levelComplete = -10;
-            //deathTimer = -10; //reseting this breaks out of this loop of course
-           // player.setX(400);
-           //player.setY(20);
-            //level.setLevelTime(checkPoint);
-   	        //clearLevel();
-   	        //level.add(player);
-   	        //level.stopMusic();
-   	        //player.resetEngines();
-
-        } else if (levelComplete == level.getLevelTime()){	        	
-	        	game.font.draw(game.batch, "Level Complete", 350, 300);
-	        	game.font.draw(game.batch, "Continues: " + numContinues, 350, 250);
-	        	game.font.draw(game.batch, "Your score: " + getScore(numContinues), 350, 200);
+        } else if (levelComplete == level.getLevelTime()){	    
+        	Gdx.input.setCursorImage(null, 0, 0);
+        	gameState.numLevel++;
+        	gameState.checkPoint = 0;
+        	game.setScreen(new LevelCompleteScreen(game, gameState, level));
+        	dispose();
+        	
+	        	//game.font.draw(game.batch, "Level Complete", 350, 300);
+	        	//game.font.draw(game.batch, "Continues: " + gameState.numContinues, 350, 250);
+	        	//game.font.draw(game.batch, "Your score: " + getScore(gameState.numContinues), 350, 200);
 	        	
 	        	
 	    } else {
-	    	//draw and update level stuff
+	    	//draw and update level
 	        for (MyGraphics graphic : level.graphics) {
 	        	game.batch.draw(graphic.getTexture(), graphic.getX(), graphic.getY());
 	        }
@@ -146,17 +139,6 @@ public class GameScreen implements Screen {
         game.batch.end();
     }
     
-    private String getScore(int numContinues) {
-    	String score = "";
-    	if (numContinues == 0) score = "A++";
-    	else if (numContinues < 3) score = "A";
-    	else if (numContinues < 6) score = "B";
-    	else if (numContinues < 9) score = "C";
-    	else if (numContinues < 12) score = "D";
-    	else score = "F";
-    	return score;
-	}
-    
 	public int getWidth() {
     	return screenWidth;
     }
@@ -188,7 +170,7 @@ public class GameScreen implements Screen {
     @Override
     public void dispose() {
     	clearLevel();
-    	level.dispose();
+    	//level.dispose(); need to call this if exiting;
     	mouse.dispose();
     }
     public void clearLevel() {
@@ -205,15 +187,31 @@ public class GameScreen implements Screen {
     }
     
     public int getCheckPoint() {
-    	return checkPoint;
+    	return gameState.checkPoint;
+    	
     }
     public void setCheckPoint(int newCheckPoint) {
-    	this.checkPoint = newCheckPoint;
+    	gameState.checkPoint = newCheckPoint;
     }
     
     public void setLevelComplete() {
-    	this.levelComplete = level.getLevelTime() + 800;
+    	this.levelComplete = level.getLevelTime() + 500;
     }
+    
+    private Level getLevel() {
+    	Level level;
+		switch (gameState.numLevel) {
+		case 1: {
+			level = new LevelSecond(this); 
+			break;
+		}
+		default: {
+			level = new LevelFirst(this);
+			break;
+		}
+		}
+		return level;
+	}
 
 }
 

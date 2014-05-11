@@ -1,7 +1,6 @@
 package com.haniel.Shooter.level;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.ParticleEffectPool;
 import com.haniel.Shooter.GameScreen;
 import com.haniel.Shooter.entities.enemies.BasicBlueEnemy;
@@ -16,8 +15,6 @@ import com.haniel.Shooter.util.Coord;
 
 public class LevelFirst extends Level{
 	//Checkpoints: 4290 for ufo's // 9190 for secondcheckpoint//13990 for boss
-	//load all particle effects for this level
-	ParticleEffect planetExplosion;
 			
 	public LevelFirst(GameScreen gameScreen) {
 		super(gameScreen);
@@ -28,6 +25,8 @@ public class LevelFirst extends Level{
 		smallExplosionEffect.load(Gdx.files.internal("particles/firstlevel/BlueExplosion.p"), Gdx.files.internal("particles/"));
 		smallExplosionEffectPool = new ParticleEffectPool(smallExplosionEffect, 5, 20);
 	}
+	
+	//CheckPoints: 4290 for ufo's // 9190 for secondcheckpoint// 13990 for boss
 	
 	public void runLevel(GameScreen g) {
 		levelTime += 10;
@@ -41,7 +40,6 @@ public class LevelFirst extends Level{
 				break;
 			}
 			case 300: {
-				addStars(20);
 				add(new BasicBlueEnemy(800, 480, Coord.topRightMiddleLeaveTop, this));
 				add(new BasicBlueEnemy(-60, 480, Coord.topLeftMiddleLeaveTop, this));
 				break;
@@ -49,7 +47,6 @@ public class LevelFirst extends Level{
 			case 370: {
 				add(new BasicBlueEnemy(800, 480, Coord.topRightMiddleLeaveTop, this));
 				add(new BasicBlueEnemy(-60, 480, Coord.topLeftMiddleLeaveTop, this));
-				addStars(20);
 				break;
 			}
 			case 440: {
@@ -58,7 +55,6 @@ public class LevelFirst extends Level{
 				break;
 			} 
 			case 510: {
-				addStars(20);
 				add(new BasicBlueEnemy(800, 480, Coord.topRightMiddleLeaveTop, this));
 				add(new BasicBlueEnemy(-60, 480, Coord.topLeftMiddleLeaveTop, this));
 				break;
@@ -66,11 +62,9 @@ public class LevelFirst extends Level{
 			case 580: {
 				add(new BasicBlueEnemy(800, 480, Coord.topRightMiddleLeaveTop, this));
 				add(new BasicBlueEnemy(-60, 480, Coord.topLeftMiddleLeaveTop, this));
-				addStars(20);
 				break;
 			} 
 			case 660: {
-				addStars(20);
 				add(new BasicBlueEnemy(800, 480, Coord.topRightMiddleLeaveTop, this));
 				add(new BasicBlueEnemy(-60, 480, Coord.topLeftMiddleLeaveTop, this));
 				break;

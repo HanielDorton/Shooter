@@ -17,12 +17,12 @@ public class BlueSaucer extends Enemy{
 	public BlueSaucer(double x, double y, List<Coord> pattern, Level level) {
 		super(x, y, pattern, level);
 		this.speed = 40;
-		this.width = 120;
-		this.height = 62;
+		this.width = 140;
+		this.height = 48;
 		this.texture = blueSaucerTexture;		
 		this.health = 100;
-		this.xOffset = 15;
-		this.yOffset = 1;
+		this.xOffset = 5;
+		this.yOffset = 5;
 		this.rectangle = new Rectangle((float)x + xOffset, (float)y + yOffset, width, height);
 		this.weapon = new BlueSphereGun(level, false);
 		this.lastShot = level.getTime() + 5;

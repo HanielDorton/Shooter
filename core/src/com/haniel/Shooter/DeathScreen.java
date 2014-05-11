@@ -12,7 +12,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.haniel.Shooter.entities.Entity;
 import com.haniel.Shooter.graphics.MyGraphics;
+import com.haniel.Shooter.level.Level;
 import com.haniel.Shooter.projectiles.Projectile;
+import com.haniel.Shooter.util.GameState;
 import com.haniel.Shooter.weapons.Weapon;
 
 public class DeathScreen implements Screen{
@@ -22,16 +24,15 @@ public class DeathScreen implements Screen{
 	private Table table;
 	private TextButton buttonContinue, buttonMenu, buttonExit;
 	private TextureAtlas atlas;
-	private int numContinues, checkPoint, numLevel;
+	private GameState gameState;
+	private Level level;
 	
-    public DeathScreen(final MyGdxGame gam, int numContinues, int checkPoint, int numLevel) {
+    public DeathScreen(final MyGdxGame gam, GameState gameState, Level level) {
     	this.game = gam;
-    	this.numContinues = numContinues;
-    	this.checkPoint = checkPoint;
-    	this.numLevel = numLevel;
+    	this.gameState = gameState;
+    	this.level = level;
     }
 
-	@Override
 	public void render(float delta) {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -39,13 +40,11 @@ public class DeathScreen implements Screen{
     	stage.draw();			
 	}
 
-	@Override
 	public void resize(int width, int height) {
 		stage.getViewport().update(width, height, true);
 		table.setBounds(0, 0, stage.getWidth(), stage.getHeight());			
 	}
 
-	@Override
 	public void show() {
 		atlas = new TextureAtlas("ui/uiskin.atlas");
 		skin = new Skin(Gdx.files.internal("ui/uiskin.json"), atlas);
@@ -59,7 +58,7 @@ public class DeathScreen implements Screen{
 		buttonContinue = new TextButton("Retry from Check Point", skin);
 		buttonContinue.addListener(new ChangeListener() {
 			public void changed(ChangeEvent event, Actor actor) {
-				game.setScreen(new GameScreen(game, numContinues, checkPoint, numLevel));
+				game.setScreen(new GameScreen(game, gameState));
 				dispose();				
 			}
 		});
@@ -85,32 +84,22 @@ public class DeathScreen implements Screen{
 		table.row();
 		table.add(buttonMenu).padBottom(10).width(200).height(40);
 		table.row();
-		table.add(buttonExit).padBottom(10).width(200).height(40);
+		table.add(buttonExit).width(200).height(40);
 		
 	}
-
-	@Override
+	
 	public void hide() {
-		// TODO Auto-generated method stub
-		
 	}
 
-	@Override
 	public void pause() {
-		// TODO Auto-generated method stub
-		
 	}
 
-	@Override
 	public void resume() {
-		// TODO Auto-generated method stub
-		
 	}
 
-	@Override
 	public void dispose() {
 		stage.dispose();
-		
+		level.dispose();		
 	}
 
 }

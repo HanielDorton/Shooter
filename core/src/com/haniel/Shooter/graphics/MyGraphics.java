@@ -17,6 +17,7 @@ public abstract class MyGraphics {
 	//load all images here so they are only loaded once:
 	//every time you add a new one add it to dispose() at the bottom.
 	protected static final Texture starTexture = new Texture(Gdx.files.internal("textures/star.png"));
+	protected static final Texture blueStarTexture = new Texture(Gdx.files.internal("textures/bluestar.png"));
 	protected static final Texture checkpointReachedTexture = new Texture(Gdx.files.internal("textures/checkpointreached.png"));
 	
 	
