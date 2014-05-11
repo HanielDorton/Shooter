@@ -36,11 +36,11 @@ public class CreditsScreen implements Screen{
         credits.add("Created in Java with LIBGDX");
         credits.add("All programming and art by Daniel Horton");
         credits.add("Music:");
-        credits.add("Main Menu Music 'Sad Exploring' by Eric Taylor (erictaylormusic.com)");
-        credits.add("Level 1 Music 'Black Vortex' by Kevin MacLeod (incompetech.com)");
-        credits.add("Boss Battle Music 'All This' by Kevin MacLeod (incompetech.com)");
-        credits.add("Credits Music 'Determination Under Fire' by Eric Taylor (erictaylormusic.com)");
-		backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/Determination_underfirev1.mp3"));
+        credits.add("Main Menu: 'Sad Exploring' by Eric Taylor (erictaylormusic.com)");
+        credits.add("Level 1: 'Black Vortex' by Kevin MacLeod (incompetech.com)");
+        credits.add("Boss Battle: 'All This' by Kevin MacLeod (incompetech.com)");
+        credits.add("Credits: 'Grim League' by Kevin MacLeod (incompetech.com))");
+		backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/Grim_League.mp3"));
 		backgroundMusic.play();
 		backgroundMusic.setLooping(true);
     }

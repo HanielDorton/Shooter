@@ -48,8 +48,6 @@ public class Level {
 	ParticleEffect enemyBulletEffect = new ParticleEffect();
 	public ParticleEffectPool enemyBulletEffectPool;
 	
-
-	
 	public Level(GameScreen gameScreen) {
 		this.gameScreen = gameScreen; 
 		ParticleEffect playerBulletEffect = new ParticleEffect();
@@ -248,7 +246,7 @@ public class Level {
 	}
 	
 	public void dispose() {
-		
+		backgroundMusic.dispose();
 	}
 
 }

@@ -6,7 +6,6 @@ import java.util.Iterator;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Pixmap;
@@ -31,16 +30,19 @@ public class GameScreen implements Screen {
     private static int screenHeight = 480;
     public Player player = new Player(level);
     public MyInputProcessor inputProcessor = new MyInputProcessor(player);
-    private int checkPoint = 0; //4290 for ufo's // 9190 for secondcheckpoint//13990 for boss
+    private int checkPoint; //4290 for ufo's // 9190 for secondcheckpoint//13990 for boss
     private int deathTimer;
     private boolean paused = false;
     private double levelComplete = -10;
-    private int numContinues = 0;
+    private int numContinues,numLevel;
     Pixmap mouse;
 
-    public GameScreen(final MyGdxGame gam) {
+    public GameScreen(final MyGdxGame gam, int numContinues, int checkPoint, int numLevel) {
     	if (checkPoint > 0) level.setLevelTime(checkPoint);
-        this.game = gam;        
+        this.game = gam;
+    	this.numContinues = numContinues;
+    	this.checkPoint = checkPoint;
+    	this.numLevel = numLevel;
         level.runLevel(this);
         Gdx.input.setInputProcessor(inputProcessor);
         camera = new OrthographicCamera();
@@ -69,28 +71,29 @@ public class GameScreen implements Screen {
         	
         }
         else if (deathTimer == level.getLevelTime()) {
-        	game.font.draw(game.batch, "Death.", screenWidth / 2 + 10, screenHeight / 2);
-        	game.font.draw(game.batch, "Hit 'Space' to continue.", screenWidth / 2, screenHeight / 2 - 20);
-            if (Gdx.input.isKeyPressed(Keys.SPACE)) {
-            	numContinues++;
-            	levelComplete = -10;
-            	deathTimer = -10;
-            	player.setX(400);
-            	player.setY(20);
-            	level.setLevelTime(checkPoint);
-   	        	clearLevel();
-   	        	level.add(player);
-   	        	level.stopMusic();
-   	        	player.resetEngines();
-            }
-        } else if (levelComplete == level.getLevelTime()){
-	        	
+        	Gdx.input.setCursorImage(null, 0, 0);
+        	numContinues++;
+        	game.setScreen(new DeathScreen(game, numContinues, checkPoint, 0));
+            dispose();	
+            //this was all the stuff I had to do when i wasn't simply recreating everything on each death:
+            //levelComplete = -10;
+            //deathTimer = -10; //reseting this breaks out of this loop of course
+           // player.setX(400);
+           //player.setY(20);
+            //level.setLevelTime(checkPoint);
+   	        //clearLevel();
+   	        //level.add(player);
+   	        //level.stopMusic();
+   	        //player.resetEngines();
+
+        } else if (levelComplete == level.getLevelTime()){	        	
 	        	game.font.draw(game.batch, "Level Complete", 350, 300);
 	        	game.font.draw(game.batch, "Continues: " + numContinues, 350, 250);
 	        	game.font.draw(game.batch, "Your score: " + getScore(numContinues), 350, 200);
 	        	
+	        	
 	    } else {
-
+	    	//draw and update level stuff
 	        for (MyGraphics graphic : level.graphics) {
 	        	game.batch.draw(graphic.getTexture(), graphic.getX(), graphic.getY());
 	        }
@@ -124,10 +127,7 @@ public class GameScreen implements Screen {
 	        //game.font.draw(game.batch, "Time: " + level.getLevelTime(), 0, screenHeight);
 	        //game.font.draw(game.batch, "JaveHeap: " + Gdx.app.getJavaHeap(), 0, screenHeight -20);
 	        //game.font.draw(game.batch, "NativeHeap: " +  Gdx.app.getNativeHeap(), 0, screenHeight - 40);
-	        
-
 	        level.update();
-	        
 	        gameTime += Gdx.graphics.getDeltaTime();
 	        if (gameTime > .1) {
 	        	level.runLevel(this);
@@ -138,26 +138,12 @@ public class GameScreen implements Screen {
 	        	deathTimer = level.getLevelTime() + 300;    
 	        	player.particles();
 	        	player.setHealth();	 
-	        	level.entities.remove(player);
-       	
-	        }
-	        
+	        	level.entities.remove(player);       	
+	        }	        
 	        //every once in a while check things are getting removed correctly:
 	        //System.out.println(level.effects.size);
         }
         game.batch.end();
-        // this lets each level (not each checkpoint) start 2.9 secs before screen shows
-        // and says name of level.
-        if (level.getLevelTime() < 290) {
-        	Gdx.gl.glClearColor(0, 0, 0, 1);
-            Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-            game.batch.begin();
-            game.font.draw(game.batch, "Level One: Despair", 350, 300);
-            game.batch.end();
-            player.setX(400);
-            player.setY(20);
-        }
-        
     }
     
     private String getScore(int numContinues) {
@@ -202,6 +188,7 @@ public class GameScreen implements Screen {
     @Override
     public void dispose() {
     	clearLevel();
+    	level.dispose();
     	mouse.dispose();
     }
     public void clearLevel() {

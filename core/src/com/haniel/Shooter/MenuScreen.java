@@ -37,8 +37,7 @@ public class MenuScreen implements Screen{
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
     	stage.act(Gdx.graphics.getDeltaTime());
-    	stage.draw();
-		
+    	stage.draw();		
 	}
 
 	@Override
@@ -65,7 +64,7 @@ public class MenuScreen implements Screen{
 		buttonPlay = new TextButton("Start Game", skin);
 		buttonPlay.addListener(new ChangeListener() {
 			public void changed(ChangeEvent event, Actor actor) {
-	            game.setScreen(new GameScreen(game));
+	            game.setScreen(new GameScreen(game, 0, 0, 0));
 	            dispose();				
 			}
 		});
@@ -87,15 +86,15 @@ public class MenuScreen implements Screen{
 	            Gdx.app.exit(); 				
 			}
 		});
-		table.add(title).padBottom(70);
+		table.add(title).padBottom(30);
 		table.row();
-		table.add(author).padBottom(40);
+		table.add(author).padBottom(70);
 		table.row();
-		table.add(buttonPlay).padBottom(10).width(100);
+		table.add(buttonPlay).padBottom(10).width(200).height(40);
 		table.row();
-		table.add(buttonCredits).padBottom(10).width(100);
+		table.add(buttonCredits).padBottom(10).width(200).height(40);
 		table.row();
-		table.add(buttonExit).padBottom(10).width(100);
+		table.add(buttonExit).padBottom(10).width(200).height(40);
 				
 		
 	}

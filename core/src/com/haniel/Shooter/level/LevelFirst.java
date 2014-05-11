@@ -22,151 +22,159 @@ public class LevelFirst extends Level{
 	public LevelFirst(GameScreen gameScreen) {
 		super(gameScreen);
 		backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/black_vortex.mp3"));
-		
 		//load all particle effects for pooling:
 		enemyBulletEffect.load(Gdx.files.internal("particles/firstlevel/BlueSphere.p"), Gdx.files.internal("particles/"));
 		enemyBulletEffectPool = new ParticleEffectPool(enemyBulletEffect, 45, 80);
 		smallExplosionEffect.load(Gdx.files.internal("particles/firstlevel/BlueExplosion.p"), Gdx.files.internal("particles/"));
 		smallExplosionEffectPool = new ParticleEffectPool(smallExplosionEffect, 5, 20);
-        
-		
 	}
 	
 	public void runLevel(GameScreen g) {
-		
-		
 		levelTime += 10;
 		switch (levelTime) {
 		
 			case 10: {
-				add(new BackgroundImage("levels/space_background2.png", 0, 0, 3));
-		        add(new BackgroundImage("levels/space_background2.png", 0, 960, 3));        
-		        planetExplosion = new ParticleEffect();
-		        planetExplosion.load(Gdx.files.internal("particles/firstlevel/PlanetDestruction.p"), Gdx.files.internal("particles/"));
-				planetExplosion.setPosition(400, -300);
-				particleEffects.add(planetExplosion);
-				planetExplosion.start();
-				break;
-			}
-			case 200:{
 				backgroundMusic.play();
+				add(new BackgroundImage("levels/space_background2.png", 0, 0, 3));
+		        add(new BackgroundImage("levels/space_background2.png", 0, 960, 3));
+		        addStarsCheckpoint(100);
 				break;
 			}
 			case 300: {
-				planetExplosion.setPosition(400, -305);
+				addStars(20);
+				add(new BasicBlueEnemy(800, 480, Coord.topRightMiddleLeaveTop, this));
+				add(new BasicBlueEnemy(-60, 480, Coord.topLeftMiddleLeaveTop, this));
 				break;
-			}
-			case 320: {
-				planetExplosion.setPosition(400, -310);
-				break;
-			}
-			case 340: {
-				planetExplosion.setPosition(400, -315);
-				break;
-			}
-			case 360: {
-				planetExplosion.setPosition(400, -320);
-				break;
-			}
-			case 380: {
-				planetExplosion.setPosition(400, -325);
-				break;
-			}
-			case 400: {
-				planetExplosion.setPosition(400, -330);
-				break;
-			}
-			case 420: {
-				planetExplosion.setPosition(400, -335);
+			}		
+			case 370: {
+				add(new BasicBlueEnemy(800, 480, Coord.topRightMiddleLeaveTop, this));
+				add(new BasicBlueEnemy(-60, 480, Coord.topLeftMiddleLeaveTop, this));
+				addStars(20);
 				break;
 			}
 			case 440: {
-				planetExplosion.setPosition(400, -350);
-				break;
-			}
-			case 800: {
-				addStars(20);
-				break;
-			}
-			case 900: {
-				addStars(20);
-				break;
-			}	
-			case 1000: {
-				addStars(20);
-				break;
-			}	
-			case 1100: {
-				addStars(20);
-				break;
-			}	
-		
-			case 1300: {
-				addStars(20);
-				add(new BasicBlueEnemy(800, 480, Coord.topRightMiddleLeaveTop, this));
-				add(new BasicBlueEnemy(-60, 480, Coord.topLeftMiddleLeaveTop, this));
-				break;
-			} 
-			
-			case 1370: {
-				add(new BasicBlueEnemy(800, 480, Coord.topRightMiddleLeaveTop, this));
-				add(new BasicBlueEnemy(-60, 480, Coord.topLeftMiddleLeaveTop, this));
-				addStars(20);
-				break;
-			}
-			case 1440: {
 				add(new BasicBlueEnemy(800, 480, Coord.topRightMiddleLeaveTop, this));
 				add(new BasicBlueEnemy(-60, 480, Coord.topLeftMiddleLeaveTop, this));			
 				break;
 			} 
-			case 1510: {
+			case 510: {
 				addStars(20);
 				add(new BasicBlueEnemy(800, 480, Coord.topRightMiddleLeaveTop, this));
 				add(new BasicBlueEnemy(-60, 480, Coord.topLeftMiddleLeaveTop, this));
 				break;
 			} 
-			case 1580: {
+			case 580: {
 				add(new BasicBlueEnemy(800, 480, Coord.topRightMiddleLeaveTop, this));
 				add(new BasicBlueEnemy(-60, 480, Coord.topLeftMiddleLeaveTop, this));
 				addStars(20);
 				break;
 			} 
-			case 1660: {
+			case 660: {
 				addStars(20);
 				add(new BasicBlueEnemy(800, 480, Coord.topRightMiddleLeaveTop, this));
 				add(new BasicBlueEnemy(-60, 480, Coord.topLeftMiddleLeaveTop, this));
 				break;
 			} 
-			case 1730: {
+			case 730: {
 				add(new BasicBlueEnemy(800, 480, Coord.topRightMiddleLeaveTop, this));
 				add(new BasicBlueEnemy(-60, 480, Coord.topLeftMiddleLeaveTop, this));
 				break;
 			} 
-			case 1800: {
+			case 800: {
 				add(new BasicBlueEnemy(800, 480, Coord.topRightMiddleLeaveTop, this));
 				add(new BasicBlueEnemy(-60, 480, Coord.topLeftMiddleLeaveTop, this));
 				break;
 			} 
-			case 1870: {
+			case 870: {
 				add(new BasicBlueEnemy(800, 480, Coord.topRightMiddleLeaveTop, this));
 				add(new BasicBlueEnemy(-60, 480, Coord.topLeftMiddleLeaveTop, this));
 				break;
 			} 
-			case 1940: {
+			case 940: {
 				add(new BasicBlueEnemy(800, 480, Coord.topRightMiddleLeaveTop, this));
 				add(new BasicBlueEnemy(-60, 480, Coord.topLeftMiddleLeaveTop, this));
 				break;
 			} 
-			case 2010: {
+			case 1010: {
 				add(new BasicBlueEnemy(800, 480, Coord.topRightMiddleLeaveTop, this));
 				add(new BasicBlueEnemy(-60, 480, Coord.topLeftMiddleLeaveTop, this));
 				break;
 			} 
-			case 2080: {
+			case 1080: {
 				add(new BasicBlueEnemy(800, 480, Coord.topRightMiddleLeaveTop, this));
 				add(new BasicBlueEnemy(-60, 480, Coord.topLeftMiddleLeaveTop, this));
 				break;
-			} 			
+			} 
+			case 1470: {
+				add(new ImprovedBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
+				add(new ImprovedBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
+				break;
+			}
+			case 1540: {
+				add(new ImprovedBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
+				add(new ImprovedBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
+				break;
+			}
+			case 1610: {
+				add(new ImprovedBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
+				add(new ImprovedBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
+				break;
+			}
+			case 1680: {
+				add(new ImprovedBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
+				add(new ImprovedBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
+				break;
+			}
+			case 1750: {
+				add(new ImprovedBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
+				add(new ImprovedBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
+				break;
+			}
+			case 1820: {
+				add(new ImprovedBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
+				add(new ImprovedBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
+				break;
+			}
+			case 1890: {
+				add(new ImprovedBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
+				add(new ImprovedBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
+				break;
+			}
+			case 1960: {
+				add(new ImprovedBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
+				add(new ImprovedBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
+				break;
+			}
+			case 2030: {
+				add(new ImprovedBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
+				add(new ImprovedBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
+				break;
+			}
+			case 2100: {
+				add(new ImprovedBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
+				add(new ImprovedBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
+				break;
+			}
+			case 2170: {
+				add(new ImprovedBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
+				add(new ImprovedBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
+				break;
+			}
+			case 2240: {
+				add(new ImprovedBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
+				add(new ImprovedBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
+				break;
+			}
+			case 2310: {
+				add(new ImprovedBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
+				add(new ImprovedBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
+				break;
+			}
+			case 2380: {
+				add(new BasicBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
+				add(new BasicBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
+				break;
+			}
 			case 2450: {
 				add(new ImprovedBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
 				add(new ImprovedBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
@@ -236,8 +244,7 @@ public class LevelFirst extends Level{
 				add(new ImprovedBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
 				add(new ImprovedBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
 				break;
-			}
-	
+			}	
 			case 4300: {
 				if (gameScreen.getCheckPoint() + 10 == levelTime) {
 					add(new BackgroundImage("levels/space_background2.png", 0, 0, 3));
