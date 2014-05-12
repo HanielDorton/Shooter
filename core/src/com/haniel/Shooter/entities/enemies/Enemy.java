@@ -59,8 +59,10 @@ public abstract class Enemy extends Entity{
 		angle = getAngleTo(x, y, destX, destY);
 		
 	}
-	public void shoot() {
-		System.out.println("shooting not setup for this enemy");
+	protected void shoot() {
+		if (!(getMidY()> 480) && !(getMidY() < 0) && !(getMidX() < 0 && !(getMidX() > 800))){
+			System.out.println("shooting not setup for this enemy");
+		}
 	}
 }
 

@@ -1,10 +1,12 @@
-package com.haniel.Shooter.entities.enemies;
+package com.haniel.Shooter.entities.enemies.FirstLevel;
 
 import java.util.List;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Rectangle;
+import com.haniel.Shooter.entities.enemies.Enemy;
 import com.haniel.Shooter.level.Level;
 import com.haniel.Shooter.util.Coord;
 import com.haniel.Shooter.weapons.BlueSphereGun;
@@ -19,7 +21,7 @@ public class BlueSaucer extends Enemy{
 		this.speed = 40;
 		this.width = 140;
 		this.height = 48;
-		this.texture = blueSaucerTexture;		
+		this.sprite = new Sprite(blueSaucerTexture);		
 		this.health = 100;
 		this.xOffset = 5;
 		this.yOffset = 5;
@@ -28,12 +30,14 @@ public class BlueSaucer extends Enemy{
 		this.lastShot = level.getTime() + 5;
 	}
 	
-	public void shoot() {
+	protected void shoot() {
         if ((level.getTime() - lastShot) > firingRate) {
-	    	lastShot = level.getTime();
-	    	for (int i = 1; i < 9; i ++) {
-	    		weapon.shoot(x + (16 * i), y + yOffset + 5, firingAngle - (i * -.375));
-	    	}
+        	if (!(getMidY()> 480) && !(getMidY() < 0) && !(getMidX() < 0 && !(getMidX() > 800))){
+		    	lastShot = level.getTime();
+		    	for (int i = 1; i < 9; i ++) {
+		    		weapon.shoot(x + (16 * i), y + yOffset + 5, firingAngle - (i * -.375));
+		    	}
+        	}
         }
     }
 	

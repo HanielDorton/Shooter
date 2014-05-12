@@ -1,4 +1,4 @@
-package com.haniel.Shooter.entities.enemies;
+package com.haniel.Shooter.entities.enemies.FirstLevel;
 
 import java.util.List;
 
@@ -17,14 +17,14 @@ public class ImprovedBlueSaucer extends BlueSaucer{
 		this.health = 50;
 	}
 	
-	public void shoot() {
+	protected void shoot() {
 		super.shoot();
         if ((level.getTime() - lastShotSecondGun) > secondFiringRate) {
-	    	lastShotSecondGun = level.getTime();
-	    	double angleSecond = level.getAngletoPlayersMiddle(x + xOffset + (width / 2), y + yOffset + 5);
-	       	weapon.shoot(x + xOffset + (width / 2), y + yOffset + 5, angleSecond);
-	       	//weapon.shoot(x + xOffset + (width / 2), y + yOffset + 5, angleSecond + .2);
-	       	//weapon.shoot(x + xOffset + (width / 2), y + yOffset + 5, angleSecond - .2);
+        	if (!(getMidY()> 480) && !(getMidY() < 0) && !(getMidX() < 0 && !(getMidX() > 800))){
+		    	lastShotSecondGun = level.getTime();
+		    	double angleSecond = level.getAngletoPlayersMiddle(x + xOffset + (width / 2), y + yOffset + 5);
+		       	weapon.shoot(x + xOffset + (width / 2), y + yOffset + 5, angleSecond);
+        	}
 	    }
 		
 	}

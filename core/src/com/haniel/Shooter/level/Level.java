@@ -19,6 +19,7 @@ import com.haniel.Shooter.entities.asteroids.Asteroid;
 import com.haniel.Shooter.graphics.MyGraphics;
 import com.haniel.Shooter.graphics.Star;
 import com.haniel.Shooter.projectiles.Projectile;
+import com.haniel.Shooter.weapons.Weapon;
 
 
 public class Level {
@@ -26,12 +27,14 @@ public class Level {
 	private double time;
 	protected Music backgroundMusic;
 	protected int levelTime;
+	protected float gTime,  weaponTime = 0;
 	protected GameScreen gameScreen;
     public List<MyGraphics> graphics = new LinkedList<MyGraphics>();
     public List<Entity> entities = new ArrayList<Entity>();
     public List<Asteroid> asteroids = new ArrayList<Asteroid>();
     public List<Projectile> projectiles = new ArrayList<Projectile>();
     public Array<ParticleEffect> particleEffects= new Array<ParticleEffect>();
+    public Array<ParticleEffect> overlayedParticleEffects = new Array<ParticleEffect>();
     
     
     // each level will have certain particle effects that can be pooled
@@ -48,6 +51,9 @@ public class Level {
 	ParticleEffect enemyBulletEffect = new ParticleEffect();
 	public ParticleEffectPool enemyBulletEffectPool;
 	
+	//array for enemy weapon sounds so only a few get played
+	public LinkedList<Weapon> weaponSounds = new LinkedList<Weapon>(); 
+	
 	public Level(GameScreen gameScreen) {
 		this.gameScreen = gameScreen; 
 		ParticleEffect playerBulletEffect = new ParticleEffect();
@@ -59,10 +65,24 @@ public class Level {
 	}
 	
 	public void update() {
-		time += Gdx.graphics.getDeltaTime();
+		gTime = Gdx.graphics.getDeltaTime();
+		time += gTime;
+		weaponTime += gTime;
         updateGraphics();
         updateEntities();     
-        updateProjectiles();  
+        updateProjectiles();
+        
+        if (weaponTime > .3) {
+        	if (weaponSounds.size() > 0) {
+        		weaponTime = 0;
+	        	Iterator<Weapon> iter = weaponSounds.iterator();    
+		        while(iter.hasNext()) {
+		        	Weapon w = iter.next();
+		        	w.playSound();
+		        	iter.remove();
+		        }
+        	}
+        }
 	}
 	
     private void updateGraphics() {

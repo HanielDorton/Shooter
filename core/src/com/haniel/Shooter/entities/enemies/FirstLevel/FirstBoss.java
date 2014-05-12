@@ -1,10 +1,12 @@
-package com.haniel.Shooter.entities.enemies;
+package com.haniel.Shooter.entities.enemies.FirstLevel;
 
 import java.util.List;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Rectangle;
+import com.haniel.Shooter.entities.enemies.Enemy;
 import com.haniel.Shooter.level.Level;
 import com.haniel.Shooter.util.Coord;
 import com.haniel.Shooter.weapons.BlackSphereGun;
@@ -22,7 +24,7 @@ public class FirstBoss extends Enemy{
 		this.speed = 40;
 		this.width = 600;
 		this.height = 200;
-		this.texture = firstBossTexture;		
+		this.sprite = new Sprite(firstBossTexture);		
 		this.health = 350;
 		this.rectangle = new Rectangle((float)x, (float)y , width, height);
 		this.weapon = new BlackSphereGun(level, false);
@@ -37,7 +39,7 @@ public class FirstBoss extends Enemy{
 		engine2Effect.start();
 	}
 	
-	public void shoot() {
+	protected void shoot() {
 		if (health < 100) firingRate = 1.5f;
         if ((level.getTime() - lastShot) > firingRate) {
 	    	lastShot = level.getTime();

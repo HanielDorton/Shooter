@@ -13,7 +13,6 @@ import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.ParticleEffectPool.PooledEffect;
 import com.haniel.Shooter.entities.Entity;
 import com.haniel.Shooter.entities.Player;
-import com.haniel.Shooter.entities.asteroids.Asteroid;
 import com.haniel.Shooter.graphics.MyGraphics;
 import com.haniel.Shooter.level.Level;
 import com.haniel.Shooter.level.LevelFirst;
@@ -112,12 +111,18 @@ public class GameScreen implements Screen {
 	        	game.batch.draw(projectile.getTexture(), (float) projectile.getX(), (float) projectile.getY());
 	        }
 	        for (Entity entity : level.entities) {
-	        	game.batch.draw(entity.getTexture(), (float) entity.getX(), (float) entity.getY());
+	        	game.batch.draw(entity.getSprite(), (float) entity.getX(), (float) entity.getY());
 	        }
-	        for (Asteroid asteroid : level.asteroids) {
-	        	game.batch.draw(asteroid.getTexture(), (float) asteroid.getX(), (float) asteroid.getY());
+	        Iterator<ParticleEffect> overlayedIter = level.overlayedParticleEffects.iterator();
+	        while (overlayedIter.hasNext()){
+	        	ParticleEffect p = overlayedIter.next();
+	        	p.draw(game.batch, delta);
+	        	if (p.isComplete()) {
+	        		overlayedIter.remove();
+	        		p.dispose();	        		
+	        	}
 	        }
-	        //game.font.draw(game.batch, "Time: " + level.getLevelTime(), 0, screenHeight);
+	        game.font.draw(game.batch, "Time: " + level.getLevelTime(), 0, screenHeight);
 	        //game.font.draw(game.batch, "JaveHeap: " + Gdx.app.getJavaHeap(), 0, screenHeight -20);
 	        //game.font.draw(game.batch, "NativeHeap: " +  Gdx.app.getNativeHeap(), 0, screenHeight - 40);
 	        level.update();

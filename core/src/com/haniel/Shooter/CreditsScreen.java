@@ -40,6 +40,10 @@ public class CreditsScreen implements Screen{
         credits.add("Level 1: 'Black Vortex' by Kevin MacLeod (incompetech.com)");
         credits.add("Boss Battle: 'All This' by Kevin MacLeod (incompetech.com)");
         credits.add("Credits: 'Grim League' by Kevin MacLeod (incompetech.com))");
+        credits.add("Sound Effects:");
+        credits.add("Player Bullets: 'Gun_Shot-01' from http://www.soundjay.com");
+        credits.add("Small Explosions: 'Paper_Rip-4' from http://www.soundjay.com");
+        credits.add("");
 		backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/Grim_League.mp3"));
 		backgroundMusic.play();
 		backgroundMusic.setLooping(true);

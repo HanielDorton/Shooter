@@ -25,6 +25,7 @@ public abstract class Projectile {
 	protected final static Texture blueSphereGunTexture = new Texture(Gdx.files.internal("projectiles/bluesphere.png"));
 	protected final static Texture blueline = new Texture(Gdx.files.internal("projectiles/blueline.png"));
 	protected final static Texture blackSphereGunTexture = new Texture(Gdx.files.internal("projectiles/blacksphere.png"));
+	protected final static Texture basicBulletReversedTexture = new Texture(Gdx.files.internal("projectiles/basicgunreversed.png"));
 	
 	public Projectile (double x, double y, double angle, boolean fromPlayer) {
 		xOrigin = x;

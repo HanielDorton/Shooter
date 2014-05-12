@@ -1,8 +1,10 @@
-package com.haniel.Shooter.entities.enemies;
+package com.haniel.Shooter.entities.enemies.FirstLevel;
 
 import java.util.List;
 
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Rectangle;
+import com.haniel.Shooter.entities.enemies.Enemy;
 import com.haniel.Shooter.level.Level;
 import com.haniel.Shooter.util.Coord;
 import com.haniel.Shooter.weapons.BlueSphereGun;
@@ -18,7 +20,7 @@ public class BasicBlueEnemy extends Enemy{
 		this.speed = 100;
 		this.width = 50;
 		this.height = 44;
-		this.texture = enemy1Texture;		
+		this.sprite = new Sprite(enemy1Texture);		
 		this.health = 2;
 		this.xOffset = 7;
 		this.yOffset = 15;
@@ -31,11 +33,13 @@ public class BasicBlueEnemy extends Enemy{
 
 
 	}
-	public void shoot() {
+	protected void shoot() {
         if ((level.getTime() - lastShot) > firingRate) {
-	    	lastShot = level.getTime();
-	       	double angle = level.getAngletoPlayersMiddle(x + xOffset + width / 2, y + yOffset + height / 2 - 5);
-	       	weapon.shoot(x + xOffset + width / 2, y + yOffset + height / 2 - 5, angle);
+        	if (!(getMidY()> 480) && !(getMidY() < 0) && !(getMidX() < 0 && !(getMidX() > 800))){
+		    	lastShot = level.getTime();
+		       	double angle = level.getAngletoPlayersMiddle(x + xOffset + width / 2, y + yOffset + height / 2 - 5);
+		       	weapon.shoot(x + xOffset + width / 2, y + yOffset + height / 2 - 5, angle);
+        	}
         }
     	
 	}

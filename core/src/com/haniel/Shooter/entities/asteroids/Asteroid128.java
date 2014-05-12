@@ -1,5 +1,6 @@
 package com.haniel.Shooter.entities.asteroids;
 
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Rectangle;
 
 public class Asteroid128 extends Asteroid{
@@ -11,7 +12,7 @@ public class Asteroid128 extends Asteroid{
 		this.width = 114;
 		this.height = 114;
 		this.health = width / 8;
-		this.texture = asteroid128_1;
+		this.sprite = new Sprite(asteroid128_1);
 		this.rectangle = new Rectangle((float)x + xOffset,(float) y + yOffset, width, height);
 		
 	}

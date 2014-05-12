@@ -4,10 +4,11 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Rectangle;
 import com.haniel.Shooter.GameScreen;
 import com.haniel.Shooter.level.Level;
-import com.haniel.Shooter.weapons.BasicGun;
+import com.haniel.Shooter.weapons.PlayerGun;
 
 
 public class Player extends Entity{
@@ -30,14 +31,14 @@ public class Player extends Entity{
 		this.height = 15;
 		this.xOffset = 4;
 		this.yOffset = 7;
-		this.texture = player_forward;
+		this.sprite = new Sprite(player_forward);
 		this.rectangle = new Rectangle((float) x + xOffset, (float) y + yOffset, width, height);
 		this.speed = 30;
 		this.keyboardSpeed = 8;
 		this.maxSpeed = 40;
 		this.lastShot= 0;
 		this.health = 1;
-		this.weapon = new BasicGun(level, true);
+		this.weapon = new PlayerGun(level, true);
 		this.engine1Effect.load(Gdx.files.internal("particles/PlayerEngine.p"), Gdx.files.internal("particles/"));
 		this.engine1Effect.setPosition((int)x + 11,(int) y + 1);
 		level.particleEffects.add(engine1Effect);

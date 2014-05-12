@@ -5,6 +5,7 @@ import java.util.Random;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Rectangle;
 import com.haniel.Shooter.level.Level;
 import com.haniel.Shooter.weapons.Weapon;
@@ -15,7 +16,7 @@ public abstract class Entity{
 	protected int xOffset, yOffset;
 	protected int position;
 	protected int width, height;
-	protected Texture texture;
+	protected Sprite sprite;
 	protected boolean removed = false;
 	protected Level level;
 	protected final Random random = new Random();
@@ -26,11 +27,14 @@ public abstract class Entity{
 	
 	//all entity textures so they are only loaded once:
 	//every time you add a new one add it to dispose() at the bottom.
+	//level one
 	protected static final Texture enemy1Texture = new Texture(Gdx.files.internal("entities/enemy_1.png"));
 	protected static final Sound matches2 = Gdx.audio.newSound(Gdx.files.internal("sounds/paper-rip-4.wav"));
 	protected static final Texture blueSaucerTexture = new Texture(Gdx.files.internal("entities/blue_saucer_enemy2.png"));
 	protected static final Texture quickBlueTexture = new Texture(Gdx.files.internal("entities/small_saucer.png"));
 	protected static final Texture firstBossTexture = new Texture(Gdx.files.internal("entities/first_boss.png"));
+	//level two
+	protected static final Texture playerCloneTexture = new Texture(Gdx.files.internal("entities/player.png"));
 	
 	protected enum Direction {
 		UP, DOWN, LEFT, RIGHT
@@ -120,7 +124,7 @@ public abstract class Entity{
 		
 	}
 	public double getMidY() {
-		return y + yOffset + (width / 2);
+		return y + yOffset + (height / 2);
 		
 	}
 	
@@ -131,10 +135,6 @@ public abstract class Entity{
 	public int getHeight() {
 		return height;
 	}	
-	
-	public Texture getTexture() {
-		return texture;
-	}
 	
 	public Rectangle getRectangle() {
 		return rectangle;
@@ -157,5 +157,10 @@ public abstract class Entity{
 		blueSaucerTexture.dispose();
 		quickBlueTexture.dispose();
 		firstBossTexture.dispose();
+		playerCloneTexture.dispose();
+	}
+
+	public Sprite getSprite() {
+		return sprite;
 	}
 }

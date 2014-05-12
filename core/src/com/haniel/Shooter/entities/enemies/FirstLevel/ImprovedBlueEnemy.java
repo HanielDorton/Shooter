@@ -1,4 +1,4 @@
-package com.haniel.Shooter.entities.enemies;
+package com.haniel.Shooter.entities.enemies.FirstLevel;
 
 import java.util.List;
 
@@ -17,13 +17,15 @@ public class ImprovedBlueEnemy extends BasicBlueEnemy{
 		this.weapon2 = new BlueLineGun(level, false);
 		this.lastShot2 = level.getTime() - random.nextInt(3);
 	}
-	public void shoot() {
+	protected void shoot() {
 		//super.shoot();
         if ((level.getTime() - lastShot2) > firingRate2) {
-	    	lastShot2 = level.getTime();
-	    	double angle = getAngleTo(x, y+10, x, y-10);
-	    	weapon2.shoot(x + 9, y + 10, angle);
-	    	weapon2.shoot(x + 52, y + 10, angle);
+        	if (!(getMidY()> 480) && !(getMidY() < 0) && !(getMidX() < 0 && !(getMidX() > 800))){
+		    	lastShot2 = level.getTime();
+		    	double angle = getAngleTo(x, y+10, x, y-10);
+		    	weapon2.shoot(x + 9, y + 10, angle);
+		    	weapon2.shoot(x + 52, y + 10, angle);
+        	}
         }
 	}
 }
