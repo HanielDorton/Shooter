@@ -2,7 +2,6 @@ package com.haniel.Shooter.entities.enemies;
 
 import java.util.List;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.ParticleEffectPool.PooledEffect;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Rectangle;
@@ -11,13 +10,13 @@ import com.haniel.Shooter.util.Coord;
 
 public class HomingMissile extends Enemy{
 	
-	private int trackPlayer = 4;
-	private float firingRate = 1.5f;
+	private int trackPlayer = 20;
+	private float firingRate = .2f;
 	private PooledEffect effect;
 
 	public HomingMissile(double x, double y, List<Coord> pattern, Level level) {
 		super(x, y, pattern, level);	
-		this.speed = 450;
+		this.speed = 200;
 		this.sprite = new Sprite(homingMissileTexture);
 		this.health = 0;
 		this.width = 20;
@@ -40,8 +39,7 @@ public class HomingMissile extends Enemy{
 		    	lastShot = level.getTime();
 		    	trackPlayer--;
 		    	this.angle = level.getAngletoPlayersMiddle(x + (width / 2), y + (height / 2));
-		    	this.speed = 450;
-		    	jacketZipper3.play();
+		    	if (random.nextInt(10) > 6) heartbeat05.play(.4f);
         	}
         }
 		
@@ -53,7 +51,6 @@ public class HomingMissile extends Enemy{
         if (x < 0 - this.width - 300) remove();
         if (health < 0) remove();
         move(Math.cos(angle) * speed, Math.sin(angle) * speed);	
-        this.speed -= 175 * Gdx.graphics.getDeltaTime();
         rectangle.setPosition((float)x, (float)y + yOffset);
         this.effect.setPosition((int) x,(int) y);
         if (trackPlayer > 0) shoot();

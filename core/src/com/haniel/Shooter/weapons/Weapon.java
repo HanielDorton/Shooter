@@ -20,7 +20,9 @@ public abstract class Weapon {
 	//load all sounds once:
 	//every time you add a new one add it to dispose() at the bottom.
 	protected final static Sound basicGunSound = Gdx.audio.newSound(Gdx.files.internal("sounds/gunshot01.wav"));
-
+	protected final static Sound waterdropletSound = Gdx.audio.newSound(Gdx.files.internal("sounds/water-droplet-1.wav"));
+	protected final static Sound whipwooshSound = Gdx.audio.newSound(Gdx.files.internal("sounds/whip-whoosh-03.wav"));
+	protected final static Sound explosionSound = Gdx.audio.newSound(Gdx.files.internal("sounds/explosion-01.wav"));
 	
 	public Weapon(Level level, boolean fromPlayer) {
 		this.level = level;

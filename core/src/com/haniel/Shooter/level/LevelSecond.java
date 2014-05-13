@@ -5,12 +5,14 @@ import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.ParticleEffectPool;
 import com.haniel.Shooter.GameScreen;
 import com.haniel.Shooter.entities.enemies.HomingMissile;
+import com.haniel.Shooter.entities.enemies.ImprovedPlayerClone;
 import com.haniel.Shooter.entities.enemies.PlayerClone;
-import com.haniel.Shooter.graphics.BackgroundImage;
 import com.haniel.Shooter.graphics.CheckpointReached;
 import com.haniel.Shooter.util.Coord;
 
 public class LevelSecond extends Level{
+	
+	///checkpoints: 6890, 10790
 	
 	ParticleEffect nebula = new ParticleEffect();
 
@@ -28,14 +30,6 @@ public class LevelSecond extends Level{
 		smallExplosionEffect2Pool = new ParticleEffectPool(smallExplosionEffect2, 5, 10);
 		smallEngineEffect.load(Gdx.files.internal("particles/PlayerCloneEngine.p"), Gdx.files.internal("particles/"));
 		smallEngineEffectPool = new ParticleEffectPool(smallEngineEffect, 5, 20);
-		
-		//first phase goes to 
-		
-		//use this for third phase
-		//nebula.load(Gdx.files.internal("particles/Nebula.p"), Gdx.files.internal("particles/"));
-		//nebula.setPosition(-100, 500);
-		//nebula.start();
-		//overlayedParticleEffects.add(nebula);
 	}
 
 	public void runLevel(GameScreen g) {
@@ -240,14 +234,11 @@ public class LevelSecond extends Level{
 			case 3530: {
 				add(new PlayerClone(600, 480, Coord.leavebottomrightlist, this));
 				break;
-			}
-			
-			
-			
-			
-			
+			}			
 			case 4100: {
 				add(new HomingMissile(0, 500, null, this));
+				add(new HomingMissile(390, 500, null, this));
+				add(new HomingMissile(800, 500, null, this));
 				break;
 			}
 			case 4200: {
@@ -260,6 +251,8 @@ public class LevelSecond extends Level{
 			}
 			case 4500: {
 				add(new HomingMissile(0, 500, null, this));
+				add(new HomingMissile(390, 500, null, this));
+				add(new HomingMissile(800, 500, null, this));
 				break;
 			}
 			case 4600: {
@@ -272,6 +265,10 @@ public class LevelSecond extends Level{
 			}
 			case 5000: {
 				add(new HomingMissile(0, 500, null, this));
+				add(new HomingMissile(390, 500, null, this));
+				add(new HomingMissile(800, 500, null, this));
+				add(new HomingMissile(0, -10, null, this));
+				add(new HomingMissile(800, -10, null, this));
 				break;
 			}
 			case 5100: {
@@ -292,34 +289,49 @@ public class LevelSecond extends Level{
 			}
 			case 5600: {
 				add(new HomingMissile(0, 500, null, this));
+				add(new HomingMissile(0, 500, null, this));
+				add(new HomingMissile(390, 500, null, this));
+				add(new HomingMissile(390, 500, null, this));
+				add(new HomingMissile(800, 500, null, this));
+				add(new HomingMissile(800, 500, null, this));
+				add(new HomingMissile(0, -10, null, this));
+				add(new HomingMissile(0, -10, null, this));
+				add(new HomingMissile(800, -10, null, this));
+				add(new HomingMissile(800, -10, null, this));
 				break;
 			}
 			case 5700: {
+				add(new HomingMissile(390, 500, null, this));
 				add(new HomingMissile(390, 500, null, this));
 				break;
 			}
 			case 5800: {
 				add(new HomingMissile(800, 500, null, this));
+				add(new HomingMissile(800, 500, null, this));
 				break;
 			}
 			case 5900: {
+				add(new HomingMissile(0, -10, null, this));
 				add(new HomingMissile(0, -10, null, this));
 				break;
 			}
 			case 6000: {
 				add(new HomingMissile(800, -10, null, this));
+				add(new HomingMissile(800, -10, null, this));
 				break;
 			}
 			case 6100: {
+				add(new HomingMissile(0, -10, null, this));
 				add(new HomingMissile(0, -10, null, this));
 				break;
 			}
 			case 6200: {
 				add(new HomingMissile(800, -10, null, this));
+				add(new HomingMissile(800, -10, null, this));
 				break;
 			}
 			
-			case 6900: {
+			case 6900: { //next checkpoitn 108
 				if (gameScreen.getCheckPoint() + 10 == levelTime) {
 					//add(new BackgroundImage("levels/space_background2.png", 0, 0, 3));
 					//add(new BackgroundImage("levels/space_background2.png", 0, 960, 3));
@@ -333,11 +345,112 @@ public class LevelSecond extends Level{
 				break;
 			}
 			case 7100: {
-				add(new HomingMissile(0, 500, null, this));
+				for (int i = 0; i < 5; i++) {
+					add(new ImprovedPlayerClone(0 + (200 * i), 480, null, this));
+				}
 				break;
 			}
+			case 7400: {
+				for (int i = 0; i < 5; i++) {
+					add(new ImprovedPlayerClone(0 + (200 * i), 480, null, this));
+				}
+				break;
+			}
+			case 7700: {
+				for (int i = 0; i < 5; i++) {
+					add(new ImprovedPlayerClone(0 + (200 * i), 480, null, this));
+				}
+				break;
+			}
+			case 7900: {
+				for (int i = 0; i < 8; i++) {
+					add(new HomingMissile((175 * i) - 300, 480 + (37 * i), null, this));
+				}
+				break;
+			}
+			case 8000: {
+				for (int i = 0; i < 8; i++) {
+					add(new HomingMissile(800 + (37 * i), 880 - (110 * i), null, this));
+				}
+				break;
+			}
+			case 8100: {
+				for (int i = 0; i < 8; i++) {
+					add(new HomingMissile(1100 - (175 * i), 480 + (37 * i), null, this));
+				}
+				break;
+			}
+			case 8200: {
+				for (int i = 0; i < 8; i++) {
+					add(new HomingMissile(0 - (37 * i), (110 * i) - 300, null, this));
+				}
+				break;
+			}
+			case 8800: {
+				for (int i = 0; i < 5; i++) {
+					add(new ImprovedPlayerClone(0 + (200 * i), 480, null, this));
+				}
+				break;
+			}
+			case 9000: {
+				for (int i = 0; i < 8; i++) {
+					add(new HomingMissile((175 * i) - 300, 480 + (37 * i), null, this));
+				}
+				break;
+			}
+			case 9400: {
+				for (int i = 0; i < 5; i++) {
+					add(new ImprovedPlayerClone(0 + (200 * i), 480, null, this));
+				}
+				for (int i = 0; i < 8; i++) {
+					add(new HomingMissile((175 * i) - 300, 480 + (37 * i), null, this));
+				}
+				break;
+			}
+			case 10000: {
+				for (int i = 0; i < 5; i++) {
+					add(new ImprovedPlayerClone(0 + (200 * i), 480, null, this));
+				}
+				for (int i = 0; i < 8; i++) {
+					add(new HomingMissile((175 * i) - 300, 480 + (37 * i), null, this));
+				}
+				break;
+			}
+			case 10300: {
+				for (int i = 0; i < 8; i++) {
+					add(new HomingMissile((175 * i) - 300, 480 + (37 * i), null, this));
+				}
+				for (int i = 0; i < 5; i++) {
+					add(new ImprovedPlayerClone(0 + (200 * i), 480, null, this));
+				}
+				break;
+				
+			}
+
 			
-			
+			case 10800: { 
+				if (gameScreen.getCheckPoint() + 10 == levelTime) {
+					//add(new BackgroundImage("levels/space_background2.png", 0, 0, 3));
+					//add(new BackgroundImage("levels/space_background2.png", 0, 960, 3));
+					backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/The_Descent_secondContinue.mp3"));
+					backgroundMusic.play();
+					addStarsCheckpoint(200);
+				} else {
+					add(new CheckpointReached(300, 350, 2));
+					gameScreen.setCheckPoint(levelTime - 10);
+				}
+				nebula.load(Gdx.files.internal("particles/Nebula.p"), Gdx.files.internal("particles/"));
+				nebula.setPosition(-100, 500);
+				nebula.start();
+				overlayedParticleEffects.add(nebula);
+				break;
+			}
+			case 11800: {
+				for (int i = 0; i < 8; i++) {
+					add(new HomingMissile((175 * i) - 300, 480 + (37 * i), null, this));
+				}
+			}
 		}
 	}
 }
+

@@ -45,6 +45,7 @@ public class FirstBoss extends Enemy{
 	    	lastShot = level.getTime();
 	    	for (int i = 1; i < 9; i ++) {
 	    		weapon.shoot(x + (width / 2), y, firstFiringAngle - (i * -.375));
+	    	if (level.weaponSounds.size() == 0) level.weaponSounds.add(weapon);
 	    	
 	    	}
         }

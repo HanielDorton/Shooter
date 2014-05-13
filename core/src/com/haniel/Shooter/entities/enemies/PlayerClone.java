@@ -10,8 +10,8 @@ import com.haniel.Shooter.util.Coord;
 import com.haniel.Shooter.weapons.PlayerCloneGun;
 
 public class PlayerClone extends Enemy{
-	private PooledEffect engine1Effect;
-	private PooledEffect engine2Effect;
+	protected PooledEffect engine1Effect;
+	protected PooledEffect engine2Effect;
 	
 	public PlayerClone(double x, double y, List<Coord> pattern, Level level) {
 		super(x, y, pattern, level);
@@ -48,7 +48,6 @@ public class PlayerClone extends Enemy{
 			if ((level.getTime() - lastShot) > weapon.getFiringRate()) {
 	    		double angle = getAngleTo(x - 1, y, x - 1, y-10);
 	    		weapon.shoot(x - 1, y - 1, angle);
-	    		//angle = getAngleTo(x, y, x, y+10);
 	    		weapon.shoot(x + width + xOffset, y, angle);
 	    		lastShot = level.getTime();
 	    		if (level.weaponSounds.size() == 0) level.weaponSounds.add(weapon);
@@ -56,9 +55,9 @@ public class PlayerClone extends Enemy{
 		}
 	}
 	public void particles() {
-		super.particles();
 		engine1Effect.allowCompletion();
 		engine2Effect.allowCompletion();
+		super.particles();
 	}
 	
 

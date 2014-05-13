@@ -33,6 +33,7 @@ public class BasicBlueEnemy extends Enemy{
 		    	lastShot = level.getTime();
 		       	double angle = level.getAngletoPlayersMiddle(x + xOffset + width / 2, y + yOffset + height / 2 - 5);
 		       	weapon.shoot(x + xOffset + width / 2, y + yOffset + height / 2 - 5, angle);
+		       	if (level.weaponSounds.size() == 0) level.weaponSounds.add(weapon);
         	}
         }
     	

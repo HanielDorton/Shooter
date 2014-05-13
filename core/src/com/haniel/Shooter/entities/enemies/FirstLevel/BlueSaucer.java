@@ -37,6 +37,7 @@ public class BlueSaucer extends Enemy{
 		    	for (int i = 1; i < 9; i ++) {
 		    		weapon.shoot(x + (16 * i), y + yOffset + 5, firingAngle - (i * -.375));
 		    	}
+		    	if (level.weaponSounds.size() < 3) level.weaponSounds.add(weapon);
         	}
         }
     }

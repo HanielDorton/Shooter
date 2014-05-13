@@ -35,6 +35,7 @@ public class QuickBlue extends Enemy{
 		       	weapon.shoot(x + xOffset, y + yOffset, angle);
 		       	weapon.shoot(x + xOffset, y + yOffset, angle + .2);
 		       	weapon.shoot(x + xOffset, y + yOffset, angle - .2);
+		       	if (level.weaponSounds.size() == 0) level.weaponSounds.add(weapon);
         	}
 	    }
     }

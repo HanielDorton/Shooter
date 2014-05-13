@@ -7,6 +7,7 @@ public class BlueSphereGun extends Weapon{
 
 	public BlueSphereGun(Level level, boolean fromPlayer) {
 		super(level, fromPlayer);
+		this.sound = waterdropletSound;
 	}
 	
 	public void shoot(double x, double y, double angle) {

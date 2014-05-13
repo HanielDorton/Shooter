@@ -74,7 +74,7 @@ public class Level {
         updateEntities();     
         updateProjectiles();
         
-        if (weaponTime > .3) {
+        if (weaponTime > .1) {
         	if (weaponSounds.size() > 0) {
         		weaponTime = 0;
 	        	Iterator<Weapon> iter = weaponSounds.iterator();    
@@ -267,6 +267,9 @@ public class Level {
 		return (Math.atan2(playerY - y, playerX - x));
 	}
 	
+	public double getPlayerY() {
+		return gameScreen.player.getMidY();
+	}
 	public void dispose() {
 		backgroundMusic.dispose();
 	}
