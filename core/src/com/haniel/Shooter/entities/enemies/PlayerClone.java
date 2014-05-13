@@ -2,15 +2,12 @@ package com.haniel.Shooter.entities.enemies;
 
 import java.util.List;
 
-import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.ParticleEffectPool.PooledEffect;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Rectangle;
-import com.haniel.Shooter.GameScreen;
 import com.haniel.Shooter.level.Level;
 import com.haniel.Shooter.util.Coord;
 import com.haniel.Shooter.weapons.PlayerCloneGun;
-import com.haniel.Shooter.weapons.PlayerGun;
 
 public class PlayerClone extends Enemy{
 	private PooledEffect engine1Effect;
@@ -31,11 +28,11 @@ public class PlayerClone extends Enemy{
 		this.health = 0;
 		this.weapon = new PlayerCloneGun(level, false);
 		this.engine1Effect = level.smallEngineEffectPool.obtain();
-		this.engine1Effect.setPosition((int) x + 11,(int) y + 27);
+		this.engine1Effect.setPosition((int) x + 11,(int) y + 30);
 		level.effects.add(this.engine1Effect);
 		this.engine1Effect.start();
 		this.engine2Effect = level.smallEngineEffectPool.obtain();
-		this.engine2Effect.setPosition((int) x + 19,(int) y + 27);
+		this.engine2Effect.setPosition((int) x + 19,(int) y + 30);
 		level.effects.add(this.engine2Effect);
 		this.engine2Effect.start();
 	}

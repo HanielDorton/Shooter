@@ -4,7 +4,10 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.ParticleEffectPool;
 import com.haniel.Shooter.GameScreen;
+import com.haniel.Shooter.entities.enemies.HomingMissile;
 import com.haniel.Shooter.entities.enemies.PlayerClone;
+import com.haniel.Shooter.graphics.BackgroundImage;
+import com.haniel.Shooter.graphics.CheckpointReached;
 import com.haniel.Shooter.util.Coord;
 
 public class LevelSecond extends Level{
@@ -17,16 +20,20 @@ public class LevelSecond extends Level{
 		super(gameScreen);
 		backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/The_Descent.mp3"));
 		//load all particle effects for pooling:
-		//enemyBulletEffect.load(Gdx.files.internal("particles/firstlevel/BlueSphere.p"), Gdx.files.internal("particles/"));
-		//enemyBulletEffectPool = new ParticleEffectPool(enemyBulletEffect, 45, 80);
+		enemyBulletEffect.load(Gdx.files.internal("particles/homingmissile.p"), Gdx.files.internal("particles/"));
+		enemyBulletEffectPool = new ParticleEffectPool(enemyBulletEffect, 45, 80);
 		smallExplosionEffect.load(Gdx.files.internal("particles/PlayerExplosion.p"), Gdx.files.internal("particles/"));
-		smallExplosionEffectPool = new ParticleEffectPool(smallExplosionEffect, 5, 20);
+		smallExplosionEffectPool = new ParticleEffectPool(smallExplosionEffect, 5, 10);
+		smallExplosionEffect2.load(Gdx.files.internal("particles/missileexplosion.p"), Gdx.files.internal("particles/"));
+		smallExplosionEffect2Pool = new ParticleEffectPool(smallExplosionEffect2, 5, 10);
 		smallEngineEffect.load(Gdx.files.internal("particles/PlayerCloneEngine.p"), Gdx.files.internal("particles/"));
 		smallEngineEffectPool = new ParticleEffectPool(smallEngineEffect, 5, 20);
 		
+		//first phase goes to 
+		
 		//use this for third phase
 		//nebula.load(Gdx.files.internal("particles/Nebula.p"), Gdx.files.internal("particles/"));
-		//nebula.setPosition(-100, 470);
+		//nebula.setPosition(-100, 500);
 		//nebula.start();
 		//overlayedParticleEffects.add(nebula);
 	}
@@ -40,137 +47,296 @@ public class LevelSecond extends Level{
 				addStarsCheckpoint(200);
 				//add(new BackgroundImage("levels/space_background2.png", 0, 0, 3));
 		        //add(new BackgroundImage("levels/space_background2.png", 0, 960, 3));
-		        //addStarsCheckpoint(80);
+				break;
+			}
+			case 200: {
+				add(new PlayerClone(0, 480, Coord.leavebottom, this));
 				break;
 			}
 			case 300: {
-				add(new PlayerClone(random.nextInt(300), 480, Coord.leavebottom, this));
-				break;
-			}
-			case 350: {
-				add(new PlayerClone(random.nextInt(300) + 500, 480, Coord.leavebottom, this));
+				add(new PlayerClone(800, 480, Coord.leavebottom, this));
 				break;
 			}
 			case 400: {
-				add(new PlayerClone(random.nextInt(300), 480, Coord.leavebottom, this));
-				break;
-			}
-			case 450: {
-				add(new PlayerClone(random.nextInt(300) + 500, 480, Coord.leavebottom, this));
-				break;
+				add(new PlayerClone(400, 480, Coord.leavebottomleftlist, this));
+				break;				
 			}
 			case 500: {
-				add(new PlayerClone(random.nextInt(300), 480, Coord.leavebottom, this));
-				break;
-			}
-			case 550: {
-				add(new PlayerClone(random.nextInt(300) + 500, 480, Coord.leavebottom, this));
+				add(new PlayerClone(400, 480, Coord.leavebottomrightlist, this));
 				break;
 			}
 			case 600: {
-				add(new PlayerClone(random.nextInt(300), 480, Coord.leavebottom, this));
-				break;
-			}
-			case 650: {
-				add(new PlayerClone(random.nextInt(300) + 500, 480, Coord.leavebottom, this));
+				add(new PlayerClone(100, 480, Coord.leavebottom, this));
 				break;
 			}
 			case 700: {
-				add(new PlayerClone(random.nextInt(300), 480, Coord.leavebottom, this));
-				break;
-			}
-			case 750: {
-				add(new PlayerClone(random.nextInt(300) + 500, 480, Coord.leavebottom, this));
+				add(new PlayerClone(700, 480, Coord.leavebottom, this));
 				break;
 			}
 			case 800: {
-				add(new PlayerClone(random.nextInt(300), 480, Coord.leavebottom, this));
-				break;
-			}
-			case 850: {
-				add(new PlayerClone(random.nextInt(300) + 500, 480, Coord.leavebottom, this));
-				break;
+				add(new PlayerClone(300, 480, Coord.leavebottomleftlist, this));
+				break;				
 			}
 			case 900: {
-				add(new PlayerClone(random.nextInt(300), 480, Coord.leavebottom, this));
-				break;
-			}
-			case 950: {
-				add(new PlayerClone(random.nextInt(300) + 500, 480, Coord.leavebottom, this));
+				add(new PlayerClone(600, 480, Coord.leavebottomrightlist, this));
 				break;
 			}
 			case 1000: {
-				add(new PlayerClone(random.nextInt(400), 480, Coord.leavebottom, this));
-				break;
-			}
-			case 1050: {
-				add(new PlayerClone(random.nextInt(300) + 500, 480, Coord.leavebottom, this));
+				add(new PlayerClone(200, 480, Coord.leavebottom, this));
 				break;
 			}
 			case 1100: {
-				add(new PlayerClone(random.nextInt(200) + 200, 480, Coord.leavebottomleftlist, this));
-				break;				
-			}
-			case 1150: {
-				add(new PlayerClone(random.nextInt(200) + 400, 480, Coord.leavebottomrightlist, this));
+				add(new PlayerClone(600, 480, Coord.leavebottom, this));
 				break;
 			}
 			case 1200: {
-				add(new PlayerClone(random.nextInt(200) + 200, 480, Coord.leavebottomleftlist, this));
+				add(new PlayerClone(200, 480, Coord.leavebottomleftlist, this));
 				break;				
-			}
-			case 1250: {
-				add(new PlayerClone(random.nextInt(200) + 400, 480, Coord.leavebottomrightlist, this));
-				break;
 			}
 			case 1300: {
-				add(new PlayerClone(random.nextInt(200) + 200, 480, Coord.leavebottomleftlist, this));
-				break;				
-			}
-			case 1350: {
-				add(new PlayerClone(random.nextInt(200) + 400, 480, Coord.leavebottomrightlist, this));
+				add(new PlayerClone(600, 480, Coord.leavebottomrightlist, this));
 				break;
 			}
 			case 1400: {
-				add(new PlayerClone(random.nextInt(200) + 200, 480, Coord.leavebottomleftlist, this));
-				break;				
-			}
-			case 1450: {
-				add(new PlayerClone(random.nextInt(200) + 400, 480, Coord.leavebottomrightlist, this));
+				add(new PlayerClone(0, 480, Coord.leavebottom, this));
 				break;
 			}
 			case 1500: {
-				add(new PlayerClone(random.nextInt(200) + 200, 480, Coord.leavebottomleftlist, this));
-				break;				
-			}
-			case 1550: {
-				add(new PlayerClone(random.nextInt(200) + 400, 480, Coord.leavebottomrightlist, this));
+				add(new PlayerClone(800, 480, Coord.leavebottom, this));
 				break;
 			}
 			case 1600: {
-				add(new PlayerClone(random.nextInt(200) + 200, 480, Coord.leavebottomleftlist, this));
+				add(new PlayerClone(400, 480, Coord.leavebottomleftlist, this));
 				break;				
-			}
-			case 1650: {
-				add(new PlayerClone(random.nextInt(200) + 400, 480, Coord.leavebottomrightlist, this));
-				break;
 			}
 			case 1700: {
-				add(new PlayerClone(random.nextInt(200) + 200, 480, Coord.leavebottomleftlist, this));
-				break;				
-			}
-			case 1750: {
-				add(new PlayerClone(random.nextInt(200) + 400, 480, Coord.leavebottomrightlist, this));
+				add(new PlayerClone(400, 480, Coord.leavebottomrightlist, this));
 				break;
 			}
 			case 1800: {
-				add(new PlayerClone(random.nextInt(200) + 200, 480, Coord.leavebottomleftlist, this));
-				break;				
-			}
-			case 1850: {
-				add(new PlayerClone(random.nextInt(200) + 400, 480, Coord.leavebottomrightlist, this));
+				add(new PlayerClone(100, 480, Coord.leavebottom, this));
 				break;
 			}
+			case 1900: {
+				add(new PlayerClone(700, 480, Coord.leavebottom, this));
+				break;
+			}
+			case 2000: {
+				add(new PlayerClone(300, 480, Coord.leavebottomleftlist, this));
+				break;				
+			}
+			case 2100: {
+				add(new PlayerClone(600, 480, Coord.leavebottomrightlist, this));
+				break;
+			}
+			case 2200: {
+				add(new PlayerClone(200, 480, Coord.leavebottom, this));
+				break;
+			}
+			case 2300: {
+				add(new PlayerClone(600, 480, Coord.leavebottom, this));
+				break;
+			}
+			case 2400: {
+				add(new PlayerClone(200, 480, Coord.leavebottomleftlist, this));
+				break;				
+			}
+			case 2500: {
+				add(new PlayerClone(600, 480, Coord.leavebottomrightlist, this));
+				break;
+			}
+			case 2600: {
+				add(new PlayerClone(0, 480, Coord.leavebottom, this));
+				break;
+			}
+			case 2650: {
+				add(new PlayerClone(800, 480, Coord.leavebottom, this));
+				break;
+			}
+			case 2700: {
+				add(new PlayerClone(400, 480, Coord.leavebottomleftlist, this));
+				break;				
+			}
+			case 2750: {
+				add(new PlayerClone(400, 480, Coord.leavebottomrightlist, this));
+				break;
+			}
+			case 2800: {
+				add(new PlayerClone(100, 480, Coord.leavebottom, this));
+				break;
+			}
+			case 2850: {
+				add(new PlayerClone(700, 480, Coord.leavebottom, this));
+				break;
+			}
+			case 2900: {
+				add(new PlayerClone(300, 480, Coord.leavebottomleftlist, this));
+				break;				
+			}
+			case 2950: {
+				add(new PlayerClone(600, 480, Coord.leavebottomrightlist, this));
+				break;
+			}
+			case 3000: {
+				add(new PlayerClone(200, 480, Coord.leavebottom, this));
+				break;
+			}
+			case 3050: {
+				add(new PlayerClone(600, 480, Coord.leavebottom, this));
+				break;
+			}
+			case 3100: {
+				add(new PlayerClone(200, 480, Coord.leavebottomleftlist, this));
+				break;				
+			}
+			case 3150: {
+				add(new PlayerClone(600, 480, Coord.leavebottomrightlist, this));
+				break;
+			}
+			case 3200: {
+				add(new PlayerClone(0, 480, Coord.leavebottom, this));
+				break;
+			}
+			case 3230: {
+				add(new PlayerClone(800, 480, Coord.leavebottom, this));
+				break;
+			}
+			case 3260: {
+				add(new PlayerClone(400, 480, Coord.leavebottomleftlist, this));
+				break;				
+			}
+			case 3290: {
+				add(new PlayerClone(400, 480, Coord.leavebottomrightlist, this));
+				break;
+			}
+			case 3320: {
+				add(new PlayerClone(100, 480, Coord.leavebottom, this));
+				break;
+			}
+			case 3350: {
+				add(new PlayerClone(700, 480, Coord.leavebottom, this));
+				break;
+			}
+			case 3380: {
+				add(new PlayerClone(300, 480, Coord.leavebottomleftlist, this));
+				break;				
+			}
+			case 3410: {
+				add(new PlayerClone(600, 480, Coord.leavebottomrightlist, this));
+				break;
+			}
+			case 3440: {
+				add(new PlayerClone(200, 480, Coord.leavebottom, this));
+				break;
+			}
+			case 3470: {
+				add(new PlayerClone(600, 480, Coord.leavebottom, this));
+				break;
+			}
+			case 3500: {
+				add(new PlayerClone(200, 480, Coord.leavebottomleftlist, this));
+				break;				
+			}
+			case 3530: {
+				add(new PlayerClone(600, 480, Coord.leavebottomrightlist, this));
+				break;
+			}
+			
+			
+			
+			
+			
+			case 4100: {
+				add(new HomingMissile(0, 500, null, this));
+				break;
+			}
+			case 4200: {
+				add(new HomingMissile(390, 500, null, this));
+				break;
+			}
+			case 4300: {
+				add(new HomingMissile(800, 500, null, this));
+				break;
+			}
+			case 4500: {
+				add(new HomingMissile(0, 500, null, this));
+				break;
+			}
+			case 4600: {
+				add(new HomingMissile(390, 500, null, this));
+				break;
+			}
+			case 4700: {
+				add(new HomingMissile(800, 500, null, this));
+				break;
+			}
+			case 5000: {
+				add(new HomingMissile(0, 500, null, this));
+				break;
+			}
+			case 5100: {
+				add(new HomingMissile(390, 500, null, this));
+				break;
+			}
+			case 5200: {
+				add(new HomingMissile(800, 500, null, this));
+				break;
+			}
+			case 5300: {
+				add(new HomingMissile(0, -10, null, this));
+				break;
+			}
+			case 5400: {
+				add(new HomingMissile(800, -10, null, this));
+				break;
+			}
+			case 5600: {
+				add(new HomingMissile(0, 500, null, this));
+				break;
+			}
+			case 5700: {
+				add(new HomingMissile(390, 500, null, this));
+				break;
+			}
+			case 5800: {
+				add(new HomingMissile(800, 500, null, this));
+				break;
+			}
+			case 5900: {
+				add(new HomingMissile(0, -10, null, this));
+				break;
+			}
+			case 6000: {
+				add(new HomingMissile(800, -10, null, this));
+				break;
+			}
+			case 6100: {
+				add(new HomingMissile(0, -10, null, this));
+				break;
+			}
+			case 6200: {
+				add(new HomingMissile(800, -10, null, this));
+				break;
+			}
+			
+			case 6900: {
+				if (gameScreen.getCheckPoint() + 10 == levelTime) {
+					//add(new BackgroundImage("levels/space_background2.png", 0, 0, 3));
+					//add(new BackgroundImage("levels/space_background2.png", 0, 960, 3));
+					backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/The_Descent_firstContinue.mp3"));
+					backgroundMusic.play();
+					addStarsCheckpoint(200);
+				} else {
+					add(new CheckpointReached(300, 350, 2));
+					gameScreen.setCheckPoint(levelTime - 10);
+				}
+				break;
+			}
+			case 7100: {
+				add(new HomingMissile(0, 500, null, this));
+				break;
+			}
+			
 			
 		}
 	}

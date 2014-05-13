@@ -50,17 +50,17 @@ public class Coord {
 	
 	
 	// Level two:
-	public static final Coord bottommid = new Coord(375, -500);
-	public static final Coord leavebottommid = new Coord(375, -100);
+	public static final Coord bottommid = new Coord(375, -100);
+	public static final Coord leavebottommid = new Coord(375, -1000);
 	public static final List<Coord> leavebottom = Arrays.asList(bottommid,leavebottommid);
 	
-	//public static final Coord bottommid = new Coord(375, -20);
-	public static final Coord leavebottomleft = new Coord(0, -100);
-	public static final List<Coord> leavebottomleftlist = Arrays.asList(leavebottomleft);
+	public static final Coord bottomleft = new Coord(0, -20);
+	public static final Coord leavebottomleft = new Coord(0, -1000);
+	public static final List<Coord> leavebottomleftlist = Arrays.asList(bottomleft, leavebottomleft);
 	
-	//public static final Coord bottommid = new Coord(375, -20);
-	public static final Coord leavebottomright = new Coord(800, -100);
-	public static final List<Coord> leavebottomrightlist = Arrays.asList(leavebottomright);
+	public static final Coord bottomright = new Coord(800, -20);
+	public static final Coord leavebottomright = new Coord(800, -1000);
+	public static final List<Coord> leavebottomrightlist = Arrays.asList(bottomright, leavebottomright);
 	
 	public Coord(int x, int y) {
 		this.x = x;

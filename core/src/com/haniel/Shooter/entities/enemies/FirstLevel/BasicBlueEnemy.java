@@ -21,17 +21,11 @@ public class BasicBlueEnemy extends Enemy{
 		this.width = 50;
 		this.height = 44;
 		this.sprite = new Sprite(enemy1Texture);		
-		this.health = 2;
+		this.health = 1;
 		this.xOffset = 7;
 		this.yOffset = 15;
 		this.rectangle = new Rectangle((float)x + xOffset, (float)y + yOffset, width, height);
 		this.weapon = new BlueSphereGun(level, false);
-		//this.engine1Effect = level.playerEngineEffectPool.obtain();
-		//this.engine1Effect.setPosition((int)x + 11,(int) y + 1);
-		//this.engine1Effect.flipY();
-		//level.effects.add(engine1Effect);
-
-
 	}
 	protected void shoot() {
         if ((level.getTime() - lastShot) > firingRate) {
@@ -45,13 +39,9 @@ public class BasicBlueEnemy extends Enemy{
 	}
 	public void update(){
 		super.update();
-		//engine1Effect.setPosition((int)x + 20,(int) y + height - 10);
-	    //for (int i =0; i < 25; i++) {
-			//level.add(new OrangeParticle(x + 20 + i, y + height - 10, 1, 0, 0));
     }
 
 	public void remove() {
 		super.remove();
-		//engine1Effect.allowCompletion();
 	}
 }

@@ -46,6 +46,8 @@ public class Level {
     public ParticleEffectPool playerBulletEffectPool;
     ParticleEffect smallExplosionEffect = new ParticleEffect();
 	public ParticleEffectPool smallExplosionEffectPool;
+    ParticleEffect smallExplosionEffect2 = new ParticleEffect();
+	public ParticleEffectPool smallExplosionEffect2Pool;
     ParticleEffect smallEngineEffect = new ParticleEffect();
 	public ParticleEffectPool smallEngineEffectPool;	
 	ParticleEffect enemyBulletEffect = new ParticleEffect();
@@ -58,7 +60,7 @@ public class Level {
 		this.gameScreen = gameScreen; 
 		ParticleEffect playerBulletEffect = new ParticleEffect();
 		playerBulletEffect.load(Gdx.files.internal("particles/PlayerBullet.p"), Gdx.files.internal("particles/"));
-		playerBulletEffectPool  = new ParticleEffectPool(playerBulletEffect, 10, 30);
+		playerBulletEffectPool  = new ParticleEffectPool(playerBulletEffect, 10, 100);
 	}
 
 	public void runLevel(GameScreen g) {

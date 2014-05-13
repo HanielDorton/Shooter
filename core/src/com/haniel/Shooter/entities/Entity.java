@@ -35,7 +35,9 @@ public abstract class Entity{
 	protected static final Texture firstBossTexture = new Texture(Gdx.files.internal("entities/first_boss.png"));
 	//level two
 	protected static final Texture playerCloneTexture = new Texture(Gdx.files.internal("entities/player.png"));
-	
+	protected static final Texture homingMissileTexture = new Texture(Gdx.files.internal("textures/star.png"));
+	protected static final Sound explosion01 = Gdx.audio.newSound(Gdx.files.internal("sounds/explosion-01.wav"));
+	protected static final Sound jacketZipper3 = Gdx.audio.newSound(Gdx.files.internal("sounds/jacket-zipper-3.wav"));
 	protected enum Direction {
 		UP, DOWN, LEFT, RIGHT
 	}
@@ -57,6 +59,7 @@ public abstract class Entity{
 
 		if (xa > 0) dir = Direction.RIGHT;
 		if (xa < 0) dir = Direction.LEFT;
+		
 		if (ya > 0) dir = Direction.DOWN;
 		if (ya < 0) dir = Direction.UP;
 		
