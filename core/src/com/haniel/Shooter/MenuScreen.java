@@ -62,7 +62,7 @@ public class MenuScreen implements Screen{
 		buttonPlay = new TextButton("Start Game", skin);
 		buttonPlay.addListener(new ChangeListener() {
 			public void changed(ChangeEvent event, Actor actor) {
-				GameState gameState = new GameState(1, 10790, 0, 0); //10790, 18390
+				GameState gameState = new GameState(1, 18390, 0, 0); //10790, 18390
 	            game.setScreen(new LevelIntroScreen(game, gameState));
 	            dispose();				
 			}

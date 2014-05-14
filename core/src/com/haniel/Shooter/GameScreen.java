@@ -200,7 +200,7 @@ public class GameScreen implements Screen {
     }
     
     public void setLevelComplete() {
-    	this.levelComplete = level.getLevelTime() + 500;
+    	this.levelComplete = level.getLevelTime() + 800;
     }
     
     private Level getLevel() {

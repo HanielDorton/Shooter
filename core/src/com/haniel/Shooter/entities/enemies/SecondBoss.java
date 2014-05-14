@@ -23,7 +23,7 @@ public class SecondBoss extends Enemy{
 		this.width = 140;
 		this.xOffset = 10;
 		this.height = 770;
-		this.health = 250;
+		this.health = 300;
 		this.speed = 50;
 		this.rectangle = new Rectangle((float)x + xOffset, (float)y + yOffset, width, height);
 		this.engine1Effect.load(Gdx.files.internal("particles/bossexhaust.p"), Gdx.files.internal("particles/"));
@@ -58,9 +58,9 @@ public class SecondBoss extends Enemy{
 	public void shoot() {
 		if ((level.getTime() - lastShot) > firingRate) {
 	    	lastShot = level.getTime();
-	    	for (int i = 0; i <6; i++){
-	    		level.specialBossArray.add(new HomingMissile(x + 5, y + 44 + (50 * i), null, level));
-	    		level.specialBossArray.add(new HomingMissile(x + 154, y + 44 + (50 * i), null, level));
+	    	for (int i = 0; i <3; i++){
+	    		level.specialBossArray.add(new HomingMissile(x + 5, y + 44 + (100 * i), null, level));
+	    		level.specialBossArray.add(new HomingMissile(x + 154, y + 44 + (100 * i), null, level));
 	    	}
 	    	level.specialBossArray.add(new PlayerClone(390, 600, Coord.leavebottomleftlist, level));
     		level.specialBossArray.add(new PlayerClone(410, 600, Coord.leavebottomrightlist, level));
@@ -68,8 +68,8 @@ public class SecondBoss extends Enemy{
 		if (health < 150) {
 			if ((level.getTime() - secondLastShot) > secondFiringRate) {
 		    	secondLastShot = level.getTime();
-			
-			
+		    	level.specialBossArray.add(new ImprovedPlayerClone(0, 480, null, level));
+		    	level.specialBossArray.add(new ImprovedPlayerClone(800, 480, null, level));
 			}
 		}
 	}
