@@ -12,5 +12,8 @@ public class BackgroundImage extends MyGraphics{
 		y-= speed * Gdx.graphics.getDeltaTime(); ;
 		if (y == -960) y = 960;
 	}
-
+	public void remove() {
+		texture.dispose();
+		removed = true;
+	}
 }

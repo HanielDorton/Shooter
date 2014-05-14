@@ -12,4 +12,8 @@ public class BackgroundPlanet extends MyGraphics {
 		this.y -= speed * Gdx.graphics.getDeltaTime();;
 		if (y + height < 0) remove();
 	}
+	public void remove() {
+		texture.dispose();
+		removed = true;
+	}
 }

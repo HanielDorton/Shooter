@@ -15,10 +15,6 @@ public class Star extends MyGraphics{
 		this.texture = starTexture;
 	}
 	
-	public Star(String imageFile, int x, int y, float speed) {
-		super(imageFile, x, y, speed);
-	}
-	
 	//stars automatically reappear at random spot at top instead of being removed by remove();
 	public void update() {
 		this.y -= speed * Gdx.graphics.getDeltaTime();

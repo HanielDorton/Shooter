@@ -7,7 +7,7 @@ public class BlackSphereGun extends BlueSphereGun{
 	
 	public BlackSphereGun(Level level, boolean fromPlayer) {
 		super(level, fromPlayer);
-		this.sound = explosionSound;
+		this.sound = smatterZap1;
 	}
 	
 	public void shoot(double x, double y, double angle) {

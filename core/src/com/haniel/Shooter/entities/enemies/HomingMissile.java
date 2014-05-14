@@ -39,7 +39,6 @@ public class HomingMissile extends Enemy{
 		    	lastShot = level.getTime();
 		    	trackPlayer--;
 		    	this.angle = level.getAngletoPlayersMiddle(x + (width / 2), y + (height / 2));
-		    	if (random.nextInt(10) > 6) heartbeat05.play(.4f);
         	}
         }
 		
@@ -55,6 +54,7 @@ public class HomingMissile extends Enemy{
 	        rectangle.setPosition((float)x, (float)y);
 	        this.effect.setPosition((int) x, (int)y);
 	        if (trackPlayer > 0) shoot();
+	        if (random.nextInt(10) > 7) irritatingAmbiantBuzz.play(.4f);
         }
 	}
 	

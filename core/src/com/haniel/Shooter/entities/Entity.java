@@ -36,8 +36,8 @@ public abstract class Entity{
 	//level two
 	protected static final Texture playerCloneTexture = new Texture(Gdx.files.internal("entities/player.png"));
 	protected static final Texture starTexture = new Texture(Gdx.files.internal("textures/star.png"));
-	protected static final Sound explosion01 = Gdx.audio.newSound(Gdx.files.internal("sounds/explosion-01-old1.wav"));
-	protected static final Sound heartbeat05 = Gdx.audio.newSound(Gdx.files.internal("sounds/heartbeat-05.wav"));
+	protected static final Sound explosion01 = Gdx.audio.newSound(Gdx.files.internal("sounds/explosion-01.wav"));
+	protected static final Sound irritatingAmbiantBuzz = Gdx.audio.newSound(Gdx.files.internal("sounds/irritating-ambient-buzz.wav"));
 	protected static final Texture secondBossTexture = new Texture(Gdx.files.internal("entities/second_boss.png"));
 	
 	protected enum Direction {

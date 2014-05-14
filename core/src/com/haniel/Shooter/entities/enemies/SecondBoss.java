@@ -68,8 +68,8 @@ public class SecondBoss extends Enemy{
 		if (health < 150) {
 			if ((level.getTime() - secondLastShot) > secondFiringRate) {
 		    	secondLastShot = level.getTime();
-		    	level.specialBossArray.add(new ImprovedPlayerClone(0, 480, null, level));
-		    	level.specialBossArray.add(new ImprovedPlayerClone(800, 480, null, level));
+		    	level.specialBossArray.add(new ImprovedPlayerClone(0, 600, null, level));
+		    	level.specialBossArray.add(new ImprovedPlayerClone(800, 600, null, level));
 			}
 		}
 	}

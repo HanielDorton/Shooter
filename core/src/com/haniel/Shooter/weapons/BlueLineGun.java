@@ -7,7 +7,7 @@ public class BlueLineGun extends Weapon{
 
 	public BlueLineGun(Level level, boolean fromPlayer) {
 		super(level, fromPlayer);
-		this.sound = whipwooshSound;
+		this.sound = smatterZap1;
 	}
 	
 	public void shoot(double x, double y, double angle) {

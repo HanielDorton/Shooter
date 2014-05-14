@@ -34,8 +34,8 @@ public class LevelFirst extends Level{
 		
 			case 10: {
 				backgroundMusic.play();
-				add(new BackgroundImage("levels/space_background2.png", 0, 0, 3));
-		        add(new BackgroundImage("levels/space_background2.png", 0, 960, 3));
+				add(new BackgroundImage("levels/space_background1.png", 0, 0, 3));
+		        add(new BackgroundImage("levels/space_background1.png", 0, 960, 3));
 		        addStarsCheckpoint(100);
 				break;
 			}
@@ -241,8 +241,8 @@ public class LevelFirst extends Level{
 			}	
 			case 4300: {
 				if (gameScreen.getCheckPoint() + 10 == levelTime) {
-					add(new BackgroundImage("levels/space_background2.png", 0, 0, 3));
-					add(new BackgroundImage("levels/space_background2.png", 0, 960, 3));
+					add(new BackgroundImage("levels/space_background1.png", 0, 0, 3));
+					add(new BackgroundImage("levels/space_background1.png", 0, 960, 3));
 					backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/black_vortex_firstContinue.mp3"));
 					backgroundMusic.play();
 					addStarsCheckpoint(100);
@@ -288,8 +288,8 @@ public class LevelFirst extends Level{
 			case 9200: {
 				//checkpoint
 				if (gameScreen.getCheckPoint() + 10 == levelTime) {
-					add(new BackgroundImage("levels/space_background2.png", 0, 0, 3));
-					add(new BackgroundImage("levels/space_background2.png", 0, 960, 3));
+					add(new BackgroundImage("levels/space_background1.png", 0, 0, 3));
+					add(new BackgroundImage("levels/space_background1.png", 0, 960, 3));
 					backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/black_vortex_secondContinue.mp3"));
 					backgroundMusic.play();
 					addStarsCheckpoint(100);

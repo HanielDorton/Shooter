@@ -8,12 +8,13 @@ import com.haniel.Shooter.entities.enemies.HomingMissile;
 import com.haniel.Shooter.entities.enemies.ImprovedPlayerClone;
 import com.haniel.Shooter.entities.enemies.PlayerClone;
 import com.haniel.Shooter.entities.enemies.SecondBoss;
+import com.haniel.Shooter.graphics.BackgroundImage;
 import com.haniel.Shooter.graphics.CheckpointReached;
 import com.haniel.Shooter.util.Coord;
 
 public class LevelSecond extends Level{
 	
-	///checkpoints: 6890, 10790
+	///checkpoints: 6890, 10790, 18390
 	
 	ParticleEffect nebula = new ParticleEffect();
 
@@ -39,201 +40,201 @@ public class LevelSecond extends Level{
 		
 			case 10: {
 				backgroundMusic.play();
-				addStarsCheckpoint(200);
-				//add(new BackgroundImage("levels/space_background2.png", 0, 0, 3));
-		        //add(new BackgroundImage("levels/space_background2.png", 0, 960, 3));
+				addStarsCheckpoint(100);
+				add(new BackgroundImage("levels/space_background2.png", 0, 0, 3));
+		        add(new BackgroundImage("levels/space_background2.png", 0, 960, 3));
 				break;
 			}
 			case 200: {
-				add(new PlayerClone(0, 480, Coord.leavebottom, this));
+				add(new PlayerClone(0, 525, Coord.leavebottom, this));
 				break;
 			}
 			case 300: {
-				add(new PlayerClone(800, 480, Coord.leavebottom, this));
+				add(new PlayerClone(800, 525, Coord.leavebottom, this));
 				break;
 			}
 			case 400: {
-				add(new PlayerClone(400, 480, Coord.leavebottomleftlist, this));
+				add(new PlayerClone(400, 525, Coord.leavebottomleftlist, this));
 				break;				
 			}
 			case 500: {
-				add(new PlayerClone(400, 480, Coord.leavebottomrightlist, this));
+				add(new PlayerClone(400, 525, Coord.leavebottomrightlist, this));
 				break;
 			}
 			case 600: {
-				add(new PlayerClone(100, 480, Coord.leavebottom, this));
+				add(new PlayerClone(100, 525, Coord.leavebottom, this));
 				break;
 			}
 			case 700: {
-				add(new PlayerClone(700, 480, Coord.leavebottom, this));
+				add(new PlayerClone(700, 525, Coord.leavebottom, this));
 				break;
 			}
 			case 800: {
-				add(new PlayerClone(300, 480, Coord.leavebottomleftlist, this));
+				add(new PlayerClone(300, 525, Coord.leavebottomleftlist, this));
 				break;				
 			}
 			case 900: {
-				add(new PlayerClone(600, 480, Coord.leavebottomrightlist, this));
+				add(new PlayerClone(600, 525, Coord.leavebottomrightlist, this));
 				break;
 			}
 			case 1000: {
-				add(new PlayerClone(200, 480, Coord.leavebottom, this));
+				add(new PlayerClone(200, 525, Coord.leavebottom, this));
 				break;
 			}
 			case 1100: {
-				add(new PlayerClone(600, 480, Coord.leavebottom, this));
+				add(new PlayerClone(600, 525, Coord.leavebottom, this));
 				break;
 			}
 			case 1200: {
-				add(new PlayerClone(200, 480, Coord.leavebottomleftlist, this));
+				add(new PlayerClone(200, 525, Coord.leavebottomleftlist, this));
 				break;				
 			}
 			case 1300: {
-				add(new PlayerClone(600, 480, Coord.leavebottomrightlist, this));
+				add(new PlayerClone(600, 525, Coord.leavebottomrightlist, this));
 				break;
 			}
 			case 1400: {
-				add(new PlayerClone(0, 480, Coord.leavebottom, this));
+				add(new PlayerClone(0, 525, Coord.leavebottom, this));
 				break;
 			}
 			case 1500: {
-				add(new PlayerClone(800, 480, Coord.leavebottom, this));
+				add(new PlayerClone(800, 525, Coord.leavebottom, this));
 				break;
 			}
 			case 1600: {
-				add(new PlayerClone(400, 480, Coord.leavebottomleftlist, this));
+				add(new PlayerClone(400, 525, Coord.leavebottomleftlist, this));
 				break;				
 			}
 			case 1700: {
-				add(new PlayerClone(400, 480, Coord.leavebottomrightlist, this));
+				add(new PlayerClone(400, 525, Coord.leavebottomrightlist, this));
 				break;
 			}
 			case 1800: {
-				add(new PlayerClone(100, 480, Coord.leavebottom, this));
+				add(new PlayerClone(100, 525, Coord.leavebottom, this));
 				break;
 			}
 			case 1900: {
-				add(new PlayerClone(700, 480, Coord.leavebottom, this));
+				add(new PlayerClone(700, 525, Coord.leavebottom, this));
 				break;
 			}
 			case 2000: {
-				add(new PlayerClone(300, 480, Coord.leavebottomleftlist, this));
+				add(new PlayerClone(300, 525, Coord.leavebottomleftlist, this));
 				break;				
 			}
 			case 2100: {
-				add(new PlayerClone(600, 480, Coord.leavebottomrightlist, this));
+				add(new PlayerClone(600, 525, Coord.leavebottomrightlist, this));
 				break;
 			}
 			case 2200: {
-				add(new PlayerClone(200, 480, Coord.leavebottom, this));
+				add(new PlayerClone(200, 525, Coord.leavebottom, this));
 				break;
 			}
 			case 2300: {
-				add(new PlayerClone(600, 480, Coord.leavebottom, this));
+				add(new PlayerClone(600, 525, Coord.leavebottom, this));
 				break;
 			}
 			case 2400: {
-				add(new PlayerClone(200, 480, Coord.leavebottomleftlist, this));
+				add(new PlayerClone(200, 525, Coord.leavebottomleftlist, this));
 				break;				
 			}
 			case 2500: {
-				add(new PlayerClone(600, 480, Coord.leavebottomrightlist, this));
+				add(new PlayerClone(600, 525, Coord.leavebottomrightlist, this));
 				break;
 			}
 			case 2600: {
-				add(new PlayerClone(0, 480, Coord.leavebottom, this));
+				add(new PlayerClone(0, 525, Coord.leavebottom, this));
 				break;
 			}
 			case 2650: {
-				add(new PlayerClone(800, 480, Coord.leavebottom, this));
+				add(new PlayerClone(800, 525, Coord.leavebottom, this));
 				break;
 			}
 			case 2700: {
-				add(new PlayerClone(400, 480, Coord.leavebottomleftlist, this));
+				add(new PlayerClone(400, 525, Coord.leavebottomleftlist, this));
 				break;				
 			}
 			case 2750: {
-				add(new PlayerClone(400, 480, Coord.leavebottomrightlist, this));
+				add(new PlayerClone(400, 525, Coord.leavebottomrightlist, this));
 				break;
 			}
 			case 2800: {
-				add(new PlayerClone(100, 480, Coord.leavebottom, this));
+				add(new PlayerClone(100, 525, Coord.leavebottom, this));
 				break;
 			}
 			case 2850: {
-				add(new PlayerClone(700, 480, Coord.leavebottom, this));
+				add(new PlayerClone(700, 525, Coord.leavebottom, this));
 				break;
 			}
 			case 2900: {
-				add(new PlayerClone(300, 480, Coord.leavebottomleftlist, this));
+				add(new PlayerClone(300, 525, Coord.leavebottomleftlist, this));
 				break;				
 			}
 			case 2950: {
-				add(new PlayerClone(600, 480, Coord.leavebottomrightlist, this));
+				add(new PlayerClone(600, 525, Coord.leavebottomrightlist, this));
 				break;
 			}
 			case 3000: {
-				add(new PlayerClone(200, 480, Coord.leavebottom, this));
+				add(new PlayerClone(200, 525, Coord.leavebottom, this));
 				break;
 			}
 			case 3050: {
-				add(new PlayerClone(600, 480, Coord.leavebottom, this));
+				add(new PlayerClone(600, 525, Coord.leavebottom, this));
 				break;
 			}
 			case 3100: {
-				add(new PlayerClone(200, 480, Coord.leavebottomleftlist, this));
+				add(new PlayerClone(200, 525, Coord.leavebottomleftlist, this));
 				break;				
 			}
 			case 3150: {
-				add(new PlayerClone(600, 480, Coord.leavebottomrightlist, this));
+				add(new PlayerClone(600, 525, Coord.leavebottomrightlist, this));
 				break;
 			}
 			case 3200: {
-				add(new PlayerClone(0, 480, Coord.leavebottom, this));
+				add(new PlayerClone(0, 525, Coord.leavebottom, this));
 				break;
 			}
 			case 3230: {
-				add(new PlayerClone(800, 480, Coord.leavebottom, this));
+				add(new PlayerClone(800, 525, Coord.leavebottom, this));
 				break;
 			}
 			case 3260: {
-				add(new PlayerClone(400, 480, Coord.leavebottomleftlist, this));
+				add(new PlayerClone(400, 525, Coord.leavebottomleftlist, this));
 				break;				
 			}
 			case 3290: {
-				add(new PlayerClone(400, 480, Coord.leavebottomrightlist, this));
+				add(new PlayerClone(400, 525, Coord.leavebottomrightlist, this));
 				break;
 			}
 			case 3320: {
-				add(new PlayerClone(100, 480, Coord.leavebottom, this));
+				add(new PlayerClone(100, 525, Coord.leavebottom, this));
 				break;
 			}
 			case 3350: {
-				add(new PlayerClone(700, 480, Coord.leavebottom, this));
+				add(new PlayerClone(700, 525, Coord.leavebottom, this));
 				break;
 			}
 			case 3380: {
-				add(new PlayerClone(300, 480, Coord.leavebottomleftlist, this));
+				add(new PlayerClone(300, 525, Coord.leavebottomleftlist, this));
 				break;				
 			}
 			case 3410: {
-				add(new PlayerClone(600, 480, Coord.leavebottomrightlist, this));
+				add(new PlayerClone(600, 525, Coord.leavebottomrightlist, this));
 				break;
 			}
 			case 3440: {
-				add(new PlayerClone(200, 480, Coord.leavebottom, this));
+				add(new PlayerClone(200, 525, Coord.leavebottom, this));
 				break;
 			}
 			case 3470: {
-				add(new PlayerClone(600, 480, Coord.leavebottom, this));
+				add(new PlayerClone(600, 525, Coord.leavebottom, this));
 				break;
 			}
 			case 3500: {
-				add(new PlayerClone(200, 480, Coord.leavebottomleftlist, this));
+				add(new PlayerClone(200, 525, Coord.leavebottomleftlist, this));
 				break;				
 			}
 			case 3530: {
-				add(new PlayerClone(600, 480, Coord.leavebottomrightlist, this));
+				add(new PlayerClone(600, 525, Coord.leavebottomrightlist, this));
 				break;
 			}			
 			case 4100: {
@@ -334,11 +335,11 @@ public class LevelSecond extends Level{
 			
 			case 6900: { //next checkpoitn 108
 				if (gameScreen.getCheckPoint() + 10 == levelTime) {
-					//add(new BackgroundImage("levels/space_background2.png", 0, 0, 3));
-					//add(new BackgroundImage("levels/space_background2.png", 0, 960, 3));
+					add(new BackgroundImage("levels/space_background2.png", 0, 0, 3));
+					add(new BackgroundImage("levels/space_background2.png", 0, 960, 3));
 					backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/The_Descent_firstContinue.mp3"));
 					backgroundMusic.play();
-					addStarsCheckpoint(200);
+					addStarsCheckpoint(100);
 				} else {
 					add(new CheckpointReached(300, 350, 2));
 					gameScreen.setCheckPoint(levelTime - 10);
@@ -347,19 +348,19 @@ public class LevelSecond extends Level{
 			}
 			case 7100: {
 				for (int i = 0; i < 5; i++) {
-					add(new ImprovedPlayerClone(0 + (200 * i), 480, null, this));
+					add(new ImprovedPlayerClone(0 + (200 * i), 525, null, this));
 				}
 				break;
 			}
 			case 7400: {
 				for (int i = 0; i < 5; i++) {
-					add(new ImprovedPlayerClone(0 + (200 * i), 480, null, this));
+					add(new ImprovedPlayerClone(0 + (200 * i), 525, null, this));
 				}
 				break;
 			}
 			case 7700: {
 				for (int i = 0; i < 5; i++) {
-					add(new ImprovedPlayerClone(0 + (200 * i), 480, null, this));
+					add(new ImprovedPlayerClone(0 + (200 * i), 525, null, this));
 				}
 				break;
 			}
@@ -389,7 +390,7 @@ public class LevelSecond extends Level{
 			}
 			case 8800: {
 				for (int i = 0; i < 5; i++) {
-					add(new ImprovedPlayerClone(0 + (200 * i), 480, null, this));
+					add(new ImprovedPlayerClone(0 + (200 * i), 525, null, this));
 				}
 				break;
 			}
@@ -401,7 +402,7 @@ public class LevelSecond extends Level{
 			}
 			case 9400: {
 				for (int i = 0; i < 5; i++) {
-					add(new ImprovedPlayerClone(0 + (200 * i), 480, null, this));
+					add(new ImprovedPlayerClone(0 + (200 * i), 525, null, this));
 				}
 				break;
 			}
@@ -413,7 +414,7 @@ public class LevelSecond extends Level{
 			}
 			case 9800: {
 				for (int i = 0; i < 5; i++) {
-					add(new ImprovedPlayerClone(0 + (200 * i), 480, null, this));
+					add(new ImprovedPlayerClone(0 + (200 * i), 525, null, this));
 				}
 				break;
 			}
@@ -426,7 +427,7 @@ public class LevelSecond extends Level{
 			
 			case 10300: {
 				for (int i = 0; i < 5; i++) {
-					add(new ImprovedPlayerClone(0 + (200 * i), 480, null, this));
+					add(new ImprovedPlayerClone(0 + (200 * i), 525, null, this));
 				}
 				break;
 			}
@@ -440,11 +441,11 @@ public class LevelSecond extends Level{
 			
 			case 10800: { 
 				if (gameScreen.getCheckPoint() + 10 == levelTime) {
-					//add(new BackgroundImage("levels/space_background2.png", 0, 0, 3));
-					//add(new BackgroundImage("levels/space_background2.png", 0, 960, 3));
+					add(new BackgroundImage("levels/space_background2.png", 0, 0, 3));
+					add(new BackgroundImage("levels/space_background2.png", 0, 960, 3));
 					backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/The_Descent_secondContinue.mp3"));
 					backgroundMusic.play();
-					addStarsCheckpoint(200);
+					addStarsCheckpoint(100);
 				} else {
 					add(new CheckpointReached(300, 350, 2));
 					gameScreen.setCheckPoint(levelTime - 10);
@@ -461,17 +462,23 @@ public class LevelSecond extends Level{
 			}
 			case 16500: {
 				for (int i = 0; i < 5; i++) {
-					add(new ImprovedPlayerClone(0 + (200 * i), 480, null, this));
+					add(new ImprovedPlayerClone(0 + (200 * i), 525, null, this));
+				}
+				break;
+			}
+			case 18300: {
+				for (int i = 0; i < 5; i++) {
+					add(new ImprovedPlayerClone(0 + (200 * i), 525, null, this));
 				}
 				break;
 			}
 			case 18400: { 
 				if (gameScreen.getCheckPoint() + 10 == levelTime) {
-					//add(new BackgroundImage("levels/space_background2.png", 0, 0, 3));
-					//add(new BackgroundImage("levels/space_background2.png", 0, 960, 3));
+					add(new BackgroundImage("levels/space_background2.png", 0, 0, 3));
+					add(new BackgroundImage("levels/space_background2.png", 0, 960, 3));
 					backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/All_This.mp3"));
 					backgroundMusic.play();
-					addStarsCheckpoint(200);
+					addStarsCheckpoint(100);
 				} else {
 					add(new CheckpointReached(300, 350, 2));
 					gameScreen.setCheckPoint(levelTime - 10);
@@ -479,8 +486,7 @@ public class LevelSecond extends Level{
 					backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/All_This.mp3"));
 					backgroundMusic.play();
 				}
-				add(new SecondBoss(325, 800, Coord.bossstayinmiddlelist, this));
-			
+				add(new SecondBoss(325, 800, Coord.bossstayinmiddlelist, this));			
 				break;
 			}
 			
