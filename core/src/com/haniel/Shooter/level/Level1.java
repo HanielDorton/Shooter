@@ -13,10 +13,10 @@ import com.haniel.Shooter.graphics.BackgroundImage;
 import com.haniel.Shooter.graphics.CheckpointReached;
 import com.haniel.Shooter.util.Coord;
 
-public class LevelFirst extends Level{
+public class Level1 extends Level{
 	//Checkpoints: 4290 for ufo's // 9190 for secondcheckpoint//13990 for boss
 			
-	public LevelFirst(GameScreen gameScreen) {
+	public Level1(GameScreen gameScreen) {
 		super(gameScreen);
 		backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/black_vortex.mp3"));
 		//load all particle effects for pooling:
@@ -375,8 +375,8 @@ public class LevelFirst extends Level{
 			
 			case 14000: {
 				if (gameScreen.getCheckPoint() + 10 == levelTime) {
-					add(new BackgroundImage("levels/space_background2.png", 0, 0, 3));
-					add(new BackgroundImage("levels/space_background2.png", 0, 960, 3));
+					add(new BackgroundImage("levels/space_background1.png", 0, 0, 3));
+					add(new BackgroundImage("levels/space_background1.png", 0, 960, 3));
 					addStarsCheckpoint(100);
 				} else {
 					add(new CheckpointReached(300, 350, 2));

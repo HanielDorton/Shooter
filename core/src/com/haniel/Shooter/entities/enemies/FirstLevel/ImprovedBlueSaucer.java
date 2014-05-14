@@ -24,7 +24,7 @@ public class ImprovedBlueSaucer extends BlueSaucer{
 		    	lastShotSecondGun = level.getTime();
 		    	double angleSecond = level.getAngletoPlayersMiddle(x + xOffset + (width / 2), y + yOffset + 5);
 		       	weapon.shoot(x + xOffset + (width / 2), y + yOffset + 5, angleSecond);
-		       	if (level.weaponSounds.size() < 3) level.weaponSounds.add(weapon);
+		       	//if (level.weaponSounds.size() < 3) level.weaponSounds.add(weapon);
         	}
 	    }
 		

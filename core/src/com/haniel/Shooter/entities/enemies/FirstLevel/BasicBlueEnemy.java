@@ -35,14 +35,6 @@ public class BasicBlueEnemy extends Enemy{
 		       	weapon.shoot(x + xOffset + width / 2, y + yOffset + height / 2 - 5, angle);
 		       	if (level.weaponSounds.size() == 0) level.weaponSounds.add(weapon);
         	}
-        }
-    	
-	}
-	public void update(){
-		super.update();
-    }
-
-	public void remove() {
-		super.remove();
+        }    	
 	}
 }

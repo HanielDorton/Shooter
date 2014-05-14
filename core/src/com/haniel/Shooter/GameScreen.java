@@ -15,8 +15,8 @@ import com.haniel.Shooter.entities.Entity;
 import com.haniel.Shooter.entities.Player;
 import com.haniel.Shooter.graphics.MyGraphics;
 import com.haniel.Shooter.level.Level;
-import com.haniel.Shooter.level.LevelFirst;
-import com.haniel.Shooter.level.LevelSecond;
+import com.haniel.Shooter.level.Level1;
+import com.haniel.Shooter.level.Level2;
 import com.haniel.Shooter.projectiles.Projectile;
 import com.haniel.Shooter.util.GameState;
 import com.haniel.Shooter.util.MyInputProcessor;
@@ -182,7 +182,6 @@ public class GameScreen implements Screen {
     	level.graphics.clear();
        	level.projectiles.clear();
        	level.entities.clear();
-       	level.asteroids.clear();
        	for (int i = 0; i < level.particleEffects.size; i++)
        		level.particleEffects.get(i).dispose();
        	level.particleEffects.clear();
@@ -207,11 +206,11 @@ public class GameScreen implements Screen {
     	Level level;
 		switch (gameState.numLevel) {
 		case 1: {
-			level = new LevelSecond(this); 
+			level = new Level2(this); 
 			break;
 		}
 		default: {
-			level = new LevelFirst(this);
+			level = new Level1(this);
 			break;
 		}
 		}

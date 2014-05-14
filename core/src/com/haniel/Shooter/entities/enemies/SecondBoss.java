@@ -52,7 +52,7 @@ public class SecondBoss extends Enemy{
 			level.particleEffects.add(explosion);
 			explosion.start();
 			level.setLevelComplete();
-			explosion02.play();
+			explosion02.play(.5f);
 		}
 	}
 	public void shoot() {

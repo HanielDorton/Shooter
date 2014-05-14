@@ -15,7 +15,6 @@ import com.badlogic.gdx.utils.Array;
 import com.haniel.Shooter.GameScreen;
 import com.haniel.Shooter.entities.Entity;
 import com.haniel.Shooter.entities.Player;
-import com.haniel.Shooter.entities.asteroids.Asteroid;
 import com.haniel.Shooter.graphics.MyGraphics;
 import com.haniel.Shooter.graphics.Star;
 import com.haniel.Shooter.projectiles.Projectile;
@@ -31,7 +30,6 @@ public class Level {
 	protected GameScreen gameScreen;
     public List<MyGraphics> graphics = new LinkedList<MyGraphics>();
     public List<Entity> entities = new ArrayList<Entity>();
-    public List<Asteroid> asteroids = new ArrayList<Asteroid>();
     public List<Projectile> projectiles = new ArrayList<Projectile>();
     public Array<ParticleEffect> particleEffects= new Array<ParticleEffect>();
     public Array<ParticleEffect> overlayedParticleEffects = new Array<ParticleEffect>();
@@ -162,58 +160,7 @@ public class Level {
             }
         }		
 	}
-    /*
-    private void updateAsteroids() {
-    	//not currently used and need to update to use proper iterators
-    	//Cycle through asteroids, updating, removing, and checking if they overlap any playe projectiles
-        for (int i = 0; i < asteroids.size(); i++) {
-        	Asteroid a = asteroids.get(i);
-    		for (int p = 0; p <projectiles.size(); p++) {
-          		if (a.getRectangle().overlaps(projectiles.get(p).getRectangle())) {
-        			a.damage(projectiles.get(p).getDamage());
-        			projectiles.get(p).remove();
-          		} 
-    		}
-    		
-    		// this moves the asteroid then check if any overlapping;
-    		//if there is overlapping it changes the direction and resets the asteroid back to its original position
-    		//if there wasn't then the original move made stays
-    		double originalX = a.getX();
-    		double originalY = a.getY();
-    		//Gdx.input.setInputProcessor(inputProcessor);
-    		boolean gotBumped = false;
-    		a.update();
-        	if (a.isRemoved()) {
-        		asteroids.remove(a);
-        		break;
-        	}
-    		for (int w = 0; w < asteroids.size(); w++) {
-    			if (!(a.equals(asteroids.get(w)))) {
-	    			if (a.getRectangle().overlaps(asteroids.get(w).getRectangle())) {
-	    				float tempX = a.getMoveX();
-	    				float tempY = a.getMoveY();
-	    				if (a.getWidth() <= asteroids.get(w).getWidth()) {
-	    					a.bump(-a.getMoveX() * .8f, -a.getMoveY() * .8f);
-	    					asteroids.get(w).bump(asteroids.get(w).getMoveX() + tempX*.1f, asteroids.get(w).getMoveY() + tempY *.1f);
-	    					a.damage(1);
-	    					asteroids.get(w).damage(.3);
-	    				gotBumped = true;
-	    				break;
-	    					
-	    				} 
-
-	    			}
-	    		}
-    		} if (gotBumped) {
-    			a.setX((int) originalX);
-    			a.setY((int) originalY);;
-    			a.getRectangle().setPosition((float) originalX, (float) originalY);
-    			
-    		}
-        }
-    	
-    }*/
-
+   
 	public void add(MyGraphics g) {
     	graphics.add(g);
     	g.init(this);
@@ -227,11 +174,6 @@ public class Level {
     public void add(Projectile p) {
     	projectiles.add(p);
     	p.init(this);
-    }
-    
-    public void add(Asteroid a) {
-    	asteroids.add(a);
-    	a.init(this);
     }
     
 	protected void addStarsCheckpoint(int number){

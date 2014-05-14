@@ -38,7 +38,9 @@ public abstract class Enemy extends Entity{
 		}
 		move(Math.cos(angle) * speed, Math.sin(angle) * speed);		
         rectangle.setPosition((float)x + xOffset, (float)y + yOffset);
-        shoot();
+        if (!(y < 0 - this.height) && !(y > level.getHeight() + this.height) && !(x > level.getWidth() + this.width) && !(x < 0 - this.width)) {
+        	shoot();
+        }
 	}
 	
 	

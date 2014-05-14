@@ -33,7 +33,7 @@ public class HomingMissile extends Enemy{
 	}
 	
 	public void shoot() {
-		//for this 'enemy' shooting resets the angle to the player
+		//for this 'enemy' 'shooting' resets the angle to the player
         if ((level.getTime() - lastShot) > firingRate) {
         	if (!(getMidY()> 680) && !(getMidY() < -200) && !(getMidX() < -200 && !(getMidX() > 1000))){
 		    	lastShot = level.getTime();

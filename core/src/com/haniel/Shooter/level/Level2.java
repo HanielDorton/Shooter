@@ -12,7 +12,7 @@ import com.haniel.Shooter.graphics.BackgroundImage;
 import com.haniel.Shooter.graphics.CheckpointReached;
 import com.haniel.Shooter.util.Coord;
 
-public class LevelSecond extends Level{
+public class Level2 extends Level{
 	
 	///checkpoints: 6890, 10790, 18390
 	
@@ -20,7 +20,7 @@ public class LevelSecond extends Level{
 
 	
 	
-	public LevelSecond(GameScreen gameScreen) {
+	public Level2(GameScreen gameScreen) {
 		super(gameScreen);
 		backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/The_Descent.mp3"));
 		//load all particle effects for pooling:

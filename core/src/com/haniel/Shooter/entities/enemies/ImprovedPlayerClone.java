@@ -31,11 +31,6 @@ public class ImprovedPlayerClone extends PlayerClone{
 		}
 		move(Math.cos(angle) * speed, Math.sin(angle) * speed);		
         rectangle.setPosition((float)x + xOffset, (float)y + yOffset);
-        shoot();
-		
+        shoot();		
 	}
-	public void particles() {
-		super.particles();
-	}
-
 }

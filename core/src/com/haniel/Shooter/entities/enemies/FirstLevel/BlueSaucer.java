@@ -41,12 +41,7 @@ public class BlueSaucer extends Enemy{
         	}
         }
     }
-	
-	public void update(){
-		super.update();
-		///add engine particle effects here
-	}
-	
+
 	public void particles() {
 		if (health < 0) {
 			ParticleEffect explosion = new ParticleEffect();
@@ -54,7 +49,7 @@ public class BlueSaucer extends Enemy{
 			explosion.setPosition((int)x + xOffset + (width / 2),(int) y + yOffset + (height / 2));
 			level.particleEffects.add(explosion);
 			explosion.start();
-			matches2.play();
+			explosion02.play(.3f);
 		}
 	}
 }

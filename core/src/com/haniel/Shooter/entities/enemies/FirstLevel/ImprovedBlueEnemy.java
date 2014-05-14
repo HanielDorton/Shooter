@@ -16,7 +16,6 @@ public class ImprovedBlueEnemy extends BasicBlueEnemy{
 		this.lastShot2 = level.getTime() - random.nextInt(3);
 	}
 	protected void shoot() {
-		//super.shoot();
         if ((level.getTime() - lastShot2) > firingRate2) {
         	if (!(getMidY()> 480) && !(getMidY() < 0) && !(getMidX() < 0 && !(getMidX() > 800))){
 		    	lastShot2 = level.getTime();
