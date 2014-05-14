@@ -10,8 +10,8 @@ max: 50
 - Emission - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 100.0
-highMax: 100.0
+highMin: 20.0
+highMax: 20.0
 relative: false
 scalingCount: 2
 scaling0: 1.0
@@ -62,16 +62,16 @@ timeline0: 0.0
 - Scale - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 16.0
-highMax: 16.0
+highMin: 12.0
+highMax: 12.0
 relative: false
 scalingCount: 3
-scaling0: 1.0
-scaling1: 0.59183675
-scaling2: 0.0
+scaling0: 0.0
+scaling1: 0.5510204
+scaling2: 0.81632656
 timelineCount: 3
 timeline0: 0.0
-timeline1: 0.10273973
+timeline1: 0.3561644
 timeline2: 1.0
 - Velocity - 
 active: false
@@ -85,8 +85,8 @@ active: false
 active: false
 - Tint - 
 colorsCount: 3
-colors0: 0.7019608
-colors1: 0.0
+colors0: 0.8627451
+colors1: 0.2627451
 colors2: 0.0
 timelineCount: 1
 timeline0: 0.0

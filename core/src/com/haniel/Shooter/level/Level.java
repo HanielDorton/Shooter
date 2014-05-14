@@ -35,6 +35,7 @@ public class Level {
     public List<Projectile> projectiles = new ArrayList<Projectile>();
     public Array<ParticleEffect> particleEffects= new Array<ParticleEffect>();
     public Array<ParticleEffect> overlayedParticleEffects = new Array<ParticleEffect>();
+    public List<Entity> specialBossArray = new ArrayList<Entity>();
     
     
     // each level will have certain particle effects that can be pooled
@@ -71,7 +72,8 @@ public class Level {
 		time += gTime;
 		weaponTime += gTime;
         updateGraphics();
-        updateEntities();     
+        updateEntities();
+        updateSpecialBossArray();
         updateProjectiles();
         
         if (weaponTime > .1) {
@@ -98,6 +100,15 @@ public class Level {
         }
 		
 	}
+    
+    private void updateSpecialBossArray() {
+    	Iterator<Entity> entityIterator = specialBossArray.iterator();
+    	while (entityIterator.hasNext()) {
+    		Entity e = entityIterator.next();
+        	add(e);
+        	entityIterator.remove();
+    	}    	
+    }
 
 	private void updateEntities() {
     	Iterator<Entity> entityIterator = entities.iterator();

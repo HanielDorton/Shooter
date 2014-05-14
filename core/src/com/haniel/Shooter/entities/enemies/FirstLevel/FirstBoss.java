@@ -85,8 +85,5 @@ public class FirstBoss extends Enemy{
 			level.setLevelComplete();
 			matches2.play();
 		}
-		 else {
-
-		}
 	}
 }

@@ -62,6 +62,12 @@ public class Coord {
 	public static final Coord leavebottomright = new Coord(800, -1000);
 	public static final List<Coord> leavebottomrightlist = Arrays.asList(bottomright, leavebottomright);
 	
+	public static final Coord bossleavetopmiddle = new Coord(325, 4000);
+	public static final List<Coord> leavetopmiddlelist = Arrays.asList(bossleavetopmiddle);
+	
+	public static final Coord bossstayinmiddle = new Coord(325, 420);
+	public static final List<Coord> bossstayinmiddlelist = Arrays.asList(bossstayinmiddle);
+	
 	public Coord(int x, int y) {
 		this.x = x;
 		this.y = y;

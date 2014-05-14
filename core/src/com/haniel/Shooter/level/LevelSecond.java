@@ -7,6 +7,7 @@ import com.haniel.Shooter.GameScreen;
 import com.haniel.Shooter.entities.enemies.HomingMissile;
 import com.haniel.Shooter.entities.enemies.ImprovedPlayerClone;
 import com.haniel.Shooter.entities.enemies.PlayerClone;
+import com.haniel.Shooter.entities.enemies.SecondBoss;
 import com.haniel.Shooter.graphics.CheckpointReached;
 import com.haniel.Shooter.util.Coord;
 
@@ -25,9 +26,9 @@ public class LevelSecond extends Level{
 		enemyBulletEffect.load(Gdx.files.internal("particles/homingmissile.p"), Gdx.files.internal("particles/"));
 		enemyBulletEffectPool = new ParticleEffectPool(enemyBulletEffect, 45, 80);
 		smallExplosionEffect.load(Gdx.files.internal("particles/PlayerExplosion.p"), Gdx.files.internal("particles/"));
-		smallExplosionEffectPool = new ParticleEffectPool(smallExplosionEffect, 5, 10);
+		smallExplosionEffectPool = new ParticleEffectPool(smallExplosionEffect, 5, 20);
 		smallExplosionEffect2.load(Gdx.files.internal("particles/missileexplosion.p"), Gdx.files.internal("particles/"));
-		smallExplosionEffect2Pool = new ParticleEffectPool(smallExplosionEffect2, 5, 10);
+		smallExplosionEffect2Pool = new ParticleEffectPool(smallExplosionEffect2, 5, 20);
 		smallEngineEffect.load(Gdx.files.internal("particles/PlayerCloneEngine.p"), Gdx.files.internal("particles/"));
 		smallEngineEffectPool = new ParticleEffectPool(smallEngineEffect, 5, 20);
 	}
@@ -402,29 +403,38 @@ public class LevelSecond extends Level{
 				for (int i = 0; i < 5; i++) {
 					add(new ImprovedPlayerClone(0 + (200 * i), 480, null, this));
 				}
+				break;
+			}
+			case 9600: {
 				for (int i = 0; i < 8; i++) {
 					add(new HomingMissile((175 * i) - 300, 480 + (37 * i), null, this));
+				}
+				break;
+			}
+			case 9800: {
+				for (int i = 0; i < 5; i++) {
+					add(new ImprovedPlayerClone(0 + (200 * i), 480, null, this));
 				}
 				break;
 			}
 			case 10000: {
-				for (int i = 0; i < 5; i++) {
-					add(new ImprovedPlayerClone(0 + (200 * i), 480, null, this));
-				}
 				for (int i = 0; i < 8; i++) {
 					add(new HomingMissile((175 * i) - 300, 480 + (37 * i), null, this));
 				}
 				break;
 			}
+			
 			case 10300: {
-				for (int i = 0; i < 8; i++) {
-					add(new HomingMissile((175 * i) - 300, 480 + (37 * i), null, this));
-				}
 				for (int i = 0; i < 5; i++) {
 					add(new ImprovedPlayerClone(0 + (200 * i), 480, null, this));
 				}
 				break;
-				
+			}
+			case 10400: {
+				for (int i = 0; i < 8; i++) {
+					add(new HomingMissile((175 * i) - 300, 480 + (37 * i), null, this));
+				}
+				break;
 			}
 
 			
@@ -439,17 +449,41 @@ public class LevelSecond extends Level{
 					add(new CheckpointReached(300, 350, 2));
 					gameScreen.setCheckPoint(levelTime - 10);
 				}
-				nebula.load(Gdx.files.internal("particles/Nebula.p"), Gdx.files.internal("particles/"));
-				nebula.setPosition(-100, 500);
-				nebula.start();
-				overlayedParticleEffects.add(nebula);
+				//nebula.load(Gdx.files.internal("particles/Nebula.p"), Gdx.files.internal("particles/"));
+				//nebula.setPosition(-100, 500);
+				//nebula.start();
+				//overlayedParticleEffects.add(nebula);
 				break;
 			}
-			case 11800: {
-				for (int i = 0; i < 8; i++) {
-					add(new HomingMissile((175 * i) - 300, 480 + (37 * i), null, this));
-				}
+			case 11200: {
+				add(new SecondBoss(325, -800, Coord.leavetopmiddlelist, this));
+				break;
 			}
+			case 16500: {
+				for (int i = 0; i < 5; i++) {
+					add(new ImprovedPlayerClone(0 + (200 * i), 480, null, this));
+				}
+				break;
+			}
+			case 18400: { 
+				if (gameScreen.getCheckPoint() + 10 == levelTime) {
+					//add(new BackgroundImage("levels/space_background2.png", 0, 0, 3));
+					//add(new BackgroundImage("levels/space_background2.png", 0, 960, 3));
+					backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/All_This.mp3"));
+					backgroundMusic.play();
+					addStarsCheckpoint(200);
+				} else {
+					add(new CheckpointReached(300, 350, 2));
+					gameScreen.setCheckPoint(levelTime - 10);
+					backgroundMusic.stop();
+					backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/All_This.mp3"));
+					backgroundMusic.play();
+				}
+				add(new SecondBoss(325, 800, Coord.bossstayinmiddlelist, this));
+			
+				break;
+			}
+			
 		}
 	}
 }

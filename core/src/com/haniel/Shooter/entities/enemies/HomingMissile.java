@@ -10,14 +10,14 @@ import com.haniel.Shooter.util.Coord;
 
 public class HomingMissile extends Enemy{
 	
-	private int trackPlayer = 20;
+	private int trackPlayer = 12;
 	private float firingRate = .2f;
 	private PooledEffect effect;
 
 	public HomingMissile(double x, double y, List<Coord> pattern, Level level) {
 		super(x, y, pattern, level);	
-		this.speed = 200;
-		this.sprite = new Sprite(homingMissileTexture);
+		this.speed = 300;
+		this.sprite = new Sprite(starTexture);
 		this.health = 0;
 		this.width = 20;
 		this.xOffset = 0;
@@ -27,7 +27,7 @@ public class HomingMissile extends Enemy{
 		this.lastShot = level.getTime() - 1.4f;
 		this.angle = level.getAngletoPlayersMiddle(x + (width / 2), y + (height / 2));
 		this.effect = level.enemyBulletEffectPool.obtain();
-		this.effect.setPosition((int) x,(int) y);
+		this.effect.setPosition((int) x, (int)y);
 		level.effects.add(this.effect);
 		this.effect.start();
 	}
@@ -50,10 +50,12 @@ public class HomingMissile extends Enemy{
         if (x > level.getWidth() + this.width + 300) remove();
         if (x < 0 - this.width - 300) remove();
         if (health < 0) remove();
-        move(Math.cos(angle) * speed, Math.sin(angle) * speed);	
-        rectangle.setPosition((float)x, (float)y + yOffset);
-        this.effect.setPosition((int) x,(int) y);
-        if (trackPlayer > 0) shoot();
+        if (!removed) {
+	        move(Math.cos(angle) * speed, Math.sin(angle) * speed);	
+	        rectangle.setPosition((float)x, (float)y);
+	        this.effect.setPosition((int) x, (int)y);
+	        if (trackPlayer > 0) shoot();
+        }
 	}
 	
 	public void particles() {
