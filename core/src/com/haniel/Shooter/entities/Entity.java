@@ -27,6 +27,7 @@ public abstract class Entity{
 	
 	//all entity textures so they are only loaded once:
 	//every time you add a new one add it to dispose() at the bottom.
+	protected static final Sound explosion02 = Gdx.audio.newSound(Gdx.files.internal("sounds/explosion-02.wav"));
 	//level one
 	protected static final Texture enemy1Texture = new Texture(Gdx.files.internal("entities/enemy_1.png"));
 	protected static final Sound matches2 = Gdx.audio.newSound(Gdx.files.internal("sounds/paper-rip-4.wav"));
@@ -36,7 +37,7 @@ public abstract class Entity{
 	//level two
 	protected static final Texture playerCloneTexture = new Texture(Gdx.files.internal("entities/player.png"));
 	protected static final Texture starTexture = new Texture(Gdx.files.internal("textures/star.png"));
-	protected static final Sound explosion01 = Gdx.audio.newSound(Gdx.files.internal("sounds/explosion-01.wav"));
+	protected static final Sound explosion01 = Gdx.audio.newSound(Gdx.files.internal("sounds/explosion-01-old1.wav"));
 	protected static final Sound irritatingAmbiantBuzz = Gdx.audio.newSound(Gdx.files.internal("sounds/irritating-ambient-buzz.wav"));
 	protected static final Texture secondBossTexture = new Texture(Gdx.files.internal("entities/second_boss.png"));
 	
@@ -163,6 +164,11 @@ public abstract class Entity{
 		quickBlueTexture.dispose();
 		firstBossTexture.dispose();
 		playerCloneTexture.dispose();
+		explosion02.dispose();
+		secondBossTexture.dispose();
+		starTexture.dispose();
+		explosion01.dispose();
+		irritatingAmbiantBuzz.dispose();
 	}
 
 	public Sprite getSprite() {

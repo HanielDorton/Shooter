@@ -47,12 +47,12 @@ public class SecondBoss extends Enemy{
 		if( health < 0) {
 			engine1Effect.allowCompletion();
 			ParticleEffect explosion = new ParticleEffect();
-			explosion.load(Gdx.files.internal("particles/firstlevel/BossExplosion.p"), Gdx.files.internal("particles/"));
-			explosion.setPosition((int)x + xOffset + (width / 2),(int) y  + 5);
+			explosion.load(Gdx.files.internal("particles/bossexplosions2.p"), Gdx.files.internal("particles/"));
+			explosion.setPosition((int)x + xOffset + (width / 2),(int) y  + 100);
 			level.particleEffects.add(explosion);
 			explosion.start();
 			level.setLevelComplete();
-			matches2.play();
+			explosion02.play();
 		}
 	}
 	public void shoot() {

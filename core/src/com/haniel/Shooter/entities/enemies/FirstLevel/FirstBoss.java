@@ -83,7 +83,7 @@ public class FirstBoss extends Enemy{
 			level.particleEffects.add(explosion);
 			explosion.start();
 			level.setLevelComplete();
-			matches2.play();
+			explosion02.play();
 		}
 	}
 }
