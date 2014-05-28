@@ -9,6 +9,6 @@
 	<add-linker name="xsiframe"/>
 	<set-configuration-property name='xsiframe.failIfScriptTag' value='FALSE'/>
 	<set-configuration-property name="devModeRedirectEnabled" value="true"/>
-	
 	<set-configuration-property name="gdx.assetpath" value="../android/assets" />
+	<extend-property name="user.agent" values="gecko1_8" />
 </module>

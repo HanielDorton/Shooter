@@ -18,14 +18,15 @@ public class FirstBoss extends Enemy{
 	private double secondLastShot = 0;
 	private ParticleEffect engine1Effect = new ParticleEffect();
 	private ParticleEffect engine2Effect = new ParticleEffect();
+	private int difficult = 0;
 
-	public FirstBoss(double x, double y, List<Coord> pattern, Level level) {
+	public FirstBoss(double x, double y, List<Coord> pattern, Level level, boolean difficulty) {
 		super(x, y, pattern, level);
 		this.speed = 40;
 		this.width = 600;
 		this.height = 200;
 		this.sprite = new Sprite(firstBossTexture);		
-		this.health = 350;
+		this.health = 300 + difficult;
 		this.rectangle = new Rectangle((float)x, (float)y , width, height);
 		this.weapon = new BlackSphereGun(level, false);
 		this.lastShot = level.getTime() + 8;
@@ -37,10 +38,12 @@ public class FirstBoss extends Enemy{
 		level.particleEffects.add(engine2Effect);
 		engine1Effect.start();
 		engine2Effect.start();
+		
+		if (difficulty) this.difficult = 50;
 	}
 	
 	protected void shoot() {
-		if (health < 100) firingRate = 1.5f;
+		if (health < (50 + difficult)) firingRate = 1.5f;
         if ((level.getTime() - lastShot) > firingRate) {
 	    	lastShot = level.getTime();
 	    	for (int i = 1; i < 9; i ++) {
@@ -49,7 +52,7 @@ public class FirstBoss extends Enemy{
 	    	
 	    	}
         }
-	    if (health < 300) {
+	    if (health < (250 + difficult)) {
 	    	if ((level.getTime() - secondLastShot) > firingRate) {
 	        	double angle = level.getAngletoPlayersMiddle(x + 51, y);
 		       	weapon.shoot(x + 51, y , angle);

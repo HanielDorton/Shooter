@@ -13,6 +13,9 @@ public class MyGdxGame extends Game {
         batch = new SpriteBatch();
         font = new BitmapFont();
         this.setScreen(new MenuScreen(this));
+        // to skip directly to game:        
+        //GameState gameState = new GameState(0, 0, 0, 0);
+        //this.setScreen(new GameScreen(this, gameState));
     }
 
     public void render() {

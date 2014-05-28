@@ -15,6 +15,7 @@ import com.haniel.Shooter.util.Coord;
 
 public class Level1 extends Level{
 	//Checkpoints: 4290 for ufo's // 9190 for secondcheckpoint//13990 for boss
+	private boolean difficult = false;
 			
 	public Level1(GameScreen gameScreen) {
 		super(gameScreen);
@@ -165,8 +166,8 @@ public class Level1 extends Level{
 				break;
 			}
 			case 2380: {
-				add(new BasicBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
-				add(new BasicBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
+				if (difficult) add(new BasicBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
+				if (difficult) add(new BasicBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
 				break;
 			}
 			case 2450: {
@@ -175,8 +176,8 @@ public class Level1 extends Level{
 				break;
 			}
 			case 2520: {
-				add(new BasicBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
-				add(new BasicBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
+				if (difficult) add(new BasicBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
+				if (difficult) add(new BasicBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
 				break;
 			}
 			case 2590: {
@@ -185,8 +186,8 @@ public class Level1 extends Level{
 				break;
 			}
 			case 2660: {
-				add(new BasicBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
-				add(new BasicBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
+				if (difficult) add(new BasicBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
+				if (difficult) add(new BasicBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
 				break;
 			}
 			case 2740: {
@@ -195,8 +196,8 @@ public class Level1 extends Level{
 				break;
 			}
 			case 2810: {
-				add(new BasicBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
-				add(new BasicBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
+				if (difficult) add(new BasicBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
+				if (difficult) add(new BasicBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
 				break;
 			}
 			case 2880: {
@@ -205,8 +206,8 @@ public class Level1 extends Level{
 				break;
 			}
 			case 2950: {
-				add(new BasicBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
-				add(new BasicBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
+				if (difficult) add(new BasicBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
+				if (difficult) add(new BasicBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
 				break;
 			}
 			case 3020: {
@@ -215,8 +216,8 @@ public class Level1 extends Level{
 				break;
 			}
 			case 3090: {
-				add(new BasicBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
-				add(new BasicBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
+				if (difficult) add(new BasicBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
+				if (difficult) add(new BasicBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
 				break;
 			}
 			case 3160: {
@@ -225,18 +226,18 @@ public class Level1 extends Level{
 				break;
 			}
 			case 3230: {
-				add(new BasicBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
-				add(new BasicBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
+				if (difficult) add(new BasicBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
+				if (difficult) add(new BasicBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
 				break;
 			}			
 			case 3300: {
-				add(new ImprovedBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
-				add(new ImprovedBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
+				if (difficult) add(new ImprovedBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
+				if (difficult) add(new ImprovedBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
 				break;
 			}
 			case 3370: {
-				add(new ImprovedBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
-				add(new ImprovedBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
+				if (difficult) add(new ImprovedBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
+				if (difficult) add(new ImprovedBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
 				break;
 			}	
 			case 4300: {
@@ -252,27 +253,23 @@ public class Level1 extends Level{
 				}
 				add(new BlueSaucer(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
 				add(new BlueSaucer(-150, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
-				add(new BlueSaucer(300, -200, Coord.leavescreentopmiddle, this));
+				if (difficult) add(new BlueSaucer(300, -200, Coord.leavescreentopmiddle, this));
 				break;
 			}
 			case 7400: {
 				add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
-				addStars(20);
+				break;
+			}
+			case 7600: {
+				if (difficult) add(new QuickBlue(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
 				break;
 			}
 			case 7800: {
 				add(new QuickBlue(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
-				addStars(20);
-				break;
-			}
-			case 7600: {
-				add(new QuickBlue(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
-				addStars(20);
 				break;
 			}
 			case 8000: {
 				add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
-				addStars(20);
 				break;
 			}
 			case 8200: {
@@ -281,8 +278,8 @@ public class Level1 extends Level{
 				break;
 			}
 			case 8600: {
-				add(new QuickBlue(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
-				add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
+				if (difficult) add(new QuickBlue(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
+				if (difficult) add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
 				break;
 			}
 			case 9200: {
@@ -317,18 +314,18 @@ public class Level1 extends Level{
 				break;
 			}
 			case 9720: {
-				add(new QuickBlue(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
-				add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
+				if (difficult) add(new QuickBlue(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
+				if (difficult)add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
 				break;
 			}
 			case 9760: {
-				add(new QuickBlue(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
-				add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
+				if (difficult) add(new QuickBlue(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
+				if (difficult) add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
 				break;
 			}
 			case 9800: {
-				add(new QuickBlue(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
-				add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
+				if (difficult) add(new QuickBlue(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
+				if (difficult) add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
 				break;
 			}
 			case 10300: {
@@ -349,18 +346,18 @@ public class Level1 extends Level{
 				break;
 			}
 			case 10420: {
-				add(new QuickBlue(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
-				add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
+				if (difficult) add(new QuickBlue(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
+				if (difficult) add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
 				break;
 			}
 			case 10440: {
-				add(new QuickBlue(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
-				add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
+				if (difficult)add(new QuickBlue(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
+				if (difficult) add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
 				break;
 			}
 			case 10480: {
-				add(new QuickBlue(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
-				add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
+				if (difficult) add(new QuickBlue(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
+				if (difficult) add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
 				break;
 			}
 			case 10450: {
@@ -369,7 +366,7 @@ public class Level1 extends Level{
 				break;
 			}
 			case 11000: {
-				add(new ImprovedBlueSaucer(300, -200, Coord.leavescreentopmiddle, this));
+				if (difficult) add(new ImprovedBlueSaucer(300, -200, Coord.leavescreentopmiddle, this));
 				break;
 			}
 			
@@ -385,7 +382,7 @@ public class Level1 extends Level{
 				gameScreen.setCheckPoint(levelTime - 10);
 				backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/All_This.mp3"));
 				backgroundMusic.play();
-				add(new FirstBoss(125,-300, Coord.bosscircles, this));
+				add(new FirstBoss(125,-300, Coord.bosscircles, this, difficult));
 				break;
 				
 			}

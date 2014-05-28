@@ -5,6 +5,6 @@
 
 	<inherits name='MyGdxGame' />
 	<entry-point class='com.haniel.Shooter.client.HtmlLauncher' />
-	
 	<set-configuration-property name="gdx.assetpath" value="../android/assets" />
+	<extend-property name="user.agent" values="gecko1_8" />
 </module>
