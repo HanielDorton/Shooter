@@ -133,6 +133,7 @@ public abstract class Projectile {
 		blueSphereGunTexture.dispose();
 		blueline.dispose();
 		blackSphereGunTexture.dispose();
+		basicBulletReversedTexture.dispose();
 	}
 
 }

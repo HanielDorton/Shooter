@@ -22,6 +22,7 @@ public class FirstBoss extends Enemy{
 
 	public FirstBoss(double x, double y, List<Coord> pattern, Level level, boolean difficulty) {
 		super(x, y, pattern, level);
+		if (difficulty) this.difficult = 50;
 		this.speed = 40;
 		this.width = 600;
 		this.height = 200;
@@ -39,7 +40,7 @@ public class FirstBoss extends Enemy{
 		engine1Effect.start();
 		engine2Effect.start();
 		
-		if (difficulty) this.difficult = 50;
+		
 	}
 	
 	protected void shoot() {

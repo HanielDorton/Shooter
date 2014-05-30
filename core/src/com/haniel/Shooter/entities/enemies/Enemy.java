@@ -53,14 +53,6 @@ public abstract class Enemy extends Entity{
 		} 
 		
 	}
-	public void leave() {		
-		//haven't completed
-		
-		destX = pattern.get(position).getX();
-		destY = pattern.get(position).getY();
-		angle = getAngleTo(x, y, destX, destY);
-		
-	}
 	protected void shoot() {
 		if (!(getMidY()> 480) && !(getMidY() < 0) && !(getMidX() < 0 && !(getMidX() > 800))){
 			System.out.println("shooting not setup for this enemy");

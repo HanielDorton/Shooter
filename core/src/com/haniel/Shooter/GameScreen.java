@@ -6,6 +6,7 @@ import java.util.Iterator;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Pixmap;
@@ -65,7 +66,12 @@ public class GameScreen implements Screen {
         game.batch.begin();
         
         if (paused) {
-        	
+        game.font.draw(game.batch, "Game Paused", 350, 300);
+        game.font.draw(game.batch, "Press Space to Continue", 350, 250);
+        if (Gdx.input.isKeyPressed(Keys.SPACE)) {
+        	paused = false;
+        	level.resumeMusic();
+        }
         }
         else if (deathTimer == level.getLevelTime()) {
         	Gdx.input.setCursorImage(null, 0, 0);
@@ -78,13 +84,7 @@ public class GameScreen implements Screen {
         	gameState.checkPoint = 0;
         	game.setScreen(new LevelCompleteScreen(game, gameState, level));
         	dispose();
-        	
-	        	//game.font.draw(game.batch, "Level Complete", 350, 300);
-	        	//game.font.draw(game.batch, "Continues: " + gameState.numContinues, 350, 250);
-	        	//game.font.draw(game.batch, "Your score: " + getScore(gameState.numContinues), 350, 200);
-	        	
-	        	
-	    } else {
+ 	    } else {
 	    	//draw and update level
 	        for (MyGraphics graphic : level.graphics) {
 	        	game.batch.draw(graphic.getTexture(), graphic.getX(), graphic.getY());
@@ -123,8 +123,6 @@ public class GameScreen implements Screen {
 	        	}
 	        }
 	        game.font.draw(game.batch, "Time: " + level.getLevelTime(), 0, screenHeight);
-	        //game.font.draw(game.batch, "JaveHeap: " + Gdx.app.getJavaHeap(), 0, screenHeight -20);
-	        //game.font.draw(game.batch, "NativeHeap: " +  Gdx.app.getNativeHeap(), 0, screenHeight - 40);
 	        level.update();
 	        gameTime += Gdx.graphics.getDeltaTime();
 	        if (gameTime > .1) {
@@ -137,9 +135,11 @@ public class GameScreen implements Screen {
 	        	player.particles();
 	        	player.setHealth();	 
 	        	level.entities.remove(player);       	
-	        }	        
-	        //every once in a while check things are getting removed correctly:
-	        //System.out.println(level.effects.size);
+	        }
+	        if (Gdx.input.isKeyPressed(Keys.ESCAPE)) {
+	        	paused = true;
+	        	level.pauseMusic();
+	        }
         }
         game.batch.end();
     }
@@ -175,7 +175,6 @@ public class GameScreen implements Screen {
     @Override
     public void dispose() {
     	clearLevel();
-    	//level.dispose(); need to call this if exiting;
     	mouse.dispose();
     }
     public void clearLevel() {

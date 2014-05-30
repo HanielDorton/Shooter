@@ -4,10 +4,10 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.ParticleEffectPool;
 import com.haniel.Shooter.GameScreen;
-import com.haniel.Shooter.entities.enemies.HomingMissile;
-import com.haniel.Shooter.entities.enemies.ImprovedPlayerClone;
-import com.haniel.Shooter.entities.enemies.PlayerClone;
-import com.haniel.Shooter.entities.enemies.SecondBoss;
+import com.haniel.Shooter.entities.enemies.SecondLevel.HomingMissile;
+import com.haniel.Shooter.entities.enemies.SecondLevel.ImprovedPlayerClone;
+import com.haniel.Shooter.entities.enemies.SecondLevel.PlayerClone;
+import com.haniel.Shooter.entities.enemies.SecondLevel.SecondBoss;
 import com.haniel.Shooter.graphics.BackgroundImage;
 import com.haniel.Shooter.graphics.CheckpointReached;
 import com.haniel.Shooter.util.Coord;
@@ -444,7 +444,7 @@ public class Level2 extends Level{
 				break;
 			}
 			case 11200: {
-				add(new SecondBoss(325, -800, Coord.leavetopmiddlelist, this));
+				add(new SecondBoss(325, -800, Coord.leavetopmiddlelist, this, difficult));
 				break;
 			}
 			case 16500: {
@@ -469,7 +469,7 @@ public class Level2 extends Level{
 					backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/All_This.mp3"));
 					backgroundMusic.play();
 				}
-				add(new SecondBoss(325, 800, Coord.bossstayinmiddlelist, this));			
+				add(new SecondBoss(325, 800, Coord.bossstayinmiddlelist, this, difficult));			
 				break;
 			}
 			

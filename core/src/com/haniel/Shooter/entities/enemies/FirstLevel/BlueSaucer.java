@@ -14,7 +14,7 @@ import com.haniel.Shooter.weapons.BlueSphereGun;
 public class BlueSaucer extends Enemy{
 	
 	protected double firingRate = 1;
-	protected double firingAngle = 3;
+	protected final static double firingAngle = 3;
 
 	public BlueSaucer(double x, double y, List<Coord> pattern, Level level) {
 		super(x, y, pattern, level);

@@ -103,7 +103,7 @@ public class LevelIntroScreen implements Screen{
 			levelText.add("With the attack carrier destroyed, you are free to race home to expose the illegal operations of ENSA");
 			levelText.add("But your sensors pick up the signals of the remnants of the alien fleet.");
 			levelText.add("They are regrouping in a nearby sector to counterattack.");
-			levelText.add("Little do they know, the sector they are regoruping in is sorrounded by cloaked Earth fleets.");
+			levelText.add("Little do they know, the sector they are regrouping in is sorrounded by cloaked Earth fleets.");
 			levelText.add("If you can only save them...");
 		}
 		case 3: {

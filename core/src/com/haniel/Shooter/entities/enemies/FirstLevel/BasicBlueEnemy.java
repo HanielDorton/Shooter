@@ -12,8 +12,7 @@ import com.haniel.Shooter.weapons.BlueSphereGun;
 public class BasicBlueEnemy extends Enemy{
 	
 	//this guy just shoots the slow player-seeking blue balls from the middle of his ship
-	protected final static double firingRate = 2;
-	//private PooledEffect engine1Effect;
+	protected double firingRate = 2;
 
 	public BasicBlueEnemy(double x, double y, List<Coord> pattern, Level level) {
 		super(x, y, pattern, level);		

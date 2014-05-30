@@ -226,5 +226,11 @@ public class Level {
 	public void dispose() {
 		backgroundMusic.dispose();
 	}
+	public void pauseMusic() {
+		backgroundMusic.pause();
+	}
+	public void resumeMusic() {
+		backgroundMusic.play();
+	}
 
 }

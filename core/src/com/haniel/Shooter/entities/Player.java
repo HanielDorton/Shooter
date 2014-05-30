@@ -84,13 +84,13 @@ public class Player extends Entity{
 	    	if ((level.getTime() - lastShot) > weapon.getFiringRate()) {
 	    		double angle = getAngleTo(x - 1, y, x - 1, y+10);
 	    		weapon.shoot(x - 1, y - 1, angle);
-	    		//angle = getAngleTo(x, y, x, y+10);
 	    		weapon.shoot(x + width + xOffset, y, angle);
 	    		lastShot = level.getTime();
 	    		weapon.playSound();
 	    	}
 	    }
 	
+	    //keep player in bounds:
 	    if (x < 0) x = 0;
 	    if (x > gameScreen.getWidth() - (width + xOffset * 2)) x = gameScreen.getWidth() - (width + xOffset * 2);
 	    if (y < 0) y = 0;
@@ -150,7 +150,6 @@ public class Player extends Entity{
 	
 	public void setLevel(Level level) {
 		this.level = level;
-		//need to change level for weapon here too!!
 	}
 	public void init(GameScreen gameScreen) {		
 		this.gameScreen = gameScreen;

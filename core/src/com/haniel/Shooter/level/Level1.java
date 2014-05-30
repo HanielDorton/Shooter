@@ -26,9 +26,7 @@ public class Level1 extends Level{
 		smallExplosionEffect.load(Gdx.files.internal("particles/firstlevel/BlueExplosion.p"), Gdx.files.internal("particles/"));
 		smallExplosionEffectPool = new ParticleEffectPool(smallExplosionEffect, 5, 20);
 	}
-	
-	//CheckPoints: 4290 for ufo's // 9190 for secondcheckpoint// 13990 for boss
-	
+
 	public void runLevel(GameScreen g) {
 		levelTime += 10;
 		switch (levelTime) {
@@ -278,8 +276,8 @@ public class Level1 extends Level{
 				break;
 			}
 			case 8600: {
-				if (difficult) add(new QuickBlue(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
-				if (difficult) add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
+				add(new QuickBlue(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
+				add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
 				break;
 			}
 			case 9200: {
@@ -328,19 +326,19 @@ public class Level1 extends Level{
 				if (difficult) add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
 				break;
 			}
-			case 10300: {
+			case 10100: {
 				add(new QuickBlue(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
 				add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
 				addStars(20);
 				break;
 			}
-			case 10340: {
+			case 10140: {
 				add(new QuickBlue(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
 				add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
 				addStars(20);
 				break;
 			}
-			case 10380: {
+			case 10180: {
 				add(new QuickBlue(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
 				add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
 				break;

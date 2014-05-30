@@ -1,4 +1,4 @@
-package com.haniel.Shooter.entities.enemies;
+package com.haniel.Shooter.entities.enemies.SecondLevel;
 
 import java.util.List;
 
