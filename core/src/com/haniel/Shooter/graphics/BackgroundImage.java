@@ -9,8 +9,8 @@ public class BackgroundImage extends MyGraphics{
 	}
 	
 	public void update() {
-		y-= speed * Gdx.graphics.getDeltaTime(); ;
-		if (y == -960) y = 960;
+		this.y-= speed * Gdx.graphics.getDeltaTime();
+		if (y < -960) y = 960;
 	}
 	public void remove() {
 		texture.dispose();

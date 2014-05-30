@@ -22,6 +22,7 @@ import com.haniel.Shooter.weapons.Weapon;
 
 
 public class Level {
+	protected boolean difficult = false;
 	protected Random random = new Random();	
 	private double time;
 	protected Music backgroundMusic;
@@ -222,6 +223,9 @@ public class Level {
 	
 	public double getPlayerY() {
 		return gameScreen.player.getMidY();
+	}
+	public double getPlayerX() {
+		return gameScreen.player.getMidX();
 	}
 	public void dispose() {
 		backgroundMusic.dispose();

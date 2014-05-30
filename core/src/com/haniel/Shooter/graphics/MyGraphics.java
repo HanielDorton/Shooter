@@ -86,5 +86,8 @@ public abstract class MyGraphics {
 		starTexture.dispose();
 		checkpointReachedTexture.dispose();
 	}
+	public void changeSpeed(int sped) {
+		this.speed += sped;
+	}
 
 }

@@ -23,6 +23,11 @@ public class Star extends MyGraphics{
 			this.x = rand.nextInt(800) + 1;
 		}
 	}
+	public void changeSpeed(int sped) {
+		this.speed += sped;
+	}
+	
+
 	
 
 

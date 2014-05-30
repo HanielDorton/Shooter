@@ -13,6 +13,7 @@ public abstract class Enemy extends Entity{
 	//super.update removes enemy if out of bounds, moves player based on pattern and shoots
 	// and need to override init to set weapon
 	//override particles to have different particles on death
+	
 
 	private List <Coord> pattern;
 	

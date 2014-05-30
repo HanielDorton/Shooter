@@ -18,6 +18,7 @@ import com.haniel.Shooter.graphics.MyGraphics;
 import com.haniel.Shooter.level.Level;
 import com.haniel.Shooter.level.Level1;
 import com.haniel.Shooter.level.Level2;
+import com.haniel.Shooter.level.Level3;
 import com.haniel.Shooter.projectiles.Projectile;
 import com.haniel.Shooter.util.GameState;
 import com.haniel.Shooter.util.MyInputProcessor;
@@ -206,6 +207,10 @@ public class GameScreen implements Screen {
 		switch (gameState.numLevel) {
 		case 1: {
 			level = new Level2(this); 
+			break;
+		}
+		case 2: {
+			level = new Level3(this);
 			break;
 		}
 		default: {

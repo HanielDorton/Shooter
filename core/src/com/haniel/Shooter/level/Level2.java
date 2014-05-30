@@ -1,7 +1,6 @@
 package com.haniel.Shooter.level;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.ParticleEffectPool;
 import com.haniel.Shooter.GameScreen;
 import com.haniel.Shooter.entities.enemies.SecondLevel.HomingMissile;
@@ -15,9 +14,8 @@ import com.haniel.Shooter.util.Coord;
 public class Level2 extends Level{
 	
 	///checkpoints: 6890, 10790, 18390
-	private boolean difficult = false;
-	
-	ParticleEffect nebula = new ParticleEffect();
+		
+	//ParticleEffect nebula = new ParticleEffect();
 
 	
 	

@@ -8,7 +8,6 @@ import com.haniel.Shooter.projectiles.BasicBullet;
 public abstract class Weapon {
 
 	protected double firingRate;
-	//protected float x, y;
 	protected Level level;
 	protected Sound sound;
 	protected boolean fromPlayer;

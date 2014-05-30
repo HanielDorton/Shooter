@@ -15,8 +15,7 @@ import com.haniel.Shooter.util.Coord;
 
 public class Level1 extends Level{
 	//Checkpoints: 4290 for ufo's // 9190 for secondcheckpoint//13990 for boss
-	private boolean difficult = false;
-			
+				
 	public Level1(GameScreen gameScreen) {
 		super(gameScreen);
 		backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/black_vortex.mp3"));

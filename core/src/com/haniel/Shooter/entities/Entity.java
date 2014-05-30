@@ -40,7 +40,9 @@ public abstract class Entity{
 	protected static final Sound explosion01 = Gdx.audio.newSound(Gdx.files.internal("sounds/explosion-01.wav"));
 	protected static final Sound irritatingAmbiantBuzz = Gdx.audio.newSound(Gdx.files.internal("sounds/irritating-ambient-buzz.wav"));
 	protected static final Texture secondBossTexture = new Texture(Gdx.files.internal("entities/second_boss.png"));
-
+	//level three
+	protected static final Texture greenJetTexture = new Texture(Gdx.files.internal("entities/green_jet.png"));
+	
 	public Entity() {
 		
 	}
