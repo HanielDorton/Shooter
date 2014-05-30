@@ -14,7 +14,7 @@ import com.haniel.Shooter.graphics.Star;
 
 public class CreditsScreen implements Screen{	
 	final MyGdxGame game;  
-    OrthographicCamera camera;
+	OrthographicCamera camera;
     List<MyGraphics> graphics;
     List<credit> currentCredits;
     LinkedList<String> credits;
@@ -44,9 +44,9 @@ public class CreditsScreen implements Screen{
         credits.add("Player Bullets: 'Gun_Shot-01' from http://www.soundjay.com");
         credits.add("Small Explosions: 'Paper_Rip-4' from http://www.soundjay.com");
         credits.add("");
-		backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/Grim_League.mp3"));
-		backgroundMusic.play();
-		backgroundMusic.setLooping(true);
+        backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/Grim_League.mp3"));
+        backgroundMusic.play();
+        backgroundMusic.setLooping(true);
     }
 
 	@Override
@@ -91,9 +91,9 @@ public class CreditsScreen implements Screen{
         	add(new Star(0 + i));
         	} 
 	}
-    public void add(MyGraphics g) {
-    	graphics.add(g);
-    }
+	public void add(MyGraphics g) {
+		graphics.add(g);
+	}
 
 	@Override
 	public void resize(int width, int height) {

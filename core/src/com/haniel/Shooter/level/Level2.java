@@ -15,6 +15,7 @@ import com.haniel.Shooter.util.Coord;
 public class Level2 extends Level{
 	
 	///checkpoints: 6890, 10790, 18390
+	private boolean difficult = false;
 	
 	ParticleEffect nebula = new ParticleEffect();
 
@@ -142,7 +143,7 @@ public class Level2 extends Level{
 				break;
 			}
 			case 2600: {
-				add(new PlayerClone(0, 525, Coord.leavebottom, this));
+				if (difficult) add(new PlayerClone(0, 525, Coord.leavebottom, this));
 				break;
 			}
 			case 2650: {
@@ -150,11 +151,11 @@ public class Level2 extends Level{
 				break;
 			}
 			case 2700: {
-				add(new PlayerClone(400, 525, Coord.leavebottomleftlist, this));
+				if (difficult)  add(new PlayerClone(400, 525, Coord.leavebottomleftlist, this));
 				break;				
 			}
 			case 2750: {
-				add(new PlayerClone(400, 525, Coord.leavebottomrightlist, this));
+				if (difficult) add(new PlayerClone(400, 525, Coord.leavebottomrightlist, this));
 				break;
 			}
 			case 2800: {
@@ -162,23 +163,23 @@ public class Level2 extends Level{
 				break;
 			}
 			case 2850: {
-				add(new PlayerClone(700, 525, Coord.leavebottom, this));
+				if (difficult)  add(new PlayerClone(700, 525, Coord.leavebottom, this));
 				break;
 			}
 			case 2900: {
-				add(new PlayerClone(300, 525, Coord.leavebottomleftlist, this));
+				if (difficult) add(new PlayerClone(300, 525, Coord.leavebottomleftlist, this));
 				break;				
 			}
 			case 2950: {
-				add(new PlayerClone(600, 525, Coord.leavebottomrightlist, this));
+				 add(new PlayerClone(600, 525, Coord.leavebottomrightlist, this));
 				break;
 			}
 			case 3000: {
-				add(new PlayerClone(200, 525, Coord.leavebottom, this));
+				if (difficult) add(new PlayerClone(200, 525, Coord.leavebottom, this));
 				break;
 			}
 			case 3050: {
-				add(new PlayerClone(600, 525, Coord.leavebottom, this));
+				if (difficult)  add(new PlayerClone(600, 525, Coord.leavebottom, this));
 				break;
 			}
 			case 3100: {
@@ -186,11 +187,11 @@ public class Level2 extends Level{
 				break;				
 			}
 			case 3150: {
-				add(new PlayerClone(600, 525, Coord.leavebottomrightlist, this));
+				if (difficult) add(new PlayerClone(600, 525, Coord.leavebottomrightlist, this));
 				break;
 			}
 			case 3200: {
-				add(new PlayerClone(0, 525, Coord.leavebottom, this));
+				if (difficult) add(new PlayerClone(0, 525, Coord.leavebottom, this));
 				break;
 			}
 			case 3230: {
@@ -198,7 +199,7 @@ public class Level2 extends Level{
 				break;
 			}
 			case 3260: {
-				add(new PlayerClone(400, 525, Coord.leavebottomleftlist, this));
+				if (difficult) add(new PlayerClone(400, 525, Coord.leavebottomleftlist, this));
 				break;				
 			}
 			case 3290: {
@@ -206,11 +207,11 @@ public class Level2 extends Level{
 				break;
 			}
 			case 3320: {
-				add(new PlayerClone(100, 525, Coord.leavebottom, this));
+				if (difficult) add(new PlayerClone(100, 525, Coord.leavebottom, this));
 				break;
 			}
 			case 3350: {
-				add(new PlayerClone(700, 525, Coord.leavebottom, this));
+				if (difficult) add(new PlayerClone(700, 525, Coord.leavebottom, this));
 				break;
 			}
 			case 3380: {
@@ -218,7 +219,7 @@ public class Level2 extends Level{
 				break;				
 			}
 			case 3410: {
-				add(new PlayerClone(600, 525, Coord.leavebottomrightlist, this));
+				if (difficult) add(new PlayerClone(600, 525, Coord.leavebottomrightlist, this));
 				break;
 			}
 			case 3440: {
@@ -226,11 +227,11 @@ public class Level2 extends Level{
 				break;
 			}
 			case 3470: {
-				add(new PlayerClone(600, 525, Coord.leavebottom, this));
+				if (difficult) add(new PlayerClone(600, 525, Coord.leavebottom, this));
 				break;
 			}
 			case 3500: {
-				add(new PlayerClone(200, 525, Coord.leavebottomleftlist, this));
+				if (difficult) add(new PlayerClone(200, 525, Coord.leavebottomleftlist, this));
 				break;				
 			}
 			case 3530: {
@@ -269,8 +270,8 @@ public class Level2 extends Level{
 				add(new HomingMissile(0, 500, null, this));
 				add(new HomingMissile(390, 500, null, this));
 				add(new HomingMissile(800, 500, null, this));
-				add(new HomingMissile(0, -10, null, this));
-				add(new HomingMissile(800, -10, null, this));
+				if (difficult) add(new HomingMissile(0, -10, null, this));
+				if (difficult) add(new HomingMissile(800, -10, null, this));
 				break;
 			}
 			case 5100: {
@@ -282,11 +283,11 @@ public class Level2 extends Level{
 				break;
 			}
 			case 5300: {
-				add(new HomingMissile(0, -10, null, this));
+				if (difficult) add(new HomingMissile(0, -10, null, this));
 				break;
 			}
 			case 5400: {
-				add(new HomingMissile(800, -10, null, this));
+				if (difficult) add(new HomingMissile(800, -10, null, this));
 				break;
 			}
 			case 5600: {
@@ -296,10 +297,10 @@ public class Level2 extends Level{
 				add(new HomingMissile(390, 500, null, this));
 				add(new HomingMissile(800, 500, null, this));
 				add(new HomingMissile(800, 500, null, this));
-				add(new HomingMissile(0, -10, null, this));
-				add(new HomingMissile(0, -10, null, this));
-				add(new HomingMissile(800, -10, null, this));
-				add(new HomingMissile(800, -10, null, this));
+				if (difficult) add(new HomingMissile(0, -10, null, this));
+				if (difficult) add(new HomingMissile(0, -10, null, this));
+				if (difficult) add(new HomingMissile(800, -10, null, this));
+				if (difficult) add(new HomingMissile(800, -10, null, this));
 				break;
 			}
 			case 5700: {
@@ -313,23 +314,23 @@ public class Level2 extends Level{
 				break;
 			}
 			case 5900: {
-				add(new HomingMissile(0, -10, null, this));
-				add(new HomingMissile(0, -10, null, this));
+				if (difficult) add(new HomingMissile(0, -10, null, this));
+				if (difficult) add(new HomingMissile(0, -10, null, this));
 				break;
 			}
 			case 6000: {
-				add(new HomingMissile(800, -10, null, this));
-				add(new HomingMissile(800, -10, null, this));
+				if (difficult) add(new HomingMissile(800, -10, null, this));
+				if (difficult) add(new HomingMissile(800, -10, null, this));
 				break;
 			}
 			case 6100: {
-				add(new HomingMissile(0, -10, null, this));
-				add(new HomingMissile(0, -10, null, this));
+				if (difficult) add(new HomingMissile(0, -10, null, this));
+				if (difficult) add(new HomingMissile(0, -10, null, this));
 				break;
 			}
 			case 6200: {
-				add(new HomingMissile(800, -10, null, this));
-				add(new HomingMissile(800, -10, null, this));
+				if (difficult) add(new HomingMissile(800, -10, null, this));
+				if (difficult) add(new HomingMissile(800, -10, null, this));
 				break;
 			}
 			
@@ -347,21 +348,15 @@ public class Level2 extends Level{
 				break;
 			}
 			case 7100: {
-				for (int i = 0; i < 5; i++) {
-					add(new ImprovedPlayerClone(0 + (200 * i), 525, null, this));
-				}
+				addFiveFighters();
 				break;
 			}
 			case 7400: {
-				for (int i = 0; i < 5; i++) {
-					add(new ImprovedPlayerClone(0 + (200 * i), 525, null, this));
-				}
+				addFiveFighters();
 				break;
 			}
 			case 7700: {
-				for (int i = 0; i < 5; i++) {
-					add(new ImprovedPlayerClone(0 + (200 * i), 525, null, this));
-				}
+				addFiveFighters();
 				break;
 			}
 			case 7900: {
@@ -372,7 +367,7 @@ public class Level2 extends Level{
 			}
 			case 8000: {
 				for (int i = 0; i < 8; i++) {
-					add(new HomingMissile(800 + (37 * i), 880 - (110 * i), null, this));
+					if (difficult) add(new HomingMissile(800 + (37 * i), 880 - (110 * i), null, this));
 				}
 				break;
 			}
@@ -384,14 +379,12 @@ public class Level2 extends Level{
 			}
 			case 8200: {
 				for (int i = 0; i < 8; i++) {
-					add(new HomingMissile(0 - (37 * i), (110 * i) - 300, null, this));
+					if (difficult) add(new HomingMissile(0 - (37 * i), (110 * i) - 300, null, this));
 				}
 				break;
 			}
 			case 8800: {
-				for (int i = 0; i < 5; i++) {
-					add(new ImprovedPlayerClone(0 + (200 * i), 525, null, this));
-				}
+				addFiveFighters();
 				break;
 			}
 			case 9000: {
@@ -401,9 +394,7 @@ public class Level2 extends Level{
 				break;
 			}
 			case 9400: {
-				for (int i = 0; i < 5; i++) {
-					add(new ImprovedPlayerClone(0 + (200 * i), 525, null, this));
-				}
+				addFiveFighters();
 				break;
 			}
 			case 9600: {
@@ -413,9 +404,7 @@ public class Level2 extends Level{
 				break;
 			}
 			case 9800: {
-				for (int i = 0; i < 5; i++) {
-					add(new ImprovedPlayerClone(0 + (200 * i), 525, null, this));
-				}
+				addFiveFighters();
 				break;
 			}
 			case 10000: {
@@ -426,9 +415,7 @@ public class Level2 extends Level{
 			}
 			
 			case 10300: {
-				for (int i = 0; i < 5; i++) {
-					add(new ImprovedPlayerClone(0 + (200 * i), 525, null, this));
-				}
+				addFiveFighters();
 				break;
 			}
 			case 10400: {
@@ -461,15 +448,11 @@ public class Level2 extends Level{
 				break;
 			}
 			case 16500: {
-				for (int i = 0; i < 5; i++) {
-					add(new ImprovedPlayerClone(0 + (200 * i), 525, null, this));
-				}
+				addFiveFighters();
 				break;
 			}
 			case 18300: {
-				for (int i = 0; i < 5; i++) {
-					add(new ImprovedPlayerClone(0 + (200 * i), 525, null, this));
-				}
+				if (difficult) addFiveFighters();
 				break;
 			}
 			case 18400: { 
@@ -490,6 +473,16 @@ public class Level2 extends Level{
 				break;
 			}
 			
+		}
+	}
+	
+	public void addFiveFighters() {
+		for (int i = 0; i < 5; i++) {
+			if (i % 2 == 0)
+				if (difficult) add(new ImprovedPlayerClone(0 + (200 * i), 525, null, this));
+			else {
+				add(new ImprovedPlayerClone(0 + (200 * i), 525, null, this));
+			}
 		}
 	}
 }
