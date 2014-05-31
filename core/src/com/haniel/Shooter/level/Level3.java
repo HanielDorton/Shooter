@@ -1,12 +1,16 @@
 package com.haniel.Shooter.level;
 
+import java.util.Arrays;
 import java.util.Iterator;
+import java.util.List;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.ParticleEffectPool;
 import com.haniel.Shooter.GameScreen;
 import com.haniel.Shooter.entities.enemies.GreenJet;
+import com.haniel.Shooter.entities.enemies.GreenMine;
 import com.haniel.Shooter.entities.enemies.SuperGreenJet;
+import com.haniel.Shooter.entities.enemies.SuperGreenMine;
 import com.haniel.Shooter.graphics.BackgroundImage;
 import com.haniel.Shooter.graphics.CheckpointReached;
 import com.haniel.Shooter.graphics.MyGraphics;
@@ -15,13 +19,15 @@ import com.haniel.Shooter.util.Coord;
 
 public class Level3 extends Level{
 	
+	//checkpoints: 5940, 11490;
+	
 	public Level3(GameScreen gameScreen) {
 		super(gameScreen);
 		backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/Five_Armies.mp3"));
 		//load all particle effects for pooling:
 		enemyBulletEffect.load(Gdx.files.internal("particles/greenbullet.p"), Gdx.files.internal("particles/"));
 		enemyBulletEffectPool = new ParticleEffectPool(enemyBulletEffect, 45, 80);
-		smallExplosionEffect.load(Gdx.files.internal("particles/PlayerExplosion.p"), Gdx.files.internal("particles/"));
+		smallExplosionEffect.load(Gdx.files.internal("particles/greenmissileexplosion.p"), Gdx.files.internal("particles/"));
 		smallExplosionEffectPool = new ParticleEffectPool(smallExplosionEffect, 5, 20);
 	}
 	
@@ -60,6 +66,49 @@ public class Level3 extends Level{
 				}
 				break;
 			}
+			case 6300: {
+				for (int i = 0; i < 2; i++ ) generateRandomMine(480 + (100 * i));
+				break;
+			}
+			case 6700: {
+				for (int i = 0; i < 2; i++ ) generateRandomMine(480 + (100 * i));
+				break;
+			}
+			case 7100: {
+				for (int i = 0; i < 2; i++ ) generateRandomMine(480 + (100 * i));
+				break;
+			}
+			
+			case 7400: {
+				for (int i = 0; i < 4; i++ ) generateRandomMine(480 + (50 * i));
+				break;
+			}
+			case 7800: {
+				for (int i = 0; i < 2; i++ ) generateRandomMine(480 + (100 * i));
+				break;
+			}
+			case 8200: {
+				for (int i = 0; i < 2; i++ ) generateRandomMine(480 + (100 * i));
+				break;
+			}
+			case 8600: {
+				for (int i = 0; i < 2; i++ ) generateRandomMine(480 + (100 * i));
+				break;
+			}
+			
+			case 9000: {
+				for (int i = 0; i < 4; i++ ) generateRandomMine(480 + (50 * i));
+				break;
+			}
+			
+			case 9500: {
+				for (int i = 0; i < 3; i++ ) generateRandomSuperMine(480 + (100 * i));
+				break;
+			}
+			case 10200: {
+				for (int i = 0; i < 3; i++ ) generateRandomSuperMine(480 + (100 * i));
+				break;
+			}
 			
 			
 			case 11500: {
@@ -90,5 +139,18 @@ public class Level3 extends Level{
         	}
         }
 	}
-
+	
+	private void generateRandomMine(int y) {
+		int x = random.nextInt(760) + 20;
+		Coord coord = new Coord(x, -500);
+		List<Coord> temp = Arrays.asList(coord);
+		add(new GreenMine(x, y, temp, this));
+	}
+	
+	private void generateRandomSuperMine(int y) {
+		int x = random.nextInt(760) + 20;
+		Coord coord = new Coord(x, -500);
+		List<Coord> temp = Arrays.asList(coord);
+		add(new SuperGreenMine(x, y, temp, this));
+	}
 }

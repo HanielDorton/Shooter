@@ -2,6 +2,8 @@ package com.haniel.Shooter.entities.enemies;
 
 import java.util.List;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Rectangle;
 import com.haniel.Shooter.level.Level;
@@ -57,5 +59,15 @@ public class GreenJet extends Enemy{
 	        	}
         }
 
-	}	
+	}
+	public void particles() {
+		if (health < 0) {
+			ParticleEffect explosion = new ParticleEffect();
+			explosion.load(Gdx.files.internal("particles/greenexplosion.p"), Gdx.files.internal("particles/"));
+			explosion.setPosition((int)x + xOffset + (width / 2),(int) y + yOffset + (height / 2));
+			level.particleEffects.add(explosion);
+			explosion.start();
+			explosion02.play(.3f);
+		}
+	}
 }
