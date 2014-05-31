@@ -35,11 +35,11 @@ public class GreenJet extends Enemy{
 	protected void shoot() {
 		if (!(getMidY()> 480) && !(getMidY() < 0) && !(getMidX() < 0 && !(getMidX() > 800))){
 			if ((level.getTime() - lastShot2) > frontFiringRate) {
-				lastShot2 = level.getTime();
 				if (Math.abs(getMidX() - level.getPlayerX()) < 20) {
-					double shootingangle = level.getAngletoPlayersMiddle(x + xOffset + width / 2, y + yOffset + height / 2 - 5);
+					lastShot2 = level.getTime();
+					double shootingangle = level.getAngletoPlayersMiddle(x + xOffset + width / 2, y + yOffset);
 					if (level.weaponSounds.size() == 0) level.weaponSounds.add(weapon);
-					weapon.shoot(x + xOffset + width / 2, y + yOffset + height / 2 - 5, shootingangle);
+					weapon.shoot(x + xOffset + width / 2, y + yOffset, shootingangle);
 				}
 		}
 	        if ((level.getTime() - lastShot) > firingRate) {	        	

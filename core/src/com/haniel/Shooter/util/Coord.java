@@ -68,6 +68,10 @@ public class Coord {
 	public static final Coord bossstayinmiddle = new Coord(325, 420);
 	public static final List<Coord> bossstayinmiddlelist = Arrays.asList(bossstayinmiddle);
 	
+	//level three
+	public static final Coord bossfarright = new Coord(375, 280);
+	public static final List<Coord> superJet = Arrays.asList(bosslefttop, bossmiddletop, bossfarright);
+	
 	public Coord(int x, int y) {
 		this.x = x;
 		this.y = y;
