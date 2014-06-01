@@ -23,13 +23,13 @@ public class Level2 extends Level{
 		super(gameScreen);
 		backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/The_Descent.mp3"));
 		//load all particle effects for pooling:
-		enemyBulletEffect.load(Gdx.files.internal("particles/homingmissile.p"), Gdx.files.internal("particles/"));
+		enemyBulletEffect.load(Gdx.files.internal("particles/secondlevel/homingmissile.p"), Gdx.files.internal("particles/"));
 		enemyBulletEffectPool = new ParticleEffectPool(enemyBulletEffect, 45, 80);
 		smallExplosionEffect.load(Gdx.files.internal("particles/PlayerExplosion.p"), Gdx.files.internal("particles/"));
 		smallExplosionEffectPool = new ParticleEffectPool(smallExplosionEffect, 5, 20);
-		smallExplosionEffect2.load(Gdx.files.internal("particles/missileexplosion.p"), Gdx.files.internal("particles/"));
+		smallExplosionEffect2.load(Gdx.files.internal("particles/secondlevel/missileexplosion.p"), Gdx.files.internal("particles/"));
 		smallExplosionEffect2Pool = new ParticleEffectPool(smallExplosionEffect2, 5, 20);
-		smallEngineEffect.load(Gdx.files.internal("particles/PlayerCloneEngine.p"), Gdx.files.internal("particles/"));
+		smallEngineEffect.load(Gdx.files.internal("particles/secondlevel/PlayerCloneEngine.p"), Gdx.files.internal("particles/"));
 		smallEngineEffectPool = new ParticleEffectPool(smallEngineEffect, 5, 20);
 	}
 

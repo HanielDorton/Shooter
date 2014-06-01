@@ -28,7 +28,7 @@ public class SecondBoss extends Enemy{
 		this.health = 300;
 		this.speed = 50;
 		this.rectangle = new Rectangle((float)x + xOffset, (float)y + yOffset, width, height);
-		this.engine1Effect.load(Gdx.files.internal("particles/bossexhaust.p"), Gdx.files.internal("particles/"));
+		this.engine1Effect.load(Gdx.files.internal("particles/secondlevel/bossexhaust.p"), Gdx.files.internal("particles/"));
 		this.lastShot = level.getTime() + 5;
 		this.startEngines =level.getLevelTime() + 750;
 		this.difficult = difficult;		
@@ -48,7 +48,7 @@ public class SecondBoss extends Enemy{
 		if( health < 0) {
 			engine1Effect.allowCompletion();
 			ParticleEffect explosion = new ParticleEffect();
-			explosion.load(Gdx.files.internal("particles/bossexplosions2.p"), Gdx.files.internal("particles/"));
+			explosion.load(Gdx.files.internal("particles/secondlevel/bossexplosions2.p"), Gdx.files.internal("particles/"));
 			explosion.setPosition((int)x + xOffset + (width / 2),(int) y  + 100);
 			level.particleEffects.add(explosion);
 			explosion.start();
