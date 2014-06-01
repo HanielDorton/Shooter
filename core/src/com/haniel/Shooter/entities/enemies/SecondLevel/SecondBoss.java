@@ -31,8 +31,7 @@ public class SecondBoss extends Enemy{
 		this.engine1Effect.load(Gdx.files.internal("particles/bossexhaust.p"), Gdx.files.internal("particles/"));
 		this.lastShot = level.getTime() + 5;
 		this.startEngines =level.getLevelTime() + 750;
-		this.difficult = difficult;
-		
+		this.difficult = difficult;		
 	}
 
 	public void update() {

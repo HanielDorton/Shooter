@@ -44,6 +44,7 @@ public abstract class Entity{
 	protected static final Texture greenJetTexture = new Texture(Gdx.files.internal("entities/green_jet.png"));
 	protected static final Texture superGreenJetTexture = new Texture(Gdx.files.internal("entities/super_green_jet.png"));
 	protected static final Texture greenMineTexture = new Texture(Gdx.files.internal("entities/green_mines.png"));
+	protected static final Texture thirdBossTexture = new Texture(Gdx.files.internal("entities/third_boss.png"));
 	
 	public Entity() {
 		

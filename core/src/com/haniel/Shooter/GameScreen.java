@@ -187,7 +187,8 @@ public class GameScreen implements Screen {
        	level.particleEffects.clear();
        	for (int i = level.effects.size - 1; i >= 0; i--)
        	    level.effects.get(i).free();
-       	level.effects.clear();    	
+       	level.effects.clear();    
+       	level.specialBossArray.clear();
     }
     
     public int getCheckPoint() {

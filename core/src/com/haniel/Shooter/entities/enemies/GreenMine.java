@@ -10,11 +10,11 @@ import com.haniel.Shooter.weapons.GreenGun;
 
 public class GreenMine extends Enemy{
 	
-	protected double firingRate = .4;
+	protected double firingRate = .6;
 	
 	public GreenMine(double x, double y, List <Coord> pattern, Level level) {
 		super(x, y, pattern, level);		
-		this.speed = random.nextInt(30) + 40;
+		this.speed = random.nextInt(30) + 20;
 		this.width = 16;
 		this.height = 16;
 		this.sprite = new Sprite(greenMineTexture);		
@@ -22,7 +22,7 @@ public class GreenMine extends Enemy{
 		this.xOffset = 0;
 		this.yOffset = 0;
 		this.rectangle = new Rectangle((float)x + xOffset, (float)y + yOffset, width, height);
-		this.weapon = new GreenGun(level, false, 500);
+		this.weapon = new GreenGun(level, false, 400);
 	}
 	
 	protected void shoot() {
@@ -34,5 +34,9 @@ public class GreenMine extends Enemy{
 		       	if (level.weaponSounds.size() == 0) level.weaponSounds.add(weapon);
 			}
 		}
+	}
+	public void particles() {
+		explosion01.play(.5f);
+		super.particles();
 	}
 }

@@ -1,7 +1,6 @@
 package com.haniel.Shooter.level;
 
 import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
 
 import com.badlogic.gdx.Gdx;
@@ -11,10 +10,9 @@ import com.haniel.Shooter.entities.enemies.GreenJet;
 import com.haniel.Shooter.entities.enemies.GreenMine;
 import com.haniel.Shooter.entities.enemies.SuperGreenJet;
 import com.haniel.Shooter.entities.enemies.SuperGreenMine;
+import com.haniel.Shooter.entities.enemies.ThirdBoss;
 import com.haniel.Shooter.graphics.BackgroundImage;
 import com.haniel.Shooter.graphics.CheckpointReached;
-import com.haniel.Shooter.graphics.MyGraphics;
-import com.haniel.Shooter.graphics.Star;
 import com.haniel.Shooter.util.Coord;
 
 public class Level3 extends Level{
@@ -40,7 +38,7 @@ public class Level3 extends Level{
 				addStarsCheckpoint(300);
 				add(new BackgroundImage("levels/space_background3.png", 0, 0, 20));
 		        add(new BackgroundImage("levels/space_background3.png", 0, 960, 20));				
-		        increaseStarSpeed();
+		        increaseStarSpeed(50);
 		        break;
 			}
 			case 100: {
@@ -48,7 +46,7 @@ public class Level3 extends Level{
 				add(new GreenJet(800, 480,Coord.circlenearrighttopslowlyforawhilethenleave , this));
 				break;
 			}
-			case 2550: {
+			case 2750: {
 				add(new SuperGreenJet(-200, 480,Coord.superJet , this));
 				break;
 			}
@@ -59,14 +57,14 @@ public class Level3 extends Level{
 					backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/Five_Armies_firstContinue.mp3"));
 					backgroundMusic.play();
 					addStarsCheckpoint(300);
-					increaseStarSpeed();
+					increaseStarSpeed(50);
 				} else {
 					add(new CheckpointReached(300, 350, 2));
 					gameScreen.setCheckPoint(levelTime - 10);
 				}
 				break;
 			}
-			case 6300: {
+			case 6350: {
 				for (int i = 0; i < 2; i++ ) generateRandomMine(480 + (100 * i));
 				break;
 			}
@@ -80,32 +78,49 @@ public class Level3 extends Level{
 			}
 			
 			case 7400: {
-				for (int i = 0; i < 4; i++ ) generateRandomMine(480 + (50 * i));
+				for (int i = 0; i < 2; i++ ) generateRandomMine(480 + (50 * i));
 				break;
 			}
 			case 7800: {
 				for (int i = 0; i < 2; i++ ) generateRandomMine(480 + (100 * i));
+				for (int i = 0; i < 1; i++ ) generateRandomSuperMine(480 + (100 * i));
 				break;
 			}
 			case 8200: {
-				for (int i = 0; i < 2; i++ ) generateRandomMine(480 + (100 * i));
+				//for (int i = 0; i < 2; i++ ) generateRandomMine(480 + (100 * i));
+				for (int i = 0; i < 1; i++ ) generateRandomSuperMine(480 + (100 * i));
 				break;
 			}
 			case 8600: {
-				for (int i = 0; i < 2; i++ ) generateRandomMine(480 + (100 * i));
+				//for (int i = 0; i < 2; i++ ) generateRandomMine(480 + (100 * i));
+				for (int i = 0; i < 2; i++ ) generateRandomSuperMine(480 + (100 * i));
 				break;
 			}
 			
 			case 9000: {
-				for (int i = 0; i < 4; i++ ) generateRandomMine(480 + (50 * i));
+				for (int i = 0; i < 3; i++ ) generateRandomMine(480 + (50 * i));
+				for (int i = 0; i < 2; i++ ) generateRandomSuperMine(480 + (100 * i));
 				break;
 			}
 			
 			case 9500: {
 				for (int i = 0; i < 3; i++ ) generateRandomSuperMine(480 + (100 * i));
+				for (int i = 0; i < 3; i++ ) generateRandomSuperMine(480 + (100 * i));
+				for (int i = 0; i < 3; i++ ) generateRandomSuperMine(480 + (100 * i));
+				break;
+			}
+			case 9900: {
+				for (int i = 0; i < 3; i++ ) generateRandomSuperMine(480 + (100 * i));
 				break;
 			}
 			case 10200: {
+				for (int i = 0; i < 3; i++ ) generateRandomSuperMine(480 + (100 * i));
+				for (int i = 0; i < 3; i++ ) generateRandomSuperMine(480 + (100 * i));
+				for (int i = 0; i < 3; i++ ) generateRandomSuperMine(480 + (100 * i));
+				for (int i = 0; i < 3; i++ ) generateRandomSuperMine(480 + (100 * i));
+				break;
+			}
+			case 10600: {
 				for (int i = 0; i < 3; i++ ) generateRandomSuperMine(480 + (100 * i));
 				break;
 			}
@@ -116,28 +131,21 @@ public class Level3 extends Level{
 					add(new BackgroundImage("levels/space_background3.png", 0, 0, 3));
 					add(new BackgroundImage("levels/space_background3.png", 0, 960, 3));
 					addStarsCheckpoint(300);
-					increaseStarSpeed();
+					increaseStarSpeed(50);
 				} else {
 					add(new CheckpointReached(300, 350, 2));
 					gameScreen.setCheckPoint(levelTime - 10);
 				}
 				backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/All_This.mp3"));
 				backgroundMusic.play();
+				break;				
+			}
+			case 12100:{
+				add(new ThirdBoss(350, 480, Coord.bosscircles, this));
 				break;
-				
 			}
 					
 		}
-	}
-	
-	private void increaseStarSpeed() {
-		Iterator<MyGraphics> graphiciter = graphics.iterator();
-        while(graphiciter.hasNext()) {
-        	MyGraphics graphic = graphiciter.next();
-        	if (graphic instanceof Star) {
-        		graphic.changeSpeed(50);
-        	}
-        }
 	}
 	
 	private void generateRandomMine(int y) {

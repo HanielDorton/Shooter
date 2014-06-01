@@ -15,7 +15,7 @@ public class SuperGreenMine extends Enemy{
 		
 		public SuperGreenMine(double x, double y, List <Coord> pattern, Level level) {
 			super(x, y, pattern, level);		
-			this.speed = random.nextInt(30) + 40;
+			this.speed = random.nextInt(60) + 40;
 			this.width = 16;
 			this.height = 16;
 			this.sprite = new Sprite(greenMineTexture);		
@@ -24,6 +24,7 @@ public class SuperGreenMine extends Enemy{
 			this.yOffset = 0;
 			this.rectangle = new Rectangle((float)x + xOffset, (float)y + yOffset, width, height);
 			this.weapon = new GreenGun(level, false, 200);
+			this.lastShot =level.getTime() + 1 + random.nextInt(3);
 		}
 		
 		protected void shoot() {
@@ -34,9 +35,15 @@ public class SuperGreenMine extends Enemy{
 			    		weapon.shoot(x + 8, y + 8, firingAngle - (i * -.375));
 			    	}
 			    	if (level.weaponSounds.size() < 3) level.weaponSounds.add(weapon);
+			    	this.health--;
+			    	this.particles();
 
 				}
 			}
+		}
+		public void particles() {
+			explosion01.play(.5f);
+			super.particles();
 		}
 	}
 

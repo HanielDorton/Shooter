@@ -68,6 +68,8 @@ public class SuperGreenJet extends Enemy{
 			level.particleEffects.add(explosion);
 			explosion.start();
 			explosion02.play(.3f);
+			explosion01.play(.3f);
+			super.particles();
 		}
 	}
 }
