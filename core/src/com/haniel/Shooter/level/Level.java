@@ -112,6 +112,7 @@ public class Level {
 	private void updateEntities() {
     	Iterator<Entity> entityIterator = entities.iterator();
     	while (entityIterator.hasNext()) {
+    		boolean alreadyRemoved = false;
     		Entity e = entityIterator.next();
         	e.update();
         	if (e instanceof Player){
@@ -143,10 +144,15 @@ public class Level {
 	        		}
     				if (!(e instanceof Player) &&  e.isRemoved()) {
     					entityIterator.remove();
+    					alreadyRemoved = true;
     					break;
     				}
     			}
-        	}  
+        	}
+			if (!(e instanceof Player) &&  e.isRemoved()) {
+				if (!alreadyRemoved) entityIterator.remove();
+				break;
+			}
         }
 		
 	}

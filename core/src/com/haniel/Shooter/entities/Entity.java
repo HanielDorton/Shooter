@@ -162,6 +162,10 @@ public abstract class Entity{
 		starTexture.dispose();
 		explosion01.dispose();
 		irritatingAmbiantBuzz.dispose();
+		greenJetTexture.dispose();
+		superGreenJetTexture.dispose();
+		greenMineTexture.dispose();
+		thirdBossTexture.dispose();
 	}
 
 	public Sprite getSprite() {

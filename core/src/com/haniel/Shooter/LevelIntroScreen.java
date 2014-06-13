@@ -112,7 +112,7 @@ public class LevelIntroScreen implements Screen{
 			levelText.add("Blown up bits of the alien fleet float all around you.");
 			levelText.add("There is no one left to save now.");
 			levelText.add("And after attacking the Earth fleet, there is no home to retreat to.");
-			levelText.add("You cut your engines.");
+			levelText.add("You reduce your speed.");
 		}
 		case 4: {
 			levelText.add("Level 5: Acceptance");

@@ -6,11 +6,11 @@ import java.util.List;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.ParticleEffectPool;
 import com.haniel.Shooter.GameScreen;
-import com.haniel.Shooter.entities.enemies.GreenJet;
-import com.haniel.Shooter.entities.enemies.GreenMine;
-import com.haniel.Shooter.entities.enemies.SuperGreenJet;
-import com.haniel.Shooter.entities.enemies.SuperGreenMine;
-import com.haniel.Shooter.entities.enemies.ThirdBoss;
+import com.haniel.Shooter.entities.enemies.ThirdLevel.GreenJet;
+import com.haniel.Shooter.entities.enemies.ThirdLevel.GreenMine;
+import com.haniel.Shooter.entities.enemies.ThirdLevel.SuperGreenJet;
+import com.haniel.Shooter.entities.enemies.ThirdLevel.SuperGreenMine;
+import com.haniel.Shooter.entities.enemies.ThirdLevel.ThirdBoss;
 import com.haniel.Shooter.graphics.BackgroundImage;
 import com.haniel.Shooter.graphics.CheckpointReached;
 import com.haniel.Shooter.util.Coord;
@@ -23,9 +23,9 @@ public class Level3 extends Level{
 		super(gameScreen);
 		backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/Five_Armies.mp3"));
 		//load all particle effects for pooling:
-		enemyBulletEffect.load(Gdx.files.internal("particles/greenbullet.p"), Gdx.files.internal("particles/"));
+		enemyBulletEffect.load(Gdx.files.internal("particles/thirdlevel/greenbullet.p"), Gdx.files.internal("particles/"));
 		enemyBulletEffectPool = new ParticleEffectPool(enemyBulletEffect, 45, 80);
-		smallExplosionEffect.load(Gdx.files.internal("particles/greenmissileexplosion.p"), Gdx.files.internal("particles/"));
+		smallExplosionEffect.load(Gdx.files.internal("particles/thirdlevel/greenmissileexplosion.p"), Gdx.files.internal("particles/"));
 		smallExplosionEffectPool = new ParticleEffectPool(smallExplosionEffect, 5, 20);
 	}
 	
@@ -46,7 +46,7 @@ public class Level3 extends Level{
 				add(new GreenJet(800, 480,Coord.circlenearrighttopslowlyforawhilethenleave , this));
 				break;
 			}
-			case 2750: {
+			case 2550: {
 				add(new SuperGreenJet(-200, 480,Coord.superJet , this));
 				break;
 			}

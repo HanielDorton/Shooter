@@ -19,6 +19,7 @@ import com.haniel.Shooter.level.Level;
 import com.haniel.Shooter.level.Level1;
 import com.haniel.Shooter.level.Level2;
 import com.haniel.Shooter.level.Level3;
+import com.haniel.Shooter.level.Level4;
 import com.haniel.Shooter.projectiles.Projectile;
 import com.haniel.Shooter.util.GameState;
 import com.haniel.Shooter.util.MyInputProcessor;
@@ -54,7 +55,6 @@ public class GameScreen implements Screen {
         //set cursor to blank image since it is fixed to the middle of the screen.
         mouse = new Pixmap(Gdx.files.internal("textures/mouseX.png"));
         Gdx.input.setCursorImage(mouse, 0, 0);
-
         level.add(player);
         player.init(this);        
     }
@@ -212,6 +212,10 @@ public class GameScreen implements Screen {
 		}
 		case 2: {
 			level = new Level3(this);
+			break;
+		}
+		case 3: {
+			level = new Level4(this);
 			break;
 		}
 		default: {

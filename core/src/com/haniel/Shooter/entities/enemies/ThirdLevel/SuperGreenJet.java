@@ -1,4 +1,4 @@
-package com.haniel.Shooter.entities.enemies;
+package com.haniel.Shooter.entities.enemies.ThirdLevel;
 
 import java.util.List;
 
@@ -6,6 +6,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Rectangle;
+import com.haniel.Shooter.entities.enemies.Enemy;
 import com.haniel.Shooter.level.Level;
 import com.haniel.Shooter.util.Coord;
 import com.haniel.Shooter.weapons.GreenGun;
@@ -24,7 +25,7 @@ public class SuperGreenJet extends Enemy{
 		this.width = 396;
 		this.height = 100;
 		this.sprite = new Sprite(superGreenJetTexture);		
-		this.health = 230;
+		this.health = 250;
 		this.xOffset = 2;
 		this.yOffset = 50;
 		this.rectangle = new Rectangle((float)x + xOffset, (float)y + yOffset, width, height);
@@ -63,7 +64,7 @@ public class SuperGreenJet extends Enemy{
 	public void particles() {
 		if (health < 0) {
 			ParticleEffect explosion = new ParticleEffect();
-			explosion.load(Gdx.files.internal("particles/largegreenexplosion.p"), Gdx.files.internal("particles/"));
+			explosion.load(Gdx.files.internal("particles/thirdlevel/largegreenexplosion.p"), Gdx.files.internal("particles/"));
 			explosion.setPosition((int)x + xOffset + (width / 2),(int) y + yOffset + (height / 2));
 			level.particleEffects.add(explosion);
 			explosion.start();

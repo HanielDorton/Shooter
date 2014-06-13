@@ -4,7 +4,9 @@ import java.util.List;
 
 import com.badlogic.gdx.graphics.g2d.ParticleEffectPool.PooledEffect;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.math.CatmullRomSpline;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector2;
 import com.haniel.Shooter.entities.enemies.Enemy;
 import com.haniel.Shooter.level.Level;
 import com.haniel.Shooter.util.Coord;
@@ -14,8 +16,8 @@ public class PlayerClone extends Enemy{
 	protected PooledEffect engine1Effect;
 	protected PooledEffect engine2Effect;
 	
-	public PlayerClone(double x, double y, List<Coord> pattern, Level level) {
-		super(x, y, pattern, level);
+	public PlayerClone(double x, double y, Level level) {
+		super(x, y, level);
 		this.speed = 200;
 		this.width = 21;
 		this.height = 15;
@@ -38,6 +40,19 @@ public class PlayerClone extends Enemy{
 		this.engine2Effect.start();
 	}
 	
+	public PlayerClone(double x, double y, CatmullRomSpline<Vector2> path, Level level) {
+		this(x, y, level);
+		this.path = path;
+	}
+	public PlayerClone(double x, double y, List<Coord> pattern, Level level) {
+		this(x, y, level);
+		this.pattern = pattern;
+		this.destX = x;
+		this.destY = y;
+		this.position = 0;
+	}
+	
+
 	public void update() {
 		super.update();
 		this.engine1Effect.setPosition((int) x + 11, (int) y + 30);
@@ -59,6 +74,11 @@ public class PlayerClone extends Enemy{
 		engine1Effect.allowCompletion();
 		engine2Effect.allowCompletion();
 		super.particles();
+	}
+	public void remove() {
+		engine1Effect.allowCompletion();
+		engine2Effect.allowCompletion();
+		removed = true;
 	}
 	
 
