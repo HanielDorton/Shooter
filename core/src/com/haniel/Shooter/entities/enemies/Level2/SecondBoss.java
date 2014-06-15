@@ -1,4 +1,4 @@
-package com.haniel.Shooter.entities.enemies.SecondLevel;
+package com.haniel.Shooter.entities.enemies.Level2;
 
 import java.util.List;
 
@@ -17,9 +17,9 @@ public class SecondBoss extends Enemy{
 	private float firingRate = 5;
 	private float secondFiringRate = 2.5f;
 	private double secondLastShot = 0;
-	private boolean difficult;
 	
-	public SecondBoss(double x, double y, List<Coord> pattern, Level level, boolean difficult) {
+	
+	public SecondBoss(double x, double y, List<Coord> pattern, Level level) {
 		super(x, y, pattern, level);
 		this.sprite = new Sprite(secondBossTexture);	
 		this.width = 140;
@@ -31,7 +31,6 @@ public class SecondBoss extends Enemy{
 		this.engine1Effect.load(Gdx.files.internal("particles/secondlevel/bossexhaust.p"), Gdx.files.internal("particles/"));
 		this.lastShot = level.getTime() + 5;
 		this.startEngines =level.getLevelTime() + 750;
-		this.difficult = difficult;		
 	}
 
 	public void update() {
@@ -61,8 +60,6 @@ public class SecondBoss extends Enemy{
 	    	lastShot = level.getTime();
 	    	level.specialBossArray.add(new HomingMissile(x + 5, y + 44 + (100), null, level));
 	    	level.specialBossArray.add(new HomingMissile(x + 154, y + 44 + (100), null, level));
-	    	if (difficult) level.specialBossArray.add(new HomingMissile(x + 5, y + 44 + (200), null, level));
-	    	if (difficult) level.specialBossArray.add(new HomingMissile(x + 154, y + 44 + (200), null, level));
 	    	level.specialBossArray.add(new HomingMissile(x + 5, y + 44 + (300), null, level));
 	    	level.specialBossArray.add(new HomingMissile(x + 154, y + 44 + (300), null, level));
 

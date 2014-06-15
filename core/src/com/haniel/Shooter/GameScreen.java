@@ -12,6 +12,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.ParticleEffectPool.PooledEffect;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.haniel.Shooter.entities.Entity;
 import com.haniel.Shooter.entities.Player;
 import com.haniel.Shooter.graphics.MyGraphics;
@@ -112,7 +113,17 @@ public class GameScreen implements Screen {
 	        	game.batch.draw(projectile.getTexture(), (float) projectile.getX(), (float) projectile.getY());
 	        }
 	        for (Entity entity : level.entities) {
-	        	game.batch.draw(entity.getSprite(), (float) entity.getX(), (float) entity.getY());
+	        	if (entity.rotates()) {
+
+		        	Sprite temp = entity.getSprite();
+		        	game.batch.draw(temp, (float) entity.getX(), (float) entity.getY(), 
+		        			entity.getOriginX(), entity.getOriginY(), 
+		        			temp.getRegionWidth(), temp.getRegionHeight(),
+		        			 1f, 1f, temp.getRotation(), false);
+	        	}
+	        	else {
+	        		game.batch.draw(entity.getSprite(), (float) entity.getX(), (float) entity.getY());
+	        	}
 	        }
 	        Iterator<ParticleEffect> overlayedIter = level.overlayedParticleEffects.iterator();
 	        while (overlayedIter.hasNext()){

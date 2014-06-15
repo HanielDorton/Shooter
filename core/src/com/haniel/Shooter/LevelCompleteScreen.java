@@ -58,7 +58,7 @@ public class LevelCompleteScreen implements Screen{
 		buttonContinue = new TextButton("Continue", skin);
 		buttonContinue.addListener(new ChangeListener() {
 			public void changed(ChangeEvent event, Actor actor) {
-				game.setScreen(new LevelIntroScreen(game, gameState));
+				game.setScreen(new GameScreen(game, gameState));
 				dispose();				
 			}
 		});

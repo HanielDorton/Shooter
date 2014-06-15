@@ -3,10 +3,10 @@ package com.haniel.Shooter.level;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.ParticleEffectPool;
 import com.haniel.Shooter.GameScreen;
-import com.haniel.Shooter.entities.enemies.SecondLevel.HomingMissile;
-import com.haniel.Shooter.entities.enemies.SecondLevel.ImprovedPlayerClone;
-import com.haniel.Shooter.entities.enemies.SecondLevel.PlayerClone;
-import com.haniel.Shooter.entities.enemies.SecondLevel.SecondBoss;
+import com.haniel.Shooter.entities.enemies.Level2.HomingMissile;
+import com.haniel.Shooter.entities.enemies.Level2.ImprovedPlayerClone;
+import com.haniel.Shooter.entities.enemies.Level2.PlayerClone;
+import com.haniel.Shooter.entities.enemies.Level2.SecondBoss;
 import com.haniel.Shooter.graphics.BackgroundImage;
 import com.haniel.Shooter.graphics.CheckpointReached;
 import com.haniel.Shooter.util.Coord;
@@ -140,97 +140,37 @@ public class Level2 extends Level{
 				add(new PlayerClone(600, 525, Coord.leavebottomrightlist, this));
 				break;
 			}
-			case 2600: {
-				if (difficult) add(new PlayerClone(0, 525, Coord.leavebottom, this));
-				break;
-			}
 			case 2650: {
 				add(new PlayerClone(800, 525, Coord.leavebottom, this));
-				break;
-			}
-			case 2700: {
-				if (difficult)  add(new PlayerClone(400, 525, Coord.leavebottomleftlist, this));
-				break;				
-			}
-			case 2750: {
-				if (difficult) add(new PlayerClone(400, 525, Coord.leavebottomrightlist, this));
 				break;
 			}
 			case 2800: {
 				add(new PlayerClone(100, 525, Coord.leavebottom, this));
 				break;
 			}
-			case 2850: {
-				if (difficult)  add(new PlayerClone(700, 525, Coord.leavebottom, this));
-				break;
-			}
-			case 2900: {
-				if (difficult) add(new PlayerClone(300, 525, Coord.leavebottomleftlist, this));
-				break;				
-			}
 			case 2950: {
 				 add(new PlayerClone(600, 525, Coord.leavebottomrightlist, this));
-				break;
-			}
-			case 3000: {
-				if (difficult) add(new PlayerClone(200, 525, Coord.leavebottom, this));
-				break;
-			}
-			case 3050: {
-				if (difficult)  add(new PlayerClone(600, 525, Coord.leavebottom, this));
 				break;
 			}
 			case 3100: {
 				add(new PlayerClone(200, 525, Coord.leavebottomleftlist, this));
 				break;				
 			}
-			case 3150: {
-				if (difficult) add(new PlayerClone(600, 525, Coord.leavebottomrightlist, this));
-				break;
-			}
-			case 3200: {
-				if (difficult) add(new PlayerClone(0, 525, Coord.leavebottom, this));
-				break;
-			}
 			case 3230: {
 				add(new PlayerClone(800, 525, Coord.leavebottom, this));
 				break;
 			}
-			case 3260: {
-				if (difficult) add(new PlayerClone(400, 525, Coord.leavebottomleftlist, this));
-				break;				
-			}
 			case 3290: {
 				add(new PlayerClone(400, 525, Coord.leavebottomrightlist, this));
-				break;
-			}
-			case 3320: {
-				if (difficult) add(new PlayerClone(100, 525, Coord.leavebottom, this));
-				break;
-			}
-			case 3350: {
-				if (difficult) add(new PlayerClone(700, 525, Coord.leavebottom, this));
 				break;
 			}
 			case 3380: {
 				add(new PlayerClone(300, 525, Coord.leavebottomleftlist, this));
 				break;				
 			}
-			case 3410: {
-				if (difficult) add(new PlayerClone(600, 525, Coord.leavebottomrightlist, this));
-				break;
-			}
 			case 3440: {
 				add(new PlayerClone(200, 525, Coord.leavebottom, this));
 				break;
-			}
-			case 3470: {
-				if (difficult) add(new PlayerClone(600, 525, Coord.leavebottom, this));
-				break;
-			}
-			case 3500: {
-				if (difficult) add(new PlayerClone(200, 525, Coord.leavebottomleftlist, this));
-				break;				
 			}
 			case 3530: {
 				add(new PlayerClone(600, 525, Coord.leavebottomrightlist, this));
@@ -268,8 +208,6 @@ public class Level2 extends Level{
 				add(new HomingMissile(0, 500, null, this));
 				add(new HomingMissile(390, 500, null, this));
 				add(new HomingMissile(800, 500, null, this));
-				if (difficult) add(new HomingMissile(0, -10, null, this));
-				if (difficult) add(new HomingMissile(800, -10, null, this));
 				break;
 			}
 			case 5100: {
@@ -280,14 +218,6 @@ public class Level2 extends Level{
 				add(new HomingMissile(800, 500, null, this));
 				break;
 			}
-			case 5300: {
-				if (difficult) add(new HomingMissile(0, -10, null, this));
-				break;
-			}
-			case 5400: {
-				if (difficult) add(new HomingMissile(800, -10, null, this));
-				break;
-			}
 			case 5600: {
 				add(new HomingMissile(0, 500, null, this));
 				add(new HomingMissile(0, 500, null, this));
@@ -295,10 +225,6 @@ public class Level2 extends Level{
 				add(new HomingMissile(390, 500, null, this));
 				add(new HomingMissile(800, 500, null, this));
 				add(new HomingMissile(800, 500, null, this));
-				if (difficult) add(new HomingMissile(0, -10, null, this));
-				if (difficult) add(new HomingMissile(0, -10, null, this));
-				if (difficult) add(new HomingMissile(800, -10, null, this));
-				if (difficult) add(new HomingMissile(800, -10, null, this));
 				break;
 			}
 			case 5700: {
@@ -311,27 +237,7 @@ public class Level2 extends Level{
 				add(new HomingMissile(800, 500, null, this));
 				break;
 			}
-			case 5900: {
-				if (difficult) add(new HomingMissile(0, -10, null, this));
-				if (difficult) add(new HomingMissile(0, -10, null, this));
-				break;
-			}
-			case 6000: {
-				if (difficult) add(new HomingMissile(800, -10, null, this));
-				if (difficult) add(new HomingMissile(800, -10, null, this));
-				break;
-			}
-			case 6100: {
-				if (difficult) add(new HomingMissile(0, -10, null, this));
-				if (difficult) add(new HomingMissile(0, -10, null, this));
-				break;
-			}
-			case 6200: {
-				if (difficult) add(new HomingMissile(800, -10, null, this));
-				if (difficult) add(new HomingMissile(800, -10, null, this));
-				break;
-			}
-			
+		
 			case 6900: { //next checkpoitn 108
 				if (gameScreen.getCheckPoint() + 10 == levelTime) {
 					add(new BackgroundImage("levels/space_background2.png", 0, 0, 3));
@@ -360,24 +266,6 @@ public class Level2 extends Level{
 			case 7900: {
 				for (int i = 0; i < 8; i++) {
 					add(new HomingMissile((175 * i) - 300, 480 + (37 * i), null, this));
-				}
-				break;
-			}
-			case 8000: {
-				for (int i = 0; i < 8; i++) {
-					if (difficult) add(new HomingMissile(800 + (37 * i), 880 - (110 * i), null, this));
-				}
-				break;
-			}
-			case 8100: {
-				for (int i = 0; i < 8; i++) {
-					add(new HomingMissile(1100 - (175 * i), 480 + (37 * i), null, this));
-				}
-				break;
-			}
-			case 8200: {
-				for (int i = 0; i < 8; i++) {
-					if (difficult) add(new HomingMissile(0 - (37 * i), (110 * i) - 300, null, this));
 				}
 				break;
 			}
@@ -435,22 +323,14 @@ public class Level2 extends Level{
 					add(new CheckpointReached(300, 350, 2));
 					gameScreen.setCheckPoint(levelTime - 10);
 				}
-				//nebula.load(Gdx.files.internal("particles/Nebula.p"), Gdx.files.internal("particles/"));
-				//nebula.setPosition(-100, 500);
-				//nebula.start();
-				//overlayedParticleEffects.add(nebula);
 				break;
 			}
 			case 11200: {
-				add(new SecondBoss(325, -800, Coord.leavetopmiddlelist, this, difficult));
+				add(new SecondBoss(325, -800, Coord.leavetopmiddlelist, this));
 				break;
 			}
 			case 16500: {
 				addFiveFighters();
-				break;
-			}
-			case 18300: {
-				if (difficult) addFiveFighters();
 				break;
 			}
 			case 18400: { 
@@ -467,7 +347,7 @@ public class Level2 extends Level{
 					backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/All_This.mp3"));
 					backgroundMusic.play();
 				}
-				add(new SecondBoss(325, 800, Coord.bossstayinmiddlelist, this, difficult));			
+				add(new SecondBoss(325, 800, Coord.bossstayinmiddlelist, this));			
 				break;
 			}
 			
@@ -476,12 +356,9 @@ public class Level2 extends Level{
 	
 	public void addFiveFighters() {
 		for (int i = 0; i < 5; i++) {
-			if (i % 2 == 0)
-				if (difficult) add(new ImprovedPlayerClone(0 + (200 * i), 525, null, this));
-			else {
-				add(new ImprovedPlayerClone(0 + (200 * i), 525, null, this));
+			if (!(i % 2 == 0)) add(new ImprovedPlayerClone(0 + (200 * i), 525, null, this));
 			}
 		}
 	}
-}
+
 

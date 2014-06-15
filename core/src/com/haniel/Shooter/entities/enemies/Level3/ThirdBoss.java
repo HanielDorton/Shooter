@@ -1,4 +1,4 @@
-package com.haniel.Shooter.entities.enemies.ThirdLevel;
+package com.haniel.Shooter.entities.enemies.Level3;
 
 import java.util.Arrays;
 import java.util.List;

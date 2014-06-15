@@ -6,14 +6,15 @@ import java.util.List;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.ParticleEffectPool;
 import com.haniel.Shooter.GameScreen;
-import com.haniel.Shooter.entities.enemies.ThirdLevel.GreenJet;
-import com.haniel.Shooter.entities.enemies.ThirdLevel.GreenMine;
-import com.haniel.Shooter.entities.enemies.ThirdLevel.SuperGreenJet;
-import com.haniel.Shooter.entities.enemies.ThirdLevel.SuperGreenMine;
-import com.haniel.Shooter.entities.enemies.ThirdLevel.ThirdBoss;
+import com.haniel.Shooter.entities.enemies.Level3.GreenJet;
+import com.haniel.Shooter.entities.enemies.Level3.GreenMine;
+import com.haniel.Shooter.entities.enemies.Level3.SuperGreenJet;
+import com.haniel.Shooter.entities.enemies.Level3.SuperGreenMine;
+import com.haniel.Shooter.entities.enemies.Level3.ThirdBoss;
 import com.haniel.Shooter.graphics.BackgroundImage;
 import com.haniel.Shooter.graphics.CheckpointReached;
 import com.haniel.Shooter.util.Coord;
+import com.haniel.Shooter.util.Pathing;
 
 public class Level3 extends Level{
 	
@@ -42,8 +43,8 @@ public class Level3 extends Level{
 		        break;
 			}
 			case 100: {
-				add(new GreenJet(-200, 480,Coord.circlenearlefttopslowlyforawhilethenleave , this));
-				add(new GreenJet(800, 480,Coord.circlenearrighttopslowlyforawhilethenleave , this));
+				add(new GreenJet(-200, 480,Pathing.circlesTopLeftThenLeaves , this));
+				add(new GreenJet(800, 480,Pathing.circlesTopRightThenLeaves , this));
 				break;
 			}
 			case 2550: {

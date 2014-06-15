@@ -1,11 +1,13 @@
-package com.haniel.Shooter.entities.enemies.ThirdLevel;
+package com.haniel.Shooter.entities.enemies.Level3;
 
 import java.util.List;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.math.CatmullRomSpline;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector2;
 import com.haniel.Shooter.entities.enemies.Enemy;
 import com.haniel.Shooter.level.Level;
 import com.haniel.Shooter.util.Coord;
@@ -18,9 +20,9 @@ public class GreenJet extends Enemy{
 	protected double frontFiringRate = .2;
 	protected Weapon wingWeapon;
 	
-	public GreenJet(double x, double y, List <Coord> pattern, Level level) {
-		super(x, y, pattern, level);		
-		this.speed = 50;
+	public GreenJet(double x, double y, CatmullRomSpline<Vector2> path, Level level) {
+		super(x, y, path, level);		
+		this.speed = 10;
 		this.width = 196;
 		this.height = 50;
 		this.sprite = new Sprite(greenJetTexture);		

@@ -3,11 +3,11 @@ package com.haniel.Shooter.level;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.ParticleEffectPool;
 import com.haniel.Shooter.GameScreen;
-import com.haniel.Shooter.entities.enemies.FirstLevel.BasicBlueEnemy;
-import com.haniel.Shooter.entities.enemies.FirstLevel.BlueSaucer;
-import com.haniel.Shooter.entities.enemies.FirstLevel.FirstBoss;
-import com.haniel.Shooter.entities.enemies.FirstLevel.ImprovedBlueSaucer;
-import com.haniel.Shooter.entities.enemies.FirstLevel.QuickBlue;
+import com.haniel.Shooter.entities.enemies.Level1.BlueEnemy;
+import com.haniel.Shooter.entities.enemies.Level1.BlueSaucer;
+import com.haniel.Shooter.entities.enemies.Level1.FirstBoss;
+import com.haniel.Shooter.entities.enemies.Level1.ImprovedBlueSaucer;
+import com.haniel.Shooter.entities.enemies.Level1.QuickBlue;
 import com.haniel.Shooter.graphics.BackgroundImage;
 import com.haniel.Shooter.graphics.CheckpointReached;
 import com.haniel.Shooter.util.Coord;
@@ -38,145 +38,100 @@ addStarsCheckpoint(100);
 break;
 }
 case 300: {
-add(new BasicBlueEnemy(800, 480, Pathing.topRightMiddleLeaveTop, this));
-add(new BasicBlueEnemy(-60, 480, Pathing.topLeftMiddleLeaveTop, this));
+add(new BlueEnemy(800, 480, Pathing.topRightMiddleLeaveTop, this));
+add(new BlueEnemy(-60, 480, Pathing.topLeftMiddleLeaveTop, this));
 break;
 }	
 case 440: {
-add(new BasicBlueEnemy(800, 480, Pathing.topRightMiddleLeaveTop, this));
-add(new BasicBlueEnemy(-60, 480, Pathing.topLeftMiddleLeaveTop, this));	
+add(new BlueEnemy(800, 480, Pathing.topRightMiddleLeaveTop, this));
+add(new BlueEnemy(-60, 480, Pathing.topLeftMiddleLeaveTop, this));	
 break;
 }
 case 580: {
-add(new BasicBlueEnemy(800, 480, Pathing.topRightMiddleLeaveTop, this));
-add(new BasicBlueEnemy(-60, 480, Pathing.topLeftMiddleLeaveTop, this));
+add(new BlueEnemy(800, 480, Pathing.topRightMiddleLeaveTop, this));
+add(new BlueEnemy(-60, 480, Pathing.topLeftMiddleLeaveTop, this));
 break;
 }
 case 730: {
-add(new BasicBlueEnemy(800, 480, Pathing.topRightMiddleLeaveTop, this));
-add(new BasicBlueEnemy(-60, 480, Pathing.topLeftMiddleLeaveTop, this));
+add(new BlueEnemy(800, 480, Pathing.topRightMiddleLeaveTop, this));
+add(new BlueEnemy(-60, 480, Pathing.topLeftMiddleLeaveTop, this));
 break;
 }
 case 870: {
-add(new BasicBlueEnemy(800, 480, Pathing.topRightMiddleLeaveTop, this));
-add(new BasicBlueEnemy(-60, 480, Pathing.topLeftMiddleLeaveTop, this));
+add(new BlueEnemy(800, 480, Pathing.topRightMiddleLeaveTop, this));
+add(new BlueEnemy(-60, 480, Pathing.topLeftMiddleLeaveTop, this));
 break;
 }
 case 1010: {
-add(new BasicBlueEnemy(800, 480, Pathing.topRightMiddleLeaveTop, this));
-add(new BasicBlueEnemy(-60, 480, Pathing.topLeftMiddleLeaveTop, this));
+add(new BlueEnemy(800, 480, Pathing.topRightMiddleLeaveTop, this));
+add(new BlueEnemy(-60, 480, Pathing.topLeftMiddleLeaveTop, this));
 break;
 }
 case 1250: {
-	add(new BasicBlueEnemy(800, 480, Pathing.topRightMiddleLeaveTop, this));
-	add(new BasicBlueEnemy(-60, 480, Pathing.topLeftMiddleLeaveTop, this));
+	add(new BlueEnemy(800, 480, Pathing.topRightMiddleLeaveTop, this));
+	add(new BlueEnemy(-60, 480, Pathing.topLeftMiddleLeaveTop, this));
 	break;
 }
 case 1470: {
-	add(new BasicBlueEnemy(800, 480, Pathing.topRightMiddleLeaveTop, this));
-	add(new BasicBlueEnemy(-60, 480, Pathing.topLeftMiddleLeaveTop, this));
+	add(new BlueEnemy(800, 480, Pathing.topRightMiddleLeaveTop, this));
+	add(new BlueEnemy(-60, 480, Pathing.topLeftMiddleLeaveTop, this));
 break;
 }
 case 1610: {
-	add(new BasicBlueEnemy(800, 480, Pathing.topRightMiddleLeaveTop, this));
-	add(new BasicBlueEnemy(-60, 480, Pathing.topLeftMiddleLeaveTop, this));
+	add(new BlueEnemy(800, 480, Pathing.topRightMiddleLeaveTop, this));
+	add(new BlueEnemy(-60, 480, Pathing.topLeftMiddleLeaveTop, this));
 break;
 }
 case 1750: {
-	add(new BasicBlueEnemy(800, 480, Pathing.topRightMiddleLeaveTop, this));
-	add(new BasicBlueEnemy(-60, 480, Pathing.topLeftMiddleLeaveTop, this));
+	add(new BlueEnemy(800, 480, Pathing.topRightMiddleLeaveTop, this));
+	add(new BlueEnemy(-60, 480, Pathing.topLeftMiddleLeaveTop, this));
 break;
 }
 case 1890: {
-	add(new BasicBlueEnemy(800, 480, Pathing.topRightMiddleLeaveTop, this));
-	add(new BasicBlueEnemy(-60, 480, Pathing.topLeftMiddleLeaveTop, this));
+	add(new BlueEnemy(800, 480, Pathing.topRightMiddleLeaveTop, this));
+	add(new BlueEnemy(-60, 480, Pathing.topLeftMiddleLeaveTop, this));
 break;
 }
 case 2030: {
-	add(new BasicBlueEnemy(800, 480, Pathing.topRightMiddleLeaveTop, this));
-	add(new BasicBlueEnemy(-60, 480, Pathing.topLeftMiddleLeaveTop, this));
+	add(new BlueEnemy(800, 480, Pathing.topRightMiddleLeaveTop, this));
+	add(new BlueEnemy(-60, 480, Pathing.topLeftMiddleLeaveTop, this));
 break;
 }
 case 2170: {
-	add(new BasicBlueEnemy(800, 480, Pathing.topRightMiddleLeaveTop, this));
-	add(new BasicBlueEnemy(-60, 480, Pathing.topLeftMiddleLeaveTop, this));
-break;
-}
-case 2380: {
-if (difficult) add(new BasicBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
-if (difficult) add(new BasicBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
+	add(new BlueEnemy(800, 480, Pathing.topRightMiddleLeaveTop, this));
+	add(new BlueEnemy(-60, 480, Pathing.topLeftMiddleLeaveTop, this));
 break;
 }
 case 2450: {
-add(new BasicBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
-add(new BasicBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
-break;
-}
-case 2520: {
-if (difficult) add(new BasicBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
-if (difficult) add(new BasicBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
+add(new BlueEnemy(800, 420, Coord.straightleftaroundtop, this));
+add(new BlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
 break;
 }
 case 2590: {
-add(new BasicBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
-add(new BasicBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
-break;
-}
-case 2660: {
-if (difficult) add(new BasicBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
-if (difficult) add(new BasicBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
+add(new BlueEnemy(800, 420, Coord.straightleftaroundtop, this));
+add(new BlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
 break;
 }
 case 2740: {
-add(new BasicBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
-add(new BasicBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
-break;
-}
-case 2810: {
-if (difficult) add(new BasicBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
-if (difficult) add(new BasicBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
+add(new BlueEnemy(800, 420, Coord.straightleftaroundtop, this));
+add(new BlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
 break;
 }
 case 2880: {
-add(new BasicBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
-add(new BasicBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
-break;
-}
-case 2950: {
-if (difficult) add(new BasicBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
-if (difficult) add(new BasicBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
+add(new BlueEnemy(800, 420, Coord.straightleftaroundtop, this));
+add(new BlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
 break;
 }
 case 3020: {
-add(new BasicBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
-add(new BasicBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
-break;
-}
-case 3090: {
-if (difficult) add(new BasicBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
-if (difficult) add(new BasicBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
+add(new BlueEnemy(800, 420, Coord.straightleftaroundtop, this));
+add(new BlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
 break;
 }
 case 3160: {
-add(new BasicBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
-add(new BasicBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
+add(new BlueEnemy(800, 420, Coord.straightleftaroundtop, this));
+add(new BlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
 break;
 }
-case 3230: {
-if (difficult) add(new BasicBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
-if (difficult) add(new BasicBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
-break;
-}	
-case 3300: {
-if (difficult) add(new BasicBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
-if (difficult) add(new BasicBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
-break;
-}
-case 3370: {
-if (difficult) add(new BasicBlueEnemy(800, 420, Coord.straightleftaroundtop, this));
-if (difficult) add(new BasicBlueEnemy(-60, 360, Coord.straightrightaroundtop, this));
-break;
-}	
 case 4300: {
 if (gameScreen.getCheckPoint() + 10 == levelTime) {
 add(new BackgroundImage("levels/space_background1.png", 0, 0, 3));
@@ -188,35 +143,30 @@ addStarsCheckpoint(100);
 add(new CheckpointReached(300, 350, 2));
 gameScreen.setCheckPoint(levelTime - 10);
 }
-add(new BlueSaucer(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
-add(new BlueSaucer(-150, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
-if (difficult) add(new BlueSaucer(300, -200, Coord.leavescreentopmiddle, this));
+add(new BlueSaucer(800, 175, Pathing.circlesTopRightThenLeaves, this));
+add(new BlueSaucer(-150, 175, Pathing.circlesTopLeftThenLeaves, this));
 break;
 }
 case 7400: {
-add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
-break;
-}
-case 7600: {
-if (difficult) add(new QuickBlue(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
+add(new QuickBlue(-60, 175, Pathing.goingRightUpAndDown, this));
 break;
 }
 case 7800: {
-add(new QuickBlue(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
+add(new QuickBlue(800, 175, Pathing.goingLeftUpAndDown, this));
 break;
 }
 case 8000: {
-add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
+add(new QuickBlue(-60, 175, Pathing.goingRightUpAndDown, this));
 break;
 }
 case 8200: {
-add(new QuickBlue(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
-add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
+add(new QuickBlue(800, 175, Pathing.goingLeftUpAndDown, this));
+add(new QuickBlue(-60, 175, Pathing.goingRightUpAndDown, this));
 break;
 }
 case 8600: {
-add(new QuickBlue(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
-add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
+add(new QuickBlue(800, 175, Pathing.goingLeftUpAndDown, this));
+add(new QuickBlue(-60, 175, Pathing.goingRightUpAndDown, this));
 break;
 }
 case 9200: {
@@ -234,79 +184,44 @@ gameScreen.setCheckPoint(levelTime - 10);
 break;
 }	
 case 9600: {
-add(new QuickBlue(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
-add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
+add(new QuickBlue(800, 175, Pathing.goingLeftUpAndDown, this));
+add(new QuickBlue(-60, 175, Pathing.goingRightUpAndDown, this));
 addStars(20);
 break;
 }
 case 9640: {
-add(new QuickBlue(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
-add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
+add(new QuickBlue(800, 175, Pathing.goingLeftUpAndDown, this));
+add(new QuickBlue(-60, 175, Pathing.goingRightUpAndDown, this));
 addStars(20);
 break;
 }
 case 9680: {
-add(new QuickBlue(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
-add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
-break;
-}
-case 9720: {
-if (difficult) add(new QuickBlue(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
-if (difficult)add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
-break;
-}
-case 9760: {
-if (difficult) add(new QuickBlue(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
-if (difficult) add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
-break;
-}
-case 9800: {
-if (difficult) add(new QuickBlue(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
-if (difficult) add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
+add(new QuickBlue(800, 175, Pathing.goingLeftUpAndDown, this));
+add(new QuickBlue(-60, 175, Pathing.goingRightUpAndDown, this));
 break;
 }
 case 10100: {
-add(new QuickBlue(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
-add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
+add(new QuickBlue(800, 175, Pathing.goingLeftUpAndDownHigher, this));
+add(new QuickBlue(-60, 175, Pathing.goingRightUpAndDownHigher, this));
 addStars(20);
 break;
 }
 case 10140: {
-add(new QuickBlue(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
-add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
+add(new QuickBlue(800, 175, Pathing.goingLeftUpAndDownHigher, this));
+add(new QuickBlue(-60, 175, Pathing.goingRightUpAndDownHigher, this));
 addStars(20);
 break;
 }
 case 10180: {
-add(new QuickBlue(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
-add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
-break;
-}
-case 10420: {
-if (difficult) add(new QuickBlue(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
-if (difficult) add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
-break;
-}
-case 10440: {
-if (difficult)add(new QuickBlue(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
-if (difficult) add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
-break;
-}
-case 10480: {
-if (difficult) add(new QuickBlue(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
-if (difficult) add(new QuickBlue(-30, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
+add(new QuickBlue(800, 175, Pathing.goingLeftUpAndDownHigher, this));
+add(new QuickBlue(-60, 175, Pathing.goingRightUpAndDownHigher, this));
 break;
 }
 case 10450: {
-add(new ImprovedBlueSaucer(800, 175, Coord.circlenearrighttopslowlyforawhilethenleave, this));
-add(new ImprovedBlueSaucer(-150, 175, Coord.circlenearlefttopslowlyforawhilethenleave, this));
+add(new ImprovedBlueSaucer(800, 175, Pathing.circlesTopRightThenLeaves , this));
+add(new ImprovedBlueSaucer(-150, 175, Pathing.circlesTopLeftThenLeaves, this));
 break;
 }
-case 11000: {
-if (difficult) add(new ImprovedBlueSaucer(300, -200, Coord.leavescreentopmiddle, this));
-break;
-}
-
 case 14000: {
 if (gameScreen.getCheckPoint() + 10 == levelTime) {
 add(new BackgroundImage("levels/space_background1.png", 0, 0, 3));
@@ -319,7 +234,7 @@ add(new CheckpointReached(300, 350, 2));
 gameScreen.setCheckPoint(levelTime - 10);
 backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/All_This.mp3"));
 backgroundMusic.play();
-add(new FirstBoss(125,-300, Coord.bosscircles, this, difficult));
+add(new FirstBoss(125,-300, Coord.bosscircles, this));
 break;
 
 }

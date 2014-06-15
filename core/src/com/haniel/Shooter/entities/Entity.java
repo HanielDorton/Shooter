@@ -24,18 +24,20 @@ public abstract class Entity{
 	protected float health;
 	protected Weapon weapon;
 	protected double lastShot, lastShot2, lastShot3;
+	protected boolean rotates = false;
+	protected float rotation = 0;
 	
 	//all entity textures so they are only loaded once:
 	//every time you add a new one add it to dispose() at the bottom.
 	protected static final Sound explosion02 = Gdx.audio.newSound(Gdx.files.internal("sounds/explosion-02.wav"));
 	//level one
-	protected static final Texture enemy1Texture = new Texture(Gdx.files.internal("entities/enemy_1.png"));
+	protected static final Texture enemy1Texture = new Texture(Gdx.files.internal("entities/Level1/alien1.png"));
 	protected static final Sound matches2 = Gdx.audio.newSound(Gdx.files.internal("sounds/paper-rip-4.wav"));
-	protected static final Texture blueSaucerTexture = new Texture(Gdx.files.internal("entities/blue_saucer_enemy2.png"));
-	protected static final Texture quickBlueTexture = new Texture(Gdx.files.internal("entities/small_saucer.png"));
+	protected static final Texture blueSaucerTexture = new Texture(Gdx.files.internal("entities/Level1/alien2.png"));
+	protected static final Texture quickBlueTexture = new Texture(Gdx.files.internal("entities/Level1/alien3.png"));
 	protected static final Texture firstBossTexture = new Texture(Gdx.files.internal("entities/first_boss.png"));
 	//level two
-	protected static final Texture playerCloneTexture = new Texture(Gdx.files.internal("entities/player.png"));
+	protected static final Texture playerCloneTexture = new Texture(Gdx.files.internal("entities/player/ship0.png"));
 	protected static final Texture starTexture = new Texture(Gdx.files.internal("textures/star.png"));
 	protected static final Sound explosion01 = Gdx.audio.newSound(Gdx.files.internal("sounds/explosion-01.wav"));
 	protected static final Sound irritatingAmbiantBuzz = Gdx.audio.newSound(Gdx.files.internal("sounds/irritating-ambient-buzz.wav"));
@@ -170,5 +172,17 @@ public abstract class Entity{
 
 	public Sprite getSprite() {
 		return sprite;
+	}
+	public boolean rotates() {
+		return rotates;
+	}
+	public float getRotation() {
+		return rotation;
+	}
+	public float getOriginX() {
+		return (float)xOffset + (width / 2);
+	}
+	public float getOriginY() {
+		return (float)yOffset + (height / 2);
 	}
 }

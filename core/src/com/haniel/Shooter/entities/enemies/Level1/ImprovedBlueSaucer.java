@@ -1,20 +1,19 @@
-package com.haniel.Shooter.entities.enemies.FirstLevel;
+package com.haniel.Shooter.entities.enemies.Level1;
 
-import java.util.List;
-
+import com.badlogic.gdx.math.CatmullRomSpline;
+import com.badlogic.gdx.math.Vector2;
 import com.haniel.Shooter.level.Level;
-import com.haniel.Shooter.util.Coord;
 
 public class ImprovedBlueSaucer extends BlueSaucer{
 	
-	protected final static double secondFiringRate = 1;
+	protected final static double secondFiringRate = 1.7;
 	private double lastShotSecondGun;
 	
-	public ImprovedBlueSaucer(double x, double y, List<Coord> pattern, Level level) {
-		super(x, y, pattern, level);
+	public ImprovedBlueSaucer(double x, double y, CatmullRomSpline<Vector2> path, Level level) {
+		super(x, y, path, level);
 		this.firingRate = .5;
 		this.lastShotSecondGun = level.getTime() + 5;
-		this.health = 50;
+		this.health = 150;
 	}
 	
 	protected void shoot() {

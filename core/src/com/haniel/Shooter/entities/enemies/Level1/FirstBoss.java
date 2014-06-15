@@ -1,4 +1,4 @@
-package com.haniel.Shooter.entities.enemies.FirstLevel;
+package com.haniel.Shooter.entities.enemies.Level1;
 
 import java.util.List;
 
@@ -18,16 +18,14 @@ public class FirstBoss extends Enemy{
 	private double secondLastShot = 0;
 	private ParticleEffect engine1Effect = new ParticleEffect();
 	private ParticleEffect engine2Effect = new ParticleEffect();
-	private int difficult = 0;
 
-	public FirstBoss(double x, double y, List<Coord> pattern, Level level, boolean difficulty) {
+	public FirstBoss(double x, double y, List<Coord> pattern, Level level) {
 		super(x, y, pattern, level);
-		if (difficulty) this.difficult = 50;
 		this.speed = 40;
 		this.width = 600;
 		this.height = 200;
 		this.sprite = new Sprite(firstBossTexture);		
-		this.health = 300 + difficult;
+		this.health = 500;
 		this.rectangle = new Rectangle((float)x, (float)y , width, height);
 		this.weapon = new BlackSphereGun(level, false);
 		this.lastShot = level.getTime() + 8;
@@ -44,7 +42,7 @@ public class FirstBoss extends Enemy{
 	}
 	
 	protected void shoot() {
-		if (health < (50 + difficult)) firingRate = 1.5f;
+		if (health < (100)) firingRate = 1.5f;
         if ((level.getTime() - lastShot) > firingRate) {
 	    	lastShot = level.getTime();
 	    	for (int i = 1; i < 9; i ++) {
@@ -53,7 +51,7 @@ public class FirstBoss extends Enemy{
 	    	
 	    	}
         }
-	    if (health < (250 + difficult)) {
+	    if (health < (400)) {
 	    	if ((level.getTime() - secondLastShot) > firingRate) {
 	        	double angle = level.getAngletoPlayersMiddle(x + 51, y);
 		       	weapon.shoot(x + 51, y , angle);

@@ -3,7 +3,7 @@ package com.haniel.Shooter.level;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.ParticleEffectPool;
 import com.haniel.Shooter.GameScreen;
-import com.haniel.Shooter.entities.enemies.FourthLevel.PlayerClonePathing;
+import com.haniel.Shooter.entities.enemies.Level4.PlayerClonePathing;
 import com.haniel.Shooter.graphics.BackgroundImage;
 import com.haniel.Shooter.util.Pathing;
 

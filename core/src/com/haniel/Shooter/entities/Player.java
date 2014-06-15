@@ -46,10 +46,10 @@ public class Player extends Entity{
 		this.level = level;
 		this.x = 400;
 		this.y = 20;
-		this.width = 40;
-		this.height = 35;
-		this.xOffset = 5;
-		this.yOffset = 5;
+		this.width = 30;
+		this.height = 25;
+		this.xOffset = 10;
+		this.yOffset = 10;
 		this.currentSprite = 5;
 		this.sprite = playerSprites.get(currentSprite);
 		this.rectangle = new Rectangle((float) x + xOffset, (float) y + yOffset, width, height);
@@ -64,10 +64,10 @@ public class Player extends Entity{
 		this.movingRight = false;
 		this.weapon = new PlayerGun(level, true);
 		this.engine1Effect.load(Gdx.files.internal("particles/PlayerEngine.p"), Gdx.files.internal("particles/"));
-		this.engine1Effect.setPosition((int)x + 22,(int) y + 5);
+		this.engine1Effect.setPosition((int)x + 21,(int) y + 5);
 		level.particleEffects.add(engine1Effect);
 		this.engine2Effect.load(Gdx.files.internal("particles/PlayerEngine.p"), Gdx.files.internal("particles/"));
-		this.engine2Effect.setPosition((int)x + 27,(int) y + 5);
+		this.engine2Effect.setPosition((int)x + 26,(int) y + 5);
 		level.particleEffects.add(engine2Effect);
 	}
 	public void update() {
@@ -109,8 +109,10 @@ public class Player extends Entity{
 	    if (shooting ||  Gdx.input.isKeyPressed(Keys.ENTER)) {
 	    	if ((level.getTime() - lastShot) > weapon.getFiringRate()) {
 	    		double angle = getAngleTo(x - 1, y, x - 1, y+30);
-	    		weapon.shoot(x - 1, y + 25, angle);
-	    		weapon.shoot(x + width + xOffset, y + 25, angle);
+	    		weapon.shoot(x + 12, y + 25, angle);
+	    		weapon.shoot(x + 36, y + 25, angle);
+	    		weapon.shoot(x, y + 25, angle);
+	    		weapon.shoot(x + width + xOffset * 2, y + 25, angle);
 	    		lastShot = level.getTime();
 	    		weapon.playSound();
 	    	}
@@ -123,8 +125,8 @@ public class Player extends Entity{
 	    if (y > gameScreen.getHeight() - (height + yOffset * 2)) y = gameScreen.getHeight() - (height + yOffset *2);
 	    rectangle.setPosition((float)x + xOffset, (float)y + yOffset);
 	    // reset engines	    
-	    engine1Effect.setPosition((int)x + 22,(int) y + 5);
-	    engine2Effect.setPosition((int)x + 27,(int) y + 5);
+	    engine1Effect.setPosition((int)x + 21,(int) y + 5);
+	    engine2Effect.setPosition((int)x + 26,(int) y + 5);
 	    // tilt player based on direction moved
 	    if (tilt > 0) tilt -= Gdx.graphics.getDeltaTime();
 	    else if (movingLeft){
@@ -208,10 +210,10 @@ public class Player extends Entity{
 	}
 	public void resetEngines() {
 		this.engine1Effect.load(Gdx.files.internal("particles/PlayerEngine.p"), Gdx.files.internal("particles/"));
-		this.engine1Effect.setPosition((int)x + 22,(int) y + 5);
+		this.engine1Effect.setPosition((int)x + 21,(int) y + 5);
 		level.particleEffects.add(engine1Effect);
 		this.engine2Effect.load(Gdx.files.internal("particles/PlayerEngine.p"), Gdx.files.internal("particles/"));
-		this.engine2Effect.setPosition((int)x + 27,(int) y + 5);
+		this.engine2Effect.setPosition((int)x + 26,(int) y + 5);
 		level.particleEffects.add(engine2Effect);		
 	}
 }
