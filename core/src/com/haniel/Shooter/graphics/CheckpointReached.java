@@ -1,6 +1,7 @@
 package com.haniel.Shooter.graphics;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 
 public class CheckpointReached extends MyGraphics{	
 	
@@ -8,6 +9,7 @@ public class CheckpointReached extends MyGraphics{
 		super(x, y, speed);
 		this.speed = 120;
 		this.texture = checkpointReachedTexture;
+		this.sprite = new Sprite(texture);
 	}
 	
 	public void update() {

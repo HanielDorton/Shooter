@@ -11,6 +11,13 @@ public class Pathing {
 	
 	public static CatmullRomSpline<Vector2> topLeftMiddleLeaveTop = new CatmullRomSpline<Vector2>(new Vector2[] 
 			{new Vector2(-60, 480), new Vector2(280, 250), new Vector2(340, 1000)}, true);
+	
+	public static CatmullRomSpline<Vector2> topArcLeft = new CatmullRomSpline<Vector2>(new Vector2[] 
+			{new Vector2(800, 480), new Vector2(240, 200), new Vector2(-700, 880)}, true);
+	
+	public static CatmullRomSpline<Vector2> TopArcRight = new CatmullRomSpline<Vector2>(new Vector2[] 
+			{new Vector2(120, 480), new Vector2(420, 300), new Vector2(1000, 880)}, true);
+	
 	//Level One slow UFO enemies
 	
 	

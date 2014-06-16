@@ -34,7 +34,19 @@ public class CreditsScreen implements Screen{
         credits.add("Grief: Surviving the Impossible");
         credits.add("A Haniel Dorton Game");
         credits.add("Created in Java with LIBGDX");
-        credits.add("All programming and art by Daniel Horton");
+        credits.add("All programming by Daniel Horton");
+        // Art
+        credits.add("Art:");
+        credits.add("Player Ship by rawdanitsu, http://opengameart.org/art-search?keys=rawdanitsu");
+        credits.add("Level 1 background by StumpyStrust, http://opengameart.org/users/stumpystrust");
+        credits.add("Level 1 Enemy Ships by MillionthVector, http://millionthvector.blogspot.de/");
+        credits.add("Level 2:");
+        credits.add("Level 3:");
+        credits.add("Level 4:");
+        credits.add("Level 5:");
+        credits.add("");
+        credits.add("");
+        // MUSIC
         credits.add("Music:");
         credits.add("Main Menu: 'Sad Exploring' by Eric Taylor (erictaylormusic.com)");
         credits.add("Level 1: 'Black Vortex' by Kevin MacLeod (incompetech.com)");
@@ -44,6 +56,7 @@ public class CreditsScreen implements Screen{
         credits.add("Level 5: 'Crusade' by Kevin MacLeod (incompetech.com)");
         credits.add("Boss Battle: 'All This' by Kevin MacLeod (incompetech.com)");
         credits.add("Credits: 'Grim League' by Kevin MacLeod (incompetech.com))");
+        // SOUND EFFECTS
         credits.add("Sound Effects:");
         credits.add("Player Bullets: 'Gun_Shot-01' from http://www.soundjay.com");
         credits.add("Small Explosions: 'Paper_Rip-4' from http://www.soundjay.com");

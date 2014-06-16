@@ -7,6 +7,7 @@ import com.badlogic.gdx.math.CatmullRomSpline;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.haniel.Shooter.entities.enemies.Enemy;
+import com.haniel.Shooter.graphics.ShipPiece;
 import com.haniel.Shooter.level.Level;
 import com.haniel.Shooter.util.Coord;
 import com.haniel.Shooter.weapons.BlueLineGun;
@@ -53,5 +54,12 @@ public class BlueEnemy extends Enemy{
 		    	if (level.weaponSounds.size() == 0) level.weaponSounds.add(weapon);
 	    	}
 	    }
+	}
+	public void remove() {
+		super.remove();
+		//level.add(new ShipPiece(enemy1Part1, x, y + height, -speed, speed));
+		//level.add(new ShipPiece(enemy1Part2, x + width / 2 , y + height, speed, speed));
+		//level.add(new ShipPiece(enemy1Part3, x, y, -speed, -speed));
+		//level.add(new ShipPiece(enemy1Part4, x + width / 2, y, speed, -speed));
 	}
 	}

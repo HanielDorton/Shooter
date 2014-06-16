@@ -61,8 +61,10 @@ public class GameScreen implements Screen {
     }
 
     public void render(float delta) {
+    	if (!paused) {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+    	}
         camera.update();
         game.batch.setProjectionMatrix(camera.combined);
         game.batch.begin();
@@ -88,8 +90,18 @@ public class GameScreen implements Screen {
         	dispose();
  	    } else {
 	    	//draw and update level
-	        for (MyGraphics graphic : level.graphics) {
-	        	game.batch.draw(graphic.getTexture(), graphic.getX(), graphic.getY());
+	        for (MyGraphics graphic : level.graphics) {	        	
+	        	if (graphic.rotates()) {
+
+		        	Sprite temp = graphic.getSprite();
+		        	game.batch.draw(temp, (float) graphic.getX(), (float) graphic.getY(), 
+		        			graphic.getOriginX(), graphic.getOriginY(), 
+		        			temp.getRegionWidth(), temp.getRegionHeight(),
+		        			 1f, 1f, temp.getRotation());
+	        	}
+	        	else {
+	        		game.batch.draw(graphic.getSprite(), graphic.getX(), graphic.getY());
+	        	}
 	        }
 	        Iterator<ParticleEffect> iter = level.particleEffects.iterator();
 	        while (iter.hasNext()){

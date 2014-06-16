@@ -14,7 +14,7 @@ import com.haniel.Shooter.weapons.BlackSphereGun;
 public class FirstBoss extends Enemy{
 	
 	private float firingRate = 2;
-	private int firstFiringAngle = 3;
+	//private int firstFiringAngle = 10;
 	private double secondLastShot = 0;
 	private ParticleEffect engine1Effect = new ParticleEffect();
 	private ParticleEffect engine2Effect = new ParticleEffect();
@@ -22,18 +22,20 @@ public class FirstBoss extends Enemy{
 	public FirstBoss(double x, double y, List<Coord> pattern, Level level) {
 		super(x, y, pattern, level);
 		this.speed = 40;
-		this.width = 600;
-		this.height = 200;
+		this.width = 560;
+		this.xOffset = 20;
+		this.height = 160;
+		this.yOffset = 20;
 		this.sprite = new Sprite(firstBossTexture);		
 		this.health = 500;
-		this.rectangle = new Rectangle((float)x, (float)y , width, height);
+		this.rectangle = new Rectangle((float)x + xOffset, (float)y + yOffset , width, height);
 		this.weapon = new BlackSphereGun(level, false);
 		this.lastShot = level.getTime() + 8;
 		this.engine1Effect.load(Gdx.files.internal("particles/firstlevel/BossEngines.p"), Gdx.files.internal("particles/"));
-		this.engine1Effect.setPosition((int)x + 50,(int) y + 3);
+		this.engine1Effect.setPosition((int)x + 85,(int) y + 5);
 		level.particleEffects.add(engine1Effect);
 		this.engine2Effect.load(Gdx.files.internal("particles/firstlevel/BossEngines.p"), Gdx.files.internal("particles/"));
-		this.engine2Effect.setPosition((int)x + 545,(int) y + 3);
+		this.engine2Effect.setPosition((int)x + 515,(int) y + 5);
 		level.particleEffects.add(engine2Effect);
 		engine1Effect.start();
 		engine2Effect.start();
@@ -44,24 +46,23 @@ public class FirstBoss extends Enemy{
 	protected void shoot() {
 		if (health < (100)) firingRate = 1.5f;
         if ((level.getTime() - lastShot) > firingRate) {
-	    	lastShot = level.getTime();
-	    	for (int i = 1; i < 9; i ++) {
-	    		weapon.shoot(x + (width / 2), y, firstFiringAngle - (i * -.375));
-	    	if (level.weaponSounds.size() == 0) level.weaponSounds.add(weapon);
-	    	
-	    	}
+		    	lastShot = level.getTime();
+		    	double angle = level.getAngletoPlayersMiddle(x + 255, y + 20);
+		       	weapon.shoot(x + 255, y + 20 , angle);
+		       	weapon.shoot(x + 255, y + 20, angle + .3);
+		       	weapon.shoot(x + 255, y + 20, angle - .3);
+		       	angle = level.getAngletoPlayersMiddle(x + 345, y + 20);
+		       	weapon.shoot(x + 345, y + 20 , angle);
+		       	weapon.shoot(x + 345, y + 20, angle + .3);
+		       	weapon.shoot(x + 345, y + 20, angle - .3);
+		       	secondLastShot =  level.getTime();;
+		
+        			    
+		if (level.weaponSounds.size() == 0) level.weaponSounds.add(weapon);
         }
 	    if (health < (400)) {
 	    	if ((level.getTime() - secondLastShot) > firingRate) {
-	        	double angle = level.getAngletoPlayersMiddle(x + 51, y);
-		       	weapon.shoot(x + 51, y , angle);
-		       	weapon.shoot(x + 51, y, angle + .2);
-		       	weapon.shoot(x + 51, y, angle - .2);
-		       	angle = level.getAngletoPlayersMiddle(x + 549, y);
-		       	weapon.shoot(x + 549, y , angle);
-		       	weapon.shoot(x + 549, y, angle + .2);
-		       	weapon.shoot(x + 549, y, angle - .2);
-		       	secondLastShot =  level.getTime();;
+
 		    }
 	    		
 	    }
@@ -70,8 +71,8 @@ public class FirstBoss extends Enemy{
 	
 	public void update() {
 		super.update();
-		this.engine1Effect.setPosition((int)x + 50,(int) y + 7);
-		this.engine2Effect.setPosition((int)x + 545,(int) y + 7);
+		this.engine1Effect.setPosition((int)x + 85,(int) y + 5);
+		this.engine2Effect.setPosition((int)x + 515,(int) y + 5);
 	}
 	
 	
