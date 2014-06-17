@@ -9,6 +9,7 @@ import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.haniel.Shooter.graphics.BackgroundImage;
 import com.haniel.Shooter.graphics.MyGraphics;
 import com.haniel.Shooter.graphics.Star;
 
@@ -28,6 +29,7 @@ public class CreditsScreen implements Screen{
         camera.setToOrtho(false, 800, 480);
         graphics = new LinkedList<MyGraphics>();
         currentCredits = new LinkedList<credit>();
+        add(new BackgroundImage("levels/space-2.png", 0, 0, 1));
         addStarsCheckpoint(480);
         creditsCount = 0;
         credits = new LinkedList<String>();
@@ -37,14 +39,14 @@ public class CreditsScreen implements Screen{
         credits.add("All programming by Daniel Horton");
         // Art
         credits.add("Art:");
-        credits.add("Player Ship by rawdanitsu, http://opengameart.org/art-search?keys=rawdanitsu");
+        credits.add("Player Ship & Menu Background by rawdanitsu, http://opengameart.org/art-search?keys=rawdanitsu");
         credits.add("Level 1 background by StumpyStrust, http://opengameart.org/users/stumpystrust");
         credits.add("Level 1 Enemy Ships by MillionthVector, http://millionthvector.blogspot.de/");
         credits.add("Level 2:");
         credits.add("Level 3:");
         credits.add("Level 4:");
         credits.add("Level 5:");
-        credits.add("");
+        credits.add("Credits Background by fraang http://opengameart.org/users/fraang");
         credits.add("");
         // MUSIC
         credits.add("Music:");

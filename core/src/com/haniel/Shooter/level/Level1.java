@@ -174,17 +174,18 @@ import com.haniel.Shooter.util.Pathing;
 				break;
 				}
 				case 8000: {
+				add(new QuickBlue(800, 175, Pathing.goingLeftUpAndDown, this));
 				add(new QuickBlue(-60, 175, Pathing.goingRightUpAndDown, this));
 				break;
 				}
 				case 8200: {
-				add(new QuickBlue(800, 175, Pathing.goingLeftUpAndDown, this));
-				add(new QuickBlue(-60, 175, Pathing.goingRightUpAndDown, this));
+				add(new QuickBlue(800, 175, Pathing.goingLeftUpAndDownHigher, this));
+				add(new QuickBlue(-60, 175, Pathing.goingRightUpAndDownHigher, this));
 				break;
 				}
 				case 8600: {
-				add(new QuickBlue(800, 175, Pathing.goingLeftUpAndDown, this));
-				add(new QuickBlue(-60, 175, Pathing.goingRightUpAndDown, this));
+				add(new QuickBlue(800, 175, Pathing.goingLeftUpAndDownHigher, this));
+				add(new QuickBlue(-60, 175, Pathing.goingRightUpAndDownHigher, this));
 				break;
 				}
 				case 9200: {
@@ -250,7 +251,7 @@ import com.haniel.Shooter.util.Pathing;
 					gameScreen.setCheckPoint(levelTime - 10);
 					backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/All_This.mp3"));
 					backgroundMusic.play();
-					add(new FirstBoss(125,-300, Coord.bosscircles, this));
+					add(new FirstBoss(351,-400, Pathing.bossCircles, this));
 					break;
 					
 				}

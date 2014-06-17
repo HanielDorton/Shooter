@@ -229,15 +229,15 @@ public class GameScreen implements Screen {
     private Level getLevel() {
     	Level level;
 		switch (gameState.numLevel) {
-		case 1: {
+		case 2: {
 			level = new Level2(this); 
 			break;
 		}
-		case 2: {
+		case 3: {
 			level = new Level3(this);
 			break;
 		}
-		case 3: {
+		case 4: {
 			level = new Level4(this);
 			break;
 		}

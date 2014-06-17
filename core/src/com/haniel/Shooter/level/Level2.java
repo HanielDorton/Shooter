@@ -39,9 +39,10 @@ public class Level2 extends Level{
 		
 			case 10: {
 				backgroundMusic.play();
+				add(new BackgroundImage("levels/space-2.png", 0, 0, .1f));
 				addStarsCheckpoint(100);
-				add(new BackgroundImage("levels/space_background2.png", 0, 0, 3));
-		        add(new BackgroundImage("levels/space_background2.png", 0, 960, 3));
+				add(new BackgroundImage("levels/hjm-big_gas_planet_0.png", 80, 350, 1f));
+
 				break;
 			}
 			case 200: {

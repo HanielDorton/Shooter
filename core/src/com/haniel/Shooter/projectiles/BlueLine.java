@@ -7,9 +7,9 @@ public class BlueLine extends Projectile{
 
 	public BlueLine(double x, double y, double dir, boolean fromPlayer) {
 		super(x, y, dir, fromPlayer);
-		this.texture = blueline;
-		this.width = 2;
-		this.height = 6;
+		this.texture = blankTexture;
+		this.width = 8;
+		this.height = 8;
 		this.speed = 300;
 		this.rectangle = new Rectangle((float)x, (float)y, width, height);
 		this.damage = 1;

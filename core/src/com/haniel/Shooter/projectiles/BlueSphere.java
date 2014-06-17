@@ -6,7 +6,7 @@ public class BlueSphere extends Projectile{
 
 	public BlueSphere(double x, double y, double dir, boolean fromPlayer) {
 		super(x, y, dir, fromPlayer);
-		this.texture = blueSphereGunTexture;
+		this.texture = blankTexture;
 		this.width = 8;
 		this.height = 8;
 		this.speed = 130;

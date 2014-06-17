@@ -2,16 +2,16 @@ BlueExplosion
 - Delay -
 active: false
 - Duration - 
-lowMin: 200.0
-lowMax: 200.0
+lowMin: 300.0
+lowMax: 300.0
 - Count - 
 min: 0
 max: 1200
 - Emission - 
 lowMin: 10.0
 lowMax: 10.0
-highMin: 500.0
-highMax: 500.0
+highMin: 200.0
+highMax: 200.0
 relative: false
 scalingCount: 1
 scaling0: 1.0
@@ -33,8 +33,8 @@ timeline1: 0.91780823
 active: false
 - X Offset - 
 active: true
-lowMin: 0.0
-lowMax: 0.0
+lowMin: -10.0
+lowMax: 10.0
 highMin: 0.0
 highMax: 0.0
 relative: false
@@ -43,7 +43,16 @@ scaling0: 1.0
 timelineCount: 1
 timeline0: 0.0
 - Y Offset - 
-active: false
+active: true
+lowMin: -10.0
+lowMax: 10.0
+highMin: 0.0
+highMax: 0.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
 - Spawn Shape - 
 shape: point
 - Spawn Width - 
@@ -112,7 +121,7 @@ active: false
 colorsCount: 6
 colors0: 0.050980393
 colors1: 0.0
-colors2: 0.5137255
+colors2: 0.69803923
 colors3: 0.0
 colors4: 0.0
 colors5: 0.0
@@ -143,8 +152,8 @@ Untitled
 - Delay -
 active: false
 - Duration - 
-lowMin: 200.0
-lowMax: 200.0
+lowMin: 300.0
+lowMax: 300.0
 - Count - 
 min: 0
 max: 25
@@ -171,9 +180,27 @@ timeline0: 0.0
 - Life Offset - 
 active: false
 - X Offset - 
-active: false
+active: true
+lowMin: -10.0
+lowMax: 10.0
+highMin: 0.0
+highMax: 0.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
 - Y Offset - 
-active: false
+active: true
+lowMin: -10.0
+lowMax: 10.0
+highMin: 0.0
+highMax: 0.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
 - Spawn Shape - 
 shape: point
 - Spawn Width - 
@@ -239,8 +266,8 @@ active: false
 - Tint - 
 colorsCount: 3
 colors0: 0.0
-colors1: 0.56078434
-colors2: 1.0
+colors1: 0.42745098
+colors2: 0.5137255
 timelineCount: 1
 timeline0: 0.0
 - Transparency - 
@@ -257,7 +284,7 @@ timeline0: 0.0
 attached: false
 continuous: false
 aligned: false
-additive: false
+additive: true
 behind: false
 - Image Path -
 particle.png

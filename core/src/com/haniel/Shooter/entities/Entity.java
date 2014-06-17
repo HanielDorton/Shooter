@@ -32,10 +32,6 @@ public abstract class Entity{
 	protected static final Sound explosion02 = Gdx.audio.newSound(Gdx.files.internal("sounds/explosion-02.wav"));
 	//level one
 	protected static final Texture enemy1Texture = new Texture(Gdx.files.internal("entities/Level1/alien1.png"));
-	protected static final Texture enemy1Part1 = new Texture(Gdx.files.internal("entities/Level1/alien1-part1.png"));
-	protected static final Texture enemy1Part2 = new Texture(Gdx.files.internal("entities/Level1/alien1-part2.png"));
-	protected static final Texture enemy1Part3 = new Texture(Gdx.files.internal("entities/Level1/alien1-part3.png"));
-	protected static final Texture enemy1Part4 = new Texture(Gdx.files.internal("entities/Level1/alien1-part4.png"));
 	protected static final Sound matches2 = Gdx.audio.newSound(Gdx.files.internal("sounds/paper-rip-4.wav"));
 	protected static final Texture blueSaucerTexture = new Texture(Gdx.files.internal("entities/Level1/alien2.png"));
 	protected static final Texture quickBlueTexture = new Texture(Gdx.files.internal("entities/Level1/alien3.png"));

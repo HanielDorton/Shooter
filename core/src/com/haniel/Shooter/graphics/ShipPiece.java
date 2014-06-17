@@ -4,7 +4,6 @@ package com.haniel.Shooter.graphics;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.ParticleEffectPool.PooledEffect;
 import com.badlogic.gdx.math.Rectangle;
 
 public class ShipPiece extends MyGraphics{
