@@ -183,14 +183,16 @@ public class Level {
     }
     
 	protected void addStarsCheckpoint(int number){
-        for (int i = 0; i < number; i++) {
-        	add(new Star(random.nextInt(480)));
+        for (int i = 0; i < (number / 3); i++) {
+        	add(new Star(random.nextInt(480), 0));
+        	add(new Star(random.nextInt(480), 1));
+        	add(new Star(random.nextInt(480), 3));
         	} 
 	}
 	
 	protected void addStars(int number){
         for (int i = 0; i < number; i++) {
-        	add(new Star(480));
+        	add(new Star(480, 0));
         	} 
 	}
 	

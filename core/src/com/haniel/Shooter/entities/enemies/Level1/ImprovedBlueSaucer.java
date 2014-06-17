@@ -13,7 +13,7 @@ public class ImprovedBlueSaucer extends BlueSaucer{
 		super(x, y, path, level);
 		this.firingRate = .5;
 		this.lastShotSecondGun = level.getTime() + 5;
-		this.health = 150;
+		this.health = 180;
 	}
 	
 	protected void shoot() {

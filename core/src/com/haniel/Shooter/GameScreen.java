@@ -15,6 +15,7 @@ import com.badlogic.gdx.graphics.g2d.ParticleEffectPool.PooledEffect;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.haniel.Shooter.entities.Entity;
 import com.haniel.Shooter.entities.Player;
+import com.haniel.Shooter.graphics.HealthBar;
 import com.haniel.Shooter.graphics.MyGraphics;
 import com.haniel.Shooter.level.Level;
 import com.haniel.Shooter.level.Level1;
@@ -90,17 +91,24 @@ public class GameScreen implements Screen {
         	dispose();
  	    } else {
 	    	//draw and update level
-	        for (MyGraphics graphic : level.graphics) {	        	
-	        	if (graphic.rotates()) {
-
-		        	Sprite temp = graphic.getSprite();
-		        	game.batch.draw(temp, (float) graphic.getX(), (float) graphic.getY(), 
-		        			graphic.getOriginX(), graphic.getOriginY(), 
-		        			temp.getRegionWidth(), temp.getRegionHeight(),
-		        			 1f, 1f, temp.getRotation());
+	        for (MyGraphics graphic : level.graphics) {	     
+	        	if (graphic instanceof HealthBar) {
+	        		game.batch.draw(graphic.getSprite(), graphic.getX(), graphic.getY(),
+		        			graphic.getWidth(), graphic.getHeight());
+	        		
 	        	}
 	        	else {
-	        		game.batch.draw(graphic.getSprite(), graphic.getX(), graphic.getY());
+		        	if (graphic.rotates()) {
+	
+			        	Sprite temp = graphic.getSprite();
+			        	game.batch.draw(temp, (float) graphic.getX(), (float) graphic.getY(), 
+			        			graphic.getOriginX(), graphic.getOriginY(), 
+			        			temp.getRegionWidth(), temp.getRegionHeight(),
+			        			 1f, 1f, temp.getRotation());
+		        	}
+		        	else {
+		        		game.batch.draw(graphic.getSprite(), graphic.getX(), graphic.getY());
+		        	}
 	        	}
 	        }
 	        Iterator<ParticleEffect> iter = level.particleEffects.iterator();

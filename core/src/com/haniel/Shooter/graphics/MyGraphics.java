@@ -24,8 +24,12 @@ public abstract class MyGraphics {
 	//load all images here so they are only loaded once:
 	//every time you add a new one add it to dispose() at the bottom.
 	protected static final Texture starTexture = new Texture(Gdx.files.internal("textures/star.png"));
+	protected static final Texture yellowStarTexture = new Texture(Gdx.files.internal("textures/yellowStar.png"));
+	protected static final Texture orangeStarTexture = new Texture(Gdx.files.internal("textures/orangeStar.png"));
+	protected static final Texture whiteStarTexture = new Texture(Gdx.files.internal("textures/whiteStar.png"));
 	protected static final Texture checkpointReachedTexture = new Texture(Gdx.files.internal("textures/checkpointreached.png"));
-	
+	protected static final Texture healthBarTexture = new Texture(Gdx.files.internal("textures/HealthBar.png"));
+	protected static final Texture healthBarOutlineTexture = new Texture(Gdx.files.internal("textures/HealthBarOutline.png"));
 	
 	public MyGraphics(String imageFile, int x, int y, float speed) {
 		this.texture = new Texture(Gdx.files.internal(imageFile));
@@ -128,7 +132,12 @@ public abstract class MyGraphics {
 	}
 	public static void dispose() {
 		starTexture.dispose();
+		yellowStarTexture.dispose();
+		whiteStarTexture.dispose();
+		orangeStarTexture.dispose();
 		checkpointReachedTexture.dispose();
+		healthBarTexture.dispose();
+		healthBarOutlineTexture.dispose();
 	}
 	public void changeSpeed(int sped) {
 		this.speed += sped;

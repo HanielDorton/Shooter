@@ -185,4 +185,7 @@ public abstract class Entity{
 	public float getOriginY() {
 		return (float)yOffset + (height / 2);
 	}
+	public float getHealth() {
+		return health;
+	}
 }

@@ -111,7 +111,7 @@ public class CreditsScreen implements Screen{
 	}
 	protected void addStarsCheckpoint(int number){
         for (int i = 0; i < number; i++) {
-        	add(new Star(0 + i));
+        	add(new Star(0 + i, 0));
         	} 
 	}
 	public void add(MyGraphics g) {

@@ -10,7 +10,6 @@ import com.haniel.Shooter.entities.enemies.Level1.ImprovedBlueSaucer;
 import com.haniel.Shooter.entities.enemies.Level1.QuickBlue;
 import com.haniel.Shooter.graphics.BackgroundImage;
 import com.haniel.Shooter.graphics.CheckpointReached;
-import com.haniel.Shooter.util.Coord;
 import com.haniel.Shooter.util.Pathing;
 
 	public class Level1 extends Level{
@@ -108,14 +107,17 @@ import com.haniel.Shooter.util.Pathing;
 				}
 				case 2450: {
 					add(new BlueEnemy(800, 480, Pathing.topArcLeft, this));
+					add(new BlueEnemy(120, 480, Pathing.TopArcRight, this));
 					break;
 				}
 				case 2600: {
 					add(new BlueEnemy(800, 480, Pathing.topArcLeft, this));
+					add(new BlueEnemy(120, 480, Pathing.TopArcRight, this));
 					break;
 				}
 				case 2740: {
 					add(new BlueEnemy(800, 480, Pathing.topArcLeft, this));
+					add(new BlueEnemy(120, 480, Pathing.TopArcRight, this));
 					break;
 				}
 				case 2880: {
@@ -251,7 +253,7 @@ import com.haniel.Shooter.util.Pathing;
 					gameScreen.setCheckPoint(levelTime - 10);
 					backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/All_This.mp3"));
 					backgroundMusic.play();
-					add(new FirstBoss(351,-400, Pathing.bossCircles, this));
+					add(new FirstBoss(351,-300, Pathing.bossCircles, this));
 					break;
 					
 				}
