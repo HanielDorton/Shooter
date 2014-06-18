@@ -1,13 +1,11 @@
 package com.haniel.Shooter.entities.enemies.Level2;
 
-import java.util.List;
 
 import com.badlogic.gdx.graphics.g2d.ParticleEffectPool.PooledEffect;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Rectangle;
 import com.haniel.Shooter.entities.enemies.Enemy;
 import com.haniel.Shooter.level.Level;
-import com.haniel.Shooter.util.Coord;
 
 public class HomingMissile extends Enemy{
 	
@@ -15,15 +13,13 @@ public class HomingMissile extends Enemy{
 	private float firingRate = .2f;
 	private PooledEffect effect;
 
-	public HomingMissile(double x, double y, List<Coord> pattern, Level level) {
-		super(x, y, pattern, level);	
-		this.speed = 300;
+	public HomingMissile(double x, double y,  Level level, int speed) {
+		super(x, y, level);	
+		this.speed = speed;
 		this.sprite = new Sprite(starTexture);
 		this.health = 0;
-		this.width = 20;
-		this.xOffset = 0;
-		this.height = 30;
-		this.yOffset = 0;
+		this.width = 15;
+		this.height = 8;
 		this.rectangle = new Rectangle((float)x - (width / 2), (float)y - (height / 2), width, height);
 		this.lastShot = level.getTime() - 1.4f;
 		this.angle = level.getAngletoPlayersMiddle(x + (width / 2), y + (height / 2));

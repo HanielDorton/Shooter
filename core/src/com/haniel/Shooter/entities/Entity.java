@@ -37,7 +37,9 @@ public abstract class Entity{
 	protected static final Texture quickBlueTexture = new Texture(Gdx.files.internal("entities/Level1/alien3.png"));
 	protected static final Texture firstBossTexture = new Texture(Gdx.files.internal("entities/Level1/first_boss0.png"));
 	//level two
-	protected static final Texture playerCloneTexture = new Texture(Gdx.files.internal("entities/Level2/smallorange.png"));
+	protected static final Texture redEnemyTexture = new Texture(Gdx.files.internal("entities/Level2/aliensprite2.png"));
+	protected static final Texture cargoCraftTexture = new Texture(Gdx.files.internal("entities/Level2/smallorange.png"));
+	protected static final Texture cargoCraft2Texture = new Texture(Gdx.files.internal("entities/Level2/smallorange2.png"));
 	protected static final Texture starTexture = new Texture(Gdx.files.internal("textures/star.png"));
 	protected static final Sound explosion01 = Gdx.audio.newSound(Gdx.files.internal("sounds/explosion-01.wav"));
 	protected static final Sound irritatingAmbiantBuzz = Gdx.audio.newSound(Gdx.files.internal("sounds/irritating-ambient-buzz.wav"));
@@ -158,8 +160,10 @@ public abstract class Entity{
 		blueSaucerTexture.dispose();
 		quickBlueTexture.dispose();
 		firstBossTexture.dispose();
-		playerCloneTexture.dispose();
+		redEnemyTexture.dispose();
 		explosion02.dispose();
+		cargoCraftTexture.dispose();
+		cargoCraft2Texture.dispose();
 		secondBossTexture.dispose();
 		starTexture.dispose();
 		explosion01.dispose();

@@ -54,7 +54,7 @@ public class Player extends Entity{
 		this.sprite = playerSprites.get(currentSprite);
 		this.rectangle = new Rectangle((float) x + xOffset, (float) y + yOffset, width, height);
 		this.speed = 30;
-		this.keyboardSpeed = 11;
+		this.keyboardSpeed = 7;
 		this.maxSpeed = 40;
 		this.lastShot= 0;
 		this.health = 1;

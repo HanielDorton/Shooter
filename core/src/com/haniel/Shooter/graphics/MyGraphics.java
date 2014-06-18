@@ -27,6 +27,8 @@ public abstract class MyGraphics {
 	protected static final Texture yellowStarTexture = new Texture(Gdx.files.internal("textures/yellowStar.png"));
 	protected static final Texture orangeStarTexture = new Texture(Gdx.files.internal("textures/orangeStar.png"));
 	protected static final Texture whiteStarTexture = new Texture(Gdx.files.internal("textures/whiteStar.png"));
+	protected static final Texture redStarLargeTexture = new Texture(Gdx.files.internal("textures/redStarLarge.png"));
+	protected static final Texture redStarTexture = new Texture(Gdx.files.internal("textures/redStar.png"));
 	protected static final Texture checkpointReachedTexture = new Texture(Gdx.files.internal("textures/checkpointreached.png"));
 	protected static final Texture healthBarTexture = new Texture(Gdx.files.internal("textures/HealthBar.png"));
 	protected static final Texture healthBarOutlineTexture = new Texture(Gdx.files.internal("textures/HealthBarOutline.png"));
@@ -135,6 +137,8 @@ public abstract class MyGraphics {
 		yellowStarTexture.dispose();
 		whiteStarTexture.dispose();
 		orangeStarTexture.dispose();
+		redStarTexture.dispose();
+		redStarLargeTexture.dispose();
 		checkpointReachedTexture.dispose();
 		healthBarTexture.dispose();
 		healthBarOutlineTexture.dispose();

@@ -30,6 +30,12 @@ public class Star extends MyGraphics{
 			case 3: {
 				return orangeStarTexture;
 			}
+			case 4: {
+				return redStarLargeTexture;
+			}
+			case 5: {
+				return redStarTexture;
+			}
 			default: {
 				return starTexture;
 			}

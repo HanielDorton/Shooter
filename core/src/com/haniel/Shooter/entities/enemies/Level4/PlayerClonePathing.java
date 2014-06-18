@@ -2,10 +2,10 @@ package com.haniel.Shooter.entities.enemies.Level4;
 
 import com.badlogic.gdx.math.CatmullRomSpline;
 import com.badlogic.gdx.math.Vector2;
-import com.haniel.Shooter.entities.enemies.Level2.PlayerClone;
+import com.haniel.Shooter.entities.enemies.Level2.RedEnemy;
 import com.haniel.Shooter.level.Level;
 
-public class PlayerClonePathing extends PlayerClone{
+public class PlayerClonePathing extends RedEnemy{
 
 	
 	public PlayerClonePathing(double x, double y, CatmullRomSpline<Vector2> path, Level level) {

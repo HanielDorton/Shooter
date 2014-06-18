@@ -13,19 +13,19 @@ public class HealthBar extends MyGraphics {
 	public HealthBar(Entity boss, int y) {
 		super(y);
 		this.maxHealth = boss.getHealth();
-		this.x = 150;
+		this.x = 152;
 		this.y = 455;
 		this.texture = healthBarTexture;
 		this.sprite = new Sprite(texture);
 		this.boss = boss;
-		this.width = 600;
+		this.width = 596;
 		this.height = 20;
 	}
 	
 	public void update() {
 		if (health < boss.getHealth()) health++;
 		if (health > boss.getHealth()) health--;
-		this.width = (int) ((health/maxHealth) * 600);
+		this.width = (int) ((health/maxHealth) * 596);
 		if (this.width < 0) this.width = 0;
 		sprite.setScale(width, 20);
 	}

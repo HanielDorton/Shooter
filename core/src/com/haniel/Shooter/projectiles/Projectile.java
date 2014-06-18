@@ -35,10 +35,10 @@ public abstract class Projectile {
 	
 	public void update() {
 		move(Math.cos(angle), Math.sin(angle));
-        if (y < 0 - this.height) remove();
-        if (y > level.getHeight() + this.height) remove();
-        if (x > level.getWidth() + this.width) remove();
-        if (x < 0 - this.width) remove();
+        if (y + 100 < 0 - this.height) remove();
+        if (y > level.getHeight() + 100 + this.height) remove();
+        if (x > level.getWidth() + 100 + this.width) remove();
+        if (x + 100 < 0 - this.width) remove();
 		rectangle.setPosition((float) x, (float) y);
 		this.effect.setPosition((int) x + width / 2,(int) y + width / 2);
 

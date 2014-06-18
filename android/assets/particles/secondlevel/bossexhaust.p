@@ -20,8 +20,8 @@ timeline0: 0.0
 - Life - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 30000.0
-highMax: 30000.0
+highMin: 25000.0
+highMax: 25000.0
 relative: false
 scalingCount: 2
 scaling0: 1.0
@@ -34,7 +34,7 @@ active: false
 - X Offset - 
 active: true
 lowMin: 0.0
-lowMax: 154.0
+lowMax: 100.0
 highMin: 0.0
 highMax: 0.0
 relative: false
@@ -70,7 +70,7 @@ timeline0: 0.0
 lowMin: 0.0
 lowMax: 0.0
 highMin: 5.0
-highMax: 40.0
+highMax: 30.0
 relative: false
 scalingCount: 4
 scaling0: 0.0
@@ -153,7 +153,7 @@ timeline1: 1.0
 attached: false
 continuous: true
 aligned: false
-additive: false
+additive: true
 behind: false
 - Image Path -
 particle.png

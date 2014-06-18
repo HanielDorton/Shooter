@@ -49,7 +49,6 @@ public class BlueEnemy extends Enemy{
 		    	lastShot = level.getTime();
 		    	double angle = getAngleTo(x, y+10, x, y-10);
 		    	weapon.shoot(x + 19, y + 20, angle);
-		    	//weapon.shoot(x + 25, y + 10, angle);
 		    	if (level.weaponSounds.size() == 0) level.weaponSounds.add(weapon);
 	    	}
 	    }
