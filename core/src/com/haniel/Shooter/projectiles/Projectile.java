@@ -22,11 +22,7 @@ public abstract class Projectile {
 	//these are all the final images for projectiles so they are only loaded once:
 	//every time you add a new one add it to dispose() at the bottom.
 	protected final static Texture basicBulletTexture = new Texture(Gdx.files.internal("projectiles/basicgun.png"));
-	protected final static Texture blueSphereGunTexture = new Texture(Gdx.files.internal("projectiles/bluesphere.png"));
-	protected final static Texture blueline = new Texture(Gdx.files.internal("projectiles/blueline.png"));
-	protected final static Texture blackSphereGunTexture = new Texture(Gdx.files.internal("projectiles/blacksphere.png"));
 	protected final static Texture basicBulletReversedTexture = new Texture(Gdx.files.internal("projectiles/basicgunreversed.png"));
-	protected final static Texture blankTexture = new Texture(Gdx.files.internal("textures/mouseX.png"));;
 	
 	public Projectile (double x, double y, double angle, boolean fromPlayer) {
 		xOrigin = x;
@@ -56,7 +52,6 @@ public abstract class Projectile {
 		
 		xa *= (Gdx.graphics.getDeltaTime() * speed);
 		ya *= (Gdx.graphics.getDeltaTime() * speed);
-		
 		while (xa != 0) {
 			if(Math.abs(xa) > 1) {
 				this.x += myAbs(xa);
@@ -131,11 +126,10 @@ public abstract class Projectile {
 	
 	public static void dispose() {
 		basicBulletTexture.dispose();
-		blueSphereGunTexture.dispose();
-		blueline.dispose();
-		blackSphereGunTexture.dispose();
 		basicBulletReversedTexture.dispose();
-		blankTexture.dispose();
+	}
+	public boolean hasTexture() {
+		return false;
 	}
 
 }

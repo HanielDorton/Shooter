@@ -14,22 +14,19 @@ import com.haniel.Shooter.util.Coord;
 public class Level2 extends Level{
 	
 	///checkpoints: 6890, 10790, 18390
-		
-	//ParticleEffect nebula = new ParticleEffect();
 
-	
 	
 	public Level2(GameScreen gameScreen) {
 		super(gameScreen);
 		backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/The_Descent.mp3"));
 		//load all particle effects for pooling:
-		enemyBulletEffect.load(Gdx.files.internal("particles/secondlevel/homingmissile.p"), Gdx.files.internal("particles/"));
+		enemyBulletEffect.load(Gdx.files.internal("particles/secondlevel/redsphere.p"), Gdx.files.internal("particles/"));
 		enemyBulletEffectPool = new ParticleEffectPool(enemyBulletEffect, 45, 80);
 		smallExplosionEffect.load(Gdx.files.internal("particles/PlayerExplosion.p"), Gdx.files.internal("particles/"));
 		smallExplosionEffectPool = new ParticleEffectPool(smallExplosionEffect, 5, 20);
 		smallExplosionEffect2.load(Gdx.files.internal("particles/secondlevel/missileexplosion.p"), Gdx.files.internal("particles/"));
 		smallExplosionEffect2Pool = new ParticleEffectPool(smallExplosionEffect2, 5, 20);
-		smallEngineEffect.load(Gdx.files.internal("particles/secondlevel/PlayerCloneEngine.p"), Gdx.files.internal("particles/"));
+		smallEngineEffect.load(Gdx.files.internal("particles/PlayerEngine.p"), Gdx.files.internal("particles/"));
 		smallEngineEffectPool = new ParticleEffectPool(smallEngineEffect, 5, 20);
 	}
 
@@ -241,11 +238,11 @@ public class Level2 extends Level{
 		
 			case 6900: { //next checkpoitn 108
 				if (gameScreen.getCheckPoint() + 10 == levelTime) {
-					add(new BackgroundImage("levels/space_background2.png", 0, 0, 3));
-					add(new BackgroundImage("levels/space_background2.png", 0, 960, 3));
+					add(new BackgroundImage("levels/space-2.png", 0, 0, .1f));
+					addStarsCheckpoint(100);
+					add(new BackgroundImage("levels/hjm-big_gas_planet_0.png", 80, 280, 1f));
 					backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/The_Descent_firstContinue.mp3"));
 					backgroundMusic.play();
-					addStarsCheckpoint(100);
 				} else {
 					add(new CheckpointReached(300, 350, 2));
 					gameScreen.setCheckPoint(levelTime - 10);
@@ -268,6 +265,10 @@ public class Level2 extends Level{
 				for (int i = 0; i < 8; i++) {
 					add(new HomingMissile((175 * i) - 300, 480 + (37 * i), null, this));
 				}
+				break;
+			}
+			case 8500: {
+				addFiveFighters();
 				break;
 			}
 			case 8800: {
@@ -315,11 +316,11 @@ public class Level2 extends Level{
 			
 			case 10800: { 
 				if (gameScreen.getCheckPoint() + 10 == levelTime) {
-					add(new BackgroundImage("levels/space_background2.png", 0, 0, 3));
-					add(new BackgroundImage("levels/space_background2.png", 0, 960, 3));
+					add(new BackgroundImage("levels/space-2.png", 0, 0, .1f));
+					addStarsCheckpoint(100);
+					add(new BackgroundImage("levels/hjm-big_gas_planet_0.png", 80, 242, 1f));
 					backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/The_Descent_secondContinue.mp3"));
 					backgroundMusic.play();
-					addStarsCheckpoint(100);
 				} else {
 					add(new CheckpointReached(300, 350, 2));
 					gameScreen.setCheckPoint(levelTime - 10);
@@ -327,20 +328,16 @@ public class Level2 extends Level{
 				break;
 			}
 			case 11200: {
-				add(new SecondBoss(325, -800, Coord.leavetopmiddlelist, this));
-				break;
-			}
-			case 16500: {
-				addFiveFighters();
+				add(new SecondBoss(250, -690, Coord.leavetopmiddlelist, this, false));
 				break;
 			}
 			case 18400: { 
 				if (gameScreen.getCheckPoint() + 10 == levelTime) {
-					add(new BackgroundImage("levels/space_background2.png", 0, 0, 3));
-					add(new BackgroundImage("levels/space_background2.png", 0, 960, 3));
+					add(new BackgroundImage("levels/space-2.png", 0, 0, .1f));
+					addStarsCheckpoint(100);
+					add(new BackgroundImage("levels/hjm-big_gas_planet_0.png", 80, 166, 1f));
 					backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/All_This.mp3"));
 					backgroundMusic.play();
-					addStarsCheckpoint(100);
 				} else {
 					add(new CheckpointReached(300, 350, 2));
 					gameScreen.setCheckPoint(levelTime - 10);
@@ -348,7 +345,7 @@ public class Level2 extends Level{
 					backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/All_This.mp3"));
 					backgroundMusic.play();
 				}
-				add(new SecondBoss(325, 800, Coord.bossstayinmiddlelist, this));			
+				add(new SecondBoss(250, 800, Coord.bossstayinmiddlelist, this, true));			
 				break;
 			}
 			
@@ -356,8 +353,8 @@ public class Level2 extends Level{
 	}
 	
 	public void addFiveFighters() {
-		for (int i = 0; i < 5; i++) {
-			if (!(i % 2 == 0)) add(new ImprovedPlayerClone(0 + (200 * i), 525, null, this));
+		for (int i = 0; i < 6; i++) {
+			if (!(i % 2 == 0)) add(new ImprovedPlayerClone((175 * i) - 150, 525, null, this));
 			}
 		}
 	}

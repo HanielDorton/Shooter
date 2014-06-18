@@ -37,11 +37,11 @@ public abstract class Entity{
 	protected static final Texture quickBlueTexture = new Texture(Gdx.files.internal("entities/Level1/alien3.png"));
 	protected static final Texture firstBossTexture = new Texture(Gdx.files.internal("entities/Level1/first_boss0.png"));
 	//level two
-	protected static final Texture playerCloneTexture = new Texture(Gdx.files.internal("entities/player/ship0.png"));
+	protected static final Texture playerCloneTexture = new Texture(Gdx.files.internal("entities/Level2/smallorange.png"));
 	protected static final Texture starTexture = new Texture(Gdx.files.internal("textures/star.png"));
 	protected static final Sound explosion01 = Gdx.audio.newSound(Gdx.files.internal("sounds/explosion-01.wav"));
 	protected static final Sound irritatingAmbiantBuzz = Gdx.audio.newSound(Gdx.files.internal("sounds/irritating-ambient-buzz.wav"));
-	protected static final Texture secondBossTexture = new Texture(Gdx.files.internal("entities/second_boss.png"));
+	protected static final Texture secondBossTexture = new Texture(Gdx.files.internal("entities/Level2/orangeship.png"));
 	//level three
 	protected static final Texture greenJetTexture = new Texture(Gdx.files.internal("entities/green_jet.png"));
 	protected static final Texture superGreenJetTexture = new Texture(Gdx.files.internal("entities/super_green_jet.png"));

@@ -10,32 +10,32 @@ import com.badlogic.gdx.math.Vector2;
 import com.haniel.Shooter.entities.enemies.Enemy;
 import com.haniel.Shooter.level.Level;
 import com.haniel.Shooter.util.Coord;
-import com.haniel.Shooter.weapons.PlayerCloneGun;
+import com.haniel.Shooter.weapons.SphereGun;
 
 public class PlayerClone extends Enemy{
 	protected PooledEffect engine1Effect;
 	protected PooledEffect engine2Effect;
+	private float firingRate = .5f;
 	
 	public PlayerClone(double x, double y, Level level) {
 		super(x, y, level);
 		this.speed = 200;
-		this.width = 21;
-		this.height = 15;
+		this.width = 46;
+		this.xOffset =2;
+		this.height = 80;
+		this.yOffset = 4;
 		this.sprite = new Sprite(playerCloneTexture);
 		this.sprite.flip(false, true);
-		this.health = 1;
-		this.xOffset = 4;
-		this.yOffset = 7;
+		this.health = 4;
 		this.rectangle = new Rectangle((float)x + xOffset, (float)y + yOffset, width, height);
 		this.lastShot= 0;
-		this.health = 0;
-		this.weapon = new PlayerCloneGun(level, false);
+		this.weapon = new SphereGun(level, false, 800);
 		this.engine1Effect = level.smallEngineEffectPool.obtain();
-		this.engine1Effect.setPosition((int) x + 11,(int) y + 30);
+		this.engine1Effect.setPosition((int) x + 18,(int) y + 77);
 		level.effects.add(this.engine1Effect);
 		this.engine1Effect.start();
 		this.engine2Effect = level.smallEngineEffectPool.obtain();
-		this.engine2Effect.setPosition((int) x + 19,(int) y + 30);
+		this.engine2Effect.setPosition((int) x + 32,(int) y + 77);
 		level.effects.add(this.engine2Effect);
 		this.engine2Effect.start();
 	}
@@ -55,24 +55,23 @@ public class PlayerClone extends Enemy{
 
 	public void update() {
 		super.update();
-		this.engine1Effect.setPosition((int) x + 11, (int) y + 30);
-		this.engine2Effect.setPosition((int) x + 19,(int) y + 30);
+		this.engine1Effect.setPosition((int) x + 18, (int) y + 77);
+		this.engine2Effect.setPosition((int) x + 32,(int) y + 77);
 	}
 	
 	protected void shoot() {
 		if (!(getMidY()> 480) && !(getMidY() < 0) && !(getMidX() < 0 && !(getMidX() > 800))){
-			if ((level.getTime() - lastShot) > weapon.getFiringRate()) {
+			if ((level.getTime() - lastShot) > firingRate) {
 	    		double angle = getAngleTo(x - 1, y, x - 1, y-10);
-	    		weapon.shoot(x - 1, y - 1, angle);
-	    		weapon.shoot(x + width + xOffset, y, angle);
+	    		weapon.shoot(x + 6, y + 40, angle);
+	    		weapon.shoot(x + 43, y + 40, angle);
 	    		lastShot = level.getTime();
 	    		if (level.weaponSounds.size() == 0) level.weaponSounds.add(weapon);
 	    	}
 		}
 	}
 	public void particles() {
-		engine1Effect.allowCompletion();
-		engine2Effect.allowCompletion();
+
 		super.particles();
 	}
 	public void remove() {

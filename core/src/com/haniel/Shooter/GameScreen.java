@@ -130,7 +130,9 @@ public class GameScreen implements Screen {
 	        	}
 	        }
 	        for (Projectile projectile : level.projectiles) {
-	        	game.batch.draw(projectile.getTexture(), (float) projectile.getX(), (float) projectile.getY());
+	        	if (projectile.hasTexture()) {
+	        		game.batch.draw(projectile.getTexture(), (float) projectile.getX(), (float) projectile.getY());
+	        	}
 	        }
 	        for (Entity entity : level.entities) {
 	        	if (entity.rotates()) {
@@ -154,7 +156,7 @@ public class GameScreen implements Screen {
 	        		p.dispose();	        		
 	        	}
 	        }
-	        game.font.draw(game.batch, "Time: " + level.getLevelTime(), 0, screenHeight);
+	        game.font.draw(game.batch, "Time: " + level.getLevelTime() / 100, 5, screenHeight - 5);
 	        level.update();
 	        gameTime += Gdx.graphics.getDeltaTime();
 	        if (gameTime > .1) {

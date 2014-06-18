@@ -3,15 +3,18 @@ package com.haniel.Shooter.weapons;
 import com.haniel.Shooter.level.Level;
 import com.haniel.Shooter.projectiles.BlueSphere;
 
-public class BlueSphereGun extends Weapon{
+public class SphereGun extends Weapon{
+	
+	protected int speed;
 
-	public BlueSphereGun(Level level, boolean fromPlayer) {
+	public SphereGun(Level level, boolean fromPlayer, int speed) {
 		super(level, fromPlayer);
 		this.sound = smatterZap1;
+		this.speed = speed;
 	}
 	
 	public void shoot(double x, double y, double angle) {
-		level.add(new BlueSphere(x, y, angle, fromPlayer));
+		level.add(new BlueSphere(x, y, angle, fromPlayer, speed));
 	}
 
 		

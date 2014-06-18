@@ -12,5 +12,6 @@ public class PlayerCloneGun extends PlayerGun{
 	public void shoot(double x, double y, double angle) {
 		level.add(new BasicBulletReversed(x, y, angle, fromPlayer));
 	}
+	
 
 }

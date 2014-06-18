@@ -4,12 +4,11 @@ import com.badlogic.gdx.math.Rectangle;
 import com.haniel.Shooter.level.Level;
 public class BlueSphere extends Projectile{
 
-	public BlueSphere(double x, double y, double dir, boolean fromPlayer) {
+	public BlueSphere(double x, double y, double dir, boolean fromPlayer, int speed) {
 		super(x, y, dir, fromPlayer);
-		this.texture = blankTexture;
 		this.width = 8;
 		this.height = 8;
-		this.speed = 130;
+		this.speed = speed;
 		this.rectangle = new Rectangle((float)x, (float)y, width, height);
 		this.damage = 5;
 	}

@@ -9,7 +9,4 @@ public class PlayerGun extends Weapon{
 		this.firingRate = basicGunFiringRate;
 		this.sound = basicGunSound;
 	}
-	
-
-
 }

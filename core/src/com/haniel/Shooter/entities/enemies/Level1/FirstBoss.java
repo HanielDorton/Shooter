@@ -10,8 +10,7 @@ import com.haniel.Shooter.entities.enemies.Enemy;
 import com.haniel.Shooter.graphics.HealthBar;
 import com.haniel.Shooter.graphics.HealthBarOutline;
 import com.haniel.Shooter.level.Level;
-import com.haniel.Shooter.weapons.BlueLineGun;
-import com.haniel.Shooter.weapons.BlueSphereGun;
+import com.haniel.Shooter.weapons.SphereGun;
 import com.haniel.Shooter.weapons.Weapon;
 
 public class FirstBoss extends Enemy{
@@ -35,8 +34,8 @@ public class FirstBoss extends Enemy{
 		this.sprite = new Sprite(firstBossTexture);		
 		this.health = 400;
 		this.rectangle = new Rectangle((float)x + xOffset, (float)y + yOffset , width, height);
-		this.weapon = new BlueSphereGun(level, false);
-		this.weapon2 = new BlueLineGun(level, false);
+		this.weapon = new SphereGun(level, false, 130);
+		this.weapon2 = new SphereGun(level, false, 300);
 		this.lastShot = 0;
 		this.engine1Effect.load(Gdx.files.internal("particles/firstlevel/BossEngines.p"), Gdx.files.internal("particles/"));
 		this.engine1Effect.setPosition((int)x + 32,(int) y + 8);
@@ -46,8 +45,8 @@ public class FirstBoss extends Enemy{
 		level.particleEffects.add(engine2Effect);
 		engine1Effect.start();
 		engine2Effect.start();
-		level.add(new HealthBar(this, 0));
 		level.add(new HealthBarOutline(0));
+		level.add(new HealthBar(this, 0));
 		
 		
 	}

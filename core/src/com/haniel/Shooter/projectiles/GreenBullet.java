@@ -7,7 +7,6 @@ public class GreenBullet extends Projectile{
 	
 	public GreenBullet(double x, double y, double dir, boolean fromPlayer, int speed) {
 		super(x, y, dir, fromPlayer);
-		this.texture = blankTexture;
 		this.width = 4;
 		this.height = 4;
 		this.speed = speed;

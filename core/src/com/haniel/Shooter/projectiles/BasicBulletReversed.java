@@ -13,5 +13,8 @@ public class BasicBulletReversed extends Projectile{
 		this.rectangle = new Rectangle((float)x, (float)y, width, height);
 		this.damage = 1;
 	}
+	public boolean hasTexture() {
+		return true;
+	}
 
 }

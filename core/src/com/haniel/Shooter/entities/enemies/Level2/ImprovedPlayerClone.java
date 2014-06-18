@@ -20,17 +20,18 @@ public class ImprovedPlayerClone extends PlayerClone{
         if (x > level.getWidth() + this.width + 300) remove();
         if (x < 0 - this.width - 300) remove();
         if (health < 0) remove();
-		this.engine1Effect.setPosition((int) x + 11, (int) y + 30);
-		this.engine2Effect.setPosition((int) x + 19,(int) y + 30);
+		this.engine1Effect.setPosition((int) x + 18, (int) y + 77);
+		this.engine2Effect.setPosition((int) x + 32,(int) y + 77);
 		if (!stopTracking) {
 			this.angle = level.getAngletoPlayersMiddle(x + (width / 2), y + (height / 2));
 			if (this.y < level.getPlayerY()) {
 				stopTracking = true;
 				this.angle = getAngleTo(x, y+10, x, y-10);
 			}
+			shoot();
 		}
 		move(Math.cos(angle) * speed, Math.sin(angle) * speed);		
         rectangle.setPosition((float)x + xOffset, (float)y + yOffset);
-        shoot();		
+
 	}
 }

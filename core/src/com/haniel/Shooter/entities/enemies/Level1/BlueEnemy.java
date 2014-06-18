@@ -9,7 +9,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.haniel.Shooter.entities.enemies.Enemy;
 import com.haniel.Shooter.level.Level;
 import com.haniel.Shooter.util.Coord;
-import com.haniel.Shooter.weapons.BlueLineGun;
+import com.haniel.Shooter.weapons.SphereGun;
 
 public class BlueEnemy extends Enemy{
 
@@ -25,7 +25,7 @@ public class BlueEnemy extends Enemy{
 		this.xOffset = 1;
 		this.yOffset = 15;
 		this.rectangle = new Rectangle((float)x + xOffset, (float)y + yOffset, width, height);
-		this.weapon = new BlueLineGun(level, false);
+		this.weapon = new SphereGun(level, false, 300);
 	}
 	
 	public BlueEnemy(double x, double y, List<Coord> pattern, Level level) {

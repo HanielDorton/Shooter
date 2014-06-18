@@ -9,7 +9,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.haniel.Shooter.entities.enemies.Enemy;
 import com.haniel.Shooter.level.Level;
 import com.haniel.Shooter.util.Coord;
-import com.haniel.Shooter.weapons.BlueSphereGun;
+import com.haniel.Shooter.weapons.SphereGun;
 
 public class QuickBlue extends Enemy{
 	
@@ -25,7 +25,7 @@ public class QuickBlue extends Enemy{
 		this.xOffset = 5;
 		this.yOffset = 5;
 		this.rectangle = new Rectangle((float)x + xOffset, (float)y + yOffset, width, height);
-		this.weapon = new BlueSphereGun(level, false);
+		this.weapon = new SphereGun(level, false, 130);
 		this.lastShot = level.getTime() + random.nextInt(2);
 		this.rotates = true;
 	}
