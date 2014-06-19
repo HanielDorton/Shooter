@@ -3,9 +3,7 @@ package com.haniel.Shooter.level;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.ParticleEffectPool;
 import com.haniel.Shooter.GameScreen;
-import com.haniel.Shooter.entities.enemies.Level4.PlayerClonePathing;
 import com.haniel.Shooter.graphics.BackgroundImage;
-import com.haniel.Shooter.util.Pathing;
 
 public class Level4 extends Level{
 	
@@ -32,9 +30,7 @@ public class Level4 extends Level{
 			    add(new BackgroundImage("levels/space_background4.png", 0, 960, 1));				
 			    break;
 				}
-			case 50: {
-				add(new PlayerClonePathing(800, 525, Pathing.topLeftMiddleLeaveTop, this));
-			}
+
 			}
 		
 	}

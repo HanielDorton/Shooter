@@ -48,7 +48,7 @@ public class CargoCraft extends Enemy{
 	public void shoot(){
 		if ((level.getTime() - lastShot) > firingRate) {
     		lastShot = level.getTime();
-    		level.specialBossArray.add(new HomingMissile(x + width, y + height, level, 300));
+    		level.specialBossArray.add(new HomingMissile(x + width, y + height, level, 200));
 		}
 	}
 	public void remove() {

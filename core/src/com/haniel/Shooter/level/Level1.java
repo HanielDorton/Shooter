@@ -22,7 +22,7 @@ import com.haniel.Shooter.util.Pathing;
 		enemyBulletEffect.load(Gdx.files.internal("particles/firstlevel/BlueSphere.p"), Gdx.files.internal("particles/"));
 		enemyBulletEffectPool = new ParticleEffectPool(enemyBulletEffect, 45, 80);
 		smallExplosionEffect.load(Gdx.files.internal("particles/firstlevel/BlueExplosion.p"), Gdx.files.internal("particles/"));
-		smallExplosionEffectPool = new ParticleEffectPool(smallExplosionEffect, 5, 20);
+		smallExplosionEffectPool = new ParticleEffectPool(smallExplosionEffect, 5, 5);
 	}
 	
 	public void runLevel(GameScreen g) {

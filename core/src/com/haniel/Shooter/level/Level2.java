@@ -23,10 +23,10 @@ public class Level2 extends Level{
 		//load all particle effects for pooling:
 		enemyBulletEffect.load(Gdx.files.internal("particles/secondlevel/redsphere.p"), Gdx.files.internal("particles/"));
 		enemyBulletEffectPool = new ParticleEffectPool(enemyBulletEffect, 45, 80);
-		smallExplosionEffect.load(Gdx.files.internal("particles/PlayerExplosion.p"), Gdx.files.internal("particles/"));
-		smallExplosionEffectPool = new ParticleEffectPool(smallExplosionEffect, 5, 20);
+		smallExplosionEffect.load(Gdx.files.internal("particles/secondlevel/enemyexplosion.p"), Gdx.files.internal("particles/"));
+		smallExplosionEffectPool = new ParticleEffectPool(smallExplosionEffect, 5, 5);
 		smallExplosionEffect2.load(Gdx.files.internal("particles/secondlevel/missileexplosion.p"), Gdx.files.internal("particles/"));
-		smallExplosionEffect2Pool = new ParticleEffectPool(smallExplosionEffect2, 5, 20);
+		smallExplosionEffect2Pool = new ParticleEffectPool(smallExplosionEffect2, 5, 8);
 		smallEngineEffect.load(Gdx.files.internal("particles/PlayerEngine.p"), Gdx.files.internal("particles/"));
 		smallEngineEffectPool = new ParticleEffectPool(smallEngineEffect, 5, 20);
 	}
@@ -327,7 +327,7 @@ public class Level2 extends Level{
 	
 	public void threeFighterFormation() {
 		for (int i = 0; i < 6; i++) {
-			if (!(i % 2 == 0)) add(new ImprovedRedEnemy((175 * i) - 150, 525, this));
+			if (!(i % 2 == 0)) add(new ImprovedRedEnemy((175 * i) - 150, 575, this));
 			}
 		}
 	}

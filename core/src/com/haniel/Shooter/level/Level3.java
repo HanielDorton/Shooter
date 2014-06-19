@@ -1,8 +1,5 @@
 package com.haniel.Shooter.level;
 
-import java.util.Arrays;
-import java.util.List;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.ParticleEffectPool;
 import com.haniel.Shooter.GameScreen;
@@ -36,15 +33,13 @@ public class Level3 extends Level{
 		
 			case 10: {
 				backgroundMusic.play();
+				add(new BackgroundImage("levels/space-1.png", 0, 0, 2));
 				addStarsCheckpoint(300);
-				add(new BackgroundImage("levels/space_background3.png", 0, 0, 20));
-		        add(new BackgroundImage("levels/space_background3.png", 0, 960, 20));				
-		        increaseStarSpeed(50);
 		        break;
 			}
 			case 100: {
-				add(new GreenJet(-200, 480,Pathing.circlesTopLeftThenLeaves , this));
-				add(new GreenJet(800, 480,Pathing.circlesTopRightThenLeaves , this));
+				add(new GreenJet(-200, 480,Pathing.jetCirclesLeft , this));
+				add(new GreenJet(800, 480,Pathing.jetCirclesRight , this));
 				break;
 			}
 			case 2550: {
@@ -53,12 +48,10 @@ public class Level3 extends Level{
 			}
 			case 5950: {
 				if (gameScreen.getCheckPoint() + 10 == levelTime) {
-					add(new BackgroundImage("levels/space_background3.png", 0, 0, 3));
-					add(new BackgroundImage("levels/space_background3.png", 0, 960, 3));
+					add(new BackgroundImage("levels/space-1.png", 0, -118, 2));
 					backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/Five_Armies_firstContinue.mp3"));
 					backgroundMusic.play();
 					addStarsCheckpoint(300);
-					increaseStarSpeed(50);
 				} else {
 					add(new CheckpointReached(300, 350, 2));
 					gameScreen.setCheckPoint(levelTime - 10);
@@ -89,12 +82,12 @@ public class Level3 extends Level{
 			}
 			case 8200: {
 				//for (int i = 0; i < 2; i++ ) generateRandomMine(480 + (100 * i));
-				for (int i = 0; i < 1; i++ ) generateRandomSuperMine(480 + (100 * i));
+				for (int i = 0; i < 2; i++ ) generateRandomSuperMine(480 + (100 * i));
 				break;
 			}
 			case 8600: {
 				//for (int i = 0; i < 2; i++ ) generateRandomMine(480 + (100 * i));
-				for (int i = 0; i < 2; i++ ) generateRandomSuperMine(480 + (100 * i));
+				for (int i = 0; i < 3; i++ ) generateRandomSuperMine(480 + (100 * i));
 				break;
 			}
 			
@@ -125,23 +118,33 @@ public class Level3 extends Level{
 				for (int i = 0; i < 3; i++ ) generateRandomSuperMine(480 + (100 * i));
 				break;
 			}
+			case 10900: {
+				for (int i = 0; i < 1; i++ ) generateRandomMine(480 + (100 * i));
+				for (int i = 0; i < 1; i++ ) generateRandomSuperMine(480 + (100 * i));
+				break;
+			}
+			case 11200: {
+				for (int i = 0; i < 1; i++ ) generateRandomMine(480 + (100 * i));
+				for (int i = 0; i < 1; i++ ) generateRandomSuperMine(480 + (100 * i));
+				break;
+			}
 			
 			
 			case 11500: {
 				if (gameScreen.getCheckPoint() + 10 == levelTime) {
-					add(new BackgroundImage("levels/space_background3.png", 0, 0, 3));
-					add(new BackgroundImage("levels/space_background3.png", 0, 960, 3));
+					add(new BackgroundImage("levels/space-1.png", 0, -230, 2));
 					addStarsCheckpoint(300);
-					increaseStarSpeed(50);
 				} else {
 					add(new CheckpointReached(300, 350, 2));
 					gameScreen.setCheckPoint(levelTime - 10);
 				}
 				backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/All_This.mp3"));
 				backgroundMusic.play();
+				for (int i = 0; i < 2; i++ ) generateRandomMine(480 + (100 * i));
+				for (int i = 0; i < 1; i++ ) generateRandomSuperMine(480 + (100 * i));
 				break;				
 			}
-			case 12100:{
+			case 11700:{
 				add(new ThirdBoss(350, 480, Coord.bosscircles, this));
 				break;
 			}
@@ -151,15 +154,11 @@ public class Level3 extends Level{
 	
 	private void generateRandomMine(int y) {
 		int x = random.nextInt(760) + 20;
-		Coord coord = new Coord(x, -500);
-		List<Coord> temp = Arrays.asList(coord);
-		add(new GreenMine(x, y, temp, this));
+		add(new GreenMine(x, 480, this, random.nextInt(11)));
 	}
 	
 	private void generateRandomSuperMine(int y) {
 		int x = random.nextInt(760) + 20;
-		Coord coord = new Coord(x, -500);
-		List<Coord> temp = Arrays.asList(coord);
-		add(new SuperGreenMine(x, y, temp, this));
+		add(new SuperGreenMine(x, 480, this, random.nextInt(11)));
 	}
 }

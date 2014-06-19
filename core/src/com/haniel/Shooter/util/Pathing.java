@@ -108,4 +108,50 @@ public class Pathing {
 	public static CatmullRomSpline<Vector2> goUpRight = new CatmullRomSpline<Vector2>(new Vector2[] 
 			{new Vector2(770, -80), new Vector2(670, 240), new Vector2(770, 1000)}, true);
 
+	//Level Three Small Jets
+	public static CatmullRomSpline<Vector2> jetCirclesRight = new CatmullRomSpline<Vector2>(new Vector2[] 
+			{new Vector2(825, 175), new Vector2(420, 375), new Vector2(550, 415),
+			new Vector2(650, 375), new Vector2(550, 340),new Vector2(420, 375), new Vector2(550, 415),
+			new Vector2(1500, 340)}, true);
+	
+	public static CatmullRomSpline<Vector2> jetCirclesLeft = new CatmullRomSpline<Vector2>(new Vector2[] 
+			{new Vector2(-200, 175), new Vector2(230, 375), new Vector2(100, 415),
+			new Vector2(0, 375), new Vector2(100, 340),new Vector2(230, 375), new Vector2(100, 415),
+			new Vector2(-850, 340)}, true);
+	
+	
+	//Level Three Mines
+	
+	public static CatmullRomSpline<Vector2> mine1 = new CatmullRomSpline<Vector2>(new Vector2[] 
+			{new Vector2(0, 480), new Vector2(375, 200), new Vector2(0, -500)}, true);
+		
+	public static CatmullRomSpline<Vector2> mine2 = new CatmullRomSpline<Vector2>(new Vector2[] 
+			{new Vector2(800, 480), new Vector2(375, 200), new Vector2(800, -500)}, true);
+		
+	public static CatmullRomSpline<Vector2> mine3 = new CatmullRomSpline<Vector2>(new Vector2[] 
+			{new Vector2(400, 480), new Vector2(0, 200), new Vector2(400, -500)}, true);
+		
+	public static CatmullRomSpline<Vector2> mine4 = new CatmullRomSpline<Vector2>(new Vector2[] 
+			{new Vector2(400, 480), new Vector2(750, 200), new Vector2(600, -500)}, true);
+		
+	public static CatmullRomSpline<Vector2> mine5 = new CatmullRomSpline<Vector2>(new Vector2[] 
+			{new Vector2(100, 480), new Vector2(400, 200), new Vector2(100, -500)}, true);
+		
+	public static CatmullRomSpline<Vector2> mine6 = new CatmullRomSpline<Vector2>(new Vector2[] 
+			{new Vector2(700, 480), new Vector2(300, 200), new Vector2(700, -500)}, true);
+		
+	public static CatmullRomSpline<Vector2> mine7 = new CatmullRomSpline<Vector2>(new Vector2[] 
+			{new Vector2(300, 480), new Vector2(0, 200), new Vector2(300, -500)}, true);
+		
+	public static CatmullRomSpline<Vector2> mine8 = new CatmullRomSpline<Vector2>(new Vector2[] 
+			{new Vector2(600, 480), new Vector2(750, 200), new Vector2(600, -500)}, true);
+		
+	public static CatmullRomSpline<Vector2> mine9 = new CatmullRomSpline<Vector2>(new Vector2[] 
+			{new Vector2(200, 480), new Vector2(400, 200), new Vector2(200, -500)}, true);
+		
+	public static CatmullRomSpline<Vector2> mine10 = new CatmullRomSpline<Vector2>(new Vector2[] 
+			{new Vector2(600, 480), new Vector2(400, 200), new Vector2(600, -500)}, true);
+		
+	public static CatmullRomSpline<Vector2> mine11 = new CatmullRomSpline<Vector2>(new Vector2[] 
+			{new Vector2(200, 480), new Vector2(0, 200), new Vector2(200, -500)}, true);
 }

@@ -22,7 +22,7 @@ public class RedEnemy extends Enemy{
 		this.sprite = new Sprite(redEnemyTexture);
 		this.health = 4;
 		this.rectangle = new Rectangle((float)x + xOffset, (float)y + yOffset, width, height);
-		this.lastShot= 0;
+		this.lastShot= level.getTime() + .75;
 		this.weapon = new SphereGun(level, false, 800);
 		this.engine1Effect = level.smallEngineEffectPool.obtain();
 		this.engine1Effect.setPosition((int) x + 27,(int) y + 100);

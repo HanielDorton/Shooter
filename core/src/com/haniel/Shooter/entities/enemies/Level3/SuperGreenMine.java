@@ -1,31 +1,18 @@
 package com.haniel.Shooter.entities.enemies.Level3;
 
-import java.util.List;
 
-import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.math.Rectangle;
-import com.haniel.Shooter.entities.enemies.Enemy;
 import com.haniel.Shooter.level.Level;
-import com.haniel.Shooter.util.Coord;
 import com.haniel.Shooter.weapons.GreenGun;
 
-public class SuperGreenMine extends Enemy{
+public class SuperGreenMine extends GreenMine{
 		
 		protected double firingRate = .8;
 		protected final static double firingAngle = 3;
 		
-		public SuperGreenMine(double x, double y, List <Coord> pattern, Level level) {
-			super(x, y, pattern, level);		
-			this.speed = random.nextInt(60) + 40;
-			this.width = 16;
-			this.height = 16;
-			this.sprite = new Sprite(greenMineTexture);		
-			this.health = 0;
-			this.xOffset = 0;
-			this.yOffset = 0;
-			this.rectangle = new Rectangle((float)x + xOffset, (float)y + yOffset, width, height);
+		public SuperGreenMine(double x, double y,  Level level, int p) {
+			super(x, y, level, p);		
 			this.weapon = new GreenGun(level, false, 200);
-			this.lastShot =level.getTime() + 1 + random.nextInt(3);
+			this.lastShot =level.getTime() + 1.5 + random.nextInt(3);
 		}
 		
 		protected void shoot() {
@@ -36,16 +23,13 @@ public class SuperGreenMine extends Enemy{
 			    		weapon.shoot(x + 8, y + 8, firingAngle - (i * -.375));
 			    	}
 			    	if (level.weaponSounds.size() < 3) level.weaponSounds.add(weapon);
-			    	this.health--;
+			    	this.health -= 4;
 			    	this.particles();
 
 				}
 			}
 		}
-		public void particles() {
-			explosion01.play(.5f);
-			super.particles();
-		}
+
 	}
 
 

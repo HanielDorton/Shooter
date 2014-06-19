@@ -2,13 +2,12 @@ package com.haniel.Shooter.projectiles;
 
 import com.badlogic.gdx.math.Rectangle;
 import com.haniel.Shooter.level.Level;
+public class Sphere extends Projectile{
 
-public class GreenBullet extends Projectile{
-	
-	public GreenBullet(double x, double y, double dir, boolean fromPlayer, int speed) {
+	public Sphere(double x, double y, double dir, boolean fromPlayer, int speed) {
 		super(x, y, dir, fromPlayer);
-		this.width = 4;
-		this.height = 4;
+		this.width = 8;
+		this.height = 8;
 		this.speed = speed;
 		this.rectangle = new Rectangle((float)x, (float)y, width, height);
 		this.damage = 5;

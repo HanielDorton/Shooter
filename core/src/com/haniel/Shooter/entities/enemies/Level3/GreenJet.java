@@ -19,11 +19,11 @@ public class GreenJet extends Enemy{
 	
 	public GreenJet(double x, double y, CatmullRomSpline<Vector2> path, Level level) {
 		super(x, y, path, level);		
-		this.speed = 10;
+		this.speed = 6;
 		this.width = 196;
 		this.height = 50;
 		this.sprite = new Sprite(greenJetTexture);		
-		this.health = 80;
+		this.health = 160;
 		this.xOffset = 2;
 		this.yOffset = 25;
 		this.rectangle = new Rectangle((float)x + xOffset, (float)y + yOffset, width, height);
@@ -41,20 +41,20 @@ public class GreenJet extends Enemy{
 					lastShot2 = level.getTime();
 					double shootingangle = level.getAngletoPlayersMiddle(x + xOffset + width / 2, y + yOffset);
 					if (level.weaponSounds.size() == 0) level.weaponSounds.add(weapon);
-					weapon.shoot(x + xOffset + width / 2, y + yOffset, shootingangle);
+					weapon.shoot(x + 100, y + 40, shootingangle);
 				}
 		}
 	        if ((level.getTime() - lastShot) > firingRate) {	        	
 			    lastShot = level.getTime();
-			    double shootingangle = level.getAngletoPlayersMiddle(x + 25, y + 50);
-			    wingWeapon.shoot(x + 25, y + 50, shootingangle);
-			    wingWeapon.shoot(x + 25, y + 50, shootingangle + .2);
-			    wingWeapon.shoot(x + 25, y + 50, shootingangle - .2);
+			    double shootingangle = level.getAngletoPlayersMiddle(x + 40, y + 55);
+			    wingWeapon.shoot(x + 40, y + 55, shootingangle);
+			    wingWeapon.shoot(x + 40, y + 55, shootingangle + .2);
+			    wingWeapon.shoot(x + 40, y + 55, shootingangle - .2);
 		       	if (level.weaponSounds.size() == 0) level.weaponSounds.add(weapon);
-		       	shootingangle = level.getAngletoPlayersMiddle(x + 175, y + 50);
-			    wingWeapon.shoot(x + 175, y + 50, shootingangle);
-			    wingWeapon.shoot(x + 175, y + 50, shootingangle + .2);
-			    wingWeapon.shoot(x + 175, y + 50, shootingangle - .2);
+		       	shootingangle = level.getAngletoPlayersMiddle(x + 159, y + 55);
+			    wingWeapon.shoot(x + 159, y + 55, shootingangle);
+			    wingWeapon.shoot(x + 159, y + 55, shootingangle + .2);
+			    wingWeapon.shoot(x + 159, y + 55, shootingangle - .2);
 			    
 	        	}
         }

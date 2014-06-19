@@ -25,7 +25,7 @@ public class SuperGreenJet extends Enemy{
 		this.width = 396;
 		this.height = 100;
 		this.sprite = new Sprite(superGreenJetTexture);		
-		this.health = 250;
+		this.health = 440;
 		this.xOffset = 2;
 		this.yOffset = 50;
 		this.rectangle = new Rectangle((float)x + xOffset, (float)y + yOffset, width, height);

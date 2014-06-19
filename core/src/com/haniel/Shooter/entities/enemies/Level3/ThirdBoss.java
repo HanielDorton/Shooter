@@ -1,6 +1,5 @@
 package com.haniel.Shooter.entities.enemies.Level3;
 
-import java.util.Arrays;
 import java.util.List;
 
 import com.badlogic.gdx.Gdx;
@@ -8,6 +7,8 @@ import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Rectangle;
 import com.haniel.Shooter.entities.enemies.Enemy;
+import com.haniel.Shooter.graphics.HealthBar;
+import com.haniel.Shooter.graphics.HealthBarOutline;
 import com.haniel.Shooter.level.Level;
 import com.haniel.Shooter.util.Coord;
 import com.haniel.Shooter.weapons.GreenGun;
@@ -21,30 +22,32 @@ public class ThirdBoss extends Enemy{
 	public ThirdBoss(double x, double y, List <Coord> pattern, Level level) {
 		super(x, y, pattern, level);		
 		this.speed = 150;
-		this.width = 96;
-		this.height = 38;
+		this.width = 85;
+		this.height = 142;
 		this.sprite = new Sprite(thirdBossTexture);		
-		this.health = 200;
-		this.xOffset = 2;
-		this.yOffset = 6;
+		this.health = 400;
+		this.xOffset = 5;
+		this.yOffset = 5;
 		this.rectangle = new Rectangle((float)x + xOffset, (float)y + yOffset, width, height);
 		this.weapon = new GreenGun(level, false, 500);
 		this.lastShot =level.getTime();
 		this.lastShot2 = level.getTime();
+		level.add(new HealthBarOutline(0));
+		level.add(new HealthBar(this, 0));
 	}
 	
 	public void shoot() {
 		if ((level.getTime() - lastShot) > firingRate) {
 	    	lastShot = level.getTime();
-	    	if (health > 50) generateRandomSuperMine(480);
+	    	if (health > 200) generateRandomSuperMine(480);
 	    	else generateRandomMine(480);
 		}
 		if ((level.getTime() - lastShot2) > secondFiringRate) {
 			lastShot2 = level.getTime();
-	       	double angle = level.getAngletoPlayersMiddle(x + xOffset, y + yOffset + height / 2 - 5);
-	       	weapon.shoot(x + xOffset, y + yOffset + height / 2 - 5, angle);
-	       	angle = level.getAngletoPlayersMiddle(x + width + xOffset, y + yOffset + height / 2 - 5);
-	       	weapon.shoot(x + width + xOffset, y + yOffset + height / 2 - 5, angle);
+	       	double angle = level.getAngletoPlayersMiddle(x + 14, y +50);
+	       	weapon.shoot(x + 14, y + 50, angle);
+	       	angle = level.getAngletoPlayersMiddle(x + 81, y + 50);
+	       	weapon.shoot(x + 81, y + 50, angle);
 	       	if (level.weaponSounds.size() == 0) level.weaponSounds.add(weapon);
 		}
 	}
@@ -58,7 +61,7 @@ public class ThirdBoss extends Enemy{
         center = x + xOffset + width / 2;
         if (center > level.getPlayerX()) move(-speed, 0);
         else if (center < level.getPlayerX()) move(speed, 0);
-        if (y > 400) move(0, -speed);
+        if (y > 330) move(0, -speed);
         if (x< 0) x = 1;
         if (x > 700) x = 699;
         
@@ -76,14 +79,9 @@ public class ThirdBoss extends Enemy{
 	}
 	private void generateRandomSuperMine(int y) {
 		int x = random.nextInt(760) + 20;
-		Coord coord = new Coord(x, -500);
-		List<Coord> temp = Arrays.asList(coord);
-		level.specialBossArray.add(new SuperGreenMine(x, y, temp, level));
+		level.specialBossArray.add(new SuperGreenMine(x, 480, level, random.nextInt(11)));
 	}
 	private void generateRandomMine(int y) {
-		int x = random.nextInt(760) + 20;
-		Coord coord = new Coord(x, -500);
-		List<Coord> temp = Arrays.asList(coord);
-		level.specialBossArray.add(new GreenMine(x, y, temp, level));
+		level.specialBossArray.add(new GreenMine(x, 480, level, random.nextInt(11)));
 	}
 }

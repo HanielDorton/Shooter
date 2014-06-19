@@ -243,13 +243,4 @@ public class Level {
 	public void resumeMusic() {
 		backgroundMusic.play();
 	}
-	protected void increaseStarSpeed(int speed) {
-		Iterator<MyGraphics> graphiciter = graphics.iterator();
-        while(graphiciter.hasNext()) {
-        	MyGraphics graphic = graphiciter.next();
-        	if (graphic instanceof Star) {
-        		graphic.changeSpeed(speed);
-        	}
-        }
-	}
 }

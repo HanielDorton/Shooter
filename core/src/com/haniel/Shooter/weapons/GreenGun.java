@@ -1,7 +1,7 @@
 package com.haniel.Shooter.weapons;
 
 import com.haniel.Shooter.level.Level;
-import com.haniel.Shooter.projectiles.GreenBullet;
+import com.haniel.Shooter.projectiles.GreenSphere;
 
 public class GreenGun extends Weapon{
 	
@@ -14,7 +14,7 @@ public class GreenGun extends Weapon{
 	}
 	
 	public void shoot(double x, double y, double angle) {
-		level.add(new GreenBullet(x, y, angle, fromPlayer, speed));
+		level.add(new GreenSphere(x, y, angle, fromPlayer, speed));
 	}
 
 }

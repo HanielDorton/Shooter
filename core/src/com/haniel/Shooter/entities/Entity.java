@@ -45,10 +45,10 @@ public abstract class Entity{
 	protected static final Sound irritatingAmbiantBuzz = Gdx.audio.newSound(Gdx.files.internal("sounds/irritating-ambient-buzz.wav"));
 	protected static final Texture secondBossTexture = new Texture(Gdx.files.internal("entities/Level2/orangeship.png"));
 	//level three
-	protected static final Texture greenJetTexture = new Texture(Gdx.files.internal("entities/green_jet.png"));
-	protected static final Texture superGreenJetTexture = new Texture(Gdx.files.internal("entities/super_green_jet.png"));
-	protected static final Texture greenMineTexture = new Texture(Gdx.files.internal("entities/green_mines.png"));
-	protected static final Texture thirdBossTexture = new Texture(Gdx.files.internal("entities/third_boss.png"));
+	protected static final Texture greenJetTexture = new Texture(Gdx.files.internal("entities/Level3/smalljet.png"));
+	protected static final Texture superGreenJetTexture = new Texture(Gdx.files.internal("entities/Level3/destroyer1.png"));
+	protected static final Texture greenMineTexture = new Texture(Gdx.files.internal("entities/Level3/Spacestation-by-MillionthVector.png"));
+	protected static final Texture thirdBossTexture = new Texture(Gdx.files.internal("entities/Level3/spaceshipspr.png"));
 	
 	public Entity() {
 		
