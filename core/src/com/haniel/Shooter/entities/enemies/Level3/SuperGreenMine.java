@@ -2,7 +2,7 @@ package com.haniel.Shooter.entities.enemies.Level3;
 
 
 import com.haniel.Shooter.level.Level;
-import com.haniel.Shooter.weapons.GreenGun;
+import com.haniel.Shooter.weapons.SphereGun;
 
 public class SuperGreenMine extends GreenMine{
 		
@@ -11,7 +11,7 @@ public class SuperGreenMine extends GreenMine{
 		
 		public SuperGreenMine(double x, double y,  Level level, int p) {
 			super(x, y, level, p);		
-			this.weapon = new GreenGun(level, false, 200);
+			this.weapon = new SphereGun(level, false, 200);
 			this.lastShot =level.getTime() + 1.5 + random.nextInt(3);
 		}
 		

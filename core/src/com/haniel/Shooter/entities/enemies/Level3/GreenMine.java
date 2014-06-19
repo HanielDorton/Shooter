@@ -6,7 +6,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.haniel.Shooter.entities.enemies.Enemy;
 import com.haniel.Shooter.level.Level;
 import com.haniel.Shooter.util.Pathing;
-import com.haniel.Shooter.weapons.GreenGun;
+import com.haniel.Shooter.weapons.SphereGun;
 
 public class GreenMine extends Enemy{
 	
@@ -22,9 +22,10 @@ public class GreenMine extends Enemy{
 		this.sprite = new Sprite(greenMineTexture);		
 		this.health = 3;
 		this.rectangle = new Rectangle((float)x + xOffset, (float)y + yOffset, width, height);
-		this.weapon = new GreenGun(level, false, 400);
+		this.weapon = new SphereGun(level, false, 400);
 		this.rotates = true;
 		this.lastX = x;
+		this.points = 10;
 
 		switch (p) {
 			case 1: {

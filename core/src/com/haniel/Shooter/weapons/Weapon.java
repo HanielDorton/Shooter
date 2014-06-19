@@ -3,7 +3,6 @@ package com.haniel.Shooter.weapons;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 import com.haniel.Shooter.level.Level;
-import com.haniel.Shooter.projectiles.BasicBullet;
 
 public abstract class Weapon {
 
@@ -33,7 +32,7 @@ public abstract class Weapon {
 	}
 
 	public void shoot(double x, double y, double angle) {
-		level.add(new BasicBullet(x, y, angle, fromPlayer));
+		level.add(new PlayerBullet(x, y, angle, fromPlayer));
 	}
 	
 	public void playSound() {

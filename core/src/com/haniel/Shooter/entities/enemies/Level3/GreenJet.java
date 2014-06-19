@@ -8,7 +8,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.haniel.Shooter.entities.enemies.Enemy;
 import com.haniel.Shooter.level.Level;
-import com.haniel.Shooter.weapons.GreenGun;
+import com.haniel.Shooter.weapons.SphereGun;
 import com.haniel.Shooter.weapons.Weapon;
 
 public class GreenJet extends Enemy{
@@ -20,18 +20,18 @@ public class GreenJet extends Enemy{
 	public GreenJet(double x, double y, CatmullRomSpline<Vector2> path, Level level) {
 		super(x, y, path, level);		
 		this.speed = 6;
-		this.width = 196;
-		this.height = 50;
+		this.width = 170;
+		this.height = 30;
 		this.sprite = new Sprite(greenJetTexture);		
 		this.health = 160;
-		this.xOffset = 2;
-		this.yOffset = 25;
+		this.xOffset = 15;
+		this.yOffset = 35;
 		this.rectangle = new Rectangle((float)x + xOffset, (float)y + yOffset, width, height);
-		this.weapon = new GreenGun(level, false, 600);
-		this.wingWeapon = new GreenGun(level, false, 200);
-		this.lastShot2 = level.getTime();
-
-		
+		this.weapon = new SphereGun(level, false, 600);
+		this.wingWeapon = new SphereGun(level, false, 200);
+		this.lastShot2 = level.getTime() + 2;
+		this.lastShot = level.getTime() + 2;
+		this.points = 50;		
 	}
 	
 	protected void shoot() {

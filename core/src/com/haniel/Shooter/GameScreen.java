@@ -22,7 +22,6 @@ import com.haniel.Shooter.level.Level1;
 import com.haniel.Shooter.level.Level2;
 import com.haniel.Shooter.level.Level3;
 import com.haniel.Shooter.level.Level4;
-import com.haniel.Shooter.projectiles.Projectile;
 import com.haniel.Shooter.util.GameState;
 import com.haniel.Shooter.util.MyInputProcessor;
 
@@ -36,10 +35,11 @@ public class GameScreen implements Screen {
     private static int screenHeight = 480;
     public Player player; 
     public MyInputProcessor inputProcessor;
-    private int deathTimer;
+    private int deathTimer, time, minutes;
     private boolean paused = false;
     private double levelComplete = -10;
     private GameState gameState;
+    private int tempScore = 0;
     Pixmap mouse;
 
     public GameScreen(final MyGdxGame gam, GameState gameState) {    	
@@ -53,7 +53,7 @@ public class GameScreen implements Screen {
         Gdx.input.setInputProcessor(inputProcessor);
         camera = new OrthographicCamera();
         camera.setToOrtho(false, screenWidth, screenHeight);
-        
+        tempScore =gameState.tempScore;
         //set cursor to blank image since it is fixed to the middle of the screen.
         mouse = new Pixmap(Gdx.files.internal("textures/mouseX.png"));
         Gdx.input.setCursorImage(mouse, 0, 0);
@@ -129,11 +129,6 @@ public class GameScreen implements Screen {
 	        		pooledIter.remove();
 	        	}
 	        }
-	        for (Projectile projectile : level.projectiles) {
-	        	if (projectile.hasTexture()) {
-	        		game.batch.draw(projectile.getTexture(), (float) projectile.getX(), (float) projectile.getY());
-	        	}
-	        }
 	        for (Entity entity : level.entities) {
 	        	if (entity.rotates()) {
 
@@ -156,8 +151,21 @@ public class GameScreen implements Screen {
 	        		p.dispose();	        		
 	        	}
 	        }
-	        game.font.draw(game.batch, "Time: " + level.getLevelTime() / 100, 5, screenHeight - 5);
+	        time = level.getLevelTime() / 100;
+	        if (time >= 60){
+	        	minutes = time / 60;
+	        	time = time % 60;
+	        }
+	        game.font.draw(game.batch, "Time: " + minutes + " : " + time, 5, screenHeight - 5);
+	        
+	        
+	        if (tempScore > gameState.tempScore) tempScore--;
+	        else if (tempScore < gameState.tempScore) tempScore++;
+	        game.font.draw(game.batch, "Score: " + tempScore, 5, screenHeight - 25);
+
+	        
 	        level.update();
+	        
 	        gameTime += Gdx.graphics.getDeltaTime();
 	        if (gameTime > .1) {
 	        	level.runLevel(this);
@@ -166,6 +174,9 @@ public class GameScreen implements Screen {
 	        	        
 	        if (player.getHealth() < 1) {
 	        	deathTimer = level.getLevelTime() + 300;    
+	        	gameState.score -= 100;
+	        	if (gameState.score < 0) gameState.score = 0;
+	        	gameState.tempScore = gameState.score;
 	        	player.particles();
 	        	player.setHealth();	 
 	        	level.entities.remove(player);       	
@@ -181,7 +192,7 @@ public class GameScreen implements Screen {
 	public int getWidth() {
     	return screenWidth;
     }
-    
+
     public int getHeight() {
     	return screenHeight;
     }
@@ -230,10 +241,12 @@ public class GameScreen implements Screen {
     }
     public void setCheckPoint(int newCheckPoint) {
     	gameState.checkPoint = newCheckPoint;
+    	gameState.score = gameState.tempScore;
     }
     
     public void setLevelComplete() {
     	this.levelComplete = level.getLevelTime() + 800;
+    	gameState.score = gameState.tempScore;
     }
     
     private Level getLevel() {
@@ -258,6 +271,9 @@ public class GameScreen implements Screen {
 		}
 		return level;
 	}
+    public void scorePoints(int points) {
+    	gameState.tempScore += points;
+    }
 
 }
 

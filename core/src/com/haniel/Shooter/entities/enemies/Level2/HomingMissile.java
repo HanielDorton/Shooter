@@ -27,6 +27,7 @@ public class HomingMissile extends Enemy{
 		this.effect.setPosition((int) x, (int)y);
 		level.effects.add(this.effect);
 		this.effect.start();
+		this.points = 0;
 	}
 	
 	public void shoot() {

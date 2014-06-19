@@ -34,7 +34,7 @@ public class SecondBoss extends Enemy{
 		this.xOffset = 3;
 		this.height = 690;
 		this.yOffset = 5;
-		this.health = 600;
+		this.health = 500;
 		this.speed = 7;
 		this.weapon = new SphereGun(level, false, 70);
 		this.rectangle = new Rectangle((float)x + xOffset, (float)y + yOffset, width, height);
@@ -44,6 +44,7 @@ public class SecondBoss extends Enemy{
 		this.lastShot2 = level.getTime() + 15;
 		this.lastShot3 = level.getTime() + 3;
 		this.startEngines =level.getLevelTime() + 1300;
+		this.points = 200;
 		this.flyby = flyby;
 		if (!flyby) {
 			level.add(new HealthBarOutline(0));
@@ -54,34 +55,36 @@ public class SecondBoss extends Enemy{
 	
 	public void shoot() {
 		if (flyby) {
-			if (y > level.getHeight() + 30) remove();
-			if ((level.getTime() - lastShot) > firingRate) {
-				lastShot = level.getTime();
-				if (level.weaponSounds.size() == 0) level.weaponSounds.add(weapon);
-		    	for (int i = 1; i < 9; i ++) {
-		    		weapon.shoot(x + 154, y + 554, firingAngle - (i * -.3));
-		    	}
-		    	for (int i = 1; i < 18; i ++) {
-		    		weapon.shoot(x + 154, y + 441, firingAngle2 - (i * -.375));
-		    		weapon.shoot(x + 154, y + 200, firingAngle2 - (i * -.375));
-		    	}
-			}
-		   if ((level.getTime() - lastShot2) > secondFiringRate) {
-					lastShot2 = level.getTime();
+			if (y > level.getHeight() + 200) remove();
+			if (!(y > level.getHeight())) {
+				if ((level.getTime() - lastShot) > firingRate) {
+					lastShot = level.getTime();
 					if (level.weaponSounds.size() == 0) level.weaponSounds.add(weapon);
-					double angle = getAngleTo(x, y, x - 10, y);
-					weapon.shoot(x + 2, y + 433, angle);
-					weapon.shoot(x + 2, y + 189, angle);
-					angle = getAngleTo(x, y, x +10, y);
-					weapon.shoot(x + 304, y + 433, angle);
-					weapon.shoot(x + 304, y + 189, angle);
+			    	for (int i = 1; i < 9; i ++) {
+			    		weapon.shoot(x + 154, y + 554, firingAngle - (i * -.3));
+			    	}
+			    	for (int i = 1; i < 18; i ++) {
+			    		weapon.shoot(x + 154, y + 441, firingAngle2 - (i * -.375));
+			    		weapon.shoot(x + 154, y + 200, firingAngle2 - (i * -.375));
+			    	}
+				}
+			   if ((level.getTime() - lastShot2) > secondFiringRate) {
+						lastShot2 = level.getTime();
+						if (level.weaponSounds.size() == 0) level.weaponSounds.add(weapon);
+						double angle = getAngleTo(x, y, x - 10, y);
+						weapon.shoot(x + 2, y + 433, angle);
+						weapon.shoot(x + 2, y + 189, angle);
+						angle = getAngleTo(x, y, x +10, y);
+						weapon.shoot(x + 304, y + 433, angle);
+						weapon.shoot(x + 304, y + 189, angle);
+				}
 			}
 			
 		}
 		else{
 			if ((level.getTime() - lastShot3) > thirdFiringRate) {
 				lastShot3 = level.getTime();
-				if (health > 100) {
+				if (health > 150) {
 					if (flip) {
 						level.specialBossArray.add(new BossCargos(0, -80, Pathing.goUpLeft, level));
 						flip = false;

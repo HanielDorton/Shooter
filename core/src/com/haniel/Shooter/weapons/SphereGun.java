@@ -1,7 +1,6 @@
 package com.haniel.Shooter.weapons;
 
 import com.haniel.Shooter.level.Level;
-import com.haniel.Shooter.projectiles.Sphere;
 
 public class SphereGun extends Weapon{
 	

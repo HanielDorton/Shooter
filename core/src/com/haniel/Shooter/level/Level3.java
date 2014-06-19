@@ -10,7 +10,6 @@ import com.haniel.Shooter.entities.enemies.Level3.SuperGreenMine;
 import com.haniel.Shooter.entities.enemies.Level3.ThirdBoss;
 import com.haniel.Shooter.graphics.BackgroundImage;
 import com.haniel.Shooter.graphics.CheckpointReached;
-import com.haniel.Shooter.util.Coord;
 import com.haniel.Shooter.util.Pathing;
 
 public class Level3 extends Level{
@@ -42,8 +41,8 @@ public class Level3 extends Level{
 				add(new GreenJet(800, 480,Pathing.jetCirclesRight , this));
 				break;
 			}
-			case 2550: {
-				add(new SuperGreenJet(-200, 480,Coord.superJet , this));
+			case 2600: {
+				add(new SuperGreenJet(-10,480,Pathing.jetCircles , this));
 				break;
 			}
 			case 5950: {
@@ -58,7 +57,7 @@ public class Level3 extends Level{
 				}
 				break;
 			}
-			case 6350: {
+			case 6300: {
 				for (int i = 0; i < 2; i++ ) generateRandomMine(480 + (100 * i));
 				break;
 			}
@@ -77,7 +76,7 @@ public class Level3 extends Level{
 			}
 			case 7800: {
 				for (int i = 0; i < 2; i++ ) generateRandomMine(480 + (100 * i));
-				for (int i = 0; i < 1; i++ ) generateRandomSuperMine(480 + (100 * i));
+				generateRandomSuperMine(480 + 100);
 				break;
 			}
 			case 8200: {
@@ -119,13 +118,13 @@ public class Level3 extends Level{
 				break;
 			}
 			case 10900: {
-				for (int i = 0; i < 1; i++ ) generateRandomMine(480 + (100 * i));
-				for (int i = 0; i < 1; i++ ) generateRandomSuperMine(480 + (100 * i));
+				generateRandomMine(480 + 100);
+				generateRandomSuperMine(480 + 100);
 				break;
 			}
 			case 11200: {
-				for (int i = 0; i < 1; i++ ) generateRandomMine(480 + (100 * i));
-				for (int i = 0; i < 1; i++ ) generateRandomSuperMine(480 + (100 * i));
+				generateRandomMine(480 + 100);
+				generateRandomSuperMine(480 + 100);
 				break;
 			}
 			
@@ -140,12 +139,12 @@ public class Level3 extends Level{
 				}
 				backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/All_This.mp3"));
 				backgroundMusic.play();
-				for (int i = 0; i < 2; i++ ) generateRandomMine(480 + (100 * i));
-				for (int i = 0; i < 1; i++ ) generateRandomSuperMine(480 + (100 * i));
+				generateRandomMine(480 + 100);
+				generateRandomSuperMine(480 + 100);
 				break;				
 			}
 			case 11700:{
-				add(new ThirdBoss(350, 480, Coord.bosscircles, this));
+				add(new ThirdBoss(350, 480, this));
 				break;
 			}
 					

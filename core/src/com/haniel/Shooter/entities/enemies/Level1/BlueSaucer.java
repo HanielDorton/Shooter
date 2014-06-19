@@ -44,6 +44,7 @@ public class BlueSaucer extends Enemy{
 		this.weapon = new SphereGun(level, false, 130);
 		this.lastShot = level.getTime() + 5;
 		this.path = path;
+		this.points = 50;
 	}
 	
 	public void update() {

@@ -17,7 +17,7 @@ import com.haniel.Shooter.entities.Entity;
 import com.haniel.Shooter.entities.Player;
 import com.haniel.Shooter.graphics.MyGraphics;
 import com.haniel.Shooter.graphics.Star;
-import com.haniel.Shooter.projectiles.Projectile;
+import com.haniel.Shooter.weapons.Projectile;
 import com.haniel.Shooter.weapons.Weapon;
 
 
@@ -242,5 +242,8 @@ public class Level {
 	}
 	public void resumeMusic() {
 		backgroundMusic.play();
+	}
+	public void scorePoints(int points) {
+		gameScreen.scorePoints(points);
 	}
 }

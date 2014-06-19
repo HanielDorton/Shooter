@@ -28,6 +28,7 @@ public class RedEnemy extends Enemy{
 		this.engine1Effect.setPosition((int) x + 27,(int) y + 100);
 		level.effects.add(this.engine1Effect);
 		this.engine1Effect.start();
+		this.points = 10;
 	}
 	
 	public RedEnemy(double x, double y, CatmullRomSpline<Vector2> path, Level level) {

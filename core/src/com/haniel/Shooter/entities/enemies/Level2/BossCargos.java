@@ -31,6 +31,7 @@ public class BossCargos extends Enemy{
 		this.engine2Effect.setPosition((int) x + 32,(int) y + 3);
 		level.effects.add(this.engine2Effect);
 		this.engine2Effect.start();
+		this.points = 0;
 	}
 	public void update() {
 		super.update();

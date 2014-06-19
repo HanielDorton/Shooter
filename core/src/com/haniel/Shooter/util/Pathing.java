@@ -110,16 +110,15 @@ public class Pathing {
 
 	//Level Three Small Jets
 	public static CatmullRomSpline<Vector2> jetCirclesRight = new CatmullRomSpline<Vector2>(new Vector2[] 
-			{new Vector2(825, 175), new Vector2(420, 375), new Vector2(550, 415),
-			new Vector2(650, 375), new Vector2(550, 340),new Vector2(420, 375), new Vector2(550, 415),
-			new Vector2(1500, 340)}, true);
+			{new Vector2(800, 175), new Vector2(420, 350), new Vector2(520, 380),
+			new Vector2(600, 350), new Vector2(500, 300),new Vector2(420, 350), new Vector2(520, 380),
+			new Vector2(1520, 300)}, true);
 	
 	public static CatmullRomSpline<Vector2> jetCirclesLeft = new CatmullRomSpline<Vector2>(new Vector2[] 
-			{new Vector2(-200, 175), new Vector2(230, 375), new Vector2(100, 415),
-			new Vector2(0, 375), new Vector2(100, 340),new Vector2(230, 375), new Vector2(100, 415),
-			new Vector2(-850, 340)}, true);
-	
-	
+			{new Vector2(-200, 175), new Vector2(180, 350), new Vector2(80, 380),
+			new Vector2(0, 350), new Vector2(100, 300),new Vector2(180, 350), new Vector2(80, 380),
+			new Vector2(-980, 300)}, true);
+		
 	//Level Three Mines
 	
 	public static CatmullRomSpline<Vector2> mine1 = new CatmullRomSpline<Vector2>(new Vector2[] 
@@ -154,4 +153,11 @@ public class Pathing {
 		
 	public static CatmullRomSpline<Vector2> mine11 = new CatmullRomSpline<Vector2>(new Vector2[] 
 			{new Vector2(200, 480), new Vector2(0, 200), new Vector2(200, -500)}, true);
+	
+	//Level Three SuperJet
+	
+	public static CatmullRomSpline<Vector2> jetCircles = new CatmullRomSpline<Vector2>(new Vector2[] 
+			{new Vector2(200, 270), new Vector2(400, 220), new Vector2(400, 270),
+			new Vector2(200, 220), new Vector2(0, 270), new Vector2(0, 220)}, true);
+
 }

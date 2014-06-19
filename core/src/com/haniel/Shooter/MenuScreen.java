@@ -19,7 +19,6 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.haniel.Shooter.entities.Entity;
 import com.haniel.Shooter.graphics.BackgroundImage;
 import com.haniel.Shooter.graphics.MyGraphics;
-import com.haniel.Shooter.projectiles.Projectile;
 import com.haniel.Shooter.util.GameState;
 import com.haniel.Shooter.weapons.Weapon;
 
@@ -82,7 +81,7 @@ public class MenuScreen implements Screen{
 		buttonPlay = new TextButton("Start Game", skin);
 		buttonPlay.addListener(new ChangeListener() {
 			public void changed(ChangeEvent event, Actor actor) {
-				GameState gameState = new GameState(3, 5940, 0, 0); //level, checkpoint, kills, continues 
+				GameState gameState = new GameState(2, 0, 0, 0); //level, checkpoint, kills, continues 
 	            game.setScreen(new GameScreen(game, gameState));
 	            dispose();				
 			}
@@ -97,7 +96,6 @@ public class MenuScreen implements Screen{
 		buttonExit = new TextButton("Exit", skin);
 		buttonExit.addListener(new ChangeListener() {
 			public void changed(ChangeEvent event, Actor actor) {
-				Projectile.dispose();
 	        	MyGraphics.dispose();
 	        	Entity.dispose();
 	        	Weapon.dispose();

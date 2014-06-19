@@ -38,6 +38,7 @@ public class CargoCraft extends Enemy{
 		this.engine2Effect.setPosition((int) x + engineOffset,(int) y + 18);
 		level.effects.add(this.engine2Effect);
 		this.engine2Effect.start();
+		this.points=20;
 	}
 	
 	public void update() {

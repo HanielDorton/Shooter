@@ -1,15 +1,14 @@
 package com.haniel.Shooter.entities.enemies.Level3;
 
-import java.util.List;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.math.CatmullRomSpline;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector2;
 import com.haniel.Shooter.entities.enemies.Enemy;
 import com.haniel.Shooter.level.Level;
-import com.haniel.Shooter.util.Coord;
-import com.haniel.Shooter.weapons.GreenGun;
+import com.haniel.Shooter.weapons.SphereGun;
 import com.haniel.Shooter.weapons.Weapon;
 
 public class SuperGreenJet extends Enemy{
@@ -19,19 +18,41 @@ public class SuperGreenJet extends Enemy{
 	protected Weapon wingWeapon;
 	
 	
-	public SuperGreenJet(double x, double y, List <Coord> pattern, Level level) {
-		super(x, y, pattern, level);		
-		this.speed = 70;
-		this.width = 396;
-		this.height = 100;
+	public SuperGreenJet(double x, double y, CatmullRomSpline<Vector2> path, Level level) {
+		super(x, y, path, level);		
+		this.speed = 10;
+		this.width = 340;
+		this.height = 60;
 		this.sprite = new Sprite(superGreenJetTexture);		
 		this.health = 440;
-		this.xOffset = 2;
-		this.yOffset = 50;
+		this.xOffset = 30;
+		this.yOffset = 70;
 		this.rectangle = new Rectangle((float)x + xOffset, (float)y + yOffset, width, height);
-		this.weapon = new GreenGun(level, false, 500);
+		this.weapon = new SphereGun(level, false, 500);
 		this.lastShot2 = level.getTime();
-		this.wingWeapon = new GreenGun(level, false, 300);
+		this.wingWeapon = new SphereGun(level, false, 300);
+		this.points = 100;
+	}
+	public void update() {
+		if (level.getTime() > 52){
+				move(-50, 30);
+		        if (y < 0 - this.height - 300) remove();
+		        if (y > level.getHeight() + this.height + 300) remove();
+		        if (x > level.getWidth() + this.width + 300) remove();
+		        if (x < 0 - this.width - 300) remove();
+		        if (health < 0) remove();
+		        rectangle.setPosition((float)x + xOffset, (float)y + yOffset);
+		        if (!(y < 0 - this.height) && !(y > level.getHeight() + this.height) && !(x > level.getWidth() + this.width) && !(x < 0 - this.width)) shoot();
+		    
+		} else if (y > 270) {
+			move(50, -50);
+	        rectangle.setPosition((float)x + xOffset, (float)y + yOffset);
+	        if (!(y < 0 - this.height) && !(y > level.getHeight() + this.height) && !(x > level.getWidth() + this.width) && !(x < 0 - this.width)) {
+	        	shoot();
+	        }
+		} else {
+			super.update();
+		}
 	}
 	
 	protected void shoot() {
@@ -40,23 +61,23 @@ public class SuperGreenJet extends Enemy{
 				for (int i = 1; i < 8; i++) {								
 					if (Math.abs((this.x + i * 50) - level.getPlayerX()) < 10) {
 						lastShot2 = level.getTime();
-						double shootingangle = level.getAngletoPlayersMiddle(this.x + i * 50, y + yOffset);
+						double shootingangle = level.getAngletoPlayersMiddle(this.x + i * 50, y + yOffset + height);
 						if (level.weaponSounds.size() == 0) level.weaponSounds.add(weapon);
-						weapon.shoot(this.x + i * 50, y + yOffset, shootingangle);
+						weapon.shoot(this.x + i * 50, y + yOffset + height, shootingangle);
 					}
 				}
 			}
 			if ((level.getTime() - lastShot) > firingRate) {	        	
 			    lastShot = level.getTime();
-			    double shootingangle = level.getAngletoPlayersMiddle(x + 25, y + 100);
-			    wingWeapon.shoot(x + 25, y + 100, shootingangle);
-			    wingWeapon.shoot(x + 25, y + 100, shootingangle + .1);
-			    wingWeapon.shoot(x + 25, y + 100, shootingangle - .1);
+			    double shootingangle = level.getAngletoPlayersMiddle(x + 50, y + 170);
+			    wingWeapon.shoot(x + 50, y + 170, shootingangle);
+			    wingWeapon.shoot(x + 50, y + 170, shootingangle + .1);
+			    wingWeapon.shoot(x + 50, y + 170, shootingangle - .1);
 		       	if (level.weaponSounds.size() == 0) level.weaponSounds.add(weapon);
-		       	shootingangle = level.getAngletoPlayersMiddle(x + 375, y + 50);
-			    wingWeapon.shoot(x + 375, y + 100, shootingangle);
-			    wingWeapon.shoot(x + 375, y + 100, shootingangle + .1);
-			    wingWeapon.shoot(x + 375, y + 100, shootingangle - .1);
+		       	shootingangle = level.getAngletoPlayersMiddle(x + 350, y + 170);
+			    wingWeapon.shoot(x + 350, y + 170, shootingangle);
+			    wingWeapon.shoot(x + 350, y + 170, shootingangle + .1);
+			    wingWeapon.shoot(x + 350, y + 170, shootingangle - .1);
 			    
 	        	}
 		}

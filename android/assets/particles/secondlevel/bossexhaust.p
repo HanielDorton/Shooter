@@ -10,8 +10,8 @@ max: 20000
 - Emission - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 20.0
-highMax: 20.0
+highMin: 25.0
+highMax: 25.0
 relative: false
 scalingCount: 1
 scaling0: 1.0
@@ -23,12 +23,10 @@ lowMax: 0.0
 highMin: 25000.0
 highMax: 25000.0
 relative: false
-scalingCount: 2
+scalingCount: 1
 scaling0: 1.0
-scaling1: 1.0
-timelineCount: 2
+timelineCount: 1
 timeline0: 0.0
-timeline1: 1.0
 - Life Offset - 
 active: false
 - X Offset - 
@@ -69,19 +67,17 @@ timeline0: 0.0
 - Scale - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 5.0
+highMin: 10.0
 highMax: 30.0
 relative: false
-scalingCount: 4
-scaling0: 0.0
-scaling1: 1.0
-scaling2: 1.0
-scaling3: 0.0
-timelineCount: 4
+scalingCount: 3
+scaling0: 1.0
+scaling1: 0.75510204
+scaling2: 0.0
+timelineCount: 3
 timeline0: 0.0
-timeline1: 0.001
-timeline2: 0.7123288
-timeline3: 1.0
+timeline1: 0.80136985
+timeline2: 1.0
 - Velocity - 
 active: true
 lowMin: 0.0
@@ -97,8 +93,8 @@ timeline0: 0.0
 active: true
 lowMin: 270.0
 lowMax: 270.0
-highMin: 220.0
-highMax: 320.0
+highMin: 230.0
+highMax: 310.0
 relative: false
 scalingCount: 2
 scaling0: 1.0

@@ -1,32 +1,22 @@
-package com.haniel.Shooter.projectiles;
+package com.haniel.Shooter.weapons;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.ParticleEffectPool.PooledEffect;
 import com.badlogic.gdx.math.Rectangle;
 import com.haniel.Shooter.level.Level;
 
 public abstract class Projectile {
-	
-	protected final double xOrigin, yOrigin, angle;
-	protected double x, y;
-	protected double speed, range, damage;
+
+	protected final double angle;
+	protected double x, y, speed, damage;
 	protected boolean removed = false;
 	protected Rectangle rectangle;
-	protected Texture texture;
 	protected int width, height;
 	protected Level level;
 	protected boolean fromPlayer;
 	protected PooledEffect effect;
-	
-	//these are all the final images for projectiles so they are only loaded once:
-	//every time you add a new one add it to dispose() at the bottom.
-	protected final static Texture basicBulletTexture = new Texture(Gdx.files.internal("projectiles/basicgun.png"));
-	protected final static Texture basicBulletReversedTexture = new Texture(Gdx.files.internal("projectiles/basicgunreversed.png"));
-	
+
 	public Projectile (double x, double y, double angle, boolean fromPlayer) {
-		xOrigin = x;
-		yOrigin = y;
 		this.angle = angle;
 		this.x = x;
 		this.y = y;
@@ -98,10 +88,6 @@ public abstract class Projectile {
 		return y;
 	}
 	
-	public Texture getTexture() {
-		return texture;
-	}
-	
 	public Rectangle getRectangle() {
 		return rectangle;
 	}
@@ -124,12 +110,6 @@ public abstract class Projectile {
 		return fromPlayer;
 	}
 	
-	public static void dispose() {
-		basicBulletTexture.dispose();
-		basicBulletReversedTexture.dispose();
-	}
-	public boolean hasTexture() {
-		return false;
-	}
+
 
 }

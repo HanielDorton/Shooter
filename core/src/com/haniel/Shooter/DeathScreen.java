@@ -13,7 +13,6 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.haniel.Shooter.entities.Entity;
 import com.haniel.Shooter.graphics.MyGraphics;
 import com.haniel.Shooter.level.Level;
-import com.haniel.Shooter.projectiles.Projectile;
 import com.haniel.Shooter.util.GameState;
 import com.haniel.Shooter.weapons.Weapon;
 
@@ -72,7 +71,6 @@ public class DeathScreen implements Screen{
 		buttonExit = new TextButton("Exit", skin);
 		buttonExit.addListener(new ChangeListener() {
 			public void changed(ChangeEvent event, Actor actor) {
-				Projectile.dispose();
 	        	MyGraphics.dispose();
 	        	Entity.dispose();
 	        	Weapon.dispose();

@@ -10,8 +10,8 @@ max: 2000
 - Emission - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 100.0
-highMax: 100.0
+highMin: 50.0
+highMax: 50.0
 relative: false
 scalingCount: 1
 scaling0: 1.0
@@ -102,7 +102,7 @@ active: false
 - Tint - 
 colorsCount: 3
 colors0: 1.0
-colors1: 0.28627452
+colors1: 0.28235295
 colors2: 0.047058824
 timelineCount: 1
 timeline0: 0.0
@@ -212,7 +212,7 @@ active: false
 - Tint - 
 colorsCount: 3
 colors0: 1.0
-colors1: 0.23529412
+colors1: 0.23137255
 colors2: 0.047058824
 timelineCount: 1
 timeline0: 0.0

@@ -47,6 +47,7 @@ public class FirstBoss extends Enemy{
 		engine2Effect.start();
 		level.add(new HealthBarOutline(0));
 		level.add(new HealthBar(this, 0));
+		this.points = 200;
 		
 		
 	}

@@ -1,7 +1,5 @@
 package com.haniel.Shooter.entities.enemies.Level3;
 
-import java.util.List;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -10,8 +8,7 @@ import com.haniel.Shooter.entities.enemies.Enemy;
 import com.haniel.Shooter.graphics.HealthBar;
 import com.haniel.Shooter.graphics.HealthBarOutline;
 import com.haniel.Shooter.level.Level;
-import com.haniel.Shooter.util.Coord;
-import com.haniel.Shooter.weapons.GreenGun;
+import com.haniel.Shooter.weapons.SphereGun;
 
 public class ThirdBoss extends Enemy{
 	
@@ -19,8 +16,8 @@ public class ThirdBoss extends Enemy{
 	private float secondFiringRate = .8f;
 	private double center;
 	
-	public ThirdBoss(double x, double y, List <Coord> pattern, Level level) {
-		super(x, y, pattern, level);		
+	public ThirdBoss(double x, double y, Level level) {
+		super(x, y, level);		
 		this.speed = 150;
 		this.width = 85;
 		this.height = 142;
@@ -29,11 +26,12 @@ public class ThirdBoss extends Enemy{
 		this.xOffset = 5;
 		this.yOffset = 5;
 		this.rectangle = new Rectangle((float)x + xOffset, (float)y + yOffset, width, height);
-		this.weapon = new GreenGun(level, false, 500);
+		this.weapon = new SphereGun(level, false, 500);
 		this.lastShot =level.getTime();
 		this.lastShot2 = level.getTime();
 		level.add(new HealthBarOutline(0));
 		level.add(new HealthBar(this, 0));
+		this.points = 200;
 	}
 	
 	public void shoot() {
@@ -61,7 +59,7 @@ public class ThirdBoss extends Enemy{
         center = x + xOffset + width / 2;
         if (center > level.getPlayerX()) move(-speed, 0);
         else if (center < level.getPlayerX()) move(speed, 0);
-        if (y > 330) move(0, -speed);
+        if (y > 300) move(0, -speed);
         if (x< 0) x = 1;
         if (x > 700) x = 699;
         

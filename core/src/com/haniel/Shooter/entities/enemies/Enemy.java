@@ -1,14 +1,11 @@
 package com.haniel.Shooter.entities.enemies;
 
-import java.util.List;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.ParticleEffectPool.PooledEffect;
 import com.badlogic.gdx.math.CatmullRomSpline;
 import com.badlogic.gdx.math.Vector2;
 import com.haniel.Shooter.entities.Entity;
 import com.haniel.Shooter.level.Level;
-import com.haniel.Shooter.util.Coord;
 
 public abstract class Enemy extends Entity{
 	
@@ -18,10 +15,11 @@ public abstract class Enemy extends Entity{
 	//override particles to have different particles on death
 	
 
-	protected List <Coord> pattern;
 	protected CatmullRomSpline<Vector2> path;
 	protected float current = 0;;
 	protected Vector2 out = new Vector2();
+	protected int points;
+	protected boolean scored= false;
 	
 	public Enemy(double x, double y, Level level) {
 		this.x = x;
@@ -34,38 +32,16 @@ public abstract class Enemy extends Entity{
 		this.path = path;
 	}
 	
-	public Enemy(double x, double y, List <Coord> pattern, Level level) {
-		this(x, y, level);
-		this.destX = x;
-		this.destY = y;
-		this.position = 0;
-		this.pattern = pattern;
-	}
-	
-
-	
 	public void update() {
 		super.update();
-		if (path != null) {
-			Vector2 out1 = new Vector2();
-			path.derivativeAt(out1, current);
-		    current += (Gdx.graphics.getDeltaTime() * speed) / out1.len();
-			if(current >= 1) current -= 1;
-			Vector2 out = new Vector2();
-		    path.valueAt(out, current);
-		    this.x = out.x;
-		    this.y = out.y;
-		}
-		else {
-			if (Math.abs(x - destX) <= 15 && Math.abs(y - destY) <= 15) {
-				destX = pattern.get(position).getX();
-				destY = pattern.get(position).getY();
-				angle = getAngleTo(x, y, destX, destY);
-				position++;
-				if (position == pattern.size()) position = 0;
-			}
-			move(Math.cos(angle) * speed, Math.sin(angle) * speed);	
-		}
+		Vector2 out1 = new Vector2();
+		path.derivativeAt(out1, current);
+	    current += (Gdx.graphics.getDeltaTime() * speed) / out1.len();
+		if(current >= 1) current -= 1;
+		Vector2 out = new Vector2();
+	    path.valueAt(out, current);
+	    this.x = out.x;
+	    this.y = out.y;
         rectangle.setPosition((float)x + xOffset, (float)y + yOffset);
         if (!(y < 0 - this.height) && !(y > level.getHeight() + this.height) && !(x > level.getWidth() + this.width) && !(x < 0 - this.width)) {
         	shoot();
@@ -86,6 +62,17 @@ public abstract class Enemy extends Entity{
 		if (!(getMidY()> 480) && !(getMidY() < 0) && !(getMidX() < 0 && !(getMidX() > 800))){
 			System.out.println("shooting not setup for this enemy");
 		}
+	}
+	
+	public void damage(double damage) {
+		health -= damage;
+		if (health < 0) {
+			if (!scored) {
+				level.scorePoints(this.points);
+				scored = true;
+			}
+		}
+		particles();
 	}
 }
 

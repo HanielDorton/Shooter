@@ -326,10 +326,9 @@ public class Level2 extends Level{
 	}
 	
 	public void threeFighterFormation() {
-		for (int i = 0; i < 6; i++) {
-			if (!(i % 2 == 0)) add(new ImprovedRedEnemy((175 * i) - 150, 575, this));
-			}
-		}
-	}
+		add(new ImprovedRedEnemy(0, 575, this));
+		add(new ImprovedRedEnemy(800, 575, this));
 
+	}
+}
 
