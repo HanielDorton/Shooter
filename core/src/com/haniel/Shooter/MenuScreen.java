@@ -81,7 +81,7 @@ public class MenuScreen implements Screen{
 		buttonPlay = new TextButton("Start Game", skin);
 		buttonPlay.addListener(new ChangeListener() {
 			public void changed(ChangeEvent event, Actor actor) {
-				GameState gameState = new GameState(2, 0, 0, 0); //level, checkpoint, kills, continues 
+				GameState gameState = new GameState(4, 0, 0, 0); //level, checkpoint, kills, continues 
 	            game.setScreen(new GameScreen(game, gameState));
 	            dispose();				
 			}

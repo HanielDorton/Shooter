@@ -20,7 +20,7 @@ public class LevelCompleteScreen implements Screen{
 	private Skin skin;
 	private Table table;
 	private TextButton buttonContinue;
-	private Label continues, score, percentage;
+	private Label score, grade;
 	private TextureAtlas atlas;
 	private GameState gameState;
 	private Level level;
@@ -55,10 +55,9 @@ public class LevelCompleteScreen implements Screen{
 		table.setBounds(0, 0, stage.getWidth(), stage.getHeight());
 		Gdx.input.setInputProcessor(stage);
 		
-		continues =new Label("Score: " + gameState.scores[gameState.numLevel-2], skin);
-		score = new Label("MaxScore " + gameState.levelMaxes[gameState.numLevel-2], skin);
-		percentage = new Label("Percentage " + (double) gameState.scores[gameState.numLevel-2] / gameState.levelMaxes[gameState.numLevel-2], skin);
-		
+		score =new Label("Score: " + gameState.scores[gameState.numLevel-2], skin);
+		grade = new Label("Grade " + getGrade(), skin);
+				
 		buttonContinue = new TextButton("Continue", skin);
 		buttonContinue.addListener(new ChangeListener() {
 			public void changed(ChangeEvent event, Actor actor) {
@@ -66,11 +65,9 @@ public class LevelCompleteScreen implements Screen{
 				dispose();				
 			}
 		});
-		table.add(continues).padBottom(30);
-		table.row();
 		table.add(score).padBottom(30);
 		table.row();
-		table.add(percentage).padBottom(30);
+		table.add(grade).padBottom(30);
 		table.row();
 		table.add(buttonContinue).width(200).height(40);
 	}
@@ -87,6 +84,15 @@ public class LevelCompleteScreen implements Screen{
 	public void dispose() {
 		stage.dispose();
 		level.dispose();
+	}
+	private String getGrade() {
+		int tempScore = gameState.scores[gameState.numLevel-2];
+			if (tempScore > 1000) return "A++";
+			else if (tempScore > 800) return "A";
+			else if (tempScore > 600) return "B";
+			else if (tempScore > 400) return "C";
+			else if (tempScore > 200) return "D";
+			else return "F";
 	}
 
 }

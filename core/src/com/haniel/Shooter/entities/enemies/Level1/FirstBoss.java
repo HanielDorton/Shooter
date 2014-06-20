@@ -27,7 +27,7 @@ public class FirstBoss extends Enemy{
 	public FirstBoss(double x, double y, CatmullRomSpline<Vector2> path, Level level) {
 		super(x, y, path, level);
 		this.speed =10;
-		this.width = 102;
+		this.width = 119;
 		this.xOffset = 3;
 		this.height = 200;
 		this.yOffset =7;
@@ -38,10 +38,10 @@ public class FirstBoss extends Enemy{
 		this.weapon2 = new SphereGun(level, false, 300);
 		this.lastShot = 0;
 		this.engine1Effect.load(Gdx.files.internal("particles/firstlevel/BossEngines.p"), Gdx.files.internal("particles/"));
-		this.engine1Effect.setPosition((int)x + 32,(int) y + 8);
+		this.engine1Effect.setPosition((int)x + 39,(int) y + 8);
 		level.particleEffects.add(engine1Effect);
 		this.engine2Effect.load(Gdx.files.internal("particles/firstlevel/BossEngines.p"), Gdx.files.internal("particles/"));
-		this.engine2Effect.setPosition((int)x + 76,(int) y + 8);
+		this.engine2Effect.setPosition((int)x + 90,(int) y + 8);
 		level.particleEffects.add(engine2Effect);
 		engine1Effect.start();
 		engine2Effect.start();
@@ -66,8 +66,8 @@ public class FirstBoss extends Enemy{
     		if (level.weaponSounds.size() == 0) level.weaponSounds.add(weapon);
     		secondLastShot = level.getTime();
 	    	double angle = getAngleTo(x, y+10, x, y-10);
-	       	weapon2.shoot(x + 18, y + 3 , angle);
-	       	weapon2.shoot(x + 90, y + 3 , angle);
+	       	weapon2.shoot(x + 20, y + 3 , angle);
+	       	weapon2.shoot(x + 110, y + 3 , angle);
 
 		  
 	    		
@@ -82,8 +82,8 @@ public class FirstBoss extends Enemy{
 		} else {
 			super.update();
 		}
-		this.engine1Effect.setPosition((int)x + 32,(int) y + 8);
-		this.engine2Effect.setPosition((int)x + 76,(int) y + 8);
+		this.engine1Effect.setPosition((int)x + 39,(int) y + 8);
+		this.engine2Effect.setPosition((int)x + 90,(int) y + 8);
 	}
 	
 	

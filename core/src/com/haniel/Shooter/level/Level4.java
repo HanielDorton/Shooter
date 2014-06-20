@@ -3,7 +3,9 @@ package com.haniel.Shooter.level;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.ParticleEffectPool;
 import com.haniel.Shooter.GameScreen;
+import com.haniel.Shooter.entities.enemies.Level4.CloakingEnemy;
 import com.haniel.Shooter.graphics.BackgroundImage;
+import com.haniel.Shooter.graphics.Star;
 
 public class Level4 extends Level{
 	
@@ -13,7 +15,7 @@ public class Level4 extends Level{
 		super(gameScreen);
 		backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/Dark_Fog.mp3"));
 		//load all particle effects for pooling:
-		enemyBulletEffect.load(Gdx.files.internal("particles/thirdlevel/greenbullet.p"), Gdx.files.internal("particles/"));
+		enemyBulletEffect.load(Gdx.files.internal("particles/level4/purplesphere.p"), Gdx.files.internal("particles/"));
 		enemyBulletEffectPool = new ParticleEffectPool(enemyBulletEffect, 45, 80);
 		smallExplosionEffect.load(Gdx.files.internal("particles/thirdlevel/greenmissileexplosion.p"), Gdx.files.internal("particles/"));
 		smallExplosionEffectPool = new ParticleEffectPool(smallExplosionEffect, 5, 20);
@@ -26,13 +28,21 @@ public class Level4 extends Level{
 			
 			case 10: {
 				backgroundMusic.play();
-				add(new BackgroundImage("levels/space_background4.png", 0, 0, 1));
-			    add(new BackgroundImage("levels/space_background4.png", 0, 960, 1));				
+				add(new BackgroundImage("levels/spacebackground3.png", -600, 0, 1));
+				addStarsCheckpoint(80);
 			    break;
 				}
+			case 20: {
+				add(new CloakingEnemy(200, 200, 10, 10, this));
+			}
 
 			}
 		
+	}
+	protected void addStarsCheckpoint(int number){
+        for (int i = 0; i < number; i++) {
+        	add(new Star(random.nextInt(480), 0));
+        	} 
 	}
 
 }

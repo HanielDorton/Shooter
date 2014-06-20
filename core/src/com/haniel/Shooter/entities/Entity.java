@@ -49,6 +49,19 @@ public abstract class Entity{
 	protected static final Texture superGreenJetTexture = new Texture(Gdx.files.internal("entities/Level3/destroyer1.png"));
 	protected static final Texture greenMineTexture = new Texture(Gdx.files.internal("entities/Level3/Spacestation-by-MillionthVector.png"));
 	protected static final Texture thirdBossTexture = new Texture(Gdx.files.internal("entities/Level3/spaceshipspr.png"));
+	//level four
+	protected static final Texture cloakingEnemyTexture0 = new Texture(Gdx.files.internal("entities/Level4/F5S3-0.png"));
+	protected static final Texture cloakingEnemyTexture1 = new Texture(Gdx.files.internal("entities/Level4/F5S3-1.png"));
+	protected static final Texture cloakingEnemyTexture2 = new Texture(Gdx.files.internal("entities/Level4/F5S3-2.png"));
+	protected static final Texture cloakingEnemyTexture3 = new Texture(Gdx.files.internal("entities/Level4/F5S3-3.png"));
+	protected static final Texture cloakingEnemyTexture4 = new Texture(Gdx.files.internal("entities/Level4/F5S3-4.png"));
+	protected static final Texture cloakingEnemyTexture5 = new Texture(Gdx.files.internal("entities/Level4/F5S3-5.png"));
+	protected static final Texture cloakingEnemyTexture6 = new Texture(Gdx.files.internal("entities/Level4/F5S3-6.png"));
+	protected static final Texture cloakingEnemyTexture7 = new Texture(Gdx.files.internal("entities/Level4/F5S3-7.png"));
+	protected static final Texture cloakingEnemyTexture8 = new Texture(Gdx.files.internal("entities/Level4/F5S3-8.png"));
+	protected static final Texture cloakingEnemyTexture9 = new Texture(Gdx.files.internal("entities/Level4/F5S3-9.png"));
+	protected static final Texture cloakingEnemyTexture10 = new Texture(Gdx.files.internal("entities/Level4/F5S3.png"));
+	
 	
 	public Entity() {
 		

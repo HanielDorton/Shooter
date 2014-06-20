@@ -41,12 +41,12 @@ public class CreditsScreen implements Screen{
         credits.add("Art:");
         credits.add("Player Ship & Menu Background by rawdanitsu, http://opengameart.org/art-search?keys=rawdanitsu");
         credits.add("Level 1 background by StumpyStrust, http://opengameart.org/users/stumpystrust");
-        credits.add("Level 1, 2, 3, 4 Enemy Ships by MillionthVector, http://millionthvector.blogspot.de/");
+        credits.add("Level 1, 2, 3 & 4 Enemy Ships by MillionthVector, http://millionthvector.blogspot.de/");
         credits.add("Level 2 background by scorcher24, http://opengameart.org/users/scorcher24");
         credits.add("Level 2 planet by Varkalander, http://opengameart.org/users/varkalandar");
 
-        credits.add("Level 3 & Credits Background Background by fraang http://opengameart.org/users/fraang");
-        credits.add("Level 4:");
+        credits.add("Level 3 & Credits Background Background by fraang, http://opengameart.org/users/fraang");
+        credits.add("Level 4 background by Westbeam, http://opengameart.org/content/space-background-1");
         credits.add("Level 5:");
         credits.add("");
         // MUSIC
