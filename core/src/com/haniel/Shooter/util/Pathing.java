@@ -159,5 +159,35 @@ public class Pathing {
 	public static CatmullRomSpline<Vector2> jetCircles = new CatmullRomSpline<Vector2>(new Vector2[] 
 			{new Vector2(200, 270), new Vector2(400, 220), new Vector2(400, 270),
 			new Vector2(200, 220), new Vector2(0, 270), new Vector2(0, 220)}, true);
+	
+	//Level Four Jets
+	
+	public static CatmullRomSpline<Vector2> jet1 = new CatmullRomSpline<Vector2>(new Vector2[] 
+			{new Vector2(200, 500), new Vector2(250, 350), new Vector2(850, 1000)}, true);
+	
+	public static CatmullRomSpline<Vector2> jet2 = new CatmullRomSpline<Vector2>(new Vector2[] 
+			{new Vector2(650, 500), new Vector2(600, 350), new Vector2(0, 1000)}, true);
+	
+	public static CatmullRomSpline<Vector2> jet3 = new CatmullRomSpline<Vector2>(new Vector2[] 
+			{new Vector2(100, 500), new Vector2(150, 350), new Vector2(750, 1000)}, true);
+	
+	public static CatmullRomSpline<Vector2> jet4 = new CatmullRomSpline<Vector2>(new Vector2[] 
+			{new Vector2(500, 500), new Vector2(450, 350), new Vector2(-150, 1000)}, true);
+	
+	public static CatmullRomSpline<Vector2> jet5 = new CatmullRomSpline<Vector2>(new Vector2[] 
+			{new Vector2(300, 500), new Vector2(350, 350), new Vector2(950, 1000)}, true);
+	
+	public static CatmullRomSpline<Vector2> jet6 = new CatmullRomSpline<Vector2>(new Vector2[] 
+			{new Vector2(300, 500), new Vector2(250, 350), new Vector2(-350, 1000)}, true);
+	
+	public static CatmullRomSpline<Vector2> jet7 = new CatmullRomSpline<Vector2>(new Vector2[] 
+			{new Vector2(600, 500), new Vector2(650, 350), new Vector2(1250, 1000)}, true);
+	
+	public static CatmullRomSpline<Vector2> jet8 = new CatmullRomSpline<Vector2>(new Vector2[] 
+			{new Vector2(400, 500), new Vector2(350, 350), new Vector2(-250, 1000)}, true);
+	
+	public static CatmullRomSpline<Vector2> jet9 = new CatmullRomSpline<Vector2>(new Vector2[] 
+			{new Vector2(150, 500), new Vector2(50, 350), new Vector2(-550, 1000)}, true);
+	
 
 }

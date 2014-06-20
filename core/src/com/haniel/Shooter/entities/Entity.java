@@ -84,6 +84,8 @@ public abstract class Entity{
 	protected static final Texture cloakingEnemyBombTexture9 = new Texture(Gdx.files.internal("entities/Level4/F5S1-9.png"));
 	protected static final Texture cloakingEnemyBombTexture10 = new Texture(Gdx.files.internal("entities/Level4/F5S1.png"));
 	
+	protected static final Texture fighterJetTexture = new Texture(Gdx.files.internal("entities/Level4/F5S4.png"));
+	
 	
 	public Entity() {
 		

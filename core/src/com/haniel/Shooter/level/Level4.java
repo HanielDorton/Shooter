@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.ParticleEffectPool;
 import com.haniel.Shooter.GameScreen;
 import com.haniel.Shooter.entities.enemies.Level4.CloakingEnemy;
 import com.haniel.Shooter.entities.enemies.Level4.CloakingEnemyBombs;
+import com.haniel.Shooter.entities.enemies.Level4.FighterJet;
 import com.haniel.Shooter.graphics.BackgroundImage;
 import com.haniel.Shooter.graphics.CheckpointReached;
 import com.haniel.Shooter.graphics.Star;
@@ -231,7 +232,7 @@ public class Level4 extends Level{
 
 			case 13600: {
 				if (gameScreen.getCheckPoint() + 10 == levelTime) {
-					add(new BackgroundImage("levels/spacebackground3.png", -600, 0, 1));
+					add(new BackgroundImage("levels/spacebackground3.png", -600, -136, 1));
 					addStarsCheckpoint(80);
 					backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/Dark_Fog_onlyContinue.mp3"));
 					backgroundMusic.play();
@@ -241,19 +242,63 @@ public class Level4 extends Level{
 				}
 				break;
 			}
-			case 14000: {
-				add(new CloakingEnemy(200, 150, -20, 30, this));
-				add(new CloakingEnemy(550, 150, 20, 30, this));
+			//85 seconds section
+			case 15000: {
+				add(new CloakingEnemy(370, 240, 0, 20, this));
+				break;
+			}
+			
+			case 15600: {
+				add(new CloakingEnemy(50, 100, 20, 20, this));
+				add(new CloakingEnemy(700, 100, -20, 20, this));
+				break;
+			}
+			case 16200: {
+				add( new CloakingEnemyBombs(20, -200, 0, 100, this));
+				add( new CloakingEnemyBombs(720, -200, 0, 100, this));
+				break;
+			}
+			case 17200: {
+				add( new CloakingEnemyBombs(20, -200, 0, 100, this));
+				add( new CloakingEnemyBombs(720, -200, 0, 100, this));
+				break;
+			}
+			case 18200: {
+				add( new CloakingEnemyBombs(20, -200, 0, 100, this));
+				add( new CloakingEnemyBombs(720, -200, 0, 100, this));
+				break;
+			}
+			case 19200: {
+				add( new CloakingEnemyBombs(20, -200, 0, 100, this));
+				add( new CloakingEnemyBombs(720, -200, 0, 100, this));
+				break;
+			}
+			case 20200:{
+				add(new CloakingEnemy(50, 100, 20, 20, this));
+				add(new CloakingEnemy(700, 100, -20, 20, this));
+				break;
+			}
+			case 21200: {
+				add(new CloakingEnemy(370, 240, 0, 20, this));
+				break;
+			}
+			
+			case 22200: {
+				setLevelComplete();
 				break;
 			}
 
-			}
+		}
+		if (levelTime > 13900 && levelTime < 21800 && levelTime % 200 == 0) generateRandomJet();
 		
 	}
 	protected void addStarsCheckpoint(int number){
         for (int i = 0; i < number; i++) {
         	add(new Star(random.nextInt(480), 0));
         	} 
+	}
+	private void generateRandomJet() {
+		add(new FighterJet(0, 480, random.nextInt(9), this));
 	}
 
 }

@@ -86,12 +86,12 @@ public class LevelCompleteScreen implements Screen{
 		level.dispose();
 	}
 	private String getGrade() {
-		int tempScore = gameState.scores[gameState.numLevel-2];
-			if (tempScore > 1000) return "A++";
-			else if (tempScore > 800) return "A";
-			else if (tempScore > 600) return "B";
-			else if (tempScore > 400) return "C";
-			else if (tempScore > 200) return "D";
+		int tempScore = gameState.scores[gameState.numLevel-2] - gameState.levelMaxes[gameState.numLevel-2];
+			if (tempScore > 0) return "A++";
+			else if (tempScore > -50) return "A";
+			else if (tempScore > -100) return "B";
+			else if (tempScore > -200) return "C";
+			else if (tempScore > -300) return "D";
 			else return "F";
 	}
 

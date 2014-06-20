@@ -37,8 +37,8 @@ public class ThirdBoss extends Enemy{
 	public void shoot() {
 		if ((level.getTime() - lastShot) > firingRate) {
 	    	lastShot = level.getTime();
-	    	if (health > 200) generateRandomSuperMine(480);
-	    	else generateRandomMine(480);
+	    	if (health > 200) generateRandomSuperMine();
+	    	else generateRandomMine();
 		}
 		if ((level.getTime() - lastShot2) > secondFiringRate) {
 			lastShot2 = level.getTime();
@@ -75,11 +75,10 @@ public class ThirdBoss extends Enemy{
 			level.setLevelComplete();
 		}
 	}
-	private void generateRandomSuperMine(int y) {
-		int x = random.nextInt(760) + 20;
-		level.specialBossArray.add(new SuperGreenMine(x, 480, level, random.nextInt(11)));
+	private void generateRandomSuperMine() {
+		level.specialBossArray.add(new SuperGreenMine(0, 480, level, random.nextInt(11), false));
 	}
-	private void generateRandomMine(int y) {
-		level.specialBossArray.add(new GreenMine(x, 480, level, random.nextInt(11)));
+	private void generateRandomMine() {
+		level.specialBossArray.add(new GreenMine(0, 480, level, random.nextInt(11), false));
 	}
 }

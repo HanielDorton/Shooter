@@ -14,7 +14,7 @@ public class GreenMine extends Enemy{
 	protected float rotation = 0f;
 	private double lastX;
 	
-	public GreenMine(double x, double y, Level level, int p) {
+	public GreenMine(double x, double y, Level level, int p, boolean notFromBoss) {
 		super(x, y, level);		
 		this.speed = random.nextInt(20) + 30;
 		this.width = 32;
@@ -25,7 +25,8 @@ public class GreenMine extends Enemy{
 		this.weapon = new SphereGun(level, false, 400);
 		this.rotates = true;
 		this.lastX = x;
-		this.points = 10;
+		if (notFromBoss) this.points = 10;
+		else this.points = 0;
 
 		switch (p) {
 			case 1: {

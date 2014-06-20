@@ -58,73 +58,72 @@ public class Level3 extends Level{
 				break;
 			}
 			case 6300: {
-				for (int i = 0; i < 2; i++ ) generateRandomMine(480 + (100 * i));
+				for (int i = 0; i < 2; i++ ) generateRandomMine();
 				break;
 			}
 			case 6700: {
-				for (int i = 0; i < 2; i++ ) generateRandomMine(480 + (100 * i));
+				for (int i = 0; i < 2; i++ ) generateRandomMine();
 				break;
 			}
 			case 7100: {
-				for (int i = 0; i < 2; i++ ) generateRandomMine(480 + (100 * i));
+				for (int i = 0; i < 2; i++ ) generateRandomMine();
 				break;
 			}
 			
 			case 7400: {
-				for (int i = 0; i < 2; i++ ) generateRandomMine(480 + (50 * i));
+				for (int i = 0; i < 2; i++ ) generateRandomMine();
 				break;
 			}
 			case 7800: {
-				for (int i = 0; i < 2; i++ ) generateRandomMine(480 + (100 * i));
-				generateRandomSuperMine(480 + 100);
+				for (int i = 0; i < 2; i++ ) generateRandomMine();
+				generateRandomSuperMine();
 				break;
 			}
 			case 8200: {
 				//for (int i = 0; i < 2; i++ ) generateRandomMine(480 + (100 * i));
-				for (int i = 0; i < 2; i++ ) generateRandomSuperMine(480 + (100 * i));
+				for (int i = 0; i < 2; i++ ) generateRandomSuperMine();
 				break;
 			}
 			case 8600: {
-				//for (int i = 0; i < 2; i++ ) generateRandomMine(480 + (100 * i));
-				for (int i = 0; i < 3; i++ ) generateRandomSuperMine(480 + (100 * i));
+				for (int i = 0; i < 3; i++ ) generateRandomSuperMine();
 				break;
 			}
 			
 			case 9000: {
-				for (int i = 0; i < 3; i++ ) generateRandomMine(480 + (50 * i));
-				for (int i = 0; i < 2; i++ ) generateRandomSuperMine(480 + (100 * i));
+				for (int i = 0; i < 3; i++ ) generateRandomMine();
+				for (int i = 0; i < 2; i++ ) generateRandomSuperMine();
 				break;
 			}
 			
 			case 9500: {
-				for (int i = 0; i < 3; i++ ) generateRandomSuperMine(480 + (100 * i));
-				for (int i = 0; i < 3; i++ ) generateRandomSuperMine(480 + (100 * i));
-				for (int i = 0; i < 3; i++ ) generateRandomSuperMine(480 + (100 * i));
+				for (int i = 0; i < 3; i++ ) generateRandomSuperMine();
+				for (int i = 0; i < 3; i++ ) generateRandomSuperMine();
+				for (int i = 0; i < 3; i++ ) generateRandomSuperMine();
 				break;
 			}
 			case 9900: {
-				for (int i = 0; i < 3; i++ ) generateRandomSuperMine(480 + (100 * i));
+				for (int i = 0; i < 3; i++ ) generateRandomSuperMine();
 				break;
 			}
 			case 10200: {
-				for (int i = 0; i < 3; i++ ) generateRandomSuperMine(480 + (100 * i));
-				for (int i = 0; i < 3; i++ ) generateRandomSuperMine(480 + (100 * i));
-				for (int i = 0; i < 3; i++ ) generateRandomSuperMine(480 + (100 * i));
-				for (int i = 0; i < 3; i++ ) generateRandomSuperMine(480 + (100 * i));
+				for (int i = 0; i < 3; i++ ) generateRandomSuperMine();
+				for (int i = 0; i < 3; i++ ) generateRandomSuperMine();
+				for (int i = 0; i < 3; i++ ) generateRandomSuperMine();
+				for (int i = 0; i < 3; i++ ) generateRandomSuperMine();
 				break;
 			}
 			case 10600: {
-				for (int i = 0; i < 3; i++ ) generateRandomSuperMine(480 + (100 * i));
+				for (int i = 0; i < 3; i++ ) generateRandomSuperMine();
 				break;
 			}
 			case 10900: {
-				generateRandomMine(480 + 100);
-				generateRandomSuperMine(480 + 100);
+				generateRandomMine();
+				generateRandomSuperMine();
 				break;
 			}
 			case 11200: {
-				generateRandomMine(480 + 100);
-				generateRandomSuperMine(480 + 100);
+				generateRandomMine();
+				generateRandomSuperMine();
 				break;
 			}
 			
@@ -139,8 +138,8 @@ public class Level3 extends Level{
 				}
 				backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/All_This.mp3"));
 				backgroundMusic.play();
-				generateRandomSuperMine(480 + 100);
-				generateRandomSuperMine(480 + 100);
+				generateRandomSuperMine();
+				generateRandomSuperMine();
 				break;				
 			}
 			case 11700:{
@@ -151,13 +150,11 @@ public class Level3 extends Level{
 		}
 	}
 	
-	private void generateRandomMine(int y) {
-		int x = random.nextInt(760) + 20;
-		add(new GreenMine(x, 480, this, random.nextInt(11)));
+	private void generateRandomMine() {
+		add(new GreenMine(0, 480, this, random.nextInt(11), true));
 	}
 	
-	private void generateRandomSuperMine(int y) {
-		int x = random.nextInt(760) + 20;
-		add(new SuperGreenMine(x, 480, this, random.nextInt(11)));
+	private void generateRandomSuperMine() {
+		add(new SuperGreenMine(0, 480, this, random.nextInt(11), true));
 	}
 }

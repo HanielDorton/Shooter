@@ -9,8 +9,8 @@ public class SuperGreenMine extends GreenMine{
 		protected double firingRate = .8;
 		protected final static double firingAngle = 3;
 		
-		public SuperGreenMine(double x, double y,  Level level, int p) {
-			super(x, y, level, p);		
+		public SuperGreenMine(double x, double y,  Level level, int p, boolean notFromBoss) {
+			super(x, y, level, p, notFromBoss);		
 			this.weapon = new SphereGun(level, false, 200);
 			this.lastShot =level.getTime() + 1.5 + random.nextInt(3);
 		}

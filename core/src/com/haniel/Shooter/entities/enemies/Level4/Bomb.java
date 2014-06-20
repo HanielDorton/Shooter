@@ -46,7 +46,9 @@ public class Bomb extends Enemy{
 			
 		}
 	}
-	
+	public void particles() {
+		
+	}
 	
 	public void remove() {
 		super.remove();
