@@ -22,6 +22,7 @@ import com.haniel.Shooter.level.Level1;
 import com.haniel.Shooter.level.Level2;
 import com.haniel.Shooter.level.Level3;
 import com.haniel.Shooter.level.Level4;
+import com.haniel.Shooter.level.Level5;
 import com.haniel.Shooter.util.GameState;
 import com.haniel.Shooter.util.MyInputProcessor;
 
@@ -41,6 +42,7 @@ public class GameScreen implements Screen {
     private GameState gameState;
     private int tempScore = 0;
     Pixmap mouse;
+    private String timeString, minuteString;
 
     public GameScreen(final MyGdxGame gam, GameState gameState) {    	
         this.game = gam;
@@ -151,17 +153,22 @@ public class GameScreen implements Screen {
 	        		p.dispose();	        		
 	        	}
 	        }
+	        game.font.draw(game.batch, "Level: " + level.getName(), 5, screenHeight - 5);
 	        time = level.getLevelTime() / 100;
 	        if (time >= 60){
 	        	minutes = time / 60;
 	        	time = time % 60;
 	        }
-	        game.font.draw(game.batch, "Time: " + minutes + " : " + time, 5, screenHeight - 5);
+	        if (minutes == 0) minuteString = "";
+	        else minuteString = minutes + ":";
+	        if (time < 10) timeString = "0";
+	        else timeString = "";
+	        game.font.draw(game.batch, "Time: " + minuteString + timeString + time, 5, screenHeight - 25);
 	        
 	        
 	        if (tempScore > gameState.tempScore) tempScore--;
 	        else if (tempScore < gameState.tempScore) tempScore++;
-	        game.font.draw(game.batch, "Score: " + tempScore, 5, screenHeight - 25);
+	        game.font.draw(game.batch, "Score: " + tempScore, 5, screenHeight - 45);
 
 	        
 	        level.update();
@@ -262,6 +269,10 @@ public class GameScreen implements Screen {
 		}
 		case 4: {
 			level = new Level4(this);
+			break;
+		}
+		case 5: {
+			level = new Level5(this);
 			break;
 		}
 		default: {

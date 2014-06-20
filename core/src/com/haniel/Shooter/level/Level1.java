@@ -17,6 +17,7 @@ import com.haniel.Shooter.util.Pathing;
 	
 		public Level1(GameScreen gameScreen) {
 		super(gameScreen);
+		this.name = "1: Denial";
 		backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/black_vortex.mp3"));
 		//load all particle effects for pooling:
 		enemyBulletEffect.load(Gdx.files.internal("particles/firstlevel/BlueSphere.p"), Gdx.files.internal("particles/"));

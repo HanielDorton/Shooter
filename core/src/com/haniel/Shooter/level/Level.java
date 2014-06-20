@@ -34,6 +34,7 @@ public class Level {
     public Array<ParticleEffect> particleEffects= new Array<ParticleEffect>();
     public Array<ParticleEffect> overlayedParticleEffects = new Array<ParticleEffect>();
     public List<Entity> specialBossArray = new ArrayList<Entity>();
+    protected String name;
     
     
     // each level will have certain particle effects that can be pooled
@@ -245,5 +246,8 @@ public class Level {
 	}
 	public void scorePoints(int points) {
 		gameScreen.scorePoints(points);
+	}
+	public String getName() {
+		return name;
 	}
 }

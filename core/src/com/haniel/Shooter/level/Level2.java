@@ -19,6 +19,7 @@ public class Level2 extends Level{
 	
 	public Level2(GameScreen gameScreen) {
 		super(gameScreen);
+		this.name = "2: Anger";
 		backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/The_Descent.mp3"));
 		//load all particle effects for pooling:
 		enemyBulletEffect.load(Gdx.files.internal("particles/secondlevel/redsphere.p"), Gdx.files.internal("particles/"));

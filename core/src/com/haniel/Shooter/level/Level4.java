@@ -16,6 +16,7 @@ public class Level4 extends Level{
 	
 	public Level4(GameScreen gameScreen) {
 		super(gameScreen);
+		this.name = "4: Depression";
 		backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/Dark_Fog.mp3"));
 		//load all particle effects for pooling:
 		enemyBulletEffect.load(Gdx.files.internal("particles/level4/purplesphere.p"), Gdx.files.internal("particles/"));
@@ -30,7 +31,7 @@ public class Level4 extends Level{
 			case 10: {
 				backgroundMusic.play();
 				add(new BackgroundImage("levels/spacebackground3.png", -600, 0, 1));
-				addStarsCheckpoint(80);
+				addStarsCheckpoint(100);
 			    break;
 				}
 			case 400: {
@@ -233,7 +234,7 @@ public class Level4 extends Level{
 			case 13600: {
 				if (gameScreen.getCheckPoint() + 10 == levelTime) {
 					add(new BackgroundImage("levels/spacebackground3.png", -600, -136, 1));
-					addStarsCheckpoint(80);
+					addStarsCheckpoint(100);
 					backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/Dark_Fog_onlyContinue.mp3"));
 					backgroundMusic.play();
 				} else {

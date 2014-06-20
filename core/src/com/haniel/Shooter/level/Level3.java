@@ -18,6 +18,7 @@ public class Level3 extends Level{
 	
 	public Level3(GameScreen gameScreen) {
 		super(gameScreen);
+		this.name = "3: Bargaining";
 		backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/Five_Armies.mp3"));
 		//load all particle effects for pooling:
 		enemyBulletEffect.load(Gdx.files.internal("particles/thirdlevel/greenbullet.p"), Gdx.files.internal("particles/"));
