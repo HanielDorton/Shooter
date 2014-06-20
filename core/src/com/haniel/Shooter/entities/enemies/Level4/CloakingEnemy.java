@@ -12,25 +12,40 @@ import com.haniel.Shooter.weapons.SphereGun;
 
 public class CloakingEnemy extends Enemy{
 	
-	private int moveX, moveY;
-	private List<Sprite> sprites = new LinkedList<Sprite>();
-	private int currentSprite;
-	private float changeSprite = 0;
-	private int direction = 1;
-	private float firingRate = .25f;
+	protected int moveX, moveY;
+	protected List<Sprite> sprites = new LinkedList<Sprite>();
+	protected int currentSprite;
+	protected float changeSprite = 0;
+	protected int direction = 1;
+	protected float cloakingRate;
+	protected float firingRate = .3f;
+	private int firingSpeed =100;
+	private float angleAdjustment = .2f;
+	private double angle = getAngleTo(x, y, x, y+10);
+	private double angle2 = getAngleTo(x,y, x+5, y -2);
+	private double angle3 = getAngleTo(x,y, x-5, y -2);
+	
+	public CloakingEnemy(double x, double y, Level level) {
+		super(x, y, level);
+	}
 	
 	public CloakingEnemy(double x, double y, int moveX, int moveY, Level level) {
-		super(x, y, level);	
+		this(x, y, level);	
 		this.moveX = moveX;
 		this.moveY = moveY;
-		this.speed = 10;
+		this.speed = 0;
 		this.width = 66;
 		this.height = 117;
 		sprites.add(new Sprite(cloakingEnemyTexture0));
+		sprites.add(new Sprite(cloakingEnemyTexture05));
 		sprites.add(new Sprite(cloakingEnemyTexture1));
+		sprites.add(new Sprite(cloakingEnemyTexture15));
 		sprites.add(new Sprite(cloakingEnemyTexture2));
+		sprites.add(new Sprite(cloakingEnemyTexture25));
 		sprites.add(new Sprite(cloakingEnemyTexture3));
+		sprites.add(new Sprite(cloakingEnemyTexture35));
 		sprites.add(new Sprite(cloakingEnemyTexture4));
+		sprites.add(new Sprite(cloakingEnemyTexture45));
 		sprites.add(new Sprite(cloakingEnemyTexture5));
 		sprites.add(new Sprite(cloakingEnemyTexture6));
 		sprites.add(new Sprite(cloakingEnemyTexture7));
@@ -39,25 +54,26 @@ public class CloakingEnemy extends Enemy{
 		sprites.add(new Sprite(cloakingEnemyTexture10));
 		
 		this.sprite = sprites.get(currentSprite);	
-		this.health = 10;
+		this.health = 4;
 		this.xOffset = 1;
 		this.yOffset = 15;
 		this.rectangle = new Rectangle(1000, 1000, 0, 0);
-		this.weapon = new SphereGun(level, false, 100);
-		this.points = 10;
+		this.weapon = new SphereGun(level, false, firingSpeed);
+		this.points = 20;
+		this.cloakingRate = .15f;
 	}
 	public void update() {
         if (health < 0) remove();
         move(moveX, moveY);
 		changeSprite += Gdx.graphics.getDeltaTime();
-		if (changeSprite > .2) {
+		if (changeSprite > cloakingRate) {
 			changeSprite = 0;
 			currentSprite += direction;
-			if (currentSprite == 10) direction = -1;
+			if (currentSprite == 15) direction = -1;
 			if (currentSprite == 0) remove();
 			this.sprite = sprites.get(currentSprite);	
 		}
-		if (currentSprite > 8) {
+		if (currentSprite > 12) {
 			shoot();
 	        rectangle.set((float)x, (float)y, width, height);
 		}
@@ -68,18 +84,16 @@ public class CloakingEnemy extends Enemy{
 	
 	public void shoot() {
         if ((level.getTime() - lastShot) > firingRate) {
-        	if (!(getMidY()> 480) && !(getMidY() < 0) && !(getMidX() < 0 && !(getMidX() > 800))){
-		    	lastShot = level.getTime();
-		    	double angle = level.getAngletoPlayersMiddle(x + (width / 2), y + height);
-		       	weapon.shoot(x + (width / 2), y + height, angle);
-		       	weapon.shoot(x + (width / 2), y + height, angle + .03);
-		       	weapon.shoot(x + (width / 2), y + height, angle - .03);
-		       	weapon.shoot(x + (width / 2), y + height, angle + .06);
-		       	weapon.shoot(x + (width / 2), y + height, angle - .06);
-		       	if (level.weaponSounds.size() == 0) level.weaponSounds.add(weapon);
-		
-        	}
-
+ 	    	lastShot = level.getTime();
+	       	weapon.shoot(x + (width / 2), y + height, angle + angleAdjustment);
+	       	weapon.shoot(x + (width / 2), y + height, angle - angleAdjustment);
+	       	weapon.shoot(x + 42, y, angle2 + angleAdjustment);
+	       	weapon.shoot(x + 42, y, angle2 - angleAdjustment);
+	       	weapon.shoot(x + 30, y, angle3 + angleAdjustment);
+	       	weapon.shoot(x + 30, y, angle3 - angleAdjustment);
+	       	firingSpeed += 25;
+			weapon = new SphereGun(level, false, firingSpeed);
+	       	if (level.weaponSounds.size() == 0) level.weaponSounds.add(weapon);
         }
 	}
 }

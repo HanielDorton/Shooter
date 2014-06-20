@@ -139,7 +139,7 @@ public class Level3 extends Level{
 				}
 				backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/All_This.mp3"));
 				backgroundMusic.play();
-				generateRandomMine(480 + 100);
+				generateRandomSuperMine(480 + 100);
 				generateRandomSuperMine(480 + 100);
 				break;				
 			}

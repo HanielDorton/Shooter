@@ -18,7 +18,6 @@ public class SuperGreenMine extends GreenMine{
 		protected void shoot() {
 			if (!(getMidY()> 480) && !(getMidY() < 0) && !(getMidX() < 0 && !(getMidX() > 800))){
 				if ((level.getTime() - lastShot) > firingRate) {
-					lastShot = level.getTime();
 			    	for (int i = 1; i < 18; i ++) {
 			    		weapon.shoot(x + 8, y + 8, firingAngle - (i * -.375));
 			    	}

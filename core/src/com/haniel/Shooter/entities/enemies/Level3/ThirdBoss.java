@@ -12,8 +12,8 @@ import com.haniel.Shooter.weapons.SphereGun;
 
 public class ThirdBoss extends Enemy{
 	
-	private float firingRate = 1.75f;
-	private float secondFiringRate = .8f;
+	private float firingRate = 2.5f;
+	private float secondFiringRate = 1f;
 	private double center;
 	
 	public ThirdBoss(double x, double y, Level level) {
@@ -26,7 +26,7 @@ public class ThirdBoss extends Enemy{
 		this.xOffset = 5;
 		this.yOffset = 5;
 		this.rectangle = new Rectangle((float)x + xOffset, (float)y + yOffset, width, height);
-		this.weapon = new SphereGun(level, false, 500);
+		this.weapon = new SphereGun(level, false, 400);
 		this.lastShot =level.getTime();
 		this.lastShot2 = level.getTime();
 		level.add(new HealthBarOutline(0));

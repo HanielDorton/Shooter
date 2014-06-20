@@ -51,16 +51,38 @@ public abstract class Entity{
 	protected static final Texture thirdBossTexture = new Texture(Gdx.files.internal("entities/Level3/spaceshipspr.png"));
 	//level four
 	protected static final Texture cloakingEnemyTexture0 = new Texture(Gdx.files.internal("entities/Level4/F5S3-0.png"));
+	protected static final Texture cloakingEnemyTexture05 = new Texture(Gdx.files.internal("entities/Level4/F5S3-05.png"));
 	protected static final Texture cloakingEnemyTexture1 = new Texture(Gdx.files.internal("entities/Level4/F5S3-1.png"));
+	protected static final Texture cloakingEnemyTexture15 = new Texture(Gdx.files.internal("entities/Level4/F5S3-15.png"));
 	protected static final Texture cloakingEnemyTexture2 = new Texture(Gdx.files.internal("entities/Level4/F5S3-2.png"));
+	protected static final Texture cloakingEnemyTexture25 = new Texture(Gdx.files.internal("entities/Level4/F5S3-25.png"));
 	protected static final Texture cloakingEnemyTexture3 = new Texture(Gdx.files.internal("entities/Level4/F5S3-3.png"));
+	protected static final Texture cloakingEnemyTexture35 = new Texture(Gdx.files.internal("entities/Level4/F5S3-35.png"));
 	protected static final Texture cloakingEnemyTexture4 = new Texture(Gdx.files.internal("entities/Level4/F5S3-4.png"));
+	protected static final Texture cloakingEnemyTexture45 = new Texture(Gdx.files.internal("entities/Level4/F5S3-45.png"));
 	protected static final Texture cloakingEnemyTexture5 = new Texture(Gdx.files.internal("entities/Level4/F5S3-5.png"));
 	protected static final Texture cloakingEnemyTexture6 = new Texture(Gdx.files.internal("entities/Level4/F5S3-6.png"));
 	protected static final Texture cloakingEnemyTexture7 = new Texture(Gdx.files.internal("entities/Level4/F5S3-7.png"));
 	protected static final Texture cloakingEnemyTexture8 = new Texture(Gdx.files.internal("entities/Level4/F5S3-8.png"));
 	protected static final Texture cloakingEnemyTexture9 = new Texture(Gdx.files.internal("entities/Level4/F5S3-9.png"));
 	protected static final Texture cloakingEnemyTexture10 = new Texture(Gdx.files.internal("entities/Level4/F5S3.png"));
+	
+	protected static final Texture cloakingEnemyBombTexture0 = new Texture(Gdx.files.internal("entities/Level4/F5S1-0.png"));
+	protected static final Texture cloakingEnemyBombTexture05 = new Texture(Gdx.files.internal("entities/Level4/F5S1-05.png"));
+	protected static final Texture cloakingEnemyBombTexture1 = new Texture(Gdx.files.internal("entities/Level4/F5S1-1.png"));
+	protected static final Texture cloakingEnemyBombTexture15 = new Texture(Gdx.files.internal("entities/Level4/F5S1-15.png"));
+	protected static final Texture cloakingEnemyBombTexture2 = new Texture(Gdx.files.internal("entities/Level4/F5S1-2.png"));
+	protected static final Texture cloakingEnemyBombTexture25 = new Texture(Gdx.files.internal("entities/Level4/F5S1-25.png"));
+	protected static final Texture cloakingEnemyBombTexture3 = new Texture(Gdx.files.internal("entities/Level4/F5S1-3.png"));
+	protected static final Texture cloakingEnemyBombTexture35 = new Texture(Gdx.files.internal("entities/Level4/F5S1-35.png"));
+	protected static final Texture cloakingEnemyBombTexture4 = new Texture(Gdx.files.internal("entities/Level4/F5S1-4.png"));
+	protected static final Texture cloakingEnemyBombTexture45 = new Texture(Gdx.files.internal("entities/Level4/F5S1-45.png"));
+	protected static final Texture cloakingEnemyBombTexture5 = new Texture(Gdx.files.internal("entities/Level4/F5S1-5.png"));
+	protected static final Texture cloakingEnemyBombTexture6 = new Texture(Gdx.files.internal("entities/Level4/F5S1-6.png"));
+	protected static final Texture cloakingEnemyBombTexture7 = new Texture(Gdx.files.internal("entities/Level4/F5S1-7.png"));	
+	protected static final Texture cloakingEnemyBombTexture8 = new Texture(Gdx.files.internal("entities/Level4/F5S1-8.png"));
+	protected static final Texture cloakingEnemyBombTexture9 = new Texture(Gdx.files.internal("entities/Level4/F5S1-9.png"));
+	protected static final Texture cloakingEnemyBombTexture10 = new Texture(Gdx.files.internal("entities/Level4/F5S1.png"));
 	
 	
 	public Entity() {
