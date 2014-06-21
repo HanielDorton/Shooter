@@ -153,7 +153,7 @@ public class GameScreen implements Screen {
 	        		p.dispose();	        		
 	        	}
 	        }
-	        game.font.draw(game.batch, "Level: " + level.getName(), 5, screenHeight - 5);
+	        game.font.draw(game.batch, "Stage: " + level.getName(), 5, screenHeight - 5);
 	        time = level.getLevelTime() / 100;
 	        if (time >= 60){
 	        	minutes = time / 60;
