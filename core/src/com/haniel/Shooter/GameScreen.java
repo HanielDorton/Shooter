@@ -48,7 +48,7 @@ public class GameScreen implements Screen {
         this.game = gam;
     	this.gameState = gameState;
     	level = getLevel();
-    	if (gameState.checkPoint > 0) level.setLevelTime(gameState.checkPoint);
+    	if (gameState.checkPoint > 0) level.setLevelTime(gameState.getCheckpoint());
     	player = new Player(level);
     	inputProcessor = new MyInputProcessor(player);
         level.runLevel(this);
@@ -243,11 +243,11 @@ public class GameScreen implements Screen {
     }
     
     public int getCheckPoint() {
-    	return gameState.checkPoint;
+    	return gameState.getCheckpoint();
     	
     }
     public void setCheckPoint(int newCheckPoint) {
-    	gameState.checkPoint = newCheckPoint;
+    	gameState.checkPoint++;
     	gameState.score = gameState.tempScore;
     }
     

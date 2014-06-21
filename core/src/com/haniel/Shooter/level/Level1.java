@@ -14,7 +14,6 @@ import com.haniel.Shooter.util.Pathing;
 
 	public class Level1 extends Level{
 	//Checkpoints: 4290 for ufo's // 9190 for secondcheckpoint//13990 for boss
-	
 		public Level1(GameScreen gameScreen) {
 		super(gameScreen);
 		this.name = "1: Denial";

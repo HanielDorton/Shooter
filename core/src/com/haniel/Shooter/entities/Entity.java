@@ -86,7 +86,12 @@ public abstract class Entity{
 	
 	protected static final Texture fighterJetTexture = new Texture(Gdx.files.internal("entities/Level4/F5S4.png"));
 	
-	
+	//Level Five:
+	protected static final Texture transportShipTexture = new Texture(Gdx.files.internal("entities/Level5/3.png"));
+	protected static final Texture weaponsPlatformTexture = new Texture(Gdx.files.internal("entities/Level5/2.png"));
+	protected static final Texture lastBosstexture = new Texture(Gdx.files.internal("entities/Level5/5.png"));
+	protected static final Texture smallTransportShipTexture = new Texture(Gdx.files.internal("entities/Level5/11.png"));
+	protected static final Texture mediumTransportShipTexture = new Texture(Gdx.files.internal("entities/Level5/13.png"));
 	public Entity() {
 		
 	}

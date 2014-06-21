@@ -21,7 +21,7 @@ public class DeathScreen implements Screen{
 	private Stage stage;
 	private Skin skin;
 	private Table table;
-	private TextButton buttonContinue, buttonMenu, buttonExit;
+	private TextButton buttonContinue, buttonSkip, buttonMenu, buttonExit;
 	private TextureAtlas atlas;
 	private GameState gameState;
 	private Level level;
@@ -61,6 +61,14 @@ public class DeathScreen implements Screen{
 				dispose();				
 			}
 		});
+		buttonSkip = new TextButton("Skip this Section", skin);
+		buttonSkip.addListener(new ChangeListener() {
+			public void changed(ChangeEvent event, Actor actor) {
+				skipSection();
+				game.setScreen(new GameScreen(game, gameState));
+				dispose();				
+			}
+		});
 		buttonMenu = new TextButton("Return to Main Menu", skin);
 		buttonMenu.addListener(new ChangeListener() {
 			public void changed(ChangeEvent event, Actor actor) {
@@ -80,6 +88,8 @@ public class DeathScreen implements Screen{
 		});
 		table.add(buttonContinue).padBottom(10).width(200).height(40);
 		table.row();
+		table.add(buttonSkip).padBottom(10).width(200).height(40);
+		table.row();
 		table.add(buttonMenu).padBottom(10).width(200).height(40);
 		table.row();
 		table.add(buttonExit).width(200).height(40);
@@ -98,6 +108,13 @@ public class DeathScreen implements Screen{
 	public void dispose() {
 		stage.dispose();
 		level.dispose();		
+	}
+	public void skipSection() {
+		if (gameState.checkPoint < (gameState.getCheckpoints(gameState.numLevel)).length - 1) gameState.checkPoint++;
+		else {
+			gameState.checkPoint = 0;
+			gameState.numLevel++;
+		}
 	}
 
 }

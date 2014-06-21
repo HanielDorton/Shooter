@@ -39,16 +39,14 @@ public class CreditsScreen implements Screen{
         credits.add("All programming by Daniel Horton");
         // Art
         credits.add("Art:");
-        credits.add("Player Ship & Menu Background by rawdanitsu, http://opengameart.org/art-search?keys=rawdanitsu");
-        credits.add("Level 1 background by StumpyStrust, http://opengameart.org/users/stumpystrust");
+        credits.add("Player Ship & Menu Background by rawdanitsu, http://opengameart.org/users/rawdanitsu");
+        credits.add("Level 1 background  and Level 5 Planet by StumpyStrust, http://opengameart.org/users/stumpystrust");
         credits.add("Level 1, 2, 3 & 4 Enemy Ships by MillionthVector, http://millionthvector.blogspot.de/");
         credits.add("Level 2 background by scorcher24, http://opengameart.org/users/scorcher24");
         credits.add("Level 2 planet by Varkalander, http://opengameart.org/users/varkalandar");
-
-        credits.add("Level 3 & Credits Background Background by fraang, http://opengameart.org/users/fraang");
-        credits.add("Level 4 background by Westbeam, http://opengameart.org/content/space-background-1");
-        credits.add("Level 5:");
-        credits.add("");
+        credits.add("Level 3, 5 & Credits Background Background by fraang, http://opengameart.org/users/fraang");
+        credits.add("Level 4 background by Westbeam, http://opengameart.org/users/westbeam");
+        credits.add("Level 5 Enemy Ships by Scorpio, http://opengameart.org/users/skorpio");
         // MUSIC
         credits.add("Music:");
         credits.add("Main Menu: 'Sad Exploring' by Eric Taylor (erictaylormusic.com)");
@@ -66,8 +64,6 @@ public class CreditsScreen implements Screen{
         credits.add("First Level Enemies: 'Smatter-Zap1' from http://www.soundjay.com");
         credits.add("Boss Explosions: 'explosion-02' from http://www.soundjay.com");
         credits.add("Second Level Homing Missiles: 'explosion-01' from http://www.soundjay.com");
-        credits.add("Second Level Homing Missiles Explosions: 'Paper_Rip-4' from http://www.soundjay.com");
-        credits.add("");
         backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/Grim_League.mp3"));
         backgroundMusic.play();
         backgroundMusic.setLooping(true);

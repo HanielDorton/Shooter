@@ -52,6 +52,8 @@ public class Level {
 	public ParticleEffectPool smallEngineEffectPool;	
 	ParticleEffect enemyBulletEffect = new ParticleEffect();
 	public ParticleEffectPool enemyBulletEffectPool;
+    ParticleEffect smallerEngineEffect = new ParticleEffect();
+	public ParticleEffectPool smallerEngineEffectPool;	
 	
 	//array for enemy weapon sounds so only a few get played
 	public LinkedList<Weapon> weaponSounds = new LinkedList<Weapon>(); 
