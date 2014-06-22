@@ -23,6 +23,8 @@ public class Level4 extends Level{
 		enemyBulletEffectPool = new ParticleEffectPool(enemyBulletEffect, 45, 80);
 		smallExplosionEffect.load(Gdx.files.internal("particles/level4/purpleexplosion.p"), Gdx.files.internal("particles/"));
 		smallExplosionEffectPool = new ParticleEffectPool(smallExplosionEffect, 5, 20);
+		smallExplosionEffect2.load(Gdx.files.internal("particles/level4/bomb.p"), Gdx.files.internal("particles/"));
+		smallExplosionEffect2Pool = new ParticleEffectPool(smallExplosionEffect2, 5, 20);
 		}
 	public void runLevel(GameScreen g) {
 		levelTime += 10;

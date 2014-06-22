@@ -19,7 +19,7 @@ public class Bomb extends Enemy{
 	public Bomb(double x, double y, Level level, float delay){
 		super(x, y, level);
 		this.delay = delay;
-		this.effect = level.enemyBulletEffectPool.obtain();
+		this.effect = level.smallExplosionEffect2Pool.obtain();
 		this.rectangle = new Rectangle(1000, 1000, 0, 0);
 		this.sprite = new Sprite(cloakingEnemyBombTexture0);
 		rectangle.setPosition((float) x, (float) y);
