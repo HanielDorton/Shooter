@@ -152,10 +152,10 @@ public class Level3 extends Level{
 	}
 	
 	private void generateRandomMine() {
-		add(new GreenMine(0, 480, this, random.nextInt(11), true));
+		add(new GreenMine(0, 480, this, random.nextInt(11)));
 	}
 	
 	private void generateRandomSuperMine() {
-		add(new SuperGreenMine(0, 480, this, random.nextInt(11), true));
+		add(new SuperGreenMine(0, 480, this, random.nextInt(11)));
 	}
 }

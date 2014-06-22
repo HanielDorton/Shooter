@@ -13,8 +13,8 @@ import com.haniel.Shooter.weapons.Weapon;
 
 public class SuperGreenJet extends Enemy{
 	
-	protected double firingRate = 1.25;
-	protected double frontFiringRate = .4;
+	protected double firingRate = 1.75;
+	protected double frontFiringRate = .2;
 	protected Weapon wingWeapon;
 	
 	
@@ -58,13 +58,11 @@ public class SuperGreenJet extends Enemy{
 	protected void shoot() {
 		if (!(getMidY()> 480) && !(getMidY() < 0) && !(getMidX() < 0 && !(getMidX() > 800))){
 			if ((level.getTime() - lastShot2) > frontFiringRate) {	
-				for (int i = 1; i < 8; i++) {								
-					if (Math.abs((this.x + i * 50) - level.getPlayerX()) < 10) {
-						lastShot2 = level.getTime();
-						double shootingangle = level.getAngletoPlayersMiddle(this.x + i * 50, y + yOffset + height);
-						if (level.weaponSounds.size() == 0) level.weaponSounds.add(weapon);
-						weapon.shoot(this.x + i * 50, y + yOffset + height, shootingangle);
-					}
+				if (Math.abs(getMidX() - level.getPlayerX()) < 20) {
+					lastShot2 = level.getTime();
+					double shootingangle = level.getAngletoPlayersMiddle(x + xOffset + width / 2, y + height / 2);
+					if (level.weaponSounds.size() == 0) level.weaponSounds.add(weapon);
+					weapon.shoot(x + xOffset + width / 2, y + height, shootingangle);
 				}
 			}
 			if ((level.getTime() - lastShot) > firingRate) {	        	

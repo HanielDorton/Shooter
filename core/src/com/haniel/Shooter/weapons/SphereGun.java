@@ -3,8 +3,6 @@ package com.haniel.Shooter.weapons;
 import com.haniel.Shooter.level.Level;
 
 public class SphereGun extends Weapon{
-	
-	protected int speed;
 
 	public SphereGun(Level level, boolean fromPlayer, int speed) {
 		super(level, fromPlayer);
@@ -15,6 +13,7 @@ public class SphereGun extends Weapon{
 	public void shoot(double x, double y, double angle) {
 		level.add(new Sphere(x, y, angle, fromPlayer, speed));
 	}
+
 
 		
 }

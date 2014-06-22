@@ -11,6 +11,7 @@ import com.haniel.Shooter.entities.enemies.Level5.WeaponsPlatform;
 import com.haniel.Shooter.graphics.BackgroundImage;
 import com.haniel.Shooter.graphics.CheckpointReached;
 import com.haniel.Shooter.graphics.Star;
+import com.haniel.Shooter.util.Pathing;
 
 public class Level5 extends Level{
 	
@@ -227,11 +228,11 @@ public class Level5 extends Level{
 
 			
 			
-			case 20100: {
+			case 21000: {
 				if (gameScreen.getCheckPoint() + 10 == levelTime) {
 					add(new BackgroundImage("levels/space-2.png", 0, 0, 1));
 					addStarsCheckpoint(100);
-					add(new BackgroundImage("levels/planet1.png", -1100, -2715, 15f));
+					//add(new BackgroundImage("levels/planet1.png", -1100, -2715, 15f));
 
 				} else {
 					add(new CheckpointReached(300, 350, 2));
@@ -240,6 +241,9 @@ public class Level5 extends Level{
 				backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/All_This.mp3"));
 				backgroundMusic.play();
 				break;				
+			}
+			case 21100: {
+				add(new LastBoss(290, 500, Pathing.lastBossCircles,this, false));
 			}
 			
 		}

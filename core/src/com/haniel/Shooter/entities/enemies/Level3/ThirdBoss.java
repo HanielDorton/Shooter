@@ -12,7 +12,7 @@ import com.haniel.Shooter.weapons.SphereGun;
 
 public class ThirdBoss extends Enemy{
 	
-	private float firingRate = 2.5f;
+	private float firingRate = 3f;
 	private float secondFiringRate = 1f;
 	private double center;
 	
@@ -76,9 +76,9 @@ public class ThirdBoss extends Enemy{
 		}
 	}
 	private void generateRandomSuperMine() {
-		level.specialBossArray.add(new SuperGreenMine(0, 480, level, random.nextInt(11), false));
+		level.specialBossArray.add(new SuperGreenMine(0, 480, level, random.nextInt(11)));
 	}
 	private void generateRandomMine() {
-		level.specialBossArray.add(new GreenMine(0, 480, level, random.nextInt(11), false));
+		level.specialBossArray.add(new GreenMine(0, 480, level, random.nextInt(11)));
 	}
 }

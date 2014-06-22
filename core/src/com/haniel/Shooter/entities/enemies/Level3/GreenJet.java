@@ -27,7 +27,7 @@ public class GreenJet extends Enemy{
 		this.xOffset = 15;
 		this.yOffset = 35;
 		this.rectangle = new Rectangle((float)x + xOffset, (float)y + yOffset, width, height);
-		this.weapon = new SphereGun(level, false, 600);
+		this.weapon = new SphereGun(level, false, 500);
 		this.wingWeapon = new SphereGun(level, false, 200);
 		this.lastShot2 = level.getTime() + 2;
 		this.lastShot = level.getTime() + 2;

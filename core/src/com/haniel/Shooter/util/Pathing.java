@@ -189,5 +189,11 @@ public class Pathing {
 	public static CatmullRomSpline<Vector2> jet9 = new CatmullRomSpline<Vector2>(new Vector2[] 
 			{new Vector2(150, 500), new Vector2(50, 350), new Vector2(-550, 1000)}, true);
 	
+	// last level boss only:
+	
+	public static CatmullRomSpline<Vector2> lastBossCircles = new CatmullRomSpline<Vector2>(new Vector2[] 
+			{new Vector2(290, 180), new Vector2(550, -50), new Vector2(550, 180),
+			new Vector2(290, -50), new Vector2(50, 180), new Vector2(50, -50)}, true);
+	
 
 }

@@ -10,11 +10,11 @@ import com.haniel.Shooter.weapons.SphereGun;
 
 public class GreenMine extends Enemy{
 	
-	protected double firingRate = .6;
+	protected double firingRate = .8;
 	protected float rotation = 0f;
 	private double lastX;
 	
-	public GreenMine(double x, double y, Level level, int p, boolean notFromBoss) {
+	public GreenMine(double x, double y, Level level, int p) {
 		super(x, y, level);		
 		this.speed = random.nextInt(20) + 30;
 		this.width = 32;
@@ -22,11 +22,10 @@ public class GreenMine extends Enemy{
 		this.sprite = new Sprite(greenMineTexture);		
 		this.health = 3;
 		this.rectangle = new Rectangle((float)x + xOffset, (float)y + yOffset, width, height);
-		this.weapon = new SphereGun(level, false, 400);
+		this.weapon = new SphereGun(level, false, 300);
 		this.rotates = true;
 		this.lastX = x;
-		if (notFromBoss) this.points = 10;
-		else this.points = 0;
+		this.points = 10;
 
 		switch (p) {
 			case 1: {

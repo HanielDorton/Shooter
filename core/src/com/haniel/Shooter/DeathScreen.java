@@ -110,6 +110,7 @@ public class DeathScreen implements Screen{
 		level.dispose();		
 	}
 	public void skipSection() {
+		if (gameState.numLevel == 5 && gameState.checkPoint == 3) return;
 		if (gameState.checkPoint < (gameState.getCheckpoints(gameState.numLevel)).length - 1) gameState.checkPoint++;
 		else {
 			gameState.checkPoint = 0;

@@ -248,9 +248,9 @@ import com.haniel.Shooter.util.Pathing;
 						addStarsCheckpoint(100);
 					} else {
 						add(new CheckpointReached(300, 350, 2));
-					
+						gameScreen.setCheckPoint(levelTime - 10);					
 					}
-					gameScreen.setCheckPoint(levelTime - 10);
+
 					backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/All_This.mp3"));
 					backgroundMusic.play();
 					add(new FirstBoss(351,-300, Pathing.bossCircles, this));

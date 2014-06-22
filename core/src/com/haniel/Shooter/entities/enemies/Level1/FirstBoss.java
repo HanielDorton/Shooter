@@ -15,8 +15,8 @@ import com.haniel.Shooter.weapons.Weapon;
 
 public class FirstBoss extends Enemy{
 	
-	private float firingRate = 2f;
-	private float secondFiringRate = 1f;
+	private float firingRate = 1.5f;
+	private float secondFiringRate = 1.5f;
 	//private int firstFiringAngle = 10;
 	private double secondLastShot = 0;
 	private ParticleEffect engine1Effect = new ParticleEffect();
@@ -34,8 +34,8 @@ public class FirstBoss extends Enemy{
 		this.sprite = new Sprite(firstBossTexture);		
 		this.health = 400;
 		this.rectangle = new Rectangle((float)x + xOffset, (float)y + yOffset , width, height);
-		this.weapon = new SphereGun(level, false, 130);
-		this.weapon2 = new SphereGun(level, false, 300);
+		this.weapon = new SphereGun(level, false, 300);
+		this.weapon2 = new SphereGun(level, false, 250);
 		this.lastShot = 0;
 		this.engine1Effect.load(Gdx.files.internal("particles/firstlevel/BossEngines.p"), Gdx.files.internal("particles/"));
 		this.engine1Effect.setPosition((int)x + 39,(int) y + 8);
@@ -53,7 +53,6 @@ public class FirstBoss extends Enemy{
 	}
 	
 	protected void shoot() {
-		if (health < (100)) secondFiringRate = .5f;
         if ((level.getTime() - lastShot) > firingRate) {
 		    	lastShot = level.getTime();
 		    	for (int i = 1; i < 18; i ++) {

@@ -12,7 +12,7 @@ import com.haniel.Shooter.graphics.Star;
 
 public class Level4 extends Level{
 	
-	//checkpoints: 13590 and thats the only one, sucka!
+	//checkpoints: 4990, 13590 
 	
 	public Level4(GameScreen gameScreen) {
 		super(gameScreen);
@@ -133,10 +133,17 @@ public class Level4 extends Level{
 				break;
 			}
 			case 5000: {
-				add(new CloakingEnemy(200, 200, 20, 20, this));
-				add(new CloakingEnemy(550, 200, -20, 20, this));
+				if (gameScreen.getCheckPoint() + 10 == levelTime) {
+					add(new BackgroundImage("levels/spacebackground3.png", -600, -50, 1));
+					addStarsCheckpoint(100);
+					backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/Dark_Fog_firstContinue.mp3"));
+					backgroundMusic.play();
+				} else {
+					add(new CheckpointReached(300, 350, 2));
+					gameScreen.setCheckPoint(levelTime - 10);
+				}
 				break;
-			}
+			}			
 			case 5400: {
 				add( new CloakingEnemyBombs(200, -200, 0, 100, this));
 				add( new CloakingEnemyBombs(550, -200, 0, 100, this));
@@ -235,7 +242,7 @@ public class Level4 extends Level{
 				if (gameScreen.getCheckPoint() + 10 == levelTime) {
 					add(new BackgroundImage("levels/spacebackground3.png", -600, -136, 1));
 					addStarsCheckpoint(100);
-					backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/Dark_Fog_onlyContinue.mp3"));
+					backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/Dark_Fog_secondContinue.mp3"));
 					backgroundMusic.play();
 				} else {
 					add(new CheckpointReached(300, 350, 2));
@@ -243,7 +250,6 @@ public class Level4 extends Level{
 				}
 				break;
 			}
-			//85 seconds section
 			case 15000: {
 				add(new CloakingEnemy(370, 240, 0, 20, this));
 				break;

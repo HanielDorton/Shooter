@@ -10,6 +10,7 @@ public abstract class Weapon {
 	protected Level level;
 	protected Sound sound;
 	protected boolean fromPlayer;
+	protected int speed;
 	
 	//set firing rates so they can be accessed before projectiles are created:
 	protected final static double basicGunFiringRate = 0.2;
@@ -43,5 +44,8 @@ public abstract class Weapon {
 		basicGunSound.dispose();
 		smatterZap1.dispose();
 	}
-
+	
+	public void changeSpeed( int speed) {
+		this.speed = speed;
+	}
 }
