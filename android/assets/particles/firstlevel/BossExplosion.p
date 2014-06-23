@@ -10,8 +10,8 @@ max: 1200
 - Emission - 
 lowMin: 10.0
 lowMax: 10.0
-highMin: 8000.0
-highMax: 8000.0
+highMin: 4000.0
+highMax: 4000.0
 relative: false
 scalingCount: 1
 scaling0: 1.0
@@ -164,8 +164,8 @@ max: 4000
 - Emission - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 3000.0
-highMax: 3000.0
+highMin: 1000.0
+highMax: 1000.0
 relative: false
 scalingCount: 5
 scaling0: 1.0
@@ -335,8 +335,8 @@ max: 12000
 - Emission - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 10000.0
-highMax: 10000.0
+highMin: 4000.0
+highMax: 4000.0
 relative: false
 scalingCount: 2
 scaling0: 1.0

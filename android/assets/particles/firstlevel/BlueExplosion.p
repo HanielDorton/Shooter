@@ -2,16 +2,16 @@ MainExplosion
 - Delay -
 active: false
 - Duration - 
-lowMin: 200.0
-lowMax: 200.0
+lowMin: 100.0
+lowMax: 100.0
 - Count - 
-min: 400
+min: 100
 max: 1200
 - Emission - 
 lowMin: 10.0
 lowMax: 10.0
-highMin: 300.0
-highMax: 300.0
+highMin: 700.0
+highMax: 700.0
 relative: false
 scalingCount: 1
 scaling0: 1.0
@@ -337,8 +337,8 @@ max: 5000
 - Emission - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 2000.0
-highMax: 2000.0
+highMin: 1000.0
+highMax: 1000.0
 relative: false
 scalingCount: 2
 scaling0: 1.0

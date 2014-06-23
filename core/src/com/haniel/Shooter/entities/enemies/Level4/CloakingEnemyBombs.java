@@ -45,7 +45,7 @@ public class CloakingEnemyBombs extends CloakingEnemy{
 	public void shoot(){
 		if ((level.getTime() - lastShot) > firingRate) {
  	    	lastShot = level.getTime();
-	       	level.specialBossArray.add(new Bomb(x + (width /2) - 2, y + height /2, level, delay));
+	       	level.specialBossArray.add(new Bomb(x + (width /2) - 4, y + height /2, level, delay));
 	       	delay += .25f;
 	       	if (level.weaponSounds.size() < 3) level.weaponSounds.add(weapon);
 		}

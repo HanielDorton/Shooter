@@ -34,7 +34,7 @@ public class Level3 extends Level{
 			case 10: {
 				backgroundMusic.play();
 				add(new BackgroundImage("levels/space-1.png", 0, 0, 2));
-				addStarsCheckpoint(300);
+				addStarsCheckpoint(100);
 		        break;
 			}
 			case 100: {
@@ -51,7 +51,7 @@ public class Level3 extends Level{
 					add(new BackgroundImage("levels/space-1.png", 0, -118, 2));
 					backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/Five_Armies_firstContinue.mp3"));
 					backgroundMusic.play();
-					addStarsCheckpoint(300);
+					addStarsCheckpoint(100);
 				} else {
 					add(new CheckpointReached(300, 350, 2));
 					gameScreen.setCheckPoint(levelTime - 10);
@@ -134,7 +134,7 @@ public class Level3 extends Level{
 					add(new BackgroundImage("levels/space-1.png", 0, -230, 2));
 					addStarsCheckpoint(300);
 				} else {
-					add(new CheckpointReached(300, 350, 2));
+					add(new CheckpointReached(100, 350, 2));
 					gameScreen.setCheckPoint(levelTime - 10);
 				}
 				backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/All_This.mp3"));

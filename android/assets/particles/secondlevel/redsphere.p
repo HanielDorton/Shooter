@@ -227,7 +227,7 @@ scaling0: 1.0
 timelineCount: 1
 timeline0: 0.0
 - Options - 
-attached: false
+attached: true
 continuous: true
 aligned: false
 additive: true
@@ -248,8 +248,8 @@ max: 25
 - Emission - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 50.0
-highMax: 50.0
+highMin: 25.0
+highMax: 25.0
 relative: false
 scalingCount: 1
 scaling0: 1.0
@@ -331,7 +331,7 @@ scaling0: 1.0
 timelineCount: 1
 timeline0: 0.0
 - Options - 
-attached: false
+attached: true
 continuous: true
 aligned: false
 additive: true
