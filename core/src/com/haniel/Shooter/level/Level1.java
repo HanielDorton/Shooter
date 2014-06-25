@@ -20,7 +20,7 @@ import com.haniel.Shooter.util.Pathing;
 		backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/black_vortex.mp3"));
 		//load all particle effects for pooling:
 		enemyBulletEffect.load(Gdx.files.internal("particles/firstlevel/BlueSphere.p"), Gdx.files.internal("particles/"));
-		enemyBulletEffectPool = new ParticleEffectPool(enemyBulletEffect, 45, 80);
+		enemyBulletEffectPool = new ParticleEffectPool(enemyBulletEffect, 45, 200);
 		smallExplosionEffect.load(Gdx.files.internal("particles/firstlevel/BlueExplosion.p"), Gdx.files.internal("particles/"));
 		smallExplosionEffectPool = new ParticleEffectPool(smallExplosionEffect, 5, 5);
 	}

@@ -22,7 +22,7 @@ public class Level3 extends Level{
 		backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/Five_Armies.mp3"));
 		//load all particle effects for pooling:
 		enemyBulletEffect.load(Gdx.files.internal("particles/thirdlevel/greenbullet.p"), Gdx.files.internal("particles/"));
-		enemyBulletEffectPool = new ParticleEffectPool(enemyBulletEffect, 45, 80);
+		enemyBulletEffectPool = new ParticleEffectPool(enemyBulletEffect, 45, 200);
 		smallExplosionEffect.load(Gdx.files.internal("particles/thirdlevel/greenmissileexplosion.p"), Gdx.files.internal("particles/"));
 		smallExplosionEffectPool = new ParticleEffectPool(smallExplosionEffect, 5, 20);
 	}
@@ -59,72 +59,66 @@ public class Level3 extends Level{
 				break;
 			}
 			case 6300: {
-				for (int i = 0; i < 2; i++ ) generateRandomMine();
+				generateRandomMine(2);
 				break;
 			}
 			case 6700: {
-				for (int i = 0; i < 2; i++ ) generateRandomMine();
+				generateRandomMine(2);
 				break;
 			}
 			case 7100: {
-				for (int i = 0; i < 2; i++ ) generateRandomMine();
+				generateRandomMine(2);
 				break;
 			}
 			
 			case 7400: {
-				for (int i = 0; i < 2; i++ ) generateRandomMine();
+				generateRandomMine(2);
 				break;
 			}
 			case 7800: {
-				for (int i = 0; i < 2; i++ ) generateRandomMine();
-				generateRandomSuperMine();
+				generateRandomMine(2);
+				generateRandomSuperMine(1);
 				break;
 			}
 			case 8200: {
-				//for (int i = 0; i < 2; i++ ) generateRandomMine(480 + (100 * i));
-				for (int i = 0; i < 2; i++ ) generateRandomSuperMine();
+				generateRandomSuperMine(2);
 				break;
 			}
 			case 8600: {
-				for (int i = 0; i < 3; i++ ) generateRandomSuperMine();
+				generateRandomSuperMine(3);
 				break;
 			}
 			
 			case 9000: {
-				for (int i = 0; i < 3; i++ ) generateRandomMine();
-				for (int i = 0; i < 2; i++ ) generateRandomSuperMine();
+				generateRandomMine(3);
+				generateRandomSuperMine(2);
 				break;
 			}
 			
 			case 9500: {
-				for (int i = 0; i < 3; i++ ) generateRandomSuperMine();
-				for (int i = 0; i < 3; i++ ) generateRandomSuperMine();
-				for (int i = 0; i < 3; i++ ) generateRandomSuperMine();
+				generateRandomSuperMine(6);
 				break;
 			}
 			case 9900: {
-				for (int i = 0; i < 3; i++ ) generateRandomSuperMine();
+				generateRandomSuperMine(3);
 				break;
 			}
 			case 10200: {
-				for (int i = 0; i < 3; i++ ) generateRandomSuperMine();
-				for (int i = 0; i < 3; i++ ) generateRandomSuperMine();
-				for (int i = 0; i < 3; i++ ) generateRandomSuperMine();
-				for (int i = 0; i < 3; i++ ) generateRandomSuperMine();
+				generateRandomSuperMine(7);
 				break;
 			}
 			case 10600: {
-				for (int i = 0; i < 3; i++ ) generateRandomSuperMine();
+				generateRandomSuperMine(3);
 				break;
 			}
 			case 10900: {
-				generateRandomMine();
-				generateRandomSuperMine();
+				generateRandomMine(1);
+				generateRandomSuperMine(1);
 				break;
 			}
 			case 11200: {
-				generateRandomMine();
-				generateRandomSuperMine();
+				generateRandomMine(1);
+				generateRandomSuperMine(1);
 				break;
 			}
 			
@@ -139,8 +133,8 @@ public class Level3 extends Level{
 				}
 				backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/All_This.mp3"));
 				backgroundMusic.play();
-				generateRandomSuperMine();
-				generateRandomSuperMine();
+				generateRandomSuperMine(1);
+				generateRandomSuperMine(1);
 				break;				
 			}
 			case 11700:{
@@ -151,11 +145,15 @@ public class Level3 extends Level{
 		}
 	}
 	
-	private void generateRandomMine() {
-		add(new GreenMine(0, 480, this, random.nextInt(11)));
+	private void generateRandomMine(int quantity) {
+		for (int i = 0; i< quantity; i++){
+			add(new GreenMine(0, 480, this, random.nextInt(11)));
+		}
 	}
 	
-	private void generateRandomSuperMine() {
-		add(new SuperGreenMine(0, 480, this, random.nextInt(11)));
+	private void generateRandomSuperMine(int quantity) {
+		for (int i = 0; i< quantity; i++) {
+			add(new SuperGreenMine(0, 480, this, random.nextInt(11)));
+		}		
 	}
 }

@@ -26,9 +26,9 @@ public abstract class Projectile {
 	public void update() {
 		move(Math.cos(angle), Math.sin(angle));
         if (y + 100 < 0 - this.height) remove();
-        if (y > level.getHeight() + 100 + this.height) remove();
-        if (x > level.getWidth() + 100 + this.width) remove();
-        if (x + 100 < 0 - this.width) remove();
+        if (y > level.getHeight() + 10 + this.height) remove();
+        if (x > level.getWidth() + 10 + this.width) remove();
+        if (x + 10 < 0 - this.width) remove();
 		rectangle.setPosition((float) x, (float) y);
 		this.effect.setPosition((int) x + width / 2,(int) y + width / 2);
 
@@ -78,6 +78,7 @@ public abstract class Projectile {
 	public void remove() {		
 		this.effect.allowCompletion();
 		removed = true;
+		level.projectiles.remove(this.effect);
 	}
 	
 	public double getX() {

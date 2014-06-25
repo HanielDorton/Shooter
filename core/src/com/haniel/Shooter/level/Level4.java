@@ -20,7 +20,7 @@ public class Level4 extends Level{
 		backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/Dark_Fog.mp3"));
 		//load all particle effects for pooling:
 		enemyBulletEffect.load(Gdx.files.internal("particles/level4/purplesphere.p"), Gdx.files.internal("particles/"));
-		enemyBulletEffectPool = new ParticleEffectPool(enemyBulletEffect, 45, 80);
+		enemyBulletEffectPool = new ParticleEffectPool(enemyBulletEffect, 45, 100);
 		smallExplosionEffect.load(Gdx.files.internal("particles/level4/purpleexplosion.p"), Gdx.files.internal("particles/"));
 		smallExplosionEffectPool = new ParticleEffectPool(smallExplosionEffect, 5, 20);
 		smallExplosionEffect2.load(Gdx.files.internal("particles/level4/bomb.p"), Gdx.files.internal("particles/"));
