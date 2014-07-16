@@ -20,13 +20,20 @@ public class Player extends Entity{
 	
     private boolean shooting = false;;
     private int maxSpeed;
-    private int keyboardSpeed;
     private GameScreen gameScreen;
 	private ParticleEffect engine1Effect = new ParticleEffect();
 	private ParticleEffect engine2Effect = new ParticleEffect();
 	private float tilt, tiltSpeed;
 	private int currentSprite;
 	private boolean movingLeft, movingRight;
+	private float leftKeyboardSpeed = 0;
+	private float rightKeyboardSpeed = 0;
+	private float upKeyboardSpeed = 0;
+	private float downKeyboardSpeed = 0;
+	private float topKeyboardSpeed = 18;
+	private float baseKeyboardSpeed = 5;
+	private float keyboardAcc = .2f;
+	
 
 
 	
@@ -54,7 +61,6 @@ public class Player extends Entity{
 		this.sprite = playerSprites.get(currentSprite);
 		this.rectangle = new Rectangle((float) x + xOffset, (float) y + yOffset, width, height);
 		this.speed = 30;
-		this.keyboardSpeed = 7;
 		this.maxSpeed = 40;
 		this.lastShot= 0;
 		this.health = 1;
@@ -88,23 +94,37 @@ public class Player extends Entity{
 	     */
 
 		if (Gdx.input.isKeyPressed(Keys.LEFT) || Gdx.input.isKeyPressed(Keys.A)) {
-			movePlayer(-keyboardSpeed , 0);
-			movingLeft = true;
-	        
+			if (leftKeyboardSpeed > -topKeyboardSpeed) leftKeyboardSpeed -= keyboardAcc;
+			movePlayer((int) leftKeyboardSpeed , 0);
+			movingLeft = true;	        
+		}
+		else {
+			leftKeyboardSpeed = -baseKeyboardSpeed;
 		}
 	    if (Gdx.input.isKeyPressed(Keys.RIGHT) || Gdx.input.isKeyPressed(Keys.D)) {
-	    	movePlayer(keyboardSpeed , 0);
-	    	movingRight = true;
-	    	
+			if (rightKeyboardSpeed < topKeyboardSpeed) rightKeyboardSpeed += keyboardAcc;
+	    	movePlayer((int) rightKeyboardSpeed , 0);
+	    	movingRight = true;	    	
 	    }
+	    else {
+	    	rightKeyboardSpeed = baseKeyboardSpeed;
+		}
 	    if (Gdx.input.isKeyPressed(Keys.UP) || Gdx.input.isKeyPressed(Keys.W)) {
-	    	movePlayer(0, keyboardSpeed );
-			
+			if (upKeyboardSpeed < topKeyboardSpeed) upKeyboardSpeed += keyboardAcc;
+	    	movePlayer(0, (int) upKeyboardSpeed );			
 	    }
+	    else {
+	    	upKeyboardSpeed = baseKeyboardSpeed;
+		}
 	    if (Gdx.input.isKeyPressed(Keys.DOWN) || Gdx.input.isKeyPressed(Keys.S)) {
-	    	movePlayer(0, -keyboardSpeed );
-			
+			if (downKeyboardSpeed > -topKeyboardSpeed) downKeyboardSpeed -= keyboardAcc;
+	    	movePlayer(0, (int) downKeyboardSpeed );			
 	    }
+	    else {
+	    	downKeyboardSpeed = -baseKeyboardSpeed;
+		}
+
+	    
 		
 	    if (shooting ||  Gdx.input.isKeyPressed(Keys.ENTER)) {
 	    	if ((level.getTime() - lastShot) > weapon.getFiringRate()) {

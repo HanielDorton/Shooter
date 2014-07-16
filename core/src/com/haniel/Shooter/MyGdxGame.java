@@ -14,7 +14,7 @@ public class MyGdxGame extends Game {
         font = new BitmapFont();
         this.setScreen(new MenuScreen(this));
         // to skip directly to game:        
-        //GameState gameState = new GameState(0, 0, 0, 0);
+        //GameState gameState = new GameState(1, 0, 0, 0);
         //this.setScreen(new GameScreen(this, gameState));
     }
 
