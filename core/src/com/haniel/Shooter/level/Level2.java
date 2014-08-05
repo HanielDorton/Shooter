@@ -28,7 +28,7 @@ public class Level2 extends Level{
 		smallExplosionEffectPool = new ParticleEffectPool(smallExplosionEffect, 5, 5);
 		smallExplosionEffect2.load(Gdx.files.internal("particles/secondlevel/missileexplosion.p"), Gdx.files.internal("particles/"));
 		smallExplosionEffect2Pool = new ParticleEffectPool(smallExplosionEffect2, 5, 8);
-		smallEngineEffect.load(Gdx.files.internal("particles/PlayerEngine.p"), Gdx.files.internal("particles/"));
+		smallEngineEffect.load(Gdx.files.internal("PlayerEngine.p"), Gdx.files.internal(""));
 		smallEngineEffectPool = new ParticleEffectPool(smallEngineEffect, 5, 20);
 	}
 
@@ -38,9 +38,9 @@ public class Level2 extends Level{
 		
 			case 10: {
 				backgroundMusic.play();
-				add(new BackgroundImage("levels/Parallax100.png", 0, 0, 1f));
+				add(new BackgroundImage("Parallax100.png", 0, 0, 1f));
 				addStarsCheckpoint(100);
-				add(new BackgroundImage("levels/hjm-big_gas_planet_0.png", 80, 350, 1.5f));
+				add(new BackgroundImage("hjm-big_gas_planet_0.png", 80, 350, 1.5f));
 
 				break;
 			}
@@ -217,9 +217,9 @@ public class Level2 extends Level{
 			}		
 			case 6900: { //next checkpoitn 108
 				if (gameScreen.getCheckPoint() + 10 == levelTime) {
-					add(new BackgroundImage("levels/Parallax100.png", 0, 0, 1f));
+					add(new BackgroundImage("Parallax100.png", 0, 0, 1f));
 					addStarsCheckpoint(100);
-					add(new BackgroundImage("levels/hjm-big_gas_planet_0.png", 80, 246, 1.5f));
+					add(new BackgroundImage("hjm-big_gas_planet_0.png", 80, 246, 1.5f));
 					backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/The_Descent_firstContinue.mp3"));
 					backgroundMusic.play();
 				} else {
@@ -283,9 +283,9 @@ public class Level2 extends Level{
 			
 			case 10800: { 
 				if (gameScreen.getCheckPoint() + 10 == levelTime) {
-					add(new BackgroundImage("levels/Parallax100.png", 0, 0, 1f));
+					add(new BackgroundImage("Parallax100.png", 0, 0, 1f));
 					addStarsCheckpoint(100);
-					add(new BackgroundImage("levels/hjm-big_gas_planet_0.png", 80, 188, 1.5f));
+					add(new BackgroundImage("hjm-big_gas_planet_0.png", 80, 188, 1.5f));
 					backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/The_Descent_secondContinue.mp3"));
 					backgroundMusic.play();
 				} else {
@@ -300,9 +300,9 @@ public class Level2 extends Level{
 			}
 			case 18400: { 
 				if (gameScreen.getCheckPoint() + 10 == levelTime) {
-					add(new BackgroundImage("levels/Parallax100.png", 0, 0, 1f));
+					add(new BackgroundImage("Parallax100.png", 0, 0, 1f));
 					addStarsCheckpoint(100);
-					add(new BackgroundImage("levels/hjm-big_gas_planet_0.png", 80, 74, 1.5f));
+					add(new BackgroundImage("hjm-big_gas_planet_0.png", 80, 74, 1.5f));
 					backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/All_This.mp3"));
 					backgroundMusic.play();
 				} else {

@@ -63,13 +63,13 @@ public class MenuScreen implements Screen{
 	}
 
 	public void show() {
-		backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/sad_Exploring.mp3"));
+		backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("sad_Exploring.mp3"));
 		backgroundMusic.play();
 		backgroundMusic.setLooping(true);
         graphics = new LinkedList<MyGraphics>();
-        add(new BackgroundImage("textures/Space-Background-6.jpg", 0, 0, 0));
-		atlas = new TextureAtlas("ui/uiskin.atlas");
-		skin = new Skin(Gdx.files.internal("ui/uiskin.json"), atlas);
+        add(new BackgroundImage("Space-Background-6.jpg", 0, 0, 0));
+		atlas = new TextureAtlas("uiskin.atlas");
+		skin = new Skin(Gdx.files.internal("uiskin.json"), atlas);
 		stage = new Stage();
 		table = new Table(skin);
 		stage.addActor(table);
@@ -81,7 +81,7 @@ public class MenuScreen implements Screen{
 		buttonPlay = new TextButton("Start Game", skin);
 		buttonPlay.addListener(new ChangeListener() {
 			public void changed(ChangeEvent event, Actor actor) {
-				GameState gameState = new GameState(3, 0, 0, 0); //level, checkpoint, kills, continues 
+				GameState gameState = new GameState(5, 2, 0, 0); //level, checkpoint, kills, continues 
 	            game.setScreen(new GameScreen(game, gameState));
 	            dispose();				
 			}

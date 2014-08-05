@@ -82,7 +82,6 @@ public class GameScreen implements Screen {
         }
         else if (deathTimer == level.getLevelTime()) {
         	Gdx.input.setCursorImage(null, 0, 0);
-        	gameState.numContinues++;
         	game.setScreen(new DeathScreen(game, gameState, level));
             dispose();	
         } else if (levelComplete == level.getLevelTime()){	    
@@ -181,7 +180,7 @@ public class GameScreen implements Screen {
 	        	        
 	        if (player.getHealth() < 1) {
 	        	deathTimer = level.getLevelTime() + 300;    
-	        	gameState.score -= 100;
+	        	gameState.score -= 50;
 	        	if (gameState.score < 0) gameState.score = 0;
 	        	gameState.tempScore = gameState.score;
 	        	player.particles();

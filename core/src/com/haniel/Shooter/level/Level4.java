@@ -32,7 +32,7 @@ public class Level4 extends Level{
 			
 			case 10: {
 				backgroundMusic.play();
-				add(new BackgroundImage("levels/spacebackground3.png", -600, 0, 1));
+				add(new BackgroundImage("spacebackground3.png", 0, 0, 1));
 				addStarsCheckpoint(100);
 			    break;
 				}
@@ -136,7 +136,7 @@ public class Level4 extends Level{
 			}
 			case 5000: {
 				if (gameScreen.getCheckPoint() + 10 == levelTime) {
-					add(new BackgroundImage("levels/spacebackground3.png", -600, -50, 1));
+					add(new BackgroundImage("spacebackground3.png", 0, -50, 1));
 					addStarsCheckpoint(100);
 					backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/Dark_Fog_firstContinue.mp3"));
 					backgroundMusic.play();
@@ -224,11 +224,11 @@ public class Level4 extends Level{
 				add( new CloakingEnemyBombs(550, -200, 0, 100, this));
 				break;
 			}
-			case 11600: {
-				add( new CloakingEnemyBombs(20, -200, 0, 100, this));
-				add( new CloakingEnemyBombs(720, -200, 0, 100, this));
-				break;
-			}
+			//case 11600: {
+			//	add( new CloakingEnemyBombs(20, -200, 0, 100, this));
+		//		add( new CloakingEnemyBombs(720, -200, 0, 100, this));
+		//		break;
+		//	}
 			case 12000: {
 				add(new CloakingEnemy(200, 200, 20, 20, this));
 				add(new CloakingEnemy(550, 200, -20, 20, this));
@@ -242,7 +242,7 @@ public class Level4 extends Level{
 
 			case 13600: {
 				if (gameScreen.getCheckPoint() + 10 == levelTime) {
-					add(new BackgroundImage("levels/spacebackground3.png", -600, -136, 1));
+					add(new BackgroundImage("spacebackground3.png", 0, -136, 1));
 					addStarsCheckpoint(100);
 					backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/Dark_Fog_secondContinue.mp3"));
 					backgroundMusic.play();

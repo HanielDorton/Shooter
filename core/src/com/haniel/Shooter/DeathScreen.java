@@ -30,6 +30,8 @@ public class DeathScreen implements Screen{
     	this.game = gam;
     	this.gameState = gameState;
     	this.level = level;
+    	gameState.numContinues += 1;
+    	gameState.numContinuesTemp += 1;
     }
 
 	public void render(float delta) {
@@ -45,8 +47,8 @@ public class DeathScreen implements Screen{
 	}
 
 	public void show() {
-		atlas = new TextureAtlas("ui/uiskin.atlas");
-		skin = new Skin(Gdx.files.internal("ui/uiskin.json"), atlas);
+		atlas = new TextureAtlas("uiskin.atlas");
+		skin = new Skin(Gdx.files.internal("uiskin.json"), atlas);
 		stage = new Stage();
 		table = new Table(skin);
 		stage.addActor(table);
@@ -111,10 +113,19 @@ public class DeathScreen implements Screen{
 	}
 	public void skipSection() {
 		if (gameState.numLevel == 5 && gameState.checkPoint == 3) return;
-		if (gameState.checkPoint < (gameState.getCheckpoints(gameState.numLevel)).length - 1) gameState.checkPoint++;
+		if (gameState.checkPoint < (gameState.getCheckpoints(gameState.numLevel)).length - 1) {
+			gameState.checkPoint++;
+			gameState.numSkipsTemp += 1;
+			gameState.numSkips += 1;
+		}
 		else {
 			gameState.checkPoint = 0;
 			gameState.numLevel++;
+			gameState.score = 0;
+			gameState.tempScore = 0;
+			gameState.numSkipsTemp = 0;
+			gameState.numSkips += 1;
+			gameState.numContinuesTemp = 0;
 		}
 	}
 

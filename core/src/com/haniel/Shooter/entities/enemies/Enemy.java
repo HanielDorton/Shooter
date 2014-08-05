@@ -16,7 +16,7 @@ public abstract class Enemy extends Entity{
 	
 
 	protected CatmullRomSpline<Vector2> path;
-	protected float current = 0;;
+	protected float current = 0;
 	protected Vector2 out = new Vector2();
 	protected int points;
 	protected boolean scored= false;

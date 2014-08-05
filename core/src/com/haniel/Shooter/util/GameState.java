@@ -1,9 +1,9 @@
 package com.haniel.Shooter.util;
 
 public class GameState {
-	public int numContinues, numKills, checkPoint, numLevel, tempScore, score;
+	public int numKills, numContinues, numContinuesTemp, checkPoint, numLevel, tempScore, score, numSkipsTemp, numSkips;
 	public int [] scores = {0, 0, 0, 0, 0};
-	public int [] levelMaxes ={1020,700,630,1100,1000};
+	public int [] levelMaxes ={1060,110,700,1100,980};
 	public int [] level1checkPoints = {0, 4290, 9190, 13990};
 	public int [] level2checkPoints = {0, 6890, 10790, 18390};
 	public int [] level3checkPoints = {0, 5940, 11490};

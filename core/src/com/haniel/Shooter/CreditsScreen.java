@@ -29,7 +29,7 @@ public class CreditsScreen implements Screen{
         camera.setToOrtho(false, 800, 480);
         graphics = new LinkedList<MyGraphics>();
         currentCredits = new LinkedList<credit>();
-        add(new BackgroundImage("levels/space-2.png", 0, 0, 1));
+        add(new BackgroundImage("space-2.png", 0, 0, 1));
         addStarsCheckpoint(480);
         creditsCount = 0;
         credits = new LinkedList<String>();
@@ -64,7 +64,7 @@ public class CreditsScreen implements Screen{
         credits.add("First Level Enemies: 'Smatter-Zap1' from http://www.soundjay.com");
         credits.add("Boss Explosions: 'explosion-02' from http://www.soundjay.com");
         credits.add("Second Level Homing Missiles: 'explosion-01' from http://www.soundjay.com");
-        backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/Grim_League.mp3"));
+        backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("Grim_League.mp3"));
         backgroundMusic.play();
         backgroundMusic.setLooping(true);
     }
@@ -101,7 +101,6 @@ public class CreditsScreen implements Screen{
         	game.setScreen(new MenuScreen(game));
             dispose();
         }
-
         
         game.batch.end();
 		

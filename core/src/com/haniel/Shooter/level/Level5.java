@@ -42,9 +42,9 @@ public class Level5 extends Level{
 			
 			case 10: {
 				backgroundMusic.play();
-				add(new BackgroundImage("levels/space-2.png", 0, 0, 1));
+				add(new BackgroundImage("space-2.png", 0, 0, 1));
 				addStarsCheckpoint(100);
-				add(new BackgroundImage("levels/planet1.png", -1100, 300, 15f));
+				add(new BackgroundImage("planet1.png", 0, 300, 15f));
 			    break;
 			}
 			case 500: {
@@ -73,9 +73,9 @@ public class Level5 extends Level{
 			}
 			case 5100: {
 				if (gameScreen.getCheckPoint() + 10 == levelTime) {
-					add(new BackgroundImage("levels/space-2.png", 0, 0, 1));
+					add(new BackgroundImage("space-2.png", 0, 0, 1));
 					addStarsCheckpoint(100);
-					add(new BackgroundImage("levels/planet1.png", -1100, -480, 15f));
+					add(new BackgroundImage("planet1.png", 0, -480, 15f));
 					backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/Crusade_firstContinue.mp3"));
 					backgroundMusic.play();
 
@@ -212,9 +212,9 @@ public class Level5 extends Level{
 			}
 			case 13900: {
 				if (gameScreen.getCheckPoint() + 10 == levelTime) {
-					add(new BackgroundImage("levels/space-2.png", 0, 0, 1));
+					add(new BackgroundImage("space-2.png", 0, 0, 1));
 					addStarsCheckpoint(100);
-					add(new BackgroundImage("levels/planet1.png", -1100, -1785, 15f));
+					add(new BackgroundImage("planet1.png", 0, -1785, 15f));
 					backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/Crusade_secondContinue.mp3"));
 					backgroundMusic.play();
 
@@ -230,9 +230,8 @@ public class Level5 extends Level{
 			
 			case 21000: {
 				if (gameScreen.getCheckPoint() + 10 == levelTime) {
-					add(new BackgroundImage("levels/space-2.png", 0, 0, 1));
+					add(new BackgroundImage("space-2.png", 0, 0, 1));
 					addStarsCheckpoint(100);
-					//add(new BackgroundImage("levels/planet1.png", -1100, -2715, 15f));
 
 				} else {
 					add(new CheckpointReached(300, 350, 2));

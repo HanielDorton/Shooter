@@ -26,7 +26,7 @@ public class WeaponsPlatform extends Enemy{
 		this.width = 33;
 		this.height = 33;
 		this.sprite = new Sprite(weaponsPlatformTexture, width, height);	
-		this.health = 7;
+		this.health = 5;
 		this.rectangle = new Rectangle((float)x + xOffset, (float)y + yOffset, width, height);
 		this.weapon = new SphereGun(level, false, 150);
 		this.weapon2 = new SphereGun(level, false, 250);

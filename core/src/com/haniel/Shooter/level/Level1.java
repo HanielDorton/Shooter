@@ -31,7 +31,7 @@ import com.haniel.Shooter.util.Pathing;
 				
 				case 10: {
 					backgroundMusic.play();
-					add(new BackgroundImage("levels/spacebackground1.png", 0, 0, 1));
+					add(new BackgroundImage("spacebackground1.png", 0, 0, 1));
 					addStarsCheckpoint(100);
 					break;
 				}
@@ -155,7 +155,7 @@ import com.haniel.Shooter.util.Pathing;
 				}
 				case 4300: {
 				if (gameScreen.getCheckPoint() + 10 == levelTime) {
-				add(new BackgroundImage("levels/spacebackground1.png", 0, -43, 1));
+				add(new BackgroundImage("spacebackground1.png", 0, -43, 1));
 				backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/black_vortex_firstContinue.mp3"));
 				backgroundMusic.play();
 				addStarsCheckpoint(100);
@@ -193,7 +193,7 @@ import com.haniel.Shooter.util.Pathing;
 				case 9200: {
 				//checkpoint
 				if (gameScreen.getCheckPoint() + 10 == levelTime) {
-				add(new BackgroundImage("levels/spacebackground1.png", 0, -92, 1));
+				add(new BackgroundImage("spacebackground1.png", 0, -92, 1));
 				backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/black_vortex_secondContinue.mp3"));
 				backgroundMusic.play();
 				addStarsCheckpoint(100);
@@ -244,7 +244,7 @@ import com.haniel.Shooter.util.Pathing;
 				}
 				case 14000: {
 						if (gameScreen.getCheckPoint() + 10 == levelTime) {
-						add(new BackgroundImage("levels/spacebackground1.png", 0, -140, 1));
+						add(new BackgroundImage("spacebackground1.png", 0, -140, 1));
 						addStarsCheckpoint(100);
 					} else {
 						add(new CheckpointReached(300, 350, 2));

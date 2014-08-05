@@ -69,17 +69,17 @@ public class Player extends Entity{
 		this.movingLeft = false;
 		this.movingRight = false;
 		this.weapon = new PlayerGun(level, true);
-		this.engine1Effect.load(Gdx.files.internal("particles/PlayerEngine.p"), Gdx.files.internal("particles/"));
+		this.engine1Effect.load(Gdx.files.internal("PlayerEngine.p"), Gdx.files.internal(""));
 		this.engine1Effect.setPosition((int)x + 21,(int) y + 5);
 		level.particleEffects.add(engine1Effect);
-		this.engine2Effect.load(Gdx.files.internal("particles/PlayerEngine.p"), Gdx.files.internal("particles/"));
+		this.engine2Effect.load(Gdx.files.internal("PlayerEngine.p"), Gdx.files.internal(""));
 		this.engine2Effect.setPosition((int)x + 26,(int) y + 5);
 		level.particleEffects.add(engine2Effect);
 	}
 	public void update() {
 		/*	
 		if (Gdx.input.isTouched()) {
-		        //touchPos = new Vector3();GameScreen g
+		        //touchPos = new Vector3();
 		        touchPos.set(Gdx.input.getX(), Gdx.input.getY(), 0);
 		}
 	
@@ -196,7 +196,7 @@ public class Player extends Entity{
 		
 		
 		ParticleEffect explosion = new ParticleEffect();
-		explosion.load(Gdx.files.internal("particles/PlayerExplosion.p"), Gdx.files.internal("particles/"));
+		explosion.load(Gdx.files.internal("PlayerExplosion.p"), Gdx.files.internal(""));
 		explosion.setPosition((int)x + xOffset + (width / 2),(int) y + yOffset + (height / 2));
 		level.particleEffects.add(explosion);
 		explosion.start();
@@ -229,10 +229,10 @@ public class Player extends Entity{
 		health -= damage;
 	}
 	public void resetEngines() {
-		this.engine1Effect.load(Gdx.files.internal("particles/PlayerEngine.p"), Gdx.files.internal("particles/"));
+		this.engine1Effect.load(Gdx.files.internal("PlayerEngine.p"), Gdx.files.internal(""));
 		this.engine1Effect.setPosition((int)x + 21,(int) y + 5);
 		level.particleEffects.add(engine1Effect);
-		this.engine2Effect.load(Gdx.files.internal("particles/PlayerEngine.p"), Gdx.files.internal("particles/"));
+		this.engine2Effect.load(Gdx.files.internal("PlayerEngine.p"), Gdx.files.internal(""));
 		this.engine2Effect.setPosition((int)x + 26,(int) y + 5);
 		level.particleEffects.add(engine2Effect);		
 	}

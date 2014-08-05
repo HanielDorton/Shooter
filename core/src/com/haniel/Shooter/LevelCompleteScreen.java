@@ -20,10 +20,11 @@ public class LevelCompleteScreen implements Screen{
 	private Skin skin;
 	private Table table;
 	private TextButton buttonContinue;
-	private Label score, grade;
+	private Label score, grade, deaths, skips;
 	private TextureAtlas atlas;
 	private GameState gameState;
 	private Level level;
+	private int levelSkips, levelContinues;
 	
 	public LevelCompleteScreen (final MyGdxGame gam, GameState gameState, Level level) {
     	this.game = gam;
@@ -32,6 +33,10 @@ public class LevelCompleteScreen implements Screen{
     	gameState.scores[gameState.numLevel-2] = gameState.score;
     	gameState.tempScore = 0;
     	gameState.score = 0;
+    	this.levelSkips = gameState.numSkipsTemp;
+    	gameState.numSkipsTemp = 0;
+    	this.levelContinues = gameState.numContinuesTemp;
+    	gameState.numContinuesTemp = 0;
     }
 	
 	public void render(float delta) {
@@ -47,13 +52,16 @@ public class LevelCompleteScreen implements Screen{
 	}
 
 	public void show() {
-		atlas = new TextureAtlas("ui/uiskin.atlas");
-		skin = new Skin(Gdx.files.internal("ui/uiskin.json"), atlas);
+		atlas = new TextureAtlas("uiskin.atlas");
+		skin = new Skin(Gdx.files.internal("uiskin.json"), atlas);
 		stage = new Stage();
 		table = new Table(skin);
 		stage.addActor(table);
 		table.setBounds(0, 0, stage.getWidth(), stage.getHeight());
 		Gdx.input.setInputProcessor(stage);
+		
+		deaths = new Label("Deaths: " + levelContinues, skin);
+		skips = new Label("Sections Skipped: " + levelSkips, skin);
 		
 		score =new Label("Score: " + gameState.scores[gameState.numLevel-2], skin);
 		grade = new Label("Grade " + getGrade(), skin);
@@ -61,11 +69,15 @@ public class LevelCompleteScreen implements Screen{
 		buttonContinue = new TextButton("Continue", skin);
 		buttonContinue.addListener(new ChangeListener() {
 			public void changed(ChangeEvent event, Actor actor) {
-				if (gameState.numLevel == 6) game.setScreen(new CreditsScreen(game));
+				if (gameState.numLevel == 6) game.setScreen(new BeatGameScreen(game, gameState));
 				else game.setScreen(new GameScreen(game, gameState));
 				dispose();				
 			}
 		});
+		table.add(deaths).padBottom(30);
+		table.row();
+		table.add(skips).padBottom(30);
+		table.row();
 		table.add(score).padBottom(30);
 		table.row();
 		table.add(grade).padBottom(30);
@@ -89,10 +101,10 @@ public class LevelCompleteScreen implements Screen{
 	private String getGrade() {
 		int tempScore = gameState.scores[gameState.numLevel-2] - gameState.levelMaxes[gameState.numLevel-2];
 			if (tempScore > 0) return "A++";
-			else if (tempScore > -50) return "A";
-			else if (tempScore > -100) return "B";
-			else if (tempScore > -200) return "C";
-			else if (tempScore > -300) return "D";
+			else if (tempScore > (-.15 * gameState.levelMaxes[gameState.numLevel-2]) ) return "A";
+			else if (tempScore > (-.35 * gameState.levelMaxes[gameState.numLevel-2]) ) return "B";
+			else if (tempScore > (-.55 * gameState.levelMaxes[gameState.numLevel-2]) ) return "C";
+			else if (tempScore > (-.75 * gameState.levelMaxes[gameState.numLevel-2]) ) return "D";
 			else return "F";
 	}
 

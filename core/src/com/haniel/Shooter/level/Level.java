@@ -61,7 +61,7 @@ public class Level {
 	public Level(GameScreen gameScreen) {
 		this.gameScreen = gameScreen; 
 		ParticleEffect playerBulletEffect = new ParticleEffect();
-		playerBulletEffect.load(Gdx.files.internal("particles/PlayerBullet.p"), Gdx.files.internal("particles/"));
+		playerBulletEffect.load(Gdx.files.internal("PlayerBullet.p"), Gdx.files.internal(""));
 		playerBulletEffectPool  = new ParticleEffectPool(playerBulletEffect, 10, 100);
 	}
 
