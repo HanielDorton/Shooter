@@ -61,15 +61,24 @@ public class MyInputProcessor implements InputProcessor {
 
 	@Override
 	public boolean mouseMoved(int screenX, int screenY) {
-
-		if (screenX > 400) player.movePlayer(1 * (screenX - 400), 0);
-		else if (screenX < 400) player.movePlayer(-1 * (400 - screenX), 0);
-		  
-		if (screenY < 240) player.movePlayer(0, 1 * (240 - screenY));
-		else if (screenY > 240) player.movePlayer(0, -1 * (screenY - 240));
-
-		Gdx.input.setCursorPosition(400, 240);
-		  	  
-		return false;
+		switch (Gdx.app.getType()) {
+			case Desktop: {
+				if (screenX > 400) player.movePlayer(1 * (screenX - 400), 0);
+				else if (screenX < 400) player.movePlayer(-1 * (400 - screenX), 0);
+				  
+				if (screenY < 240) player.movePlayer(0, 1 * (240 - screenY));
+				else if (screenY > 240) player.movePlayer(0, -1 * (screenY - 240));
+		
+				Gdx.input.setCursorPosition(400, 240);
+				break;
+				
+			}
+			default: {
+				
+				}
+		}
+			return false;
+			
+		}
 	}
-	}
+	

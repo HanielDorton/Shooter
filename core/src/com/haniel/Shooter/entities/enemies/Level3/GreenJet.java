@@ -31,7 +31,7 @@ public class GreenJet extends Enemy{
 		this.wingWeapon = new SphereGun(level, false, 200);
 		this.lastShot2 = level.getTime() + 2;
 		this.lastShot = level.getTime() + 2;
-		this.points = 50;		
+		this.points = 50;
 	}
 	
 	protected void shoot() {

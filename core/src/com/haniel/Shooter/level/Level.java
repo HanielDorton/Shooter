@@ -156,8 +156,9 @@ public class Level {
 				break;
 			}
         }
-		
+
 	}
+	
 
 	private void updateProjectiles() {
         Iterator<Projectile> iter = projectiles.iterator();
@@ -252,4 +253,5 @@ public class Level {
 	public String getName() {
 		return name;
 	}
+
 }

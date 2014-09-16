@@ -13,7 +13,7 @@ import com.haniel.Shooter.weapons.Weapon;
 
 public class SuperGreenJet extends Enemy{
 	
-	protected double firingRate = 1.75;
+	protected double firingRate = 1;
 	protected double frontFiringRate = .2;
 	protected Weapon wingWeapon;
 	

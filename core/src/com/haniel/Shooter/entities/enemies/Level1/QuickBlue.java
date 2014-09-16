@@ -21,7 +21,7 @@ public class QuickBlue extends Enemy{
 		this.width = 40;
 		this.height = 40;
 		this.sprite = new Sprite(quickBlueTexture);		
-		this.health = 0;
+		this.health = 3;
 		this.xOffset = 5;
 		this.yOffset = 5;
 		this.rectangle = new Rectangle((float)x + xOffset, (float)y + yOffset, width, height);

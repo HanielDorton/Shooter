@@ -28,7 +28,7 @@ import com.haniel.Shooter.util.MyInputProcessor;
 
 public class GameScreen implements Screen {
     final MyGdxGame game;
-    OrthographicCamera camera;
+    public OrthographicCamera camera;
 
     public double gameTime = 0;
     Level level;
@@ -43,6 +43,7 @@ public class GameScreen implements Screen {
     private int tempScore = 0;
     Pixmap mouse;
     private String timeString, minuteString;
+
 
     public GameScreen(final MyGdxGame gam, GameState gameState) {    	
         this.game = gam;
@@ -284,6 +285,8 @@ public class GameScreen implements Screen {
     public void scorePoints(int points) {
     	gameState.tempScore += points;
     }
+    
+
 
 }
 

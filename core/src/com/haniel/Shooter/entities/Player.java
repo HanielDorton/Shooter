@@ -3,16 +3,18 @@ package com.haniel.Shooter.entities;
 import java.util.LinkedList;
 import java.util.List;
 
+import sun.rmi.runtime.Log;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector3;
 import com.haniel.Shooter.GameScreen;
 import com.haniel.Shooter.level.Level;
 import com.haniel.Shooter.weapons.PlayerGun;
-
 
 public class Player extends Entity{
 	
@@ -33,6 +35,7 @@ public class Player extends Entity{
 	private float topKeyboardSpeed = 18;
 	private float baseKeyboardSpeed = 5;
 	private float keyboardAcc = .2f;
+	private boolean touchLeft, touchRight, touchUp, touchDown;
 	
 
 
@@ -77,54 +80,68 @@ public class Player extends Entity{
 		level.particleEffects.add(engine2Effect);
 	}
 	public void update() {
-		/*	
-		if (Gdx.input.isTouched()) {
-		        //touchPos = new Vector3();
-		        touchPos.set(Gdx.input.getX(), Gdx.input.getY(), 0);
-		}
-	
-		if (touchPos.x < x)
-	        x -= 200 * Gdx.graphics.getDeltaTime();
-	    if (touchPos.x > x)
-	        x += 200 * Gdx.graphics.getDeltaTime();
-	    if (touchPos.y < y)
-	        y += 200 * Gdx.graphics.getDeltaTime();
-	    if (touchPos.y > y)
-	        y -= 200 * Gdx.graphics.getDeltaTime();
-	     */
+		touchLeft = false;
+		touchRight = false;
+		touchUp = false;
+		touchDown = false;
+		switch (Gdx.app.getType()) {
+		
+			case Android: {
+				Vector3 touchPos = new Vector3();
+				if (Gdx.input.isTouched()) {
+				        touchPos  = new Vector3();
+				        //touchPos.set(Gdx.input.getX(), Math.abs(480 - Gdx.input.getY()), 0);
+				        touchPos.set(Gdx.input.getX(), Gdx.input.getY(), 0);
+				        gameScreen.camera.unproject(touchPos);
 
-		if (Gdx.input.isKeyPressed(Keys.LEFT) || Gdx.input.isKeyPressed(Keys.A)) {
-			if (leftKeyboardSpeed > -topKeyboardSpeed) leftKeyboardSpeed -= keyboardAcc;
-			movePlayer((int) leftKeyboardSpeed , 0);
-			movingLeft = true;	        
+				        System.out.println( touchPos.x + " " + touchPos.y);
+						if (touchPos.x < this.x + ((width +xOffset)/2))
+					        touchLeft = true;
+						else if (touchPos.x > this.x + ((width +xOffset)/2))
+					        touchRight = true;
+					    if (touchPos.y > this.y + ((height + yOffset)/2))
+					        touchUp = true;
+					    else if (touchPos.y < this.y + ((height + yOffset)/2))
+					        touchDown = true;
+					    
+				}
+				break;
+			}
+			default: {
+			}
 		}
-		else {
-			leftKeyboardSpeed = -baseKeyboardSpeed;
+				if (touchLeft || Gdx.input.isKeyPressed(Keys.LEFT) || Gdx.input.isKeyPressed(Keys.A)) {
+					if (leftKeyboardSpeed > -topKeyboardSpeed) leftKeyboardSpeed -= keyboardAcc;
+					movePlayer((int) leftKeyboardSpeed , 0);
+					movingLeft = true;	        
+				}
+				else {
+					leftKeyboardSpeed = -baseKeyboardSpeed;
+				}
+			    if (touchRight || Gdx.input.isKeyPressed(Keys.RIGHT) || Gdx.input.isKeyPressed(Keys.D)) {
+					if (rightKeyboardSpeed < topKeyboardSpeed) rightKeyboardSpeed += keyboardAcc;
+			    	movePlayer((int) rightKeyboardSpeed , 0);
+			    	movingRight = true;	    	
+			    }
+			    else {
+			    	rightKeyboardSpeed = baseKeyboardSpeed;
+				}
+			    if (touchUp || Gdx.input.isKeyPressed(Keys.UP) || Gdx.input.isKeyPressed(Keys.W)) {
+					if (upKeyboardSpeed < topKeyboardSpeed) upKeyboardSpeed += keyboardAcc;
+			    	movePlayer(0, (int) upKeyboardSpeed );			
+			    }
+			    else {
+			    	upKeyboardSpeed = baseKeyboardSpeed;
+				}
+			    if (touchDown || Gdx.input.isKeyPressed(Keys.DOWN) || Gdx.input.isKeyPressed(Keys.S)) {
+					if (downKeyboardSpeed > -topKeyboardSpeed) downKeyboardSpeed -= keyboardAcc;
+			    	movePlayer(0, (int) downKeyboardSpeed );			
+			    }
+			    else {
+			    	downKeyboardSpeed = -baseKeyboardSpeed;
+				
+			
 		}
-	    if (Gdx.input.isKeyPressed(Keys.RIGHT) || Gdx.input.isKeyPressed(Keys.D)) {
-			if (rightKeyboardSpeed < topKeyboardSpeed) rightKeyboardSpeed += keyboardAcc;
-	    	movePlayer((int) rightKeyboardSpeed , 0);
-	    	movingRight = true;	    	
-	    }
-	    else {
-	    	rightKeyboardSpeed = baseKeyboardSpeed;
-		}
-	    if (Gdx.input.isKeyPressed(Keys.UP) || Gdx.input.isKeyPressed(Keys.W)) {
-			if (upKeyboardSpeed < topKeyboardSpeed) upKeyboardSpeed += keyboardAcc;
-	    	movePlayer(0, (int) upKeyboardSpeed );			
-	    }
-	    else {
-	    	upKeyboardSpeed = baseKeyboardSpeed;
-		}
-	    if (Gdx.input.isKeyPressed(Keys.DOWN) || Gdx.input.isKeyPressed(Keys.S)) {
-			if (downKeyboardSpeed > -topKeyboardSpeed) downKeyboardSpeed -= keyboardAcc;
-	    	movePlayer(0, (int) downKeyboardSpeed );			
-	    }
-	    else {
-	    	downKeyboardSpeed = -baseKeyboardSpeed;
-		}
-
-	    
 		
 	    if (shooting ||  Gdx.input.isKeyPressed(Keys.ENTER)) {
 	    	if ((level.getTime() - lastShot) > weapon.getFiringRate()) {
