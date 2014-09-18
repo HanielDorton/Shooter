@@ -1,7 +1,9 @@
 package com.haniel.Shooter.level;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.g2d.ParticleEffectPool;
+import com.haniel.Shooter.Assets;
 import com.haniel.Shooter.GameScreen;
 import com.haniel.Shooter.entities.enemies.Level3.GreenJet;
 import com.haniel.Shooter.entities.enemies.Level3.GreenMine;
@@ -19,7 +21,7 @@ public class Level3 extends Level{
 	public Level3(GameScreen gameScreen) {
 		super(gameScreen);
 		this.name = "3: Bargaining";
-		backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/Five_Armies.mp3"));
+		backgroundMusic = Assets.manager.get("music/Five_Armies.mp3", Music.class);
 		//load all particle effects for pooling:
 		enemyBulletEffect.load(Gdx.files.internal("particles/thirdlevel/greenbullet.p"), Gdx.files.internal("particles/"));
 		enemyBulletEffectPool = new ParticleEffectPool(enemyBulletEffect, 45, 200);
@@ -49,7 +51,7 @@ public class Level3 extends Level{
 			case 5950: {
 				if (gameScreen.getCheckPoint() + 10 == levelTime) {
 					add(new BackgroundImage("space-1.png", 0, -118, 2));
-					backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/Five_Armies_firstContinue.mp3"));
+					backgroundMusic = Assets.manager.get("music/Five_Armies_firstContinue.mp3", Music.class);
 					backgroundMusic.play();
 					addStarsCheckpoint(100);
 				} else {
@@ -131,7 +133,7 @@ public class Level3 extends Level{
 					add(new CheckpointReached(300, 350, 2));
 					gameScreen.setCheckPoint(levelTime - 10);
 				}
-				backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/All_This.mp3"));
+				backgroundMusic = Assets.manager.get("music/All_This.mp3", Music.class);
 				backgroundMusic.play();
 				generateRandomSuperMine(1);
 				generateRandomSuperMine(1);

@@ -1,7 +1,9 @@
 package com.haniel.Shooter.level;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.g2d.ParticleEffectPool;
+import com.haniel.Shooter.Assets;
 import com.haniel.Shooter.GameScreen;
 import com.haniel.Shooter.entities.enemies.Level5.LastBoss;
 import com.haniel.Shooter.entities.enemies.Level5.MediumTransport;
@@ -16,16 +18,11 @@ import com.haniel.Shooter.util.Pathing;
 public class Level5 extends Level{
 	
 	//checkpoints: 5090, 13890 for this section, 20090 for boss
-	//first section: quick 50 second intro section quick firing quick movements with you destorying A LOT
-		// maybe auto defense system with the little guys facing you and pouring bullets at you?
-	//second section- medium guys go buy with bullets out of the sides mainly?
-	//third section
-	//boss
 
 	public Level5(GameScreen gameScreen){
 		super(gameScreen);
 		this.name = "5: Acceptance";
-		backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/Crusade.mp3"));
+		backgroundMusic = Assets.manager.get("music/Crusade.mp3", Music.class);
 		//load all particle effects for pooling:
 		enemyBulletEffect.load(Gdx.files.internal("particles/level5/brownsphere.p"), Gdx.files.internal("particles/"));
 		enemyBulletEffectPool = new ParticleEffectPool(enemyBulletEffect, 45, 200);
@@ -76,7 +73,7 @@ public class Level5 extends Level{
 					add(new BackgroundImage("space-2.png", 0, 0, 1));
 					addStarsCheckpoint(100);
 					add(new BackgroundImage("planet1.png", 0, -480, 15f));
-					backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/Crusade_firstContinue.mp3"));
+					backgroundMusic = Assets.manager.get("music/Crusade_firstContinue.mp3", Music.class);
 					backgroundMusic.play();
 
 				} else {
@@ -215,7 +212,7 @@ public class Level5 extends Level{
 					add(new BackgroundImage("space-2.png", 0, 0, 1));
 					addStarsCheckpoint(100);
 					add(new BackgroundImage("planet1.png", 0, -1785, 15f));
-					backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/Crusade_secondContinue.mp3"));
+					backgroundMusic = Assets.manager.get("music/Crusade_secondContinue.mp3", Music.class);
 					backgroundMusic.play();
 
 				} else {
@@ -237,7 +234,7 @@ public class Level5 extends Level{
 					add(new CheckpointReached(300, 350, 2));
 					gameScreen.setCheckPoint(levelTime - 10);
 				}
-				backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/All_This.mp3"));
+				backgroundMusic = Assets.manager.get("music/All_This.mp3", Music.class);
 				backgroundMusic.play();
 				break;				
 			}

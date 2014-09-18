@@ -12,7 +12,6 @@ public class BackgroundImage extends MyGraphics{
 		this.y-= speed * Gdx.graphics.getDeltaTime();
 	}
 	public void remove() {
-		texture.dispose();
 		removed = true;
 	}
 }

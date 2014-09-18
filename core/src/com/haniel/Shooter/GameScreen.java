@@ -31,18 +31,19 @@ public class GameScreen implements Screen {
     public OrthographicCamera camera;
 
     public double gameTime = 0;
+    public double scoreTime = 0;
     Level level;
     private static int screenWidth = 800;
     private static int screenHeight = 480;
     public Player player; 
     public MyInputProcessor inputProcessor;
-    private int deathTimer, time, minutes;
+    private int deathTimer;//, time, minutes;
     private boolean paused = false;
     private double levelComplete = -10;
     private GameState gameState;
     private int tempScore = 0;
     Pixmap mouse;
-    private String timeString, minuteString;
+    //private String timeString, minuteString;
 
 
     public GameScreen(final MyGdxGame gam, GameState gameState) {    	
@@ -56,7 +57,7 @@ public class GameScreen implements Screen {
         Gdx.input.setInputProcessor(inputProcessor);
         camera = new OrthographicCamera();
         camera.setToOrtho(false, screenWidth, screenHeight);
-        tempScore =gameState.tempScore;
+        tempScore =gameState.score;
         //set cursor to blank image since it is fixed to the middle of the screen.
         mouse = new Pixmap(Gdx.files.internal("textures/mouseX.png"));
         Gdx.input.setCursorImage(mouse, 0, 0);
@@ -83,13 +84,13 @@ public class GameScreen implements Screen {
         }
         else if (deathTimer == level.getLevelTime()) {
         	Gdx.input.setCursorImage(null, 0, 0);
-        	game.setScreen(new DeathScreen(game, gameState, level));
+        	game.setScreen(new DeathScreen(game, gameState));
             dispose();	
         } else if (levelComplete == level.getLevelTime()){	    
         	Gdx.input.setCursorImage(null, 0, 0);
         	gameState.numLevel++;
         	gameState.checkPoint = 0;
-        	game.setScreen(new LevelCompleteScreen(game, gameState, level));
+        	game.setScreen(new LevelCompleteScreen(game, gameState));
         	dispose();
  	    } else {
 	    	//draw and update level
@@ -154,7 +155,9 @@ public class GameScreen implements Screen {
 	        	}
 	        }
 	        game.font.draw(game.batch, "Stage: " + level.getName(), 5, screenHeight - 5);
-	        time = level.getLevelTime() / 100;
+	        
+	        /* this is to paint the time on the screen for playtesting
+	        	        time = level.getLevelTime() / 100;
 	        if (time >= 60){
 	        	minutes = time / 60;
 	        	time = time % 60;
@@ -164,26 +167,28 @@ public class GameScreen implements Screen {
 	        if (time < 10) timeString = "0";
 	        else timeString = "";
 	        game.font.draw(game.batch, "Time: " + minuteString + timeString + time, 5, screenHeight - 25);
+	        */
 	        
-	        
-	        if (tempScore > gameState.tempScore) tempScore--;
-	        else if (tempScore < gameState.tempScore) tempScore++;
-	        game.font.draw(game.batch, "Score: " + tempScore, 5, screenHeight - 45);
+	        if (tempScore > gameState.score) tempScore--;
+	        else if (tempScore < gameState.score) tempScore++;
+	        game.font.draw(game.batch, "Score: " + tempScore, 5, screenHeight - 25);
 
 	        
 	        level.update();
 	        
 	        gameTime += Gdx.graphics.getDeltaTime();
 	        if (gameTime > .1) {
+	        	scoreTime += .1;
 	        	level.runLevel(this);
 	        	gameTime -= .1;
+	        	if (scoreTime > 1) {
+	        		scoreTime -= 1;
+	        		scorePoints(1);
+	        	}
 	        }
 	        	        
 	        if (player.getHealth() < 1) {
-	        	deathTimer = level.getLevelTime() + 300;    
-	        	gameState.score -= 50;
-	        	if (gameState.score < 0) gameState.score = 0;
-	        	gameState.tempScore = gameState.score;
+	        	deathTimer = level.getLevelTime() + 300;
 	        	player.particles();
 	        	player.setHealth();	 
 	        	level.entities.remove(player);       	
@@ -240,6 +245,7 @@ public class GameScreen implements Screen {
        	    level.effects.get(i).free();
        	level.effects.clear();    
        	level.specialBossArray.clear();
+       	level.stopMusic();
     }
     
     public int getCheckPoint() {
@@ -248,12 +254,10 @@ public class GameScreen implements Screen {
     }
     public void setCheckPoint(int newCheckPoint) {
     	gameState.checkPoint++;
-    	gameState.score = gameState.tempScore;
     }
     
     public void setLevelComplete() {
     	this.levelComplete = level.getLevelTime() + 800;
-    	gameState.score = gameState.tempScore;
     }
     
     private Level getLevel() {
@@ -283,7 +287,7 @@ public class GameScreen implements Screen {
 		return level;
 	}
     public void scorePoints(int points) {
-    	gameState.tempScore += points;
+    	gameState.score += points;
     }
     
 

@@ -10,7 +10,7 @@ import com.haniel.Shooter.level.Level;
 public class HomingMissile extends Enemy{
 	
 	private int trackPlayer = 12;
-	private float firingRate = .2f;
+	private float firingRate = .5f;
 	private PooledEffect effect;
 
 	public HomingMissile(double x, double y,  Level level, int speed) {

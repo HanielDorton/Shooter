@@ -238,9 +238,6 @@ public class Level {
 	public double getPlayerX() {
 		return gameScreen.player.getMidX();
 	}
-	public void dispose() {
-		backgroundMusic.dispose();
-	}
 	public void pauseMusic() {
 		backgroundMusic.pause();
 	}
@@ -253,5 +250,4 @@ public class Level {
 	public String getName() {
 		return name;
 	}
-
 }

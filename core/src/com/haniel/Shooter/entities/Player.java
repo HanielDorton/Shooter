@@ -3,8 +3,6 @@ package com.haniel.Shooter.entities;
 import java.util.LinkedList;
 import java.util.List;
 
-import sun.rmi.runtime.Log;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Texture;
@@ -12,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
+import com.haniel.Shooter.Assets;
 import com.haniel.Shooter.GameScreen;
 import com.haniel.Shooter.level.Level;
 import com.haniel.Shooter.weapons.PlayerGun;
@@ -41,17 +40,17 @@ public class Player extends Entity{
 
 	
 	public Player(Level level) {
-		playerSprites.add(new Sprite(new Texture(Gdx.files.internal("entities/player/ship-5.png"))));
-		playerSprites.add(new Sprite(new Texture(Gdx.files.internal("entities/player/ship-4.png"))));
-		playerSprites.add(new Sprite(new Texture(Gdx.files.internal("entities/player/ship-3.png"))));
-		playerSprites.add(new Sprite(new Texture(Gdx.files.internal("entities/player/ship-2.png"))));
-		playerSprites.add(new Sprite(new Texture(Gdx.files.internal("entities/player/ship-1.png"))));
-		playerSprites.add(new Sprite(new Texture(Gdx.files.internal("entities/player/ship0.png"))));
-		playerSprites.add(new Sprite(new Texture(Gdx.files.internal("entities/player/ship1.png"))));
-		playerSprites.add(new Sprite(new Texture(Gdx.files.internal("entities/player/ship2.png"))));
-		playerSprites.add(new Sprite(new Texture(Gdx.files.internal("entities/player/ship3.png"))));
-		playerSprites.add(new Sprite(new Texture(Gdx.files.internal("entities/player/ship4.png"))));
-		playerSprites.add(new Sprite(new Texture(Gdx.files.internal("entities/player/ship5.png"))));
+		playerSprites.add(new Sprite(Assets.manager.get("entities/player/ship-5.png", Texture.class)));
+		playerSprites.add(new Sprite(Assets.manager.get("entities/player/ship-4.png", Texture.class)));
+		playerSprites.add(new Sprite(Assets.manager.get("entities/player/ship-3.png", Texture.class)));
+		playerSprites.add(new Sprite(Assets.manager.get("entities/player/ship-2.png", Texture.class)));
+		playerSprites.add(new Sprite(Assets.manager.get("entities/player/ship-1.png", Texture.class)));
+		playerSprites.add(new Sprite(Assets.manager.get("entities/player/ship0.png", Texture.class)));
+		playerSprites.add(new Sprite(Assets.manager.get("entities/player/ship1.png", Texture.class)));
+		playerSprites.add(new Sprite(Assets.manager.get("entities/player/ship2.png", Texture.class)));
+		playerSprites.add(new Sprite(Assets.manager.get("entities/player/ship3.png", Texture.class)));
+		playerSprites.add(new Sprite(Assets.manager.get("entities/player/ship4.png", Texture.class)));
+		playerSprites.add(new Sprite(Assets.manager.get("entities/player/ship5.png", Texture.class)));
 		
 		this.level = level;
 		this.x = 400;
@@ -78,6 +77,17 @@ public class Player extends Entity{
 		this.engine2Effect.load(Gdx.files.internal("PlayerEngine.p"), Gdx.files.internal(""));
 		this.engine2Effect.setPosition((int)x + 26,(int) y + 5);
 		level.particleEffects.add(engine2Effect);
+		
+		switch (Gdx.app.getType()) {
+		
+			case Android: {
+				topKeyboardSpeed = 22;
+				baseKeyboardSpeed = 10;
+			}
+			default: {
+				
+			}
+		}
 	}
 	public void update() {
 		touchLeft = false;
@@ -90,18 +100,17 @@ public class Player extends Entity{
 				Vector3 touchPos = new Vector3();
 				if (Gdx.input.isTouched()) {
 				        touchPos  = new Vector3();
-				        //touchPos.set(Gdx.input.getX(), Math.abs(480 - Gdx.input.getY()), 0);
 				        touchPos.set(Gdx.input.getX(), Gdx.input.getY(), 0);
 				        gameScreen.camera.unproject(touchPos);
 
 				        System.out.println( touchPos.x + " " + touchPos.y);
-						if (touchPos.x < this.x + ((width +xOffset)/2))
-					        touchLeft = true;
-						else if (touchPos.x > this.x + ((width +xOffset)/2))
+						if ((touchPos.x - (this.x + ((height +xOffset*2)/2))) > 5)
 					        touchRight = true;
-					    if (touchPos.y > this.y + ((height + yOffset)/2))
+						else if ((touchPos.x - (this.x + ((height +xOffset*2)/2))) < -5)
+					        touchLeft = true;
+					    if ((touchPos.y - (this.y + ((width + yOffset*2)/2))) > 5)
 					        touchUp = true;
-					    else if (touchPos.y < this.y + ((height + yOffset)/2))
+					    else if ((touchPos.y - (this.y + ((width + yOffset*2)/2))) < -5)
 					        touchDown = true;
 					    
 				}

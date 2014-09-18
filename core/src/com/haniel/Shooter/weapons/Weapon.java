@@ -1,7 +1,7 @@
 package com.haniel.Shooter.weapons;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
+import com.haniel.Shooter.Assets;
 import com.haniel.Shooter.level.Level;
 
 public abstract class Weapon {
@@ -18,8 +18,8 @@ public abstract class Weapon {
 	
 	//load all sounds once:
 	//every time you add a new one add it to dispose() at the bottom.
-	protected final static Sound basicGunSound = Gdx.audio.newSound(Gdx.files.internal("sounds/gunshot01.wav"));
-	protected final static Sound smatterZap1 = Gdx.audio.newSound(Gdx.files.internal("sounds/smatter-zap1.wav"));
+	protected Sound basicGunSound = Assets.manager.get("sounds/gunshot01.wav", Sound.class);
+	protected Sound smatterZap1 = Assets.manager.get("sounds/smatter-zap1.wav", Sound.class);
 	
 	
 	
@@ -39,10 +39,6 @@ public abstract class Weapon {
 	public void playSound() {
 		sound.play();
 		
-	}
-	public static void dispose() {
-		basicGunSound.dispose();
-		smatterZap1.dispose();
 	}
 	
 	public void changeSpeed( int speed) {

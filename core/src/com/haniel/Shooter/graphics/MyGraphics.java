@@ -6,6 +6,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Rectangle;
+import com.haniel.Shooter.Assets;
 import com.haniel.Shooter.level.Level;
 
 public abstract class MyGraphics {
@@ -23,18 +24,18 @@ public abstract class MyGraphics {
 	
 	//load all images here so they are only loaded once:
 	//every time you add a new one add it to dispose() at the bottom.
-	protected static final Texture starTexture = new Texture(Gdx.files.internal("textures/star.png"));
-	protected static final Texture yellowStarTexture = new Texture(Gdx.files.internal("textures/yellowStar.png"));
-	protected static final Texture orangeStarTexture = new Texture(Gdx.files.internal("textures/orangeStar.png"));
-	protected static final Texture whiteStarTexture = new Texture(Gdx.files.internal("textures/whiteStar.png"));
-	protected static final Texture redStarLargeTexture = new Texture(Gdx.files.internal("textures/redStarLarge.png"));
-	protected static final Texture redStarTexture = new Texture(Gdx.files.internal("textures/redStar.png"));
-	protected static final Texture checkpointReachedTexture = new Texture(Gdx.files.internal("textures/checkpointreached.png"));
-	protected static final Texture healthBarTexture = new Texture(Gdx.files.internal("textures/HealthBar.png"));
-	protected static final Texture healthBarOutlineTexture = new Texture(Gdx.files.internal("textures/HealthBarOutline.png"));
+	protected Texture starTexture = Assets.manager.get("textures/star.png", Texture.class);
+	protected Texture yellowStarTexture = Assets.manager.get("textures/yellowStar.png", Texture.class);
+	protected Texture orangeStarTexture = Assets.manager.get("textures/orangeStar.png", Texture.class);
+	protected Texture whiteStarTexture = Assets.manager.get("textures/whiteStar.png", Texture.class);
+	protected Texture redStarLargeTexture = Assets.manager.get("textures/redStarLarge.png", Texture.class);
+	protected Texture redStarTexture = Assets.manager.get("textures/redStar.png", Texture.class);
+	protected Texture checkpointReachedTexture = Assets.manager.get("textures/checkpointreached.png", Texture.class);
+	protected Texture healthBarTexture = Assets.manager.get("textures/HealthBar.png", Texture.class);
+	protected Texture healthBarOutlineTexture = Assets.manager.get("textures/HealthBarOutline.png", Texture.class);
 	
 	public MyGraphics(String imageFile, int x, int y, float speed) {
-		this.texture = new Texture(Gdx.files.internal(imageFile));
+		this.texture = Assets.manager.get(imageFile, Texture.class);
 		this.sprite = new Sprite(texture);
 		this.rectangle = new Rectangle();
 		this.x = x;
@@ -133,16 +134,8 @@ public abstract class MyGraphics {
 		this.level = level;
 	}
 	public static void dispose() {
-		starTexture.dispose();
-		yellowStarTexture.dispose();
-		whiteStarTexture.dispose();
-		orangeStarTexture.dispose();
-		redStarTexture.dispose();
-		redStarLargeTexture.dispose();
-		checkpointReachedTexture.dispose();
-		healthBarTexture.dispose();
-		healthBarOutlineTexture.dispose();
 	}
+	
 	public void changeSpeed(int sped) {
 		this.speed += sped;
 	}

@@ -16,11 +16,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
-import com.haniel.Shooter.entities.Entity;
 import com.haniel.Shooter.graphics.BackgroundImage;
 import com.haniel.Shooter.graphics.MyGraphics;
 import com.haniel.Shooter.util.GameState;
-import com.haniel.Shooter.weapons.Weapon;
 
 public class MenuScreen implements Screen{
 	
@@ -63,7 +61,7 @@ public class MenuScreen implements Screen{
 	}
 
 	public void show() {
-		backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("sad_Exploring.mp3"));
+		backgroundMusic = Assets.manager.get("sad_Exploring.mp3", Music.class);
 		backgroundMusic.play();
 		backgroundMusic.setLooping(true);
         graphics = new LinkedList<MyGraphics>();
@@ -81,7 +79,7 @@ public class MenuScreen implements Screen{
 		buttonPlay = new TextButton("Start Game", skin);
 		buttonPlay.addListener(new ChangeListener() {
 			public void changed(ChangeEvent event, Actor actor) {
-				GameState gameState = new GameState(1, 0, 0, 0); //level, checkpoint, kills, continues 
+				GameState gameState = new GameState(1, 0, 0); //level, checkpoint, continues 
 	            game.setScreen(new GameScreen(game, gameState));
 	            dispose();				
 			}
@@ -96,9 +94,6 @@ public class MenuScreen implements Screen{
 		buttonExit = new TextButton("Exit", skin);
 		buttonExit.addListener(new ChangeListener() {
 			public void changed(ChangeEvent event, Actor actor) {
-	        	MyGraphics.dispose();
-	        	Entity.dispose();
-	        	Weapon.dispose();
 	            dispose();
 	            Gdx.app.exit(); 				
 			}
@@ -126,8 +121,8 @@ public class MenuScreen implements Screen{
 	}
 
 	public void dispose() {
-		stage.dispose();
-		backgroundMusic.dispose();		
+		backgroundMusic.stop();
+		stage.dispose();	
 	}
 	public void add(MyGraphics g) {
 		graphics.add(g);

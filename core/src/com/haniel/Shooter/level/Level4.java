@@ -1,7 +1,9 @@
 package com.haniel.Shooter.level;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.g2d.ParticleEffectPool;
+import com.haniel.Shooter.Assets;
 import com.haniel.Shooter.GameScreen;
 import com.haniel.Shooter.entities.enemies.Level4.CloakingEnemy;
 import com.haniel.Shooter.entities.enemies.Level4.CloakingEnemyBombs;
@@ -17,7 +19,7 @@ public class Level4 extends Level{
 	public Level4(GameScreen gameScreen) {
 		super(gameScreen);
 		this.name = "4: Depression";
-		backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/Dark_Fog.mp3"));
+		backgroundMusic = Assets.manager.get("music/Dark_Fog.mp3", Music.class);
 		//load all particle effects for pooling:
 		enemyBulletEffect.load(Gdx.files.internal("particles/level4/purplesphere.p"), Gdx.files.internal("particles/"));
 		enemyBulletEffectPool = new ParticleEffectPool(enemyBulletEffect, 45, 100);
@@ -138,7 +140,7 @@ public class Level4 extends Level{
 				if (gameScreen.getCheckPoint() + 10 == levelTime) {
 					add(new BackgroundImage("spacebackground3.png", 0, -50, 1));
 					addStarsCheckpoint(100);
-					backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/Dark_Fog_firstContinue.mp3"));
+					backgroundMusic = Assets.manager.get("music/Dark_Fog_firstContinue.mp3", Music.class);
 					backgroundMusic.play();
 				} else {
 					add(new CheckpointReached(300, 350, 2));
@@ -224,11 +226,6 @@ public class Level4 extends Level{
 				add( new CloakingEnemyBombs(550, -200, 0, 100, this));
 				break;
 			}
-			//case 11600: {
-			//	add( new CloakingEnemyBombs(20, -200, 0, 100, this));
-		//		add( new CloakingEnemyBombs(720, -200, 0, 100, this));
-		//		break;
-		//	}
 			case 12000: {
 				add(new CloakingEnemy(200, 200, 20, 20, this));
 				add(new CloakingEnemy(550, 200, -20, 20, this));
@@ -244,7 +241,7 @@ public class Level4 extends Level{
 				if (gameScreen.getCheckPoint() + 10 == levelTime) {
 					add(new BackgroundImage("spacebackground3.png", 0, -136, 1));
 					addStarsCheckpoint(100);
-					backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/Dark_Fog_secondContinue.mp3"));
+					backgroundMusic = Assets.manager.get("music/Dark_Fog_secondContinue.mp3", Music.class);
 					backgroundMusic.play();
 				} else {
 					add(new CheckpointReached(300, 350, 2));

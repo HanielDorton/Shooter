@@ -21,7 +21,7 @@ public class CreditsScreen implements Screen{
     LinkedList<String> credits;
     double time = 3;
     int creditsCount ;
-    private Music backgroundMusic;
+    private Music backgroundMusic = Assets.manager.get("Grim_League.mp3", Music.class);
     
     public CreditsScreen(final MyGdxGame gam) {
     	this.game = gam;      
@@ -65,7 +65,6 @@ public class CreditsScreen implements Screen{
         credits.add("Boss Explosions: 'explosion-02' from http://www.soundjay.com");
         credits.add("Second Level Homing Missiles: 'explosion-01' from http://www.soundjay.com");
         credits.add("Thanks for playing!");
-        backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("Grim_League.mp3"));
         backgroundMusic.play();
         backgroundMusic.setLooping(true);
     }
@@ -145,10 +144,9 @@ public class CreditsScreen implements Screen{
 	}
 
 	@Override
-	public void dispose() {
-		backgroundMusic.dispose();
-		
+	public void dispose() {		
 	}
+	
 	private class credit {
 		public String s;
 		public double y;

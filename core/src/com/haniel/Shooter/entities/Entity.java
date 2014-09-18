@@ -7,6 +7,7 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Rectangle;
+import com.haniel.Shooter.Assets;
 import com.haniel.Shooter.level.Level;
 import com.haniel.Shooter.weapons.Weapon;
 public abstract class Entity{
@@ -29,69 +30,69 @@ public abstract class Entity{
 	
 	//all entity textures so they are only loaded once:
 	//every time you add a new one add it to dispose() at the bottom.
-	protected static final Sound explosion02 = Gdx.audio.newSound(Gdx.files.internal("sounds/explosion-02.wav"));
+	protected Sound explosion02 = Assets.manager.get("sounds/explosion-02.wav", Sound.class);
 	//level one
-	protected static final Texture enemy1Texture = new Texture(Gdx.files.internal("entities/Level1/alien1.png"));
-	protected static final Sound matches2 = Gdx.audio.newSound(Gdx.files.internal("sounds/paper-rip-4.wav"));
-	protected static final Texture blueSaucerTexture = new Texture(Gdx.files.internal("entities/Level1/alien2.png"));
-	protected static final Texture quickBlueTexture = new Texture(Gdx.files.internal("entities/Level1/alien3.png"));
-	protected static final Texture firstBossTexture = new Texture(Gdx.files.internal("entities/Level1/first_boss0.png"));
+	protected Texture enemy1Texture = Assets.manager.get("entities/Level1/alien1.png", Texture.class);
+	protected Sound matches2 = Assets.manager.get("sounds/paper-rip-4.wav", Sound.class);
+	protected Texture blueSaucerTexture = Assets.manager.get("entities/Level1/alien2.png", Texture.class);
+	protected Texture quickBlueTexture = Assets.manager.get("entities/Level1/alien3.png", Texture.class);
+	protected Texture firstBossTexture = Assets.manager.get("entities/Level1/first_boss0.png", Texture.class);
 	//level two
-	protected static final Texture redEnemyTexture = new Texture(Gdx.files.internal("entities/Level2/aliensprite2.png"));
-	protected static final Texture cargoCraftTexture = new Texture(Gdx.files.internal("entities/Level2/smallorange.png"));
-	protected static final Texture cargoCraft2Texture = new Texture(Gdx.files.internal("entities/Level2/smallorange2.png"));
-	protected static final Texture starTexture = new Texture(Gdx.files.internal("textures/star.png"));
-	protected static final Sound explosion01 = Gdx.audio.newSound(Gdx.files.internal("sounds/explosion-01.wav"));
-	protected static final Sound irritatingAmbiantBuzz = Gdx.audio.newSound(Gdx.files.internal("sounds/irritating-ambient-buzz.wav"));
-	protected static final Texture secondBossTexture = new Texture(Gdx.files.internal("entities/Level2/orangeship.png"));
+	protected Texture redEnemyTexture = Assets.manager.get("entities/Level2/aliensprite2.png", Texture.class);
+	protected Texture cargoCraftTexture = Assets.manager.get("entities/Level2/smallorange.png", Texture.class);
+	protected Texture cargoCraft2Texture = Assets.manager.get("entities/Level2/smallorange2.png", Texture.class);
+	protected Texture starTexture = Assets.manager.get("textures/star.png", Texture.class);
+	protected Sound explosion01 = Assets.manager.get("sounds/explosion-01.wav", Sound.class);
+	protected Sound irritatingAmbiantBuzz = Assets.manager.get("sounds/irritating-ambient-buzz.wav", Sound.class);
+	protected Texture secondBossTexture = Assets.manager.get("entities/Level2/orangeship.png", Texture.class);
 	//level three
-	protected static final Texture greenJetTexture = new Texture(Gdx.files.internal("entities/Level3/smalljet.png"));
-	protected static final Texture superGreenJetTexture = new Texture(Gdx.files.internal("entities/Level3/destroyer1.png"));
-	protected static final Texture greenMineTexture = new Texture(Gdx.files.internal("entities/Level3/Spacestation-by-MillionthVector.png"));
-	protected static final Texture thirdBossTexture = new Texture(Gdx.files.internal("entities/Level3/spaceshipspr.png"));
+	protected Texture greenJetTexture = Assets.manager.get("entities/Level3/smalljet.png", Texture.class);
+	protected Texture superGreenJetTexture = Assets.manager.get("entities/Level3/destroyer1.png", Texture.class);
+	protected Texture greenMineTexture = Assets.manager.get("entities/Level3/Spacestation-by-MillionthVector.png", Texture.class);
+	protected Texture thirdBossTexture = Assets.manager.get("entities/Level3/spaceshipspr.png", Texture.class);
 	//level four
-	protected static final Texture cloakingEnemyTexture0 = new Texture(Gdx.files.internal("entities/Level4/F5S3-0.png"));
-	protected static final Texture cloakingEnemyTexture05 = new Texture(Gdx.files.internal("entities/Level4/F5S3-05.png"));
-	protected static final Texture cloakingEnemyTexture1 = new Texture(Gdx.files.internal("entities/Level4/F5S3-1.png"));
-	protected static final Texture cloakingEnemyTexture15 = new Texture(Gdx.files.internal("entities/Level4/F5S3-15.png"));
-	protected static final Texture cloakingEnemyTexture2 = new Texture(Gdx.files.internal("entities/Level4/F5S3-2.png"));
-	protected static final Texture cloakingEnemyTexture25 = new Texture(Gdx.files.internal("entities/Level4/F5S3-25.png"));
-	protected static final Texture cloakingEnemyTexture3 = new Texture(Gdx.files.internal("entities/Level4/F5S3-3.png"));
-	protected static final Texture cloakingEnemyTexture35 = new Texture(Gdx.files.internal("entities/Level4/F5S3-35.png"));
-	protected static final Texture cloakingEnemyTexture4 = new Texture(Gdx.files.internal("entities/Level4/F5S3-4.png"));
-	protected static final Texture cloakingEnemyTexture45 = new Texture(Gdx.files.internal("entities/Level4/F5S3-45.png"));
-	protected static final Texture cloakingEnemyTexture5 = new Texture(Gdx.files.internal("entities/Level4/F5S3-5.png"));
-	protected static final Texture cloakingEnemyTexture6 = new Texture(Gdx.files.internal("entities/Level4/F5S3-6.png"));
-	protected static final Texture cloakingEnemyTexture7 = new Texture(Gdx.files.internal("entities/Level4/F5S3-7.png"));
-	protected static final Texture cloakingEnemyTexture8 = new Texture(Gdx.files.internal("entities/Level4/F5S3-8.png"));
-	protected static final Texture cloakingEnemyTexture9 = new Texture(Gdx.files.internal("entities/Level4/F5S3-9.png"));
-	protected static final Texture cloakingEnemyTexture10 = new Texture(Gdx.files.internal("entities/Level4/F5S3.png"));
+	protected Texture cloakingEnemyTexture0 = Assets.manager.get("entities/Level4/F5S3-0.png", Texture.class);
+	protected Texture cloakingEnemyTexture05 = Assets.manager.get("entities/Level4/F5S3-05.png", Texture.class);
+	protected Texture cloakingEnemyTexture1 = Assets.manager.get("entities/Level4/F5S3-1.png", Texture.class);
+	protected Texture cloakingEnemyTexture15 = Assets.manager.get("entities/Level4/F5S3-15.png", Texture.class);
+	protected Texture cloakingEnemyTexture2 = Assets.manager.get("entities/Level4/F5S3-2.png", Texture.class);
+	protected Texture cloakingEnemyTexture25 = Assets.manager.get("entities/Level4/F5S3-25.png", Texture.class);
+	protected Texture cloakingEnemyTexture3 = Assets.manager.get("entities/Level4/F5S3-3.png", Texture.class);
+	protected Texture cloakingEnemyTexture35 = Assets.manager.get("entities/Level4/F5S3-35.png", Texture.class);
+	protected Texture cloakingEnemyTexture4 = Assets.manager.get("entities/Level4/F5S3-4.png", Texture.class);
+	protected Texture cloakingEnemyTexture45 = Assets.manager.get("entities/Level4/F5S3-45.png", Texture.class);
+	protected Texture cloakingEnemyTexture5 = Assets.manager.get("entities/Level4/F5S3-5.png", Texture.class);
+	protected Texture cloakingEnemyTexture6 = Assets.manager.get("entities/Level4/F5S3-6.png", Texture.class);
+	protected Texture cloakingEnemyTexture7 = Assets.manager.get("entities/Level4/F5S3-7.png", Texture.class);
+	protected Texture cloakingEnemyTexture8 = Assets.manager.get("entities/Level4/F5S3-8.png", Texture.class);
+	protected Texture cloakingEnemyTexture9 = Assets.manager.get("entities/Level4/F5S3-9.png", Texture.class);
+	protected Texture cloakingEnemyTexture10 = Assets.manager.get("entities/Level4/F5S3.png", Texture.class);
 	
-	protected static final Texture cloakingEnemyBombTexture0 = new Texture(Gdx.files.internal("entities/Level4/F5S1-0.png"));
-	protected static final Texture cloakingEnemyBombTexture05 = new Texture(Gdx.files.internal("entities/Level4/F5S1-05.png"));
-	protected static final Texture cloakingEnemyBombTexture1 = new Texture(Gdx.files.internal("entities/Level4/F5S1-1.png"));
-	protected static final Texture cloakingEnemyBombTexture15 = new Texture(Gdx.files.internal("entities/Level4/F5S1-15.png"));
-	protected static final Texture cloakingEnemyBombTexture2 = new Texture(Gdx.files.internal("entities/Level4/F5S1-2.png"));
-	protected static final Texture cloakingEnemyBombTexture25 = new Texture(Gdx.files.internal("entities/Level4/F5S1-25.png"));
-	protected static final Texture cloakingEnemyBombTexture3 = new Texture(Gdx.files.internal("entities/Level4/F5S1-3.png"));
-	protected static final Texture cloakingEnemyBombTexture35 = new Texture(Gdx.files.internal("entities/Level4/F5S1-35.png"));
-	protected static final Texture cloakingEnemyBombTexture4 = new Texture(Gdx.files.internal("entities/Level4/F5S1-4.png"));
-	protected static final Texture cloakingEnemyBombTexture45 = new Texture(Gdx.files.internal("entities/Level4/F5S1-45.png"));
-	protected static final Texture cloakingEnemyBombTexture5 = new Texture(Gdx.files.internal("entities/Level4/F5S1-5.png"));
-	protected static final Texture cloakingEnemyBombTexture6 = new Texture(Gdx.files.internal("entities/Level4/F5S1-6.png"));
-	protected static final Texture cloakingEnemyBombTexture7 = new Texture(Gdx.files.internal("entities/Level4/F5S1-7.png"));	
-	protected static final Texture cloakingEnemyBombTexture8 = new Texture(Gdx.files.internal("entities/Level4/F5S1-8.png"));
-	protected static final Texture cloakingEnemyBombTexture9 = new Texture(Gdx.files.internal("entities/Level4/F5S1-9.png"));
-	protected static final Texture cloakingEnemyBombTexture10 = new Texture(Gdx.files.internal("entities/Level4/F5S1.png"));
+	protected Texture cloakingEnemyBombTexture0 = Assets.manager.get("entities/Level4/F5S1-0.png", Texture.class);
+	protected Texture cloakingEnemyBombTexture05 = Assets.manager.get("entities/Level4/F5S1-05.png", Texture.class);
+	protected Texture cloakingEnemyBombTexture1 = Assets.manager.get("entities/Level4/F5S1-1.png", Texture.class);
+	protected Texture cloakingEnemyBombTexture15 = Assets.manager.get("entities/Level4/F5S1-15.png", Texture.class);
+	protected Texture cloakingEnemyBombTexture2 = Assets.manager.get("entities/Level4/F5S1-2.png", Texture.class);
+	protected Texture cloakingEnemyBombTexture25 = Assets.manager.get("entities/Level4/F5S1-25.png", Texture.class);
+	protected Texture cloakingEnemyBombTexture3 = Assets.manager.get("entities/Level4/F5S1-3.png", Texture.class);
+	protected Texture cloakingEnemyBombTexture35 = Assets.manager.get("entities/Level4/F5S1-35.png", Texture.class);
+	protected Texture cloakingEnemyBombTexture4 = Assets.manager.get("entities/Level4/F5S1-4.png", Texture.class);
+	protected Texture cloakingEnemyBombTexture45 = Assets.manager.get("entities/Level4/F5S1-45.png", Texture.class);
+	protected Texture cloakingEnemyBombTexture5 = Assets.manager.get("entities/Level4/F5S1-5.png", Texture.class);
+	protected Texture cloakingEnemyBombTexture6 = Assets.manager.get("entities/Level4/F5S1-6.png", Texture.class);
+	protected Texture cloakingEnemyBombTexture7 = Assets.manager.get("entities/Level4/F5S1-7.png", Texture.class);	
+	protected Texture cloakingEnemyBombTexture8 = Assets.manager.get("entities/Level4/F5S1-8.png", Texture.class);
+	protected Texture cloakingEnemyBombTexture9 = Assets.manager.get("entities/Level4/F5S1-9.png", Texture.class);
+	protected Texture cloakingEnemyBombTexture10 = Assets.manager.get("entities/Level4/F5S1.png", Texture.class);
 	
-	protected static final Texture fighterJetTexture = new Texture(Gdx.files.internal("entities/Level4/F5S4.png"));
+	protected Texture fighterJetTexture = Assets.manager.get("entities/Level4/F5S4.png", Texture.class);
 	
 	//Level Five:
-	protected static final Texture transportShipTexture = new Texture(Gdx.files.internal("entities/Level5/3.png"));
-	protected static final Texture weaponsPlatformTexture = new Texture(Gdx.files.internal("entities/Level5/2.png"));
-	protected static final Texture lastBosstexture = new Texture(Gdx.files.internal("entities/Level5/5.png"));
-	protected static final Texture smallTransportShipTexture = new Texture(Gdx.files.internal("entities/Level5/11.png"));
-	protected static final Texture mediumTransportShipTexture = new Texture(Gdx.files.internal("entities/Level5/13.png"));
+	protected Texture transportShipTexture = Assets.manager.get("entities/Level5/3.png", Texture.class);
+	protected Texture weaponsPlatformTexture = Assets.manager.get("entities/Level5/2.png", Texture.class);
+	protected Texture lastBosstexture = Assets.manager.get("entities/Level5/5.png", Texture.class);
+	protected Texture smallTransportShipTexture = Assets.manager.get("entities/Level5/11.png", Texture.class);
+	protected Texture mediumTransportShipTexture = Assets.manager.get("entities/Level5/13.png", Texture.class);
 	public Entity() {
 		
 	}
@@ -196,26 +197,6 @@ public abstract class Entity{
 		return (Math.atan2(destY - y, destX - x));	
 	}	
 	
-	public static void dispose() {
-		enemy1Texture.dispose();
-		matches2.dispose();
-		blueSaucerTexture.dispose();
-		quickBlueTexture.dispose();
-		firstBossTexture.dispose();
-		redEnemyTexture.dispose();
-		explosion02.dispose();
-		cargoCraftTexture.dispose();
-		cargoCraft2Texture.dispose();
-		secondBossTexture.dispose();
-		starTexture.dispose();
-		explosion01.dispose();
-		irritatingAmbiantBuzz.dispose();
-		greenJetTexture.dispose();
-		superGreenJetTexture.dispose();
-		greenMineTexture.dispose();
-		thirdBossTexture.dispose();
-	}
-
 	public Sprite getSprite() {
 		return sprite;
 	}

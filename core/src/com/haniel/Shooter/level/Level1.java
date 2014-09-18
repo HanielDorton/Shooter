@@ -1,7 +1,9 @@
 package com.haniel.Shooter.level;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.g2d.ParticleEffectPool;
+import com.haniel.Shooter.Assets;
 import com.haniel.Shooter.GameScreen;
 import com.haniel.Shooter.entities.enemies.Level1.BlueEnemy;
 import com.haniel.Shooter.entities.enemies.Level1.BlueSaucer;
@@ -17,7 +19,7 @@ import com.haniel.Shooter.util.Pathing;
 		public Level1(GameScreen gameScreen) {
 		super(gameScreen);
 		this.name = "1: Denial";
-		backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/black_vortex.mp3"));
+		backgroundMusic = Assets.manager.get("music/black_vortex.mp3", Music.class);
 		//load all particle effects for pooling:
 		enemyBulletEffect.load(Gdx.files.internal("particles/firstlevel/BlueSphere.p"), Gdx.files.internal("particles/"));
 		enemyBulletEffectPool = new ParticleEffectPool(enemyBulletEffect, 45, 200);
@@ -156,7 +158,7 @@ import com.haniel.Shooter.util.Pathing;
 				case 4300: {
 				if (gameScreen.getCheckPoint() + 10 == levelTime) {
 				add(new BackgroundImage("spacebackground1.png", 0, -43, 1));
-				backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/black_vortex_firstContinue.mp3"));
+				backgroundMusic = Assets.manager.get("music/black_vortex_firstContinue.mp3", Music.class);
 				backgroundMusic.play();
 				addStarsCheckpoint(100);
 				} else {
@@ -194,7 +196,7 @@ import com.haniel.Shooter.util.Pathing;
 				//checkpoint
 				if (gameScreen.getCheckPoint() + 10 == levelTime) {
 				add(new BackgroundImage("spacebackground1.png", 0, -92, 1));
-				backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/black_vortex_secondContinue.mp3"));
+				backgroundMusic = Assets.manager.get("music/black_vortex_secondContinue.mp3", Music.class);
 				backgroundMusic.play();
 				addStarsCheckpoint(100);
 				} else {
@@ -251,7 +253,7 @@ import com.haniel.Shooter.util.Pathing;
 						gameScreen.setCheckPoint(levelTime - 10);					
 					}
 
-					backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/All_This.mp3"));
+					backgroundMusic = Assets.manager.get("music/All_This.mp3", Music.class);
 					backgroundMusic.play();
 					add(new FirstBoss(351,-300, Pathing.bossCircles, this));
 					break;

@@ -11,7 +11,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
-import com.haniel.Shooter.level.Level;
 import com.haniel.Shooter.util.GameState;
 
 public class LevelCompleteScreen implements Screen{
@@ -20,23 +19,13 @@ public class LevelCompleteScreen implements Screen{
 	private Skin skin;
 	private Table table;
 	private TextButton buttonContinue;
-	private Label score, grade, deaths, skips;
+	private Label score, deaths, skips;
 	private TextureAtlas atlas;
 	private GameState gameState;
-	private Level level;
-	private int levelSkips, levelContinues;
 	
-	public LevelCompleteScreen (final MyGdxGame gam, GameState gameState, Level level) {
+	public LevelCompleteScreen (final MyGdxGame gam, GameState gameState) {
     	this.game = gam;
     	this.gameState = gameState;
-    	this.level = level;
-    	gameState.scores[gameState.numLevel-2] = gameState.score;
-    	gameState.tempScore = 0;
-    	gameState.score = 0;
-    	this.levelSkips = gameState.numSkipsTemp;
-    	gameState.numSkipsTemp = 0;
-    	this.levelContinues = gameState.numContinuesTemp;
-    	gameState.numContinuesTemp = 0;
     }
 	
 	public void render(float delta) {
@@ -60,11 +49,9 @@ public class LevelCompleteScreen implements Screen{
 		table.setBounds(0, 0, stage.getWidth(), stage.getHeight());
 		Gdx.input.setInputProcessor(stage);
 		
-		deaths = new Label("Deaths: " + levelContinues, skin);
-		skips = new Label("Sections Skipped: " + levelSkips, skin);
-		
-		score =new Label("Score: " + gameState.scores[gameState.numLevel-2], skin);
-		grade = new Label("Grade " + getGrade(), skin);
+		deaths = new Label("Deaths: " + gameState.numContinues, skin);
+		skips = new Label("Sections Skipped: " + gameState.numSkips, skin);		
+		score =new Label("Score: " + gameState.score, skin);
 				
 		buttonContinue = new TextButton("Continue", skin);
 		buttonContinue.addListener(new ChangeListener() {
@@ -80,8 +67,6 @@ public class LevelCompleteScreen implements Screen{
 		table.row();
 		table.add(score).padBottom(30);
 		table.row();
-		table.add(grade).padBottom(30);
-		table.row();
 		table.add(buttonContinue).width(200).height(40);
 	}
 	
@@ -96,16 +81,6 @@ public class LevelCompleteScreen implements Screen{
 	
 	public void dispose() {
 		stage.dispose();
-		level.dispose();
-	}
-	private String getGrade() {
-		int tempScore = gameState.scores[gameState.numLevel-2] - gameState.levelMaxes[gameState.numLevel-2];
-			if (tempScore > 0) return "A++";
-			else if (tempScore > (-.15 * gameState.levelMaxes[gameState.numLevel-2]) ) return "A";
-			else if (tempScore > (-.35 * gameState.levelMaxes[gameState.numLevel-2]) ) return "B";
-			else if (tempScore > (-.55 * gameState.levelMaxes[gameState.numLevel-2]) ) return "C";
-			else if (tempScore > (-.75 * gameState.levelMaxes[gameState.numLevel-2]) ) return "D";
-			else return "F";
 	}
 
 }

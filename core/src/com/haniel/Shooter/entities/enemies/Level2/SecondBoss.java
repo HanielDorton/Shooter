@@ -16,14 +16,14 @@ import com.haniel.Shooter.weapons.SphereGun;
 
 public class SecondBoss extends Enemy{
 	
-	private ParticleEffect engine1Effect = new ParticleEffect();
-	private ParticleEffect engine2Effect = new ParticleEffect();;
+	//private ParticleEffect engine1Effect = new ParticleEffect();
+	//private ParticleEffect engine2Effect = new ParticleEffect();;
 	private int startEngines;
 	private double firingRate = 2;
 	private double secondFiringRate = 1.15;
 	private double thirdFiringRate = 3;
 	private final static double firingAngle2 = 3;
-	private final static double firingAngle = 6.5;
+	private final static double firingAngle = 6.25;
 	private boolean flyby, flip;
 	
 	
@@ -38,8 +38,8 @@ public class SecondBoss extends Enemy{
 		this.speed = 7;
 		this.weapon = new SphereGun(level, false, 70);
 		this.rectangle = new Rectangle((float)x + xOffset, (float)y + yOffset, width, height);
-		this.engine1Effect.load(Gdx.files.internal("particles/secondlevel/bossexhaust.p"), Gdx.files.internal("particles/"));
-		this.engine2Effect.load(Gdx.files.internal("particles/secondlevel/bossexhaust.p"), Gdx.files.internal("particles/"));
+		//this.engine1Effect.load(Gdx.files.internal("particles/secondlevel/bossexhaust.p"), Gdx.files.internal("particles/"));
+		//this.engine2Effect.load(Gdx.files.internal("particles/secondlevel/bossexhaust.p"), Gdx.files.internal("particles/"));
 		this.lastShot = level.getTime() + 9;
 		this.lastShot2 = level.getTime() + 15;
 		this.lastShot3 = level.getTime() + 3;
@@ -60,12 +60,12 @@ public class SecondBoss extends Enemy{
 				if ((level.getTime() - lastShot) > firingRate) {
 					lastShot = level.getTime();
 					if (level.weaponSounds.size() == 0) level.weaponSounds.add(weapon);
-			    	for (int i = 1; i < 9; i ++) {
-			    		weapon.shoot(x + 154, y + 554, firingAngle - (i * -.3));
+			    	for (int i = 1; i < 5; i ++) {
+			    		weapon.shoot(x + 154, y + 554, firingAngle - (i * -.6));
 			    	}
-			    	for (int i = 1; i < 18; i ++) {
-			    		weapon.shoot(x + 154, y + 441, firingAngle2 - (i * -.375));
-			    		weapon.shoot(x + 154, y + 200, firingAngle2 - (i * -.375));
+			    	for (int i = 1; i < 9; i ++) {
+			    		weapon.shoot(x + 154, y + 441, firingAngle2 - (i * -.750));
+			    		weapon.shoot(x + 154, y + 200, firingAngle2 - (i * -.750));
 			    	}
 				}
 			   if ((level.getTime() - lastShot2) > secondFiringRate) {
@@ -117,23 +117,23 @@ public class SecondBoss extends Enemy{
 	        
 		}
         if (startEngines == level.getLevelTime()) {
-        	this.engine1Effect.setPosition((int)x + 38,(int) y+5);
-        	this.engine2Effect.setPosition((int)x + 170,(int) y+5);
-        	level.overlayedParticleEffects.add(engine1Effect);
-        	level.overlayedParticleEffects.add(engine2Effect);
-        	engine1Effect.start();
-        	engine2Effect.start();
+        	//this.engine1Effect.setPosition((int)x + 38,(int) y+5);
+        	//this.engine2Effect.setPosition((int)x + 170,(int) y+5);
+        	//level.overlayedParticleEffects.add(engine1Effect);
+        	//level.overlayedParticleEffects.add(engine2Effect);
+        	//engine1Effect.start();
+        	//engine2Effect.start();
         }
-        if (startEngines < level.getLevelTime()) {
-        	this.engine1Effect.setPosition((int)x + 38,(int) y+5);
-        	this.engine2Effect.setPosition((int)x + 170,(int) y+5);
+        //if (startEngines < level.getLevelTime()) {
+        	//this.engine1Effect.setPosition((int)x + 38,(int) y+5);
+        	//this.engine2Effect.setPosition((int)x + 170,(int) y+5);
         	
-        }
+       // }
         
 	}
 	public void particles() {
 		if( health < 0) {
-			engine1Effect.allowCompletion();
+			//engine1Effect.allowCompletion();
 			ParticleEffect explosion = new ParticleEffect();
 			explosion.load(Gdx.files.internal("particles/secondlevel/bossexplosions2.p"), Gdx.files.internal("particles/"));
 			explosion.setPosition((int)x + xOffset + (width / 2),(int) y  + 100);
@@ -146,7 +146,7 @@ public class SecondBoss extends Enemy{
 
 	public void remove() {
 		super.remove();
-		engine1Effect.allowCompletion();
-		engine2Effect.allowCompletion();
+		//engine1Effect.allowCompletion();
+		//engine2Effect.allowCompletion();
 	}
 }
