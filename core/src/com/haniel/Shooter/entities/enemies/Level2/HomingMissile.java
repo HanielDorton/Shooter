@@ -9,7 +9,7 @@ import com.haniel.Shooter.level.Level;
 
 public class HomingMissile extends Enemy{
 	
-	private int trackPlayer = 12;
+	private int trackPlayer = 6;
 	private float firingRate = .5f;
 	private PooledEffect effect;
 
@@ -42,6 +42,11 @@ public class HomingMissile extends Enemy{
 		
 	}
 	public void update() {
+		if (trackPlayer == 0 ) {
+			health--;
+			remove();
+			particles();
+		}
         if (y < 0 - this.height - 300) remove();
         if (y > level.getHeight() + this.height + 300) remove();
         if (x > level.getWidth() + this.width + 300) remove();

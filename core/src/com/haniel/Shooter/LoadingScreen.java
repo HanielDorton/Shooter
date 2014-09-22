@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.haniel.Shooter.util.ActionResolver;
 
 public class LoadingScreen implements Screen{
 	
@@ -19,9 +20,11 @@ public class LoadingScreen implements Screen{
 	private Label title;
 	private TextureAtlas atlas;
 	OrthographicCamera camera;
+	private ActionResolver actionResolver;
 	
-	public LoadingScreen(final MyGdxGame gam){
+	public LoadingScreen(final MyGdxGame gam, ActionResolver actionResolve){
 		this.game = gam;
+		this.actionResolver = actionResolve;
 		camera = new OrthographicCamera();
         camera.setToOrtho(false, 800, 480);
 	}
@@ -41,7 +44,7 @@ public class LoadingScreen implements Screen{
         Assets.update();
         if(Assets.manager.getProgress()==1) {
         	stage.dispose();
-			game.setScreen(new MenuScreen(game));
+			game.setScreen(new MenuScreen(game, actionResolver));
         }
 		
 	}

@@ -58,7 +58,7 @@ public class CloakingEnemy extends Enemy{
 		this.xOffset = 1;
 		this.yOffset = 15;
 		this.rectangle = new Rectangle(1000, 1000, 0, 0);
-		this.weapon = new SphereGun(level, false, firingSpeed);
+		this.weapon = new SphereGun(level, firingSpeed);
 		this.points = 20;
 		this.cloakingRate = .15f;
 	}
@@ -92,7 +92,7 @@ public class CloakingEnemy extends Enemy{
 	       	weapon.shoot(x + 30, y, angle3 + angleAdjustment);
 	       	weapon.shoot(x + 30, y, angle3 - angleAdjustment);
 	       	firingSpeed += 25;
-			weapon = new SphereGun(level, false, firingSpeed);
+	       	this.weapon = new SphereGun(level, firingSpeed);
 	       	if (level.weaponSounds.size() == 0) level.weaponSounds.add(weapon);
         }
 	}

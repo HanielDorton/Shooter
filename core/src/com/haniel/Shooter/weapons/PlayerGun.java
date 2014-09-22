@@ -4,8 +4,8 @@ import com.haniel.Shooter.level.Level;
 
 public class PlayerGun extends Weapon{
 
-	public PlayerGun(Level level, boolean fromPlayer) {
-		super(level, fromPlayer);
+	public PlayerGun(Level level) {
+		super(level);
 		this.firingRate = basicGunFiringRate;
 		this.sound = basicGunSound;
 	}

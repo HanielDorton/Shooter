@@ -4,6 +4,7 @@ package com.haniel.Shooter.entities.enemies.Level2;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.ParticleEffectPool.PooledEffect;
 import com.badlogic.gdx.math.CatmullRomSpline;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
@@ -16,8 +17,8 @@ import com.haniel.Shooter.weapons.SphereGun;
 
 public class SecondBoss extends Enemy{
 	
-	//private ParticleEffect engine1Effect = new ParticleEffect();
-	//private ParticleEffect engine2Effect = new ParticleEffect();;
+	private ParticleEffect engine1Effect = new ParticleEffect();
+	private ParticleEffect engine2Effect = new ParticleEffect();;
 	private int startEngines;
 	private double firingRate = 2;
 	private double secondFiringRate = 1.15;
@@ -36,10 +37,10 @@ public class SecondBoss extends Enemy{
 		this.yOffset = 5;
 		this.health = 500;
 		this.speed = 7;
-		this.weapon = new SphereGun(level, false, 70);
+		this.weapon = new SphereGun(level, 70);
 		this.rectangle = new Rectangle((float)x + xOffset, (float)y + yOffset, width, height);
-		//this.engine1Effect.load(Gdx.files.internal("particles/secondlevel/bossexhaust.p"), Gdx.files.internal("particles/"));
-		//this.engine2Effect.load(Gdx.files.internal("particles/secondlevel/bossexhaust.p"), Gdx.files.internal("particles/"));
+		this.engine1Effect.load(Gdx.files.internal("particles/secondlevel/bossexhaust.p"), Gdx.files.internal("particles/"));
+		this.engine2Effect.load(Gdx.files.internal("particles/secondlevel/bossexhaust.p"), Gdx.files.internal("particles/"));
 		this.lastShot = level.getTime() + 9;
 		this.lastShot2 = level.getTime() + 15;
 		this.lastShot3 = level.getTime() + 3;
@@ -117,28 +118,27 @@ public class SecondBoss extends Enemy{
 	        
 		}
         if (startEngines == level.getLevelTime()) {
-        	//this.engine1Effect.setPosition((int)x + 38,(int) y+5);
-        	//this.engine2Effect.setPosition((int)x + 170,(int) y+5);
-        	//level.overlayedParticleEffects.add(engine1Effect);
-        	//level.overlayedParticleEffects.add(engine2Effect);
-        	//engine1Effect.start();
-        	//engine2Effect.start();
+        	this.engine1Effect.setPosition((int)x + 38,(int) y+5);
+        	this.engine2Effect.setPosition((int)x + 170,(int) y+5);
+        	level.overlayedParticleEffects.add(engine1Effect);
+        	level.overlayedParticleEffects.add(engine2Effect);
+        	engine1Effect.start();
+        	engine2Effect.start();
         }
-        //if (startEngines < level.getLevelTime()) {
-        	//this.engine1Effect.setPosition((int)x + 38,(int) y+5);
-        	//this.engine2Effect.setPosition((int)x + 170,(int) y+5);
+        if (startEngines < level.getLevelTime()) {
+        	this.engine1Effect.setPosition((int)x + 38,(int) y+5);
+        	this.engine2Effect.setPosition((int)x + 170,(int) y+5);
         	
-       // }
+        }
         
 	}
 	public void particles() {
 		if( health < 0) {
-			//engine1Effect.allowCompletion();
-			ParticleEffect explosion = new ParticleEffect();
-			explosion.load(Gdx.files.internal("particles/secondlevel/bossexplosions2.p"), Gdx.files.internal("particles/"));
-			explosion.setPosition((int)x + xOffset + (width / 2),(int) y  + 100);
-			level.particleEffects.add(explosion);
-			explosion.start();
+			engine1Effect.allowCompletion();
+			engine2Effect.allowCompletion();
+			PooledEffect effect = level.largeExplosionPool.obtain();
+			effect.setPosition((int) x + xOffset + width / 2,(int) y + 100);
+			level.effects.add(effect);
 			level.setLevelComplete();
 			explosion02.play(.5f);
 		}
@@ -146,7 +146,7 @@ public class SecondBoss extends Enemy{
 
 	public void remove() {
 		super.remove();
-		//engine1Effect.allowCompletion();
-		//engine2Effect.allowCompletion();
+		engine1Effect.allowCompletion();
+		engine2Effect.allowCompletion();
 	}
 }

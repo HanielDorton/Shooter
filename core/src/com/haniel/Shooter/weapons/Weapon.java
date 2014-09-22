@@ -9,7 +9,6 @@ public abstract class Weapon {
 	protected double firingRate;
 	protected Level level;
 	protected Sound sound;
-	protected boolean fromPlayer;
 	protected int speed;
 	
 	//set firing rates so they can be accessed before projectiles are created:
@@ -23,9 +22,8 @@ public abstract class Weapon {
 	
 	
 	
-	public Weapon(Level level, boolean fromPlayer) {
+	public Weapon(Level level) {
 		this.level = level;
-		this.fromPlayer = fromPlayer;
 	}
 	
 	public double getFiringRate(){
@@ -33,7 +31,7 @@ public abstract class Weapon {
 	}
 
 	public void shoot(double x, double y, double angle) {
-		level.add(new PlayerBullet(x, y, angle, fromPlayer));
+		level.addPlayerProjectile(new PlayerBullet(x, y, angle));
 	}
 	
 	public void playSound() {

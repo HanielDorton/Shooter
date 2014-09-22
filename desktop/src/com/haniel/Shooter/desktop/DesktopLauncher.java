@@ -3,6 +3,7 @@ package com.haniel.Shooter.desktop;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import com.haniel.Shooter.MyGdxGame;
+import com.haniel.Shooter.util.DesktopActionResolver;
 
 
 public class DesktopLauncher {
@@ -12,6 +13,6 @@ public class DesktopLauncher {
 	    config.width = 800;
 	    config.height = 480;
 	      
-		new LwjglApplication(new MyGdxGame(), config);
+		new LwjglApplication(new MyGdxGame(new DesktopActionResolver()), config);
 	}
 }

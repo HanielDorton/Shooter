@@ -32,6 +32,8 @@ public class Level5 extends Level{
 		smallEngineEffectPool = new ParticleEffectPool(smallEngineEffect, 5, 20);
 		smallerEngineEffect.load(Gdx.files.internal("particles/level5/smallengines.p"), Gdx.files.internal("particles/"));
 		smallerEngineEffectPool = new ParticleEffectPool(smallerEngineEffect, 5, 20);
+		largeExplosionEffect.load(Gdx.files.internal("particles/level5/bossexplosion.p"), Gdx.files.internal("particles/"));
+		largeExplosionPool = new ParticleEffectPool(largeExplosionEffect, 2, 2);
 		}
 	public void runLevel(GameScreen g) {
 		levelTime += 10;

@@ -11,6 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.haniel.Shooter.util.ActionResolver;
 import com.haniel.Shooter.util.GameState;
 
 public class BeatGameScreen implements Screen{
@@ -19,13 +20,15 @@ public class BeatGameScreen implements Screen{
 	private Stage stage;
 	private Skin skin;
 	private Table table;
-	private TextButton buttonContinue;
+	private TextButton buttonContinue, buttonScores, buttonAchievements;;
 	private Label score, deaths, skips, title;
 	private TextureAtlas atlas;
+	private ActionResolver actionResolver;
 	
-	public BeatGameScreen(final MyGdxGame gam, GameState gameState){
+	public BeatGameScreen(final MyGdxGame gam, GameState gameState, ActionResolver actionResolve){
 		this.game = gam;
     	this.gameState = gameState;
+    	this.actionResolver = actionResolve;
 	}
 
 	@Override
@@ -46,7 +49,9 @@ public class BeatGameScreen implements Screen{
 
 	@Override
 	public void show() {
-		
+		if (actionResolver.getSignedInGPGS()) {
+			 actionResolver.submitScoreGPGS(gameState.score);
+		}
 		atlas = new TextureAtlas("uiskin.atlas");
 		skin = new Skin(Gdx.files.internal("uiskin.json"), atlas);
 		stage = new Stage();
@@ -65,8 +70,21 @@ public class BeatGameScreen implements Screen{
 		buttonContinue = new TextButton("Continue", skin);
 		buttonContinue.addListener(new ChangeListener() {
 			public void changed(ChangeEvent event, Actor actor) {
-				game.setScreen(new CreditsScreen(game));
+				game.setScreen(new CreditsScreen(game, actionResolver));
 				dispose();				
+			}
+		});
+		buttonScores = new TextButton("High Scores", skin);
+		buttonScores.addListener(new ChangeListener() {
+			public void changed(ChangeEvent event, Actor actor) {
+				game.actionResolver.getLeaderboardGPGS();
+			}
+		});
+		
+		buttonAchievements = new TextButton("Achievements", skin);
+		buttonAchievements.addListener(new ChangeListener() {
+			public void changed(ChangeEvent event, Actor actor) {
+				game.actionResolver.getAchievementsGPGS();
 			}
 		});
 		
@@ -78,7 +96,14 @@ public class BeatGameScreen implements Screen{
 		table.row();
 		table.add(score).padBottom(30);
 		table.row();
+		if (actionResolver.getSignedInGPGS()) {
+			table.add(buttonScores).padBottom(10).width(200).height(40);
+			table.row();
+			table.add(buttonAchievements).padBottom(10).width(200).height(40);
+			table.row();
+		}
 		table.add(buttonContinue).width(200).height(40);
+		
 		
 	}
 

@@ -35,6 +35,8 @@ public class Player extends Entity{
 	private float baseKeyboardSpeed = 5;
 	private float keyboardAcc = .2f;
 	private boolean touchLeft, touchRight, touchUp, touchDown;
+	private Vector3 touchPos = new Vector3();
+	private int shipMiddle;
 	
 
 
@@ -70,7 +72,7 @@ public class Player extends Entity{
 		this.tiltSpeed = 0.02f;
 		this.movingLeft = false;
 		this.movingRight = false;
-		this.weapon = new PlayerGun(level, true);
+		this.weapon = new PlayerGun(level);
 		this.engine1Effect.load(Gdx.files.internal("PlayerEngine.p"), Gdx.files.internal(""));
 		this.engine1Effect.setPosition((int)x + 21,(int) y + 5);
 		level.particleEffects.add(engine1Effect);
@@ -81,8 +83,9 @@ public class Player extends Entity{
 		switch (Gdx.app.getType()) {
 		
 			case Android: {
-				topKeyboardSpeed = 22;
-				baseKeyboardSpeed = 10;
+				topKeyboardSpeed = 30;
+				baseKeyboardSpeed = 5;
+				keyboardAcc = .4f;
 			}
 			default: {
 				
@@ -97,22 +100,23 @@ public class Player extends Entity{
 		switch (Gdx.app.getType()) {
 		
 			case Android: {
-				Vector3 touchPos = new Vector3();
+				
 				if (Gdx.input.isTouched()) {
-				        touchPos  = new Vector3();
-				        touchPos.set(Gdx.input.getX(), Gdx.input.getY(), 0);
-				        gameScreen.camera.unproject(touchPos);
-
-				        System.out.println( touchPos.x + " " + touchPos.y);
-						if ((touchPos.x - (this.x + ((height +xOffset*2)/2))) > 5)
-					        touchRight = true;
-						else if ((touchPos.x - (this.x + ((height +xOffset*2)/2))) < -5)
-					        touchLeft = true;
-					    if ((touchPos.y - (this.y + ((width + yOffset*2)/2))) > 5)
-					        touchUp = true;
-					    else if ((touchPos.y - (this.y + ((width + yOffset*2)/2))) < -5)
-					        touchDown = true;
-					    
+					startShooting();
+				    touchPos.set(Gdx.input.getX(), Gdx.input.getY(), 0);
+				    gameScreen.camera.unproject(touchPos);
+				    shipMiddle = (int) this.x + ((height +xOffset*2)/2);
+					if ((touchPos.x - shipMiddle) > 5)
+					    touchRight = true;
+					else if ((touchPos.x - shipMiddle) < -5)
+					    touchLeft = true;
+					if ((touchPos.y - (this.y + ((width + yOffset*2)/2))) > 5)
+					    touchUp = true;
+					else if ((touchPos.y - (this.y + ((width + yOffset*2)/2))) < -5)
+					    touchDown = true;
+				}
+				else {
+					stopShooting();
 				}
 				break;
 			}

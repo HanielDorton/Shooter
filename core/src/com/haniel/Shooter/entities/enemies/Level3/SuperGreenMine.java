@@ -11,7 +11,7 @@ public class SuperGreenMine extends GreenMine{
 		
 		public SuperGreenMine(double x, double y,  Level level, int p) {
 			super(x, y, level, p);		
-			this.weapon = new SphereGun(level, false, 200);
+			this.weapon = new SphereGun(level, 200);
 			this.lastShot =level.getTime() + 1.5 + random.nextInt(3);
 		}
 		

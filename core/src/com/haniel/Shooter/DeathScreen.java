@@ -11,6 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.haniel.Shooter.util.ActionResolver;
 import com.haniel.Shooter.util.GameState;
 
 public class DeathScreen implements Screen{
@@ -19,14 +20,16 @@ public class DeathScreen implements Screen{
 	private Skin skin;
 	private Table table;
 	private Label score;
-	private TextButton buttonContinue, buttonSkip, buttonMenu, buttonExit;
+	private TextButton buttonContinue, buttonSkip, buttonMenu, buttonExit, buttonScores, buttonAchievements;
 	private TextureAtlas atlas;
 	private GameState gameState;
 	private int highScore;
+	private ActionResolver actionResolver;
 	
-    public DeathScreen(final MyGdxGame gam, GameState gameState) {
+    public DeathScreen(final MyGdxGame gam, GameState gameState, ActionResolver actionResolve) {
     	this.game = gam;
     	this.gameState = gameState;
+    	this.actionResolver = actionResolve;
     	gameState.numContinues += 1;
     	this.highScore = gameState.score;
     	gameState.score = 0;
@@ -45,6 +48,9 @@ public class DeathScreen implements Screen{
 	}
 
 	public void show() {
+		if (actionResolver.getSignedInGPGS()) {
+			 actionResolver.submitScoreGPGS(highScore);
+		}
 		atlas = new TextureAtlas("uiskin.atlas");
 		skin = new Skin(Gdx.files.internal("uiskin.json"), atlas);
 		stage = new Stage();
@@ -58,7 +64,7 @@ public class DeathScreen implements Screen{
 		buttonContinue = new TextButton("Retry from Check Point", skin);
 		buttonContinue.addListener(new ChangeListener() {
 			public void changed(ChangeEvent event, Actor actor) {
-				game.setScreen(new GameScreen(game, gameState));
+				game.setScreen(new GameScreen(game, gameState, actionResolver));
 				dispose();				
 			}
 		});
@@ -66,14 +72,14 @@ public class DeathScreen implements Screen{
 		buttonSkip.addListener(new ChangeListener() {
 			public void changed(ChangeEvent event, Actor actor) {
 				skipSection();
-				game.setScreen(new GameScreen(game, gameState));
+				game.setScreen(new GameScreen(game, gameState, actionResolver));
 				dispose();				
 			}
 		});
 		buttonMenu = new TextButton("Return to Main Menu", skin);
 		buttonMenu.addListener(new ChangeListener() {
 			public void changed(ChangeEvent event, Actor actor) {
-	        	game.setScreen(new MenuScreen(game));
+	        	game.setScreen(new MenuScreen(game, actionResolver));
 	            dispose();				
 			}
 		});
@@ -84,12 +90,31 @@ public class DeathScreen implements Screen{
 	            Gdx.app.exit(); 				
 			}
 		});
+		buttonScores = new TextButton("High Scores", skin);
+		buttonScores.addListener(new ChangeListener() {
+			public void changed(ChangeEvent event, Actor actor) {
+				game.actionResolver.getLeaderboardGPGS();
+			}
+		});
+		
+		buttonAchievements = new TextButton("Achievements", skin);
+		buttonAchievements.addListener(new ChangeListener() {
+			public void changed(ChangeEvent event, Actor actor) {
+				game.actionResolver.getAchievementsGPGS();
+			}
+		});
 		table.add(score).padBottom(10);
 		table.row();
 		table.add(buttonContinue).padBottom(10).width(200).height(40);
 		table.row();
 		table.add(buttonSkip).padBottom(10).width(200).height(40);
 		table.row();
+		if (actionResolver.getSignedInGPGS()) {
+			table.add(buttonScores).padBottom(10).width(200).height(40);
+			table.row();
+			table.add(buttonAchievements).padBottom(10).width(200).height(40);
+			table.row();
+		}
 		table.add(buttonMenu).padBottom(10).width(200).height(40);
 		table.row();
 		table.add(buttonExit).width(200).height(40);

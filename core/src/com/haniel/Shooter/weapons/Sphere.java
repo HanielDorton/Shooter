@@ -4,8 +4,8 @@ import com.badlogic.gdx.math.Rectangle;
 import com.haniel.Shooter.level.Level;
 public class Sphere extends Projectile{
 
-	public Sphere(double x, double y, double dir, boolean fromPlayer, int speed) {
-		super(x, y, dir, fromPlayer);
+	public Sphere(double x, double y, double dir, int speed) {
+		super(x, y, dir);
 		this.width = 4;
 		this.height = 4;
 		this.speed = speed;

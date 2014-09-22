@@ -24,7 +24,7 @@ public class BlueEnemy extends Enemy{
 		this.xOffset = 1;
 		this.yOffset = 15;
 		this.rectangle = new Rectangle((float)x + xOffset, (float)y + yOffset, width, height);
-		this.weapon = new SphereGun(level, false, 300);
+		this.weapon = new SphereGun(level, 300);
 		this.points = 10;
 	}
 	

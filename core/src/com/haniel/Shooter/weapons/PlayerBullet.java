@@ -5,8 +5,8 @@ import com.badlogic.gdx.math.Rectangle;
 
 public class PlayerBullet extends Projectile{
 
-	public PlayerBullet(double x, double y, double angle, boolean fromPlayer) {
-		super(x, y, angle, fromPlayer);
+	public PlayerBullet(double x, double y, double angle) {
+		super(x, y, angle);
 		this.width = 4;
 		this.height = 5;
 		this.speed = 800;

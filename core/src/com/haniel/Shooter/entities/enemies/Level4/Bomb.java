@@ -26,7 +26,7 @@ public class Bomb extends Enemy{
 		level.effects.add(this.effect);
 		this.effect.start();
 		this.effect.setPosition((int) x + width / 2,(int) y + width / 2);
-		this.weapon = new SphereGun(level, false, firingSpeed);
+		this.weapon = new SphereGun(level, firingSpeed);
 	}
 	
 	public void update() {
@@ -39,7 +39,7 @@ public class Bomb extends Enemy{
 		    		weapon.shoot(x + 2, y + 2, firingAngle - (i * -.75));
 		    	}
 	    		firingSpeed += 50;
-	    		weapon = new SphereGun(level, false, firingSpeed);
+	    		weapon = new SphereGun(level, firingSpeed);
 			}
 			matches2.play();
 	    	remove();

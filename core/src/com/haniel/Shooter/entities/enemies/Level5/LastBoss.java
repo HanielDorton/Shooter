@@ -1,7 +1,5 @@
 package com.haniel.Shooter.entities.enemies.Level5;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.ParticleEffectPool.PooledEffect;
 import com.badlogic.gdx.math.CatmullRomSpline;
@@ -33,7 +31,7 @@ public class LastBoss extends Enemy{
 		this.height = 300;
 		this.health = 500;
 		if (flyby) this.speed = 20;
-		this.weapon = new SphereGun(level, false, 70);
+		this.weapon = new SphereGun(level, 70);
 		this.lastShot =level.getTime() + 3;
 		this.rectangle = new Rectangle((float)x + xOffset, (float)y + yOffset, width, height);
 		this.engine1Effect = level.smallEngineEffectPool.obtain();
@@ -100,11 +98,9 @@ public class LastBoss extends Enemy{
 			engine1Effect.allowCompletion();
 			engine2Effect.allowCompletion();
 			engine3Effect.allowCompletion();
-			ParticleEffect explosion = new ParticleEffect();
-			explosion.load(Gdx.files.internal("particles/level5/bossexplosion.p"), Gdx.files.internal("particles/"));
-			explosion.setPosition((int)x + xOffset + (width / 2),(int) y + yOffset + (height / 2));
-			level.particleEffects.add(explosion);
-			explosion.start();
+			PooledEffect effect = level.largeExplosionPool.obtain();
+			effect.setPosition((int) x + xOffset + width / 2,(int) y + yOffset + height / 2);
+			level.effects.add(effect);
 			level.setLevelComplete();
 			explosion02.play(.5f);
 		}

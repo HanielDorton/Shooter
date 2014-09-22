@@ -5,8 +5,8 @@ import java.util.List;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.ParticleEffectPool.PooledEffect;
 import com.badlogic.gdx.math.CatmullRomSpline;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
@@ -42,7 +42,7 @@ public class BlueSaucer extends Enemy{
 		this.xOffset = 5;
 		this.yOffset = 15;
 		this.rectangle = new Rectangle((float)x + xOffset, (float)y + yOffset, width, height);
-		this.weapon = new SphereGun(level, false, 130);
+		this.weapon = new SphereGun(level, 130);
 		this.lastShot = level.getTime() + 5;
 		this.path = path;
 		this.points = 50;
@@ -75,11 +75,9 @@ public class BlueSaucer extends Enemy{
 
 	public void particles() {
 		if (health < 0) {
-			ParticleEffect explosion = new ParticleEffect();
-			explosion.load(Gdx.files.internal("particles/firstlevel/MediumBlueExplosion.p"), Gdx.files.internal("particles/"));
-			explosion.setPosition((int)x + xOffset + (width / 2),(int) y + yOffset + (height / 2));
-			level.particleEffects.add(explosion);
-			explosion.start();
+			PooledEffect effect = level.smallExplosionEffect2Pool.obtain();
+			effect.setPosition((int) x + xOffset + width / 2,(int) y + yOffset + height / 2);
+			level.effects.add(effect);
 			explosion02.play(.3f);
 		}
 	}

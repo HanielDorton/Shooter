@@ -28,9 +28,9 @@ public class WeaponsPlatform extends Enemy{
 		this.sprite = new Sprite(weaponsPlatformTexture, width, height);	
 		this.health = 5;
 		this.rectangle = new Rectangle((float)x + xOffset, (float)y + yOffset, width, height);
-		this.weapon = new SphereGun(level, false, 150);
-		this.weapon2 = new SphereGun(level, false, 250);
-		this.weapon3 = new SphereGun(level, false, 350);
+		this.weapon = new SphereGun(level, 150);
+		this.weapon2 = new SphereGun(level, 250);
+		this.weapon3 = new SphereGun(level, 350);
 		this.points = 10;
 		this.rotates = true;
 		this.counterClockWise = counterClockWise;

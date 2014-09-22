@@ -25,6 +25,10 @@ import com.haniel.Shooter.util.Pathing;
 		enemyBulletEffectPool = new ParticleEffectPool(enemyBulletEffect, 45, 200);
 		smallExplosionEffect.load(Gdx.files.internal("particles/firstlevel/BlueExplosion.p"), Gdx.files.internal("particles/"));
 		smallExplosionEffectPool = new ParticleEffectPool(smallExplosionEffect, 5, 5);
+		smallExplosionEffect2.load(Gdx.files.internal("particles/firstlevel/MediumBlueExplosion.p"), Gdx.files.internal("particles/"));
+		smallExplosionEffect2Pool = new ParticleEffectPool(smallExplosionEffect2, 2, 2);
+		largeExplosionEffect.load(Gdx.files.internal("particles/firstlevel/BossExplosion.p"), Gdx.files.internal("particles/"));
+		largeExplosionPool = new ParticleEffectPool(largeExplosionEffect, 2, 2);
 	}
 	
 	public void runLevel(GameScreen g) {

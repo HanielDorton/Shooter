@@ -18,6 +18,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.haniel.Shooter.graphics.BackgroundImage;
 import com.haniel.Shooter.graphics.MyGraphics;
+import com.haniel.Shooter.util.ActionResolver;
 import com.haniel.Shooter.util.GameState;
 
 public class MenuScreen implements Screen{
@@ -27,14 +28,16 @@ public class MenuScreen implements Screen{
 	private Stage stage;
 	private Skin skin;
 	private Table table;
-	private TextButton buttonPlay, buttonCredits, buttonExit;
+	private TextButton buttonPlay, buttonCredits, buttonExit, buttonScores, buttonAchievements;
 	private Label title, author;
 	private TextureAtlas atlas;
 	private Music backgroundMusic;
     List<MyGraphics> graphics;
+	private ActionResolver actionResolver;
 	
-    public MenuScreen(final MyGdxGame gam) {
+    public MenuScreen(final MyGdxGame gam, ActionResolver actionResolve) {
     	this.game = gam;  
+    	this.actionResolver = actionResolve;
     	camera = new OrthographicCamera();
         camera.setToOrtho(false, 800, 480);
     }
@@ -80,14 +83,14 @@ public class MenuScreen implements Screen{
 		buttonPlay.addListener(new ChangeListener() {
 			public void changed(ChangeEvent event, Actor actor) {
 				GameState gameState = new GameState(1, 0, 0); //level, checkpoint, continues 
-	            game.setScreen(new GameScreen(game, gameState));
+	            game.setScreen(new GameScreen(game, gameState, actionResolver));
 	            dispose();				
 			}
 		});
 		buttonCredits = new TextButton("Credits", skin);
 		buttonCredits.addListener(new ChangeListener() {
 			public void changed(ChangeEvent event, Actor actor) {
-	        	game.setScreen(new CreditsScreen(game));
+	        	game.setScreen(new CreditsScreen(game, actionResolver));
 	            dispose();				
 			}
 		});
@@ -98,12 +101,31 @@ public class MenuScreen implements Screen{
 	            Gdx.app.exit(); 				
 			}
 		});
+		buttonScores = new TextButton("High Scores", skin);
+		buttonScores.addListener(new ChangeListener() {
+			public void changed(ChangeEvent event, Actor actor) {
+				game.actionResolver.getLeaderboardGPGS();
+			}
+		});
+		
+		buttonAchievements = new TextButton("Achievements", skin);
+		buttonAchievements.addListener(new ChangeListener() {
+			public void changed(ChangeEvent event, Actor actor) {
+				game.actionResolver.getAchievementsGPGS();
+			}
+		});
 		table.add(title).padBottom(30);
 		table.row();
 		table.add(author).padBottom(70);
 		table.row();
 		table.add(buttonPlay).padBottom(10).width(200).height(40);
 		table.row();
+		if (actionResolver.getSignedInGPGS()) {
+			table.add(buttonScores).padBottom(10).width(200).height(40);
+			table.row();
+			table.add(buttonAchievements).padBottom(10).width(200).height(40);
+			table.row();
+		}
 		table.add(buttonCredits).padBottom(10).width(200).height(40);
 		table.row();
 		table.add(buttonExit).padBottom(10).width(200).height(40);

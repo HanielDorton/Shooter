@@ -22,7 +22,7 @@ public class GreenMine extends Enemy{
 		this.sprite = new Sprite(greenMineTexture);		
 		this.health = 3;
 		this.rectangle = new Rectangle((float)x + xOffset, (float)y + yOffset, width, height);
-		this.weapon = new SphereGun(level, false, 300);
+		this.weapon = new SphereGun(level, 300);
 		this.rotates = true;
 		this.lastX = x;
 		this.points = 10;

@@ -1,8 +1,7 @@
 package com.haniel.Shooter.entities.enemies.Level3;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.ParticleEffectPool.PooledEffect;
 import com.badlogic.gdx.math.CatmullRomSpline;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
@@ -28,9 +27,9 @@ public class SuperGreenJet extends Enemy{
 		this.xOffset = 30;
 		this.yOffset = 70;
 		this.rectangle = new Rectangle((float)x + xOffset, (float)y + yOffset, width, height);
-		this.weapon = new SphereGun(level, false, 500);
+		this.weapon = new SphereGun(level, 500);
 		this.lastShot2 = level.getTime();
-		this.wingWeapon = new SphereGun(level, false, 300);
+		this.wingWeapon = new SphereGun(level, 300);
 		this.points = 100;
 	}
 	public void update() {
@@ -82,11 +81,9 @@ public class SuperGreenJet extends Enemy{
 	}
 	public void particles() {
 		if (health < 0) {
-			ParticleEffect explosion = new ParticleEffect();
-			explosion.load(Gdx.files.internal("particles/thirdlevel/largegreenexplosion.p"), Gdx.files.internal("particles/"));
-			explosion.setPosition((int)x + xOffset + (width / 2),(int) y + yOffset + (height / 2));
-			level.particleEffects.add(explosion);
-			explosion.start();
+			PooledEffect effect = level.largeExplosionPool.obtain();
+			effect.setPosition((int) x + xOffset + width / 2,(int) y + yOffset + height / 2);
+			level.effects.add(effect);
 			explosion02.play(.3f);
 			explosion01.play(.3f);
 			super.particles();

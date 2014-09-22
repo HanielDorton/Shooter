@@ -3,6 +3,7 @@ package com.haniel.Shooter.entities.enemies.Level1;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.ParticleEffectPool.PooledEffect;
 import com.badlogic.gdx.math.CatmullRomSpline;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
@@ -34,8 +35,8 @@ public class FirstBoss extends Enemy{
 		this.sprite = new Sprite(firstBossTexture);		
 		this.health = 400;
 		this.rectangle = new Rectangle((float)x + xOffset, (float)y + yOffset , width, height);
-		this.weapon = new SphereGun(level, false, 300);
-		this.weapon2 = new SphereGun(level, false, 250);
+		this.weapon = new SphereGun(level, 300);
+		this.weapon2 = new SphereGun(level, 250);
 		this.lastShot = 0;
 		this.engine1Effect.load(Gdx.files.internal("particles/firstlevel/BossEngines.p"), Gdx.files.internal("particles/"));
 		this.engine1Effect.setPosition((int)x + 39,(int) y + 8);
@@ -90,11 +91,9 @@ public class FirstBoss extends Enemy{
 		if( health < 0) {
 			engine1Effect.allowCompletion();
 			engine2Effect.allowCompletion();
-			ParticleEffect explosion = new ParticleEffect();
-			explosion.load(Gdx.files.internal("particles/firstlevel/BossExplosion.p"), Gdx.files.internal("particles/"));
-			explosion.setPosition((int)x + xOffset + (width / 2),(int) y + yOffset + (height / 2));
-			level.particleEffects.add(explosion);
-			explosion.start();
+			PooledEffect effect = level.largeExplosionPool.obtain();
+			effect.setPosition((int) x + xOffset + width / 2,(int) y + yOffset + height / 2);
+			level.effects.add(effect);
 			level.setLevelComplete();
 			explosion02.play(.5f);
 		}

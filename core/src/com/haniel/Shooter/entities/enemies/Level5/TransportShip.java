@@ -26,7 +26,7 @@ public class TransportShip extends Enemy{
 		this.health = 40;
 
 		this.rectangle = new Rectangle((float)x + xOffset, (float)y + yOffset, width, height);
-		this.weapon = new SphereGun(level, false, 60);
+		this.weapon = new SphereGun(level, 60);
 		this.points = 30;
 		this.engine1Effect = level.smallEngineEffectPool.obtain();
 		this.engine1Effect.setPosition((int) x + 23,(int) y + 5);

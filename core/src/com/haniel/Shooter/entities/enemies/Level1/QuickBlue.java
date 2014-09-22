@@ -25,7 +25,7 @@ public class QuickBlue extends Enemy{
 		this.xOffset = 5;
 		this.yOffset = 5;
 		this.rectangle = new Rectangle((float)x + xOffset, (float)y + yOffset, width, height);
-		this.weapon = new SphereGun(level, false, 130);
+		this.weapon = new SphereGun(level, 130);
 		this.lastShot = level.getTime() + random.nextInt(2);
 		this.rotates = true;
 		this.lastX = x;

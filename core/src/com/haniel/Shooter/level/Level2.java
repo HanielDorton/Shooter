@@ -32,6 +32,8 @@ public class Level2 extends Level{
 		smallExplosionEffect2Pool = new ParticleEffectPool(smallExplosionEffect2, 5, 8);
 		smallEngineEffect.load(Gdx.files.internal("PlayerEngine.p"), Gdx.files.internal(""));
 		smallEngineEffectPool = new ParticleEffectPool(smallEngineEffect, 5, 20);
+		largeExplosionEffect.load(Gdx.files.internal("particles/secondlevel/bossexplosions2.p"), Gdx.files.internal("particles/"));
+		largeExplosionPool = new ParticleEffectPool(largeExplosionEffect, 2, 2);
 	}
 
 	public void runLevel(GameScreen g) {

@@ -1,8 +1,7 @@
 package com.haniel.Shooter.entities.enemies.Level3;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.ParticleEffectPool.PooledEffect;
 import com.badlogic.gdx.math.Rectangle;
 import com.haniel.Shooter.entities.enemies.Enemy;
 import com.haniel.Shooter.graphics.HealthBar;
@@ -26,7 +25,7 @@ public class ThirdBoss extends Enemy{
 		this.xOffset = 5;
 		this.yOffset = 5;
 		this.rectangle = new Rectangle((float)x + xOffset, (float)y + yOffset, width, height);
-		this.weapon = new SphereGun(level, false, 400);
+		this.weapon = new SphereGun(level, 400);
 		this.lastShot =level.getTime();
 		this.lastShot2 = level.getTime();
 		level.add(new HealthBarOutline(0));
@@ -66,11 +65,9 @@ public class ThirdBoss extends Enemy{
 	}
 	public void particles() {
 		if( health < 0) {
-			ParticleEffect explosion = new ParticleEffect();
-			explosion.load(Gdx.files.internal("particles/thirdlevel/largegreenexplosion.p"), Gdx.files.internal("particles/"));
-			explosion.setPosition((int)x + xOffset + (width / 2),(int) y + yOffset + (height / 2));
-			level.particleEffects.add(explosion);
-			explosion.start();
+			PooledEffect effect = level.largeExplosionPool.obtain();
+			effect.setPosition((int) x + xOffset + width / 2,(int) y + yOffset + height / 2);
+			level.effects.add(effect);
 			explosion02.play(.3f);
 			level.setLevelComplete();
 		}

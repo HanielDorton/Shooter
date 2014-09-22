@@ -12,6 +12,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.haniel.Shooter.graphics.BackgroundImage;
 import com.haniel.Shooter.graphics.MyGraphics;
 import com.haniel.Shooter.graphics.Star;
+import com.haniel.Shooter.util.ActionResolver;
 
 public class CreditsScreen implements Screen{	
 	final MyGdxGame game;  
@@ -22,9 +23,11 @@ public class CreditsScreen implements Screen{
     double time = 3;
     int creditsCount ;
     private Music backgroundMusic = Assets.manager.get("Grim_League.mp3", Music.class);
+	private ActionResolver actionResolver;
     
-    public CreditsScreen(final MyGdxGame gam) {
-    	this.game = gam;      
+    public CreditsScreen(final MyGdxGame gam, ActionResolver actionResolve) {
+    	this.game = gam;  
+    	this.actionResolver = actionResolve;
     	camera = new OrthographicCamera();
         camera.setToOrtho(false, 800, 480);
         graphics = new LinkedList<MyGraphics>();
@@ -98,7 +101,7 @@ public class CreditsScreen implements Screen{
         	}	
         }
         if (Gdx.input.isTouched() || Gdx.input.isKeyPressed(Keys.ENTER) || (Gdx.input.isKeyPressed(Keys.SPACE))) {
-        	game.setScreen(new MenuScreen(game));
+        	game.setScreen(new MenuScreen(game, actionResolver));
             dispose();
         }
         
@@ -144,7 +147,8 @@ public class CreditsScreen implements Screen{
 	}
 
 	@Override
-	public void dispose() {		
+	public void dispose() {	
+		backgroundMusic.stop();
 	}
 	
 	private class credit {

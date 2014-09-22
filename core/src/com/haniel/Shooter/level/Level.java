@@ -31,6 +31,7 @@ public class Level {
     public List<MyGraphics> graphics = new LinkedList<MyGraphics>();
     public List<Entity> entities = new ArrayList<Entity>();
     public List<Projectile> projectiles = new ArrayList<Projectile>();
+    public List<Projectile> playerProjectiles = new ArrayList<Projectile>();
     public Array<ParticleEffect> particleEffects= new Array<ParticleEffect>();
     public Array<ParticleEffect> overlayedParticleEffects = new Array<ParticleEffect>();
     public List<Entity> specialBossArray = new ArrayList<Entity>();
@@ -48,6 +49,8 @@ public class Level {
 	public ParticleEffectPool smallExplosionEffectPool;
     ParticleEffect smallExplosionEffect2 = new ParticleEffect();
 	public ParticleEffectPool smallExplosionEffect2Pool;
+    ParticleEffect largeExplosionEffect = new ParticleEffect();
+	public ParticleEffectPool largeExplosionPool;
     ParticleEffect smallEngineEffect = new ParticleEffect();
 	public ParticleEffectPool smallEngineEffectPool;	
 	ParticleEffect enemyBulletEffect = new ParticleEffect();
@@ -72,10 +75,10 @@ public class Level {
 		gTime = Gdx.graphics.getDeltaTime();
 		time += gTime;
 		weaponTime += gTime;
-        updateGraphics();
         updateEntities();
         updateSpecialBossArray();
         updateProjectiles();
+        updatePlayerProjectiles();
         
         if (weaponTime > .1) {
         	if (weaponSounds.size() > 0) {
@@ -90,18 +93,6 @@ public class Level {
         }
 	}
 	
-    private void updateGraphics() {
-    	Iterator<MyGraphics> iter = graphics.iterator();
-        while(iter.hasNext()) {
-        	MyGraphics g = iter.next();
-        	g.update();
-        	if (g.isRemoved()) {
-        		iter.remove();
-        	}
-        }
-		
-	}
-    
     private void updateSpecialBossArray() {
     	Iterator<Entity> entityIterator = specialBossArray.iterator();
     	while (entityIterator.hasNext()) {
@@ -122,46 +113,63 @@ public class Level {
         			if (!(entities.get(j) instanceof Player)) {
         				if (e.getRectangle().overlaps(entities.get(j).getRectangle())) {
         					e.damage(1);
-        				}
-        				
+        				}        				
+        			}
+        		}
+        		Iterator<Projectile> projectileIter = projectiles.iterator();
+                while (projectileIter.hasNext()) {
+                	Projectile p = projectileIter.next();
+        			if (e.getRectangle().overlaps(p.getRectangle())) {
+        				e.damage(p.getDamage());
+        				p.remove();
         			}
         		}
         	}
-            Iterator<Projectile> projectileIter = projectiles.iterator();
-            while (projectileIter.hasNext()) {
-            	Projectile p = projectileIter.next();
-    			if(e instanceof Player) {
-    				if (!(p.fromPlayer())) {
-    					if (e.getRectangle().overlaps(p.getRectangle())) {
-    						e.damage(p.getDamage());
-    						p.remove();
-    					}
-    				}
-    			} else {
-    				if (p.fromPlayer()) {
-    					if (e.getRectangle().overlaps(p.getRectangle())) {              			
-		        			e.damage(p.getDamage());
-		        			p.remove();
-    					}
-	        		}
-    				if (!(e instanceof Player) &&  e.isRemoved()) {
-    					entityIterator.remove();
-    					alreadyRemoved = true;
-    					break;
-    				}
-    			}
-        	}
-			if (!(e instanceof Player) &&  e.isRemoved()) {
-				if (!alreadyRemoved) entityIterator.remove();
-				break;
-			}
-        }
+        	//not a player:
+        	else {
+		     	if (e.isRemoved()) {
+   		     		entityIterator.remove();
+   		     		alreadyRemoved = true;
+   		     		break;
+		     	}
+        		Iterator<Projectile> playerProjectileIter = playerProjectiles.iterator();
+                while (playerProjectileIter.hasNext()) {
+                	Projectile p = playerProjectileIter.next();
+       					if (e.getRectangle().overlaps(p.getRectangle())) {              			
+   		        			e.damage(p.getDamage());
+   		        			p.remove();
+   		        			if (e.isRemoved()) {
+	        					entityIterator.remove();
+	        					alreadyRemoved = true;
+	        					break;
+   		        			}
+       					}
+	   		     		if (e.isRemoved()) {
+	   		     			if (!alreadyRemoved) entityIterator.remove();
+	   		     			break;
+	   		     		}
+                	}
+        	
+        		}
+    		}
+
 
 	}
 	
 
 	private void updateProjectiles() {
         Iterator<Projectile> iter = projectiles.iterator();
+        while (iter.hasNext()) {
+        	Projectile p = iter.next();
+        	p.update();
+            if (p.isRemoved()) {
+                iter.remove();
+            }
+        }		
+	}
+	
+	private void updatePlayerProjectiles() {
+        Iterator<Projectile> iter = playerProjectiles.iterator();
         while (iter.hasNext()) {
         	Projectile p = iter.next();
         	p.update();
@@ -183,6 +191,11 @@ public class Level {
     
     public void add(Projectile p) {
     	projectiles.add(p);
+    	p.init(this);
+    }
+    
+    public void addPlayerProjectile(Projectile p) {
+    	playerProjectiles.add(p);
     	p.init(this);
     }
     

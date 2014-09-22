@@ -35,7 +35,7 @@ public class CloakingEnemyBombs extends CloakingEnemy{
 		this.sprite = sprites.get(currentSprite);	
 		this.rectangle = new Rectangle(1000, 1000, 0, 0);
 		this.cloakingRate = .25f;
-		this.weapon = new SphereGun(level, false, 400);
+		this.weapon = new SphereGun(level, 400);
 		this.points = 20;
 	}
 	

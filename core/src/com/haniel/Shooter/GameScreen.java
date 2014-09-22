@@ -23,6 +23,7 @@ import com.haniel.Shooter.level.Level2;
 import com.haniel.Shooter.level.Level3;
 import com.haniel.Shooter.level.Level4;
 import com.haniel.Shooter.level.Level5;
+import com.haniel.Shooter.util.ActionResolver;
 import com.haniel.Shooter.util.GameState;
 import com.haniel.Shooter.util.MyInputProcessor;
 
@@ -43,24 +44,37 @@ public class GameScreen implements Screen {
     private GameState gameState;
     private int tempScore = 0;
     Pixmap mouse;
+	private ActionResolver actionResolver;
     //private String timeString, minuteString;
 
 
-    public GameScreen(final MyGdxGame gam, GameState gameState) {    	
+    public GameScreen(final MyGdxGame gam, GameState gameState, ActionResolver actionResolve) {    	
         this.game = gam;
     	this.gameState = gameState;
+    	this.actionResolver = actionResolve;
     	level = getLevel();
     	if (gameState.checkPoint > 0) level.setLevelTime(gameState.getCheckpoint());
     	player = new Player(level);
-    	inputProcessor = new MyInputProcessor(player);
+    	
         level.runLevel(this);
-        Gdx.input.setInputProcessor(inputProcessor);
+        
         camera = new OrthographicCamera();
         camera.setToOrtho(false, screenWidth, screenHeight);
         tempScore =gameState.score;
-        //set cursor to blank image since it is fixed to the middle of the screen.
-        mouse = new Pixmap(Gdx.files.internal("textures/mouseX.png"));
-        Gdx.input.setCursorImage(mouse, 0, 0);
+        switch (Gdx.app.getType()) {
+        
+	        case Android: {
+	        	break;
+	        
+	        }
+	        default: {
+	        	inputProcessor = new MyInputProcessor(player);
+	        	Gdx.input.setInputProcessor(inputProcessor);
+		        //set cursor to blank image since it is fixed to the middle of the screen.
+		        mouse = new Pixmap(Gdx.files.internal("textures/mouseX.png"));
+		        Gdx.input.setCursorImage(mouse, 0, 0);
+	        }
+        }
         level.add(player);
         player.init(this);        
     }
@@ -84,17 +98,19 @@ public class GameScreen implements Screen {
         }
         else if (deathTimer == level.getLevelTime()) {
         	Gdx.input.setCursorImage(null, 0, 0);
-        	game.setScreen(new DeathScreen(game, gameState));
+        	game.setScreen(new DeathScreen(game, gameState, actionResolver));
             dispose();	
         } else if (levelComplete == level.getLevelTime()){	    
         	Gdx.input.setCursorImage(null, 0, 0);
         	gameState.numLevel++;
         	gameState.checkPoint = 0;
-        	game.setScreen(new LevelCompleteScreen(game, gameState));
+        	game.setScreen(new LevelCompleteScreen(game, gameState, actionResolver));
         	dispose();
  	    } else {
 	    	//draw and update level
-	        for (MyGraphics graphic : level.graphics) {	     
+ 	    	Iterator<MyGraphics> Graphicsiter = level.graphics.iterator();
+ 	        while(Graphicsiter.hasNext()) {
+ 	        	MyGraphics graphic = Graphicsiter.next(); 	     
 	        	if (graphic instanceof HealthBar) {
 	        		game.batch.draw(graphic.getSprite(), graphic.getX(), graphic.getY(),
 		        			graphic.getWidth(), graphic.getHeight());
@@ -113,7 +129,13 @@ public class GameScreen implements Screen {
 		        		game.batch.draw(graphic.getSprite(), graphic.getX(), graphic.getY());
 		        	}
 	        	}
+	        	graphic.update();
+	        	if (graphic.isRemoved()) {
+	        		Graphicsiter.remove();
+	        	}
+	        	
 	        }
+ 	        
 	        Iterator<ParticleEffect> iter = level.particleEffects.iterator();
 	        while (iter.hasNext()){
 	        	ParticleEffect p = iter.next();
@@ -145,6 +167,7 @@ public class GameScreen implements Screen {
 	        		game.batch.draw(entity.getSprite(), (float) entity.getX(), (float) entity.getY());
 	        	}
 	        }
+	        
 	        Iterator<ParticleEffect> overlayedIter = level.overlayedParticleEffects.iterator();
 	        while (overlayedIter.hasNext()){
 	        	ParticleEffect p = overlayedIter.next();
@@ -232,7 +255,7 @@ public class GameScreen implements Screen {
     @Override
     public void dispose() {
     	clearLevel();
-    	mouse.dispose();
+    	if (mouse != null) mouse.dispose();
     }
     public void clearLevel() {
     	level.graphics.clear();
@@ -258,6 +281,30 @@ public class GameScreen implements Screen {
     
     public void setLevelComplete() {
     	this.levelComplete = level.getLevelTime() + 800;
+    	if (actionResolver.getSignedInGPGS()) {
+    		switch (gameState.numLevel) {
+    		case 2: {
+    			game.actionResolver.unlockAchievementGPGS("CgkIsKvMj-4TEAIQAg"); 
+    			break;
+    		}
+    		case 3: {
+    			game.actionResolver.unlockAchievementGPGS("CgkIsKvMj-4TEAIQAw");
+    			break;
+    		}
+    		case 4: {
+    			game.actionResolver.unlockAchievementGPGS("CgkIsKvMj-4TEAIQBA");
+    			break;
+    		}
+    		case 5: {
+    			game.actionResolver.unlockAchievementGPGS("CgkIsKvMj-4TEAIQBQ");
+    			break;
+    		}
+    		default: {
+    			game.actionResolver.unlockAchievementGPGS("CgkIsKvMj-4TEAIQAQ");
+    			break;
+    		}
+    		}
+    	}
     }
     
     private Level getLevel() {

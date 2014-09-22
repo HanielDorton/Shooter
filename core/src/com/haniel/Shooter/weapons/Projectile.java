@@ -13,14 +13,12 @@ public abstract class Projectile {
 	protected Rectangle rectangle;
 	protected int width, height;
 	protected Level level;
-	protected boolean fromPlayer;
 	protected PooledEffect effect;
 
-	public Projectile (double x, double y, double angle, boolean fromPlayer) {
+	public Projectile (double x, double y, double angle) {
 		this.angle = angle;
 		this.x = x;
 		this.y = y;
-		this.fromPlayer = fromPlayer;
 	}
 	
 	public void update() {
@@ -106,11 +104,5 @@ public abstract class Projectile {
 		this.effect = level.playerBulletEffectPool.obtain();
 		this.generateParticles(x, y);
 	}
-	
-	public boolean fromPlayer() {
-		return fromPlayer;
-	}
-	
-
 
 }

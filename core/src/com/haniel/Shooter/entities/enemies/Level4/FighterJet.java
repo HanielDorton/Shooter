@@ -25,7 +25,7 @@ public class FighterJet extends Enemy{
 		this.health = 10;
 		this.sprite = new Sprite(fighterJetTexture);
 		this.rectangle = new Rectangle((float)x + xOffset, (float)y + yOffset, width, height);
-		this.weapon = new SphereGun(level, false, weaponSpeed);
+		this.weapon = new SphereGun(level, weaponSpeed);
 		this.points = 20;
 		switch (p) {
 			case 1: {
@@ -71,7 +71,7 @@ public class FighterJet extends Enemy{
 		    	lastShot = level.getTime();
 		    	weapon.shoot(x + xOffset + width / 2, y, angle);
 		    	weaponSpeed += 35;
-				this.weapon = new SphereGun(level, false, weaponSpeed);
+				this.weapon = new SphereGun(level, weaponSpeed);
 		    	if (level.weaponSounds.size() == 0) level.weaponSounds.add(weapon);
 	    	}
 	    }
